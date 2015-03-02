@@ -50,6 +50,7 @@ namespace SwagSword
 
         public Game1(): base()
         {
+            //Peter's the best
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
         }

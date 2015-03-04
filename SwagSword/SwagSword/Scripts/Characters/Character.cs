@@ -29,6 +29,7 @@ namespace SwagSword
         private Vector2 center; //The center point to be used for rotation
         private SpriteEffects spriteEffect; //Used for flipping the sprite
         private Faction type;
+        private bool isControlled;
 
         //Stats
         private int health;
@@ -50,6 +51,7 @@ namespace SwagSword
         public float Y { get { return position.Y; } set { position.Y = value; } }
         public SpriteEffects SpriteEffect { get { return spriteEffect; } set { spriteEffect = value; } }
         public Faction Type { get { return type; } }
+        public bool IsControlled { get { return isControlled; } set { isControlled = value; } }
 
         //Stats
         public int Health { get { return health; } set { health = value; } }
@@ -78,6 +80,7 @@ namespace SwagSword
         public virtual void Init()
         {
             //Init Stats
+            isControlled = false;
             InitStats();
 
             //Init physics
@@ -97,8 +100,6 @@ namespace SwagSword
 
         public virtual void Update()
         {
-
-
             UpdatePhysics();
         }
 

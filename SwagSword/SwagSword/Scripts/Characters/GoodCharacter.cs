@@ -11,7 +11,13 @@ namespace SwagSword
     {
         public GoodCharacter(int x, int y, Texture2D texture): base(x, y, texture)
         {
+            //Set config file here
+            VelocityX = 2f;
+        }
 
+        public override void Update()
+        {
+            base.Update();
         }
     }
 }

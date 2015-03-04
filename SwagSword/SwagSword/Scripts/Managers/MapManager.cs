@@ -108,7 +108,11 @@ namespace SwagSword
     }
 }
 
-
+//greenish
+//desert
+//cave
+//mechanical
+//center is generic
 
 /*
 //interpolation math from other project

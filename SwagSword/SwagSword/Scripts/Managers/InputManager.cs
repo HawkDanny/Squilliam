@@ -10,6 +10,8 @@ namespace SwagSword
     /// <summary>
     /// Input Manager figures out the input, but shouldn't change anything using it
     /// </summary>
+ 
+
     public class InputManager:Manager
     {
         //Fields
@@ -59,6 +61,16 @@ namespace SwagSword
         {
             get { return cycleAbilitiesDown; }
             set { cycleAbilitiesDown = value; }
+        }
+        public int MouseX
+        {
+            get { return mouseX; }
+            set { mouseX = value; }
+        }
+        public int MouseY
+        {
+            get { return mouseY; }
+            set { mouseY = value; }
         }
 
         public InputManager(Game1 mainMan):base(mainMan)
@@ -116,7 +128,5 @@ namespace SwagSword
             else
                 return false;
         }
-
-        
     }
 }

@@ -73,8 +73,6 @@ namespace SwagSword
             rectangle = new Rectangle(0, 0, texture.Width, texture.Height);
             position = new Vector2(x, y);
             center = new Vector2(texture.Width / 2, texture.Height / 2);
-
-            Init();
         }
 
         public virtual void Init()
@@ -94,7 +92,7 @@ namespace SwagSword
         {
             //Will init all stats based on a config file
             health = 100;
-            movementSpeed = 5.0f;
+            movementSpeed = 0.2f;
             strength = 10;
         }
 
@@ -119,13 +117,17 @@ namespace SwagSword
                 {
                     velocityX -= drag;
                     if (velocityX < 0)
+                    {
                         velocityX = 0;
+                    }
                 }
                 else
                 {
                     velocityX += drag;
                     if (velocityX > 0)
+                    {
                         velocityX = 0;
+                    }
                 }
             }
             if (velocityY != 0)
@@ -134,13 +136,17 @@ namespace SwagSword
                 {
                     velocityY -= drag;
                     if (velocityY < 0)
+                    {
                         velocityY = 0;
+                    }
                 }
                 else
                 {
                     velocityY += drag;
                     if (velocityY > 0)
+                    {
                         velocityY = 0;
+                    }
                 }
             }
         }

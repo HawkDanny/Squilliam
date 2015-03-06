@@ -53,6 +53,7 @@ namespace SwagSword
             //Peter's the best
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            
         }
 
 

@@ -7,6 +7,15 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SwagSword
 {
+    //Enum for factions
+    public enum Faction
+    {
+        Tribal,
+        Good,
+        Rich,
+        Thief
+    }
+
     /// <summary>
     /// The base class for every type of Character
     /// </summary>
@@ -19,12 +28,18 @@ namespace SwagSword
         private Vector2 position;
         private Vector2 center; //The center point to be used for rotation
         private SpriteEffects spriteEffect; //Used for flipping the sprite
+        private Faction type;
+        private bool isControlled;
+
+        //Stats
+        private int health;
+        private int strength;
+        private float movementSpeed;
 
         //Physics
         private float velocityX;
         private float velocityY;
         private float drag;
-        private float movementSpeed;
         private float angle;
         #endregion
 
@@ -35,12 +50,18 @@ namespace SwagSword
         public float X { get { return position.X; } set { position.X = value; } }
         public float Y { get { return position.Y; } set { position.Y = value; } }
         public SpriteEffects SpriteEffect { get { return spriteEffect; } set { spriteEffect = value; } }
+        public Faction Type { get { return type; } }
+        public bool IsControlled { get { return isControlled; } set { isControlled = value; } }
+
+        //Stats
+        public int Health { get { return health; } set { health = value; } }
+        public int Strength { get { return strength; } }
+        public float MovementSpeed { get { return movementSpeed; } }
 
         //Physics
         public float VelocityX { get { return velocityX; } set { velocityX = value; } }
         public float VelocityY { get { return velocityY; } set { velocityY = value; } }
         public float Drag { get { return drag; } }
-        public float MovementSpeed { get { return movementSpeed; } }
         #endregion
 
         public Character(int x, int y, Texture2D texture)
@@ -58,11 +79,23 @@ namespace SwagSword
 
         public virtual void Init()
         {
+            //Init Stats
+            isControlled = false;
+            InitStats();
+
             //Init physics
             velocityX = 0;
             velocityY = 0;
             drag = movementSpeed; //Drag should never go above this
             angle = 0f;
+        }
+
+        void InitStats()
+        {
+            //Will init all stats based on a config file
+            health = 100;
+            movementSpeed = 5.0f;
+            strength = 10;
         }
 
         public virtual void Update()
@@ -75,7 +108,41 @@ namespace SwagSword
         /// </summary>
         protected void UpdatePhysics()
         {
-            
+            //Update position based on velocity X, Y
+            X += velocityX;
+            Y += velocityY;
+
+            //Add natural drag to movement speed
+            if (velocityX != 0)
+            {
+                if (velocityX > 0)
+                {
+                    velocityX -= drag;
+                    if (velocityX < 0)
+                        velocityX = 0;
+                }
+                else
+                {
+                    velocityX += drag;
+                    if (velocityX > 0)
+                        velocityX = 0;
+                }
+            }
+            if (velocityY != 0)
+            {
+                if (velocityY > 0)
+                {
+                    velocityY -= drag;
+                    if (velocityY < 0)
+                        velocityY = 0;
+                }
+                else
+                {
+                    velocityY += drag;
+                    if (velocityY > 0)
+                        velocityY = 0;
+                }
+            }
         }
 
         /// <summary>

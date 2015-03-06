@@ -54,7 +54,11 @@ namespace SwagSword
         /// </summary>
         public override void Update()
         {
-
+            //Call update on all characters
+            foreach (Character character in characters)
+            {
+                character.Update();
+            }
         }
 
 

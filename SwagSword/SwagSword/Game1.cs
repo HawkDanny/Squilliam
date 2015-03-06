@@ -103,6 +103,7 @@ namespace SwagSword
 
             //Call update on all Managers that need it
             gameMan.Update();
+            inputMan.Update();
             
 
             base.Update(gameTime);

@@ -15,13 +15,15 @@ namespace SwagSword
         #region Fields
         //Character texture lists
         private List<Texture2D> goodGuyTextures;
-
+        private Texture2D pathwayTexture;
+        private Texture2D notPathwayTexture;
         #endregion
 
         #region Properties
         //Character texture lists
         public List<Texture2D> GoodGuyTextures { get { return goodGuyTextures; } }
-
+        public Texture2D PathwayTexture { get { return pathwayTexture; } set { pathwayTexture = value; } }
+        public Texture2D NotPathwayTexture { get { return notPathwayTexture; } set { notPathwayTexture = value; } }
         #endregion
 
 

@@ -14,7 +14,7 @@ namespace SwagSword
     /// <summary>
     /// Will draw the map, and hold a reference to it to be used by other classes such as spawn manager
     /// </summary>
-    public class MapManager:Manager
+    public class MapManager : Manager
     {
         //Fields
         Point origin;
@@ -33,9 +33,10 @@ namespace SwagSword
         int mapTileHeight;
         Tile[,] map;
 
-        public MapManager(Game1 mainMan):base(mainMan)
+        public MapManager(Game1 mainMan)
+            : base(mainMan)
         {
-            
+
 
         }
 
@@ -56,7 +57,8 @@ namespace SwagSword
             lowerBranch = generateBranch(maxOffset, numPoints, length, false);
             upperBranch = generateBranch(maxOffset, numPoints, length, false);
             map = new Tile[mapTileWidth, mapTileHeight];
-
+            fillGrid();
+            //map[0, 0] = new Tile(mainMan.DrawMan.FirstTile);
             /*Console.WriteLine(rightBranch.Count);
             foreach (Point p in rightBranch)
             {
@@ -78,10 +80,10 @@ namespace SwagSword
             List<Point> newbranch = new List<Point>();
             newbranch.Add(origin);
             int displacePoint;
-            
+
 
             if (horizontal)
-                for(int i = 1; i <= numPoints; i++)
+                for (int i = 1; i <= numPoints; i++)
                 {
                     displacePoint = i * (length / numPoints);
                     int offset = rand.Next(maxOffset * 2) - maxOffset;
@@ -99,11 +101,49 @@ namespace SwagSword
             return newbranch;
         }
 
-        
+        protected void fillGrid()
+        {
+            List<Point> allBranch = new List<Point>();
+            foreach (Point p in leftBranch)
+                allBranch.Add(p);
+            foreach (Point p in rightBranch)
+                allBranch.Add(p);
+            foreach (Point p in upperBranch)
+                allBranch.Add(p);
+            foreach (Point p in lowerBranch)
+                allBranch.Add(p);
+            for (int x = 0; x < mapTileWidth; x++)
+            {
+                for (int y = 0; y < mapTileHeight; y++)
+                {
+                    Point tempCenterTile = new Point((x + 1) * tileSize - (tileSize / 2), (y + 1) * tileSize - (tileSize / 2));
+                    foreach (Point p in allBranch)
+                        if (CalcDistance(tempCenterTile, p) < 20)
+                        {
+                            //map[x, y] = new Tile(mainMan.DrawMan.PathwayTexture);
+                        }
+                        else
+                        {
+                            //map[x, y] = new Tile(mainMan.DrawMan.NotPathwayTexture);
+                        }
+                }
+            }
+        }
+
+
+        protected double CalcDistance(Point a0, Point a1)
+        {
+            return Math.Sqrt(Math.Pow(a1.X - a0.X, 2) + Math.Pow(a1.Y - a0.Y, 2));
+        }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            
+            Rectangle re = new Rectangle(mainMan.WindowHalfWidth, mainMan.WindowHalfHeight, 64, 64);
+            foreach (Tile t in map)
+            {
+                //spriteBatch.Draw(t.Texture, re, Color.White);
+            }
+
         }
     }
 }

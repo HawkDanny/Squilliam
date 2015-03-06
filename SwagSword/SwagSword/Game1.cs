@@ -84,6 +84,14 @@ namespace SwagSword
             drawMan.GoodGuyTextures.Add(Texture2D.FromStream(GraphicsDevice, goodGuyStream));
             goodGuyStream.Close();
 
+            System.IO.Stream pathStream = TitleContainer.OpenStream("Content/Map/SamplePath.png");
+            drawMan.PathwayTexture = (Texture2D.FromStream(GraphicsDevice, pathStream));
+            pathStream.Close();
+
+            System.IO.Stream notPathStream = TitleContainer.OpenStream("Content/Map/SampleNotPath.png");
+            drawMan.NotPathwayTexture = (Texture2D.FromStream(GraphicsDevice, notPathStream));
+            notPathStream.Close();            
+
             gameMan.SpawnMan.SpawnCharacter();
             
 

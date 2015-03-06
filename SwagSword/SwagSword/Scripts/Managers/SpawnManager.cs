@@ -37,8 +37,10 @@ namespace SwagSword
         public void SpawnCharacter()
         {
             //Spawn a dummy character
-            GoodCharacter character = new GoodCharacter(mainMan.WindowHalfWidth, mainMan.WindowHalfHeight, mainMan.DrawMan.GoodGuyTextures[rnd.Next(0, mainMan.DrawMan.GoodGuyTextures.Count)]);
+            GoodCharacter character = new GoodCharacter(mainMan.WindowHalfWidth, mainMan.WindowHalfHeight, mainMan.DrawMan.GoodGuyTextures[rnd.Next(0, mainMan.DrawMan.GoodGuyTextures.Count)], mainMan);
             mainMan.GameMan.Characters.Add(character);
+            Player player = new Player(character, mainMan);
+            mainMan.GameMan.Players.Add(player);
         }
     }
 }

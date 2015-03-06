@@ -60,9 +60,9 @@ namespace SwagSword
         protected override void Initialize()
         {
             //Init Managers
+            inputMan = new InputManager(this);
             gameMan = new GameManager(this);
             drawMan = new DrawManager(this);
-            inputMan = new InputManager(this);
             soundMan = new SoundManager(this);
             uiMan = new UIManager(this);
 

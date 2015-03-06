@@ -12,15 +12,46 @@ namespace SwagSword
     /// </summary>
     public class Player
     {
-        //Fields
+        #region Fields
+        //Used to access Game
+        protected Game1 mainMan;
+
+        //Character
         private Character character;
+        #endregion
 
-        //Properties
+        #region Properties
         public Character Character { get { return character; } set { character = value; } }
+        #endregion
 
-        public  Player()
+        public Player(Character character, Game1 mainMan)
         {
-
+            this.character = character;
+            this.mainMan = mainMan;
         }
+
+        //The main update for player, character's update is not called
+        public void Update()
+        {
+            //Movement
+            if (mainMan.InputMan.IsKeyDown(mainMan.InputMan.Up))
+            {
+                character.VelocityY = -character.MovementSpeed;
+            }
+            if (mainMan.InputMan.IsKeyDown(mainMan.InputMan.Down))
+            {
+                character.VelocityY = character.MovementSpeed;
+            }
+            if (mainMan.InputMan.IsKeyDown(mainMan.InputMan.Right))
+            {
+                character.VelocityX = character.MovementSpeed;
+            }
+            if (mainMan.InputMan.IsKeyDown(mainMan.InputMan.Left))
+            {
+                character.VelocityX = -character.MovementSpeed;
+            }
+        }
+
+
     }
 }

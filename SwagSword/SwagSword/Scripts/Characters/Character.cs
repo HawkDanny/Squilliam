@@ -22,6 +22,9 @@ namespace SwagSword
     public class Character
     {
         #region Fields
+        //Used to access Game
+        protected Game1 mainMan;
+
         //Main
         private Texture2D texture;
         private Rectangle rectangle;
@@ -64,8 +67,11 @@ namespace SwagSword
         public float Drag { get { return drag; } }
         #endregion
 
-        public Character(int x, int y, Texture2D texture)
+        public Character(int x, int y, Texture2D texture, Game1 mainMan)
         {
+            //Manager
+            mainMan = this.mainMan;
+
             //Set texture
             this.texture = texture;
 
@@ -92,7 +98,7 @@ namespace SwagSword
         {
             //Will init all stats based on a config file
             health = 100;
-            movementSpeed = 0.2f;
+            movementSpeed = 3.5f;
             strength = 10;
         }
 
@@ -104,7 +110,7 @@ namespace SwagSword
         /// <summary>
         /// Each character will handle it's own physics
         /// </summary>
-        protected void UpdatePhysics()
+        public void UpdatePhysics()
         {
             //Update position based on velocity X, Y
             X += velocityX;

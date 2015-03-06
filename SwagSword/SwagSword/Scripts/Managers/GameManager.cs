@@ -57,7 +57,16 @@ namespace SwagSword
             //Call update on all characters
             foreach (Character character in characters)
             {
-                character.Update();
+                if (!character.IsControlled)
+                {
+                    character.Update();
+                }
+            }
+
+            //Call update on all players
+            foreach (Player player in players)
+            {
+                player.Update();
             }
         }
 

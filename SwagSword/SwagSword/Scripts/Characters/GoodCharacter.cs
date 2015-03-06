@@ -9,7 +9,7 @@ namespace SwagSword
 {
     class GoodCharacter : Character
     {
-        public GoodCharacter(int x, int y, Texture2D texture): base(x, y, texture)
+        public GoodCharacter(int x, int y, Texture2D texture, Game1 mainMan): base(x, y, texture, mainMan)
         {
             //Set config file here
             Init();
@@ -18,7 +18,6 @@ namespace SwagSword
         public override void Init()
         {
             base.Init();
-            VelocityX = 10f;
         }
 
         public override void Update()

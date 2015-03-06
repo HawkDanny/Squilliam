@@ -93,8 +93,8 @@ namespace SwagSword
         public override void Update()
         {
             prevKbState = kbState;
-            kbState = new KeyboardState();
-            mState = new MouseState();
+            kbState = Keyboard.GetState();
+            mState = Mouse.GetState();
         }
 
         public void Default()

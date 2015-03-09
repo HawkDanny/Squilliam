@@ -14,18 +14,25 @@ namespace SwagSword
     public class Tile
     {
         Texture2D texture;
+        Point center;
 
-        public Tile() { }
 
-        public Tile(Texture2D texture)
+        public Tile(Texture2D t, Point c)
         {
-            Texture = texture;
+            texture = t;
+            center = c;
         }
         
         public Texture2D Texture
         {
             get { return texture; }
             set { texture = value; }
+        }
+
+        public Point Center
+        {
+            get { return center; }
+            set { center = value; }
         }
     }
 }

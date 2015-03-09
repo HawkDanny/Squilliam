@@ -16,6 +16,171 @@ namespace SwagSword
     /// </summary>
     public class MapManager : Manager
     {
+        Tile[,] map;
+        int tileSize;
+        int mapWidth;
+        int mapHeight;
+
+        public MapManager(Game1 mainMan)
+            : base(mainMan)
+        {
+
+        }
+
+        //Init
+        public override void Init()
+        {
+            tileSize = 64;
+            mapWidth = 20;
+            mapHeight = 15;
+            map = new Tile[mapWidth, mapHeight];
+        }
+
+        public void Startup()
+        {
+            PopulateMap();
+
+        }
+
+        void PopulateMap()
+        {
+            for(int x = 0; x < mapWidth; x++)
+                for (int y = 0; y < mapHeight; y++)
+                {
+                    map[x, y] = new Tile(mainMan.DrawMan.NotPathwayTexture, new Point(tileSize * x + (tileSize / 2), tileSize * y + (tileSize / 2)));
+                }
+            foreach (Tile t in map)
+            {
+                Console.WriteLine(t.Texture.Width);
+            }
+        }
+
+        List<Tile> getNeighbors(Tile subject)
+        {
+            Point positionInMap = new Point((subject.Center.X - (tileSize / 2)) / tileSize, (subject.Center.Y - (tileSize / 2)) / tileSize);
+            List<Tile> neighbors = new List<Tile>();
+
+            if (positionInMap.X > 0 && positionInMap.X < mapWidth - 1)
+            {
+                if (positionInMap.Y > 0 && positionInMap.Y < mapHeight - 1)
+                {
+                    //normal 8 neighbors
+                    //iterate for the above row and below row 
+                    for (int change = -1; change <= 1; change++)
+                    {
+                        neighbors.Add(map[positionInMap.X + change, positionInMap.Y - 1]);
+                        neighbors.Add(map[positionInMap.X + change, positionInMap.Y + 1]);
+                    }
+                    //add 2 other points
+                    neighbors.Add(map[positionInMap.X - 1, positionInMap.Y]);
+                    neighbors.Add(map[positionInMap.X + 1, positionInMap.Y]);
+                }
+                else if (positionInMap.Y > 0)
+                {
+                    //at botttom edge return 5 neighbors
+                    for (int change = -1; change <= 0; change++)
+                    {
+                        neighbors.Add(map[positionInMap.X + 1, positionInMap.Y + change]);
+                        neighbors.Add(map[positionInMap.X - 1, positionInMap.Y + change]);
+                    }
+                    neighbors.Add(map[positionInMap.X, positionInMap.Y - 1]);
+                }
+                else if (positionInMap.Y < mapHeight - 1)
+                {
+                    //at upper edge return 5 neighbors
+                    for (int change = 0; change <= 1; change++)
+                    {
+                        neighbors.Add(map[positionInMap.X + 1, positionInMap.Y + change]);
+                        neighbors.Add(map[positionInMap.X - 1, positionInMap.Y + change]);
+                    }
+                    neighbors.Add(map[positionInMap.X, positionInMap.Y + 1]);
+                }
+            }
+            else if (positionInMap.X > 0)
+            {
+                if (positionInMap.Y > 0 && positionInMap.Y < mapHeight - 1)
+                {
+                    //far right edge return 5 neighbors
+                    for (int change = -1; change <= 0; change++)
+                    {
+                        neighbors.Add(map[positionInMap.X + change, positionInMap.Y + 1]);
+                        neighbors.Add(map[positionInMap.X + change, positionInMap.Y - 1]);
+                    }
+                    neighbors.Add(map[positionInMap.X - 1, positionInMap.Y]);
+                }
+                else if (positionInMap.Y > 0)
+                {
+                    //far right lower corner return 3 neighbors
+                    neighbors.Add(map[positionInMap.X - 1, positionInMap.Y]);
+                    neighbors.Add(map[positionInMap.X - 1, positionInMap.Y - 1]);
+                    neighbors.Add(map[positionInMap.X, positionInMap.Y - 1]);
+                }
+                else if (positionInMap.Y < mapHeight - 1)
+                {
+                    //far right upper corner return 3 neighbors
+                    neighbors.Add(map[positionInMap.X - 1, positionInMap.Y]);
+                    neighbors.Add(map[positionInMap.X - 1, positionInMap.Y + 1]);
+                    neighbors.Add(map[positionInMap.X, positionInMap.Y + 1]);
+                }
+            }
+            else if (positionInMap.X < mapWidth - 1)
+            {
+                if (positionInMap.Y > 0 && positionInMap.Y < mapHeight - 1)
+                {
+                    //far left edge return 5 neighbors
+                    for (int change = -1; change <= 1; change++)
+                    {
+                        neighbors.Add(map[positionInMap.X + 1, positionInMap.Y + change]);
+                    }
+                    neighbors.Add(map[positionInMap.X, positionInMap.Y + 1]);
+                    neighbors.Add(map[positionInMap.X, positionInMap.Y - 1]);
+                }
+                else if (positionInMap.Y > 0)
+                {
+                    //far left lower corner return 3 neighbors
+                    neighbors.Add(map[positionInMap.X + 1, positionInMap.Y]);
+                    neighbors.Add(map[positionInMap.X + 1, positionInMap.Y - 1]);
+                    neighbors.Add(map[positionInMap.X, positionInMap.Y - 1]);
+
+                }
+                else if (positionInMap.Y < mapHeight - 1)
+                {
+                    //far left upper corner return 3 neighbors
+                    neighbors.Add(map[positionInMap.X, positionInMap.Y + 1]);
+                    neighbors.Add(map[positionInMap.X + 1, positionInMap.Y]);
+                    neighbors.Add(map[positionInMap.X + 1, positionInMap.Y + 1]);
+                }
+            }
+            return neighbors;
+        }
+
+        protected double CalcDistance(Point a0, Point a1)
+        {
+            return Math.Sqrt(Math.Pow(a1.X - a0.X, 2) + Math.Pow(a1.Y - a0.Y, 2));
+        }
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            //Rectangle re = new Rectangle(mainMan.WindowHalfWidth, mainMan.WindowHalfHeight, 64, 64);
+            foreach (Tile t in map)
+            {
+                Rectangle r = new Rectangle(t.Center.X - tileSize / 2, t.Center.Y - tileSize / 2, tileSize, tileSize);
+                spriteBatch.Draw(t.Texture, r, Color.White);
+            }
+
+        }
+
+    }
+}
+
+
+
+
+
+
+
+
+        /*
         //Fields
         Point origin;
         List<Point> leftBranch;
@@ -63,7 +228,7 @@ namespace SwagSword
             foreach (Point p in rightBranch)
             {
                 Console.WriteLine(p.X + " " + p.Y);
-            }*/
+            }
         }
 
         /// <summary>

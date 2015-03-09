@@ -46,7 +46,7 @@ namespace SwagSword
         public void Draw(SpriteBatch spritebatch)
         {
             spritebatch.Begin();
-
+            mainMan.GameMan.MapMan.Draw(spritebatch);
             //Draw all characters
             foreach (Character character in mainMan.GameMan.Characters)
             {

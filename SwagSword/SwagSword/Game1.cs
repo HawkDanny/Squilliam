@@ -93,7 +93,7 @@ namespace SwagSword
             notPathStream.Close();            
 
             gameMan.SpawnMan.SpawnCharacter();
-            
+            gameMan.MapMan.Startup();
 
             spriteBatch = new SpriteBatch(GraphicsDevice);
         }

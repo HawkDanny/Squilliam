@@ -17,6 +17,7 @@ namespace SwagSword
         private List<Texture2D> goodGuyTextures;
         private Texture2D pathwayTexture;
         private Texture2D notPathwayTexture;
+        private Texture2D dirt;
         #endregion
 
         #region Properties
@@ -24,6 +25,7 @@ namespace SwagSword
         public List<Texture2D> GoodGuyTextures { get { return goodGuyTextures; } }
         public Texture2D PathwayTexture { get { return pathwayTexture; } set { pathwayTexture = value; } }
         public Texture2D NotPathwayTexture { get { return notPathwayTexture; } set { notPathwayTexture = value; } }
+        public Texture2D Dirt { get { return dirt; } set { dirt = value; } }
         #endregion
 
 

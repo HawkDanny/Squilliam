@@ -31,15 +31,15 @@ namespace SwagSword
         public override void Init()
         {
             tileSize = 64;
-            mapWidth = 20;
-            mapHeight = 15;
+            mapWidth = 15;
+            mapHeight = 9;
             map = new Tile[mapWidth, mapHeight];
         }
 
         public void Startup()
         {
             PopulateMap();
-
+            generateSimplePath();
         }
 
         void PopulateMap()
@@ -157,6 +157,32 @@ namespace SwagSword
         protected double CalcDistance(Point a0, Point a1)
         {
             return Math.Sqrt(Math.Pow(a1.X - a0.X, 2) + Math.Pow(a1.Y - a0.Y, 2));
+        }
+
+
+        void generateSimplePath()
+        {
+            Random rand = new Random();
+            Tile origin = map[mapWidth / 2 + 1, mapHeight / 2 + 1];
+            origin.Texture = mainMan.DrawMan.PathwayTexture;
+            Tile subject = map[mapWidth / 2 + 1, mapHeight / 2];
+            for (int i = 0; i < 6; i++)
+            {
+                subject.Texture = mainMan.DrawMan.PathwayTexture;
+                List<Tile> neighbors = getNeighbors(subject);
+                List<Tile> bestNeighbors = new List<Tile>();
+                
+                foreach(Tile t in neighbors)
+                {
+                    if ((CalcDistance(t.Center, origin.Center) >= 2 * tileSize - 1))
+                    {
+                        bestNeighbors.Add(t);
+                    }
+                }
+
+                subject = bestNeighbors.ElementAt(rand.Next(bestNeighbors.Count - 1));
+            }
+
         }
 
         public void Draw(SpriteBatch spriteBatch)

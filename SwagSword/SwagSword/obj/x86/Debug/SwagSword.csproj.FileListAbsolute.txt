@@ -80,3 +80,4 @@ C:\Users\Ryan Bell\Documents\Visual Studio 2013\Projects\SquillRepo\Squilliam\Sw
 C:\Users\Ryan Bell\Documents\Visual Studio 2013\Projects\SquillRepo\Squilliam\SwagSword\SwagSword\obj\x86\Debug\SwagSword.exe
 C:\Users\Ryan Bell\Documents\Visual Studio 2013\Projects\SquillRepo\Squilliam\SwagSword\SwagSword\obj\x86\Debug\SwagSword.pdb
 C:\Git\Squilliam\SwagSword\SwagSword\obj\x86\Debug\SwagSword.exe
+C:\Users\Ryan Bell\Documents\Visual Studio 2013\Projects\SquillRepo\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\Map\Dirt.png

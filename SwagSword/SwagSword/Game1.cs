@@ -90,7 +90,11 @@ namespace SwagSword
 
             System.IO.Stream notPathStream = TitleContainer.OpenStream("Content/Map/SampleNotPath.png");
             drawMan.NotPathwayTexture = (Texture2D.FromStream(GraphicsDevice, notPathStream));
-            notPathStream.Close();            
+            notPathStream.Close();
+
+            System.IO.Stream dirtStream = TitleContainer.OpenStream("Content/Map/Dirt.png");
+            drawMan.Dirt = Texture2D.FromStream(GraphicsDevice, dirtStream);
+            dirtStream.Close();
 
             gameMan.SpawnMan.SpawnCharacter();
             gameMan.MapMan.Startup();

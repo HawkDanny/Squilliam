@@ -5,10 +5,10 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace SwagSword.Scripts.UIScreens
+namespace SwagSword
 {
     //The base class for all screens for the game.
-    class UIScreen
+    public class UIScreen
     {
         //Fields
         protected Game1 mainMan;

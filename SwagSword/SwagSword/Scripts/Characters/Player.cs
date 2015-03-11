@@ -22,6 +22,7 @@ namespace SwagSword
 
         #region Properties
         public Character Character { get { return character; } set { character = value; } }
+        public int Health { get { return Health; } set { Health = value; } }
         #endregion
 
         public Player(Character character, Game1 mainMan)

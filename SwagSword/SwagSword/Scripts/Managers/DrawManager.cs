@@ -65,6 +65,8 @@ namespace SwagSword
                 character.Draw(spritebatch);
             }
 
+            mainMan.UIMan.Screens.Peek().Draw(spritebatch);
+
             spritebatch.End();
         }
     }

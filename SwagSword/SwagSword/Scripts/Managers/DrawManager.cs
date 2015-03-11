@@ -15,6 +15,11 @@ namespace SwagSword
         #region Fields
         //Character texture lists
         private List<Texture2D> goodGuyTextures;
+
+        //Weapon Textures (Create a dictionary)
+        private Texture2D swordTexture;
+
+        //Map Textures
         private Texture2D pathwayTexture;
         private Texture2D notPathwayTexture;
         private Texture2D dirt;
@@ -23,6 +28,11 @@ namespace SwagSword
         #region Properties
         //Character texture lists
         public List<Texture2D> GoodGuyTextures { get { return goodGuyTextures; } }
+
+        //Weapon textures
+        public Texture2D SwordTexture { get { return swordTexture; } set { swordTexture = value; } }
+
+        //Map textures
         public Texture2D PathwayTexture { get { return pathwayTexture; } set { pathwayTexture = value; } }
         public Texture2D NotPathwayTexture { get { return notPathwayTexture; } set { notPathwayTexture = value; } }
         public Texture2D Dirt { get { return dirt; } set { dirt = value; } }

@@ -84,6 +84,11 @@ namespace SwagSword
             drawMan.GoodGuyTextures.Add(Texture2D.FromStream(GraphicsDevice, goodGuyStream));
             goodGuyStream.Close();
 
+
+            //Load Weapon textures
+            drawMan.SwordTexture = this.Content.Load<Texture2D>("Objects/sword.png");
+
+            //Load Map textures
             System.IO.Stream pathStream = TitleContainer.OpenStream("Content/Map/SamplePath.png");
             drawMan.PathwayTexture = (Texture2D.FromStream(GraphicsDevice, pathStream));
             pathStream.Close();
@@ -95,6 +100,8 @@ namespace SwagSword
             System.IO.Stream dirtStream = TitleContainer.OpenStream("Content/Map/Dirt.png");
             drawMan.Dirt = Texture2D.FromStream(GraphicsDevice, dirtStream);
             dirtStream.Close();
+
+
 
             gameMan.SpawnMan.SpawnCharacter();
             gameMan.MapMan.Startup();

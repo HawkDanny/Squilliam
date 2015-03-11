@@ -13,6 +13,7 @@ namespace SwagSword
     {
         //Fields
 
+
         public UIManager(Game1 mainMan):base(mainMan)
         {
 

@@ -40,6 +40,7 @@ namespace SwagSword
         {
             PopulateMap();
             generateSimplePath();
+            BoldenMap();
         }
 
         void PopulateMap()
@@ -198,6 +199,32 @@ namespace SwagSword
                 spriteBatch.Draw(t.Texture, r, Color.White);
             }
 
+        }
+
+        protected void BoldenMap()
+        {
+            for (int x = mapWidth - 1; x >=0; x--)
+            {
+                for (int y = mapHeight - 1; y >= 0; y--)
+                {
+                    if (map[x,y].Texture == mainMan.DrawMan.PathwayTexture)
+                    {
+                        if (x < mapWidth + 2)
+                        {
+                            map[x + 1, y].Texture = mainMan.DrawMan.PathwayTexture;
+                            if (y < mapHeight + 2)
+                            {
+                                map[x + 1, y + 1].Texture = mainMan.DrawMan.PathwayTexture;
+                            }
+                        }
+                        if (y < mapHeight + 2)
+                        {
+                            map[x, y + 1].Texture = mainMan.DrawMan.PathwayTexture;
+                        }
+
+                    }
+                }
+            }
         }
 
     }

@@ -2,28 +2,46 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
-namespace SwagSword.Scripts.Objects
+namespace SwagSword
 {
     //Handles collision with enemies, swinging
-    class Weapon
+    public class Weapon
     {
         #region Fields
         //References to Character and game
+        private Game1 mainMan;
         private Character character;
         private Faction type;
 
+        //Main
+        private Texture2D texture;
+        private float x;
+        private float y;
+        private Rectangle rectangle;
+        private Vector2 position;
+        private Vector2 center;
+
         //Swinging vars
         private bool isSwinging;
+        private float spreadAngle;
+        private float startAngle;
+        private float stopAngle;
+        private float currentAngle;
         #endregion
 
         #region Properties
-
+        //Main
+        public Texture2D Texture { get { return texture; } set { texture = value; } }
         #endregion
 
-        public Weapon(Character character)
+        public Weapon(Character character, Game1 mainMan)
         {
             this.character = character;
+            this.mainMan = mainMan;
+
             Init();
         }
 
@@ -32,9 +50,18 @@ namespace SwagSword.Scripts.Objects
             //Init Vars
             type = character.Type;
             isSwinging = false;
+            spreadAngle = 180f;
+            currentAngle = 0f;
 
             //Set Texture
             SetTexture(character.IsControlled, type);
+
+            //Set position, rectangle, and center
+            x = character.X;
+            y = character.Y;
+            rectangle = new Rectangle(0, 0, texture.Width, texture.Height);
+            position = new Vector2(x, y);
+            center = new Vector2(0, texture.Height / 2);
         }
 
         public void Update()
@@ -42,6 +69,11 @@ namespace SwagSword.Scripts.Objects
             //Check for collisions if swinging
             //Lerp weapon between start and target angle, set isSwinging to false when done
             //Use the character's weapon speed to lerp
+
+            //Set Position
+            x = character.X;
+            y = character.Y;
+            position = new Vector2(x, y);
         }
 
         /// <summary>
@@ -63,7 +95,7 @@ namespace SwagSword.Scripts.Objects
             if (isControlled)
             {
                 //Sets the texture to the main sword
-
+                texture = mainMan.DrawMan.SwordTexture;
             }
             else
             {
@@ -71,10 +103,15 @@ namespace SwagSword.Scripts.Objects
                 switch (type)
                 {
                     default:
-
+                        texture = mainMan.DrawMan.SwordTexture;
                         break;
                 }
             }
+        }
+
+        public void Draw(SpriteBatch spritebatch)
+        {
+            spritebatch.Draw(texture, position, rectangle, Color.White, currentAngle, center, 1.0f, SpriteEffects.None, 1);
         }
     }
 }

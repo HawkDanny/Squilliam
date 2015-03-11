@@ -23,7 +23,7 @@ namespace SwagSword
     {
         #region Fields
         //Used to access Game
-        protected Game1 mainMan;
+        private Game1 mainMan;
 
         //Main
         private Texture2D texture;
@@ -34,8 +34,12 @@ namespace SwagSword
         private Faction type;
         private bool isControlled;
 
+        //Weapon + Abilities
+        private Weapon weapon;
+
         //Stats
         private int health;
+        private int maxHealth;
         private int strength;
         private float movementSpeed;
 
@@ -56,8 +60,12 @@ namespace SwagSword
         public Faction Type { get { return type; } }
         public bool IsControlled { get { return isControlled; } set { isControlled = value; } }
 
+        //Weapon + Abilities
+        public Weapon Weapon { get { return weapon; } }
+
         //Stats
         public int Health { get { return health; } set { health = value; } }
+        public int MaxHealth { get { return maxHealth; } }
         public int Strength { get { return strength; } }
         public float MovementSpeed { get { return movementSpeed; } }
 
@@ -70,7 +78,7 @@ namespace SwagSword
         public Character(int x, int y, Texture2D texture, Game1 mainMan)
         {
             //Manager
-            mainMan = this.mainMan;
+            this.mainMan = mainMan;
 
             //Set texture
             this.texture = texture;
@@ -79,6 +87,9 @@ namespace SwagSword
             rectangle = new Rectangle(0, 0, texture.Width, texture.Height);
             position = new Vector2(x, y);
             center = new Vector2(texture.Width / 2, texture.Height / 2);
+
+            //Set weapon, abilites
+            weapon = new Weapon(this, mainMan);
         }
 
         public virtual void Init()
@@ -98,6 +109,7 @@ namespace SwagSword
         {
             //Will init all stats based on a config file
             health = 100;
+            maxHealth = 100;
             movementSpeed = 3.5f;
             strength = 10;
         }
@@ -105,6 +117,7 @@ namespace SwagSword
         public virtual void Update()
         {
             UpdatePhysics();
+            weapon.Update();
         }
 
         /// <summary>
@@ -163,6 +176,7 @@ namespace SwagSword
         /// <param name="spritebatch"></param>
         public void Draw(SpriteBatch spritebatch)
         {
+            weapon.Draw(spritebatch);
             spritebatch.Draw(texture, position, rectangle, Color.White, angle, center, 1.0f, spriteEffect, 1);
         }
     }

@@ -163,10 +163,10 @@ namespace SwagSword
         void generateSimplePath()
         {
             Random rand = new Random();
-            Tile origin = map[mapWidth / 2 + 1, mapHeight / 2 + 1];
+            Tile origin = map[mapWidth / 2, mapHeight / 2];
             origin.Texture = mainMan.DrawMan.PathwayTexture;
-            Tile subject = map[mapWidth / 2 + 1, mapHeight / 2];
-            for (int i = 0; i < 6; i++)
+            Tile subject = map[mapWidth / 2, mapHeight / 2 - 1];
+            for (int i = 0; i < 4; i++)
             {
                 subject.Texture = mainMan.DrawMan.PathwayTexture;
                 List<Tile> neighbors = getNeighbors(subject);
@@ -174,13 +174,17 @@ namespace SwagSword
                 
                 foreach(Tile t in neighbors)
                 {
-                    if ((CalcDistance(t.Center, origin.Center) >= 2 * tileSize - 1))
+                    if (/*(CalcDistance(t.Center, origin.Center) >= 2 * tileSize - 1) &&*/ t.Center.Y < subject.Center.Y)
                     {
                         bestNeighbors.Add(t);
                     }
                 }
-
-                subject = bestNeighbors.ElementAt(rand.Next(bestNeighbors.Count - 1));
+                //origin = subject;
+                int choice = 0;
+                if (bestNeighbors.Count > 1)
+                    choice = rand.Next(bestNeighbors.Count - 1);
+                if (bestNeighbors.Count > 0)
+                    subject = bestNeighbors.ElementAt(choice);
             }
 
         }

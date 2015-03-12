@@ -34,7 +34,7 @@ namespace SwagSword
         /// </summary>
         public override void Update()
         {
-
+            screens.Peek().Update();
         }
     }
 }

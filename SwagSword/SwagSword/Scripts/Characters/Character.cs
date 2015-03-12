@@ -97,6 +97,8 @@ namespace SwagSword
             //Init Stats
             isControlled = false;
             InitStats();
+            health = 10;
+            maxHealth = 10;
 
             //Init physics
             velocityX = 0;
@@ -108,6 +110,7 @@ namespace SwagSword
         void InitStats()
         {
             //Will init all stats based on a config file
+            //Example Health stats
             health = 100;
             maxHealth = 100;
             movementSpeed = 3.5f;

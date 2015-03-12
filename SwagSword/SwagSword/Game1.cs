@@ -124,7 +124,7 @@ namespace SwagSword
             //Call update on all Managers that need it
             gameMan.Update();
             inputMan.Update();
-            
+            uiMan.Update();
 
             base.Update(gameTime);
         }

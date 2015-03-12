@@ -61,3 +61,33 @@ C:\Users\Ryan Bell\Documents\Visual Studio 2013\Projects\SquillRepo\Squilliam\Sw
 C:\Users\Ryan Bell\Documents\Visual Studio 2013\Projects\SquillRepo\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\SharpDX.Direct3D9.xml
 C:\Users\Ryan Bell\Documents\Visual Studio 2013\Projects\SquillRepo\Squilliam\SwagSword\SwagSword\obj\x86\Debug\SwagSword.csprojResolveAssemblyReference.cache
 C:\Users\Ryan Bell\Documents\Visual Studio 2013\Projects\SquillRepo\Squilliam\SwagSword\SwagSword\obj\x86\Debug\SwagSword.pdb
+C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\obj\x86\Debug\SwagSword.csprojResolveAssemblyReference.cache
+C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\Map\Dirt.png
+C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\Map\SampleNotPath.png
+C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\Map\SamplePath.png
+C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\Objects\sword.png
+C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\Sprites\goodGuy.png
+C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\Sprites\SpriteSheet.png
+C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\SwagSword.exe
+C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\SwagSword.pdb
+C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\MonoGame.Framework.dll
+C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\SharpDX.MediaFoundation.dll
+C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\SharpDX.dll
+C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\SharpDX.XAudio2.dll
+C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\SharpDX.Direct3D11.dll
+C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\SharpDX.DXGI.dll
+C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\SharpDX.Direct2D1.dll
+C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Lidgren.Network.dll
+C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\SharpDX.XInput.dll
+C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\SharpDX.RawInput.dll
+C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\SharpDX.Direct3D9.dll
+C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\SharpDX.MediaFoundation.xml
+C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\SharpDX.xml
+C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\SharpDX.XAudio2.xml
+C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\SharpDX.Direct3D11.xml
+C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\SharpDX.DXGI.xml
+C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\SharpDX.Direct2D1.xml
+C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\SharpDX.XInput.xml
+C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\SharpDX.RawInput.xml
+C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\SharpDX.Direct3D9.xml
+C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\obj\x86\Debug\SwagSword.pdb

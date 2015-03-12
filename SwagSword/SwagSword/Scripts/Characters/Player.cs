@@ -34,19 +34,19 @@ namespace SwagSword
         public void Update()
         {
             //Movement
-            if (mainMan.InputMan.IsKeyDown(mainMan.InputMan.Up))
+            if (mainMan.InputMan.Up.IsDown())
             {
                 character.VelocityY = -character.MovementSpeed;
             }
-            if (mainMan.InputMan.IsKeyDown(mainMan.InputMan.Down))
+            if (mainMan.InputMan.Down.IsDown())
             {
                 character.VelocityY = character.MovementSpeed;
             }
-            if (mainMan.InputMan.IsKeyDown(mainMan.InputMan.Right))
+            if (mainMan.InputMan.Right.IsDown())
             {
                 character.VelocityX = character.MovementSpeed;
             }
-            if (mainMan.InputMan.IsKeyDown(mainMan.InputMan.Left))
+            if (mainMan.InputMan.Left.IsDown())
             {
                 character.VelocityX = -character.MovementSpeed;
             }

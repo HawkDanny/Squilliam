@@ -36,6 +36,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Game1.cs" />
+    <Compile Include="Scripts\Managers\Input Scripts\InputKeyboard.cs" />
+    <Compile Include="Scripts\Managers\Input Scripts\InputMouse.cs" />
+    <Compile Include="Scripts\Managers\Input Scripts\InputType.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scripts\Characters\Character.cs" />

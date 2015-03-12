@@ -60,9 +60,9 @@ namespace SwagSword
         protected override void Initialize()
         {
             //Init Managers
+            drawMan = new DrawManager(this);
             inputMan = new InputManager(this);
             gameMan = new GameManager(this);
-            drawMan = new DrawManager(this);
             soundMan = new SoundManager(this);
             uiMan = new UIManager(this);
 
@@ -84,16 +84,27 @@ namespace SwagSword
             drawMan.GoodGuyTextures.Add(Texture2D.FromStream(GraphicsDevice, goodGuyStream));
             goodGuyStream.Close();
 
+
+            //Load Weapon textures
+            drawMan.SwordTexture = this.Content.Load<Texture2D>("Objects/sword.png");
+
+            //Load Map textures
             System.IO.Stream pathStream = TitleContainer.OpenStream("Content/Map/SamplePath.png");
             drawMan.PathwayTexture = (Texture2D.FromStream(GraphicsDevice, pathStream));
             pathStream.Close();
 
             System.IO.Stream notPathStream = TitleContainer.OpenStream("Content/Map/SampleNotPath.png");
             drawMan.NotPathwayTexture = (Texture2D.FromStream(GraphicsDevice, notPathStream));
-            notPathStream.Close();            
+            notPathStream.Close();
+
+            System.IO.Stream dirtStream = TitleContainer.OpenStream("Content/Map/Dirt.png");
+            drawMan.Dirt = Texture2D.FromStream(GraphicsDevice, dirtStream);
+            dirtStream.Close();
+
+
 
             gameMan.SpawnMan.SpawnCharacter();
-            
+            gameMan.MapMan.Startup();
 
             spriteBatch = new SpriteBatch(GraphicsDevice);
         }
@@ -113,7 +124,7 @@ namespace SwagSword
             //Call update on all Managers that need it
             gameMan.Update();
             inputMan.Update();
-            
+            uiMan.Update();
 
             base.Update(gameTime);
         }

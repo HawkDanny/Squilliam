@@ -12,6 +12,10 @@ namespace SwagSword
     public class UIManager:Manager
     {
         //Fields
+        protected Stack<UIScreen> screens;
+
+        //Properties
+        public Stack<UIScreen> Screens { get { return screens; } }
 
         public UIManager(Game1 mainMan):base(mainMan)
         {
@@ -21,7 +25,8 @@ namespace SwagSword
         //Init
         public override void Init()
         {
-            
+            screens = new Stack<UIScreen>();
+            screens.Push(new GameScreen(mainMan));
         }
 
         /// <summary>
@@ -29,7 +34,7 @@ namespace SwagSword
         /// </summary>
         public override void Update()
         {
-
+            screens.Peek().Update();
         }
     }
 }

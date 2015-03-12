@@ -50,7 +50,6 @@ namespace SwagSword
 
         public Game1(): base()
         {
-            //Peter's the best
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             
@@ -101,7 +100,8 @@ namespace SwagSword
             drawMan.Dirt = Texture2D.FromStream(GraphicsDevice, dirtStream);
             dirtStream.Close();
 
-
+            //Load Fonts
+            drawMan.HealthFont = Content.Load<SpriteFont>("Fonts/vanillawhale");
 
             gameMan.SpawnMan.SpawnCharacter();
             gameMan.MapMan.Startup();

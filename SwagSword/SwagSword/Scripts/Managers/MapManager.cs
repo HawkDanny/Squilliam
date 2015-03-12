@@ -25,6 +25,16 @@ namespace SwagSword
         int tileSize;                                                       //The size in pixels of one tile (width and height)
         int mapWidth;                                                       //This is the map width in tiles. It should be odd if possible
         int mapHeight;                                                      //Map height in tiles. It should also be odd if possible
+
+
+        Rectangle offset;
+        double sideMargin;
+        double upperMargin;
+        double lowerMargin;
+        double marginWidth;
+        double marginLeft;
+        double marginRight;
+        
         #endregion
 
         /// <summary>
@@ -48,7 +58,35 @@ namespace SwagSword
             mapWidth = 31;
             mapHeight = 19;
             map = new Tile[mapWidth, mapHeight];
+
+
+
+            offset = new Rectangle(0, 0, 0, 0);
+            sideMargin = .35;
+            upperMargin = .25;
+            lowerMargin = .25;
+            marginWidth = sideMargin * mainMan.WindowWidth;
+            marginLeft = offset.X + marginWidth;
+            marginRight = offset.X + mainMan.WindowWidth - marginWidth;
+
         }
+
+        public override void Update()
+        {
+            if (mainMan.GameMan.Characters.ElementAt(0).X < marginLeft)
+                offset.Width = (int)(mainMan.GameMan.Characters.ElementAt(0).X - marginLeft);
+            else if (mainMan.GameMan.Characters.ElementAt(0).X > marginRight)
+                offset.Width = (int)(mainMan.GameMan.Characters.ElementAt(0).X - marginRight);
+            offset.X = MathHelper.Clamp(offset.X + offset.Width, 0, 200);
+
+            if (mainMan.GameMan.Characters.ElementAt(0).Y < upperMargin)
+                offset.Height = (int)(mainMan.GameMan.Characters.ElementAt(0).Y - upperMargin);
+            else if (mainMan.GameMan.Characters.ElementAt(0).Y > marginRight)
+                offset.Height = (int)(mainMan.GameMan.Characters.ElementAt(0).Y - lowerMargin);
+            offset.Y = MathHelper.Clamp(offset.Y + offset.Height, 0, 200);
+
+        }
+
 
         /// <summary>
         /// This is called right after content is loaded in game1.cs
@@ -228,21 +266,6 @@ namespace SwagSword
 
         }
 
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            int vx =  (int)mainMan.GameMan.Players.ElementAt(0).Character.VelocityX;
-            int vy = (int)mainMan.GameMan.Players.ElementAt(0).Character.VelocityY;
-            int x = (int)mainMan.GameMan.Players.ElementAt(0).Character.X;
-            int y = (int)mainMan.GameMan.Players.ElementAt(0).Character.Y;
-            
-
-            foreach (Tile t in map)
-            {
-                Rectangle r = new Rectangle(t.Center.X - tileSize / 2, t.Center.Y - tileSize / 2,  tileSize, tileSize);
-                spriteBatch.Draw(t.Texture, r, Color.White);
-            }
-
-        }
 
         /// <summary>
         /// This method runs through the map and widens the paths.
@@ -251,11 +274,11 @@ namespace SwagSword
         /// </summary>
         protected void BoldenMap()
         {
-            for (int x = mapWidth - 1; x >=0; x--)                                                  //start at the lower right corner and iterate
+            for (int x = mapWidth - 1; x >= 0; x--)                                                  //start at the lower right corner and iterate
             {                                                                                       //  up to the upper left corner 
                 for (int y = mapHeight - 1; y >= 0; y--)                                            //...
                 {
-                    if (map[x,y].Texture == mainMan.DrawMan.PathwayTexture)                         //check that the current tile is a pathway
+                    if (map[x, y].Texture == mainMan.DrawMan.PathwayTexture)                         //check that the current tile is a pathway
                     {
                         if (x < mapWidth + 2)                                                       //check bounds to avoid null exception
                         {
@@ -274,6 +297,32 @@ namespace SwagSword
                 }
             }
         }
+
+        //**************************************************************************************************************************
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            /*
+            int vx =  (int)mainMan.GameMan.Players.ElementAt(0).Character.VelocityX;
+            int vy = (int)mainMan.GameMan.Players.ElementAt(0).Character.VelocityY;
+            int x = (int)mainMan.GameMan.Players.ElementAt(0).Character.X;
+            int y = (int)mainMan.GameMan.Players.ElementAt(0).Character.Y;
+            */
+            
+            foreach (Tile t in map)
+            {
+                Rectangle r = new Rectangle(t.Center.X - tileSize / 2 - offset.X, t.Center.Y - tileSize / 2 - offset.Y,  tileSize, tileSize);
+                
+                spriteBatch.Draw(t.Texture, r, Color.White);
+            }
+
+        }
+
+        public Rectangle getOffset()
+        {
+            return new Rectangle();
+        }
+
 
 
 

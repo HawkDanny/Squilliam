@@ -71,7 +71,7 @@ namespace SwagSword
             windowHeight = GraphicsDevice.Viewport.Height;
             windowHalfWidth = windowWidth / 2;
             windowHalfHeight = windowHeight / 2;
-
+            
             base.Initialize();
         }
 
@@ -125,6 +125,7 @@ namespace SwagSword
             gameMan.Update();
             inputMan.Update();
             uiMan.Update();
+            gameMan.MapMan.Update();
 
             base.Update(gameTime);
         }

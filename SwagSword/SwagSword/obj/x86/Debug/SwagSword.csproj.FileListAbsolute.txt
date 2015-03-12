@@ -110,3 +110,5 @@ C:\Git\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\SharpDX.Direct3D9.xml
 C:\Git\Squilliam\SwagSword\SwagSword\obj\x86\Debug\SwagSword.pdb
 C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\obj\x86\Debug\SwagSword.exe
 C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\obj\x86\Debug\SwagSword.pdb
+C:\Users\Ryan Bell\Documents\Visual Studio 2013\Projects\SquillRepo\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\Map\Dirt.png
+C:\Users\Ryan Bell\Documents\Visual Studio 2013\Projects\SquillRepo\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\Objects\sword.png

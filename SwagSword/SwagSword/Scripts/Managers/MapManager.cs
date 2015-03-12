@@ -31,8 +31,8 @@ namespace SwagSword
         public override void Init()
         {
             tileSize = 64;
-            mapWidth = 15;
-            mapHeight = 9;
+            mapWidth = 31;
+            mapHeight = 19;
             map = new Tile[mapWidth, mapHeight];
         }
 
@@ -167,7 +167,7 @@ namespace SwagSword
             Tile origin = map[mapWidth / 2, mapHeight / 2];
             origin.Texture = mainMan.DrawMan.PathwayTexture;
             Tile subject = map[mapWidth / 2, mapHeight / 2 - 1];
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 12; i++)
             {
                 subject.Texture = mainMan.DrawMan.PathwayTexture;
                 List<Tile> neighbors = getNeighbors(subject);
@@ -193,9 +193,15 @@ namespace SwagSword
         public void Draw(SpriteBatch spriteBatch)
         {
             //Rectangle re = new Rectangle(mainMan.WindowHalfWidth, mainMan.WindowHalfHeight, 64, 64);
+            int vx =  (int)mainMan.GameMan.Players.ElementAt(0).Character.VelocityX;
+            int vy = (int)mainMan.GameMan.Players.ElementAt(0).Character.VelocityY;
+            int x = (int)mainMan.GameMan.Players.ElementAt(0).Character.X;
+            int y = (int)mainMan.GameMan.Players.ElementAt(0).Character.Y;
+            
+
             foreach (Tile t in map)
             {
-                Rectangle r = new Rectangle(t.Center.X - tileSize / 2, t.Center.Y - tileSize / 2, tileSize, tileSize);
+                Rectangle r = new Rectangle(t.Center.X - tileSize / 2 - x, t.Center.Y - tileSize / 2 - y, tileSize, tileSize);
                 spriteBatch.Draw(t.Texture, r, Color.White);
             }
 

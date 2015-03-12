@@ -76,7 +76,7 @@ namespace SwagSword
         /// </summary>
         public void Default()
         {
-            binds[0] = new InputMouse(mState, MouseButton.Left);
+            binds[0] = new InputKeyboard(kbState, Keys.W);
             binds[1] = new InputKeyboard(kbState, Keys.S);
             binds[2] = new InputKeyboard(kbState, Keys.A);
             binds[3] = new InputKeyboard(kbState, Keys.D);
@@ -88,6 +88,10 @@ namespace SwagSword
             binds[9] = new InputKeyboard(kbState, Keys.D4);
         }
 
+        /// <summary>
+        /// When called, it checks between previous states of both mouse and keyboard to bind the next key/button pressed to the specified action
+        /// </summary>
+        /// <param name="keyToBind">The action that you wish to be bound</param>
         public void Bind(Binds keyToBind)
         {
             //Previous states of mouse buttons

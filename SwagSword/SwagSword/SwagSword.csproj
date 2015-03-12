@@ -54,6 +54,8 @@
     <Compile Include="Scripts\Objects\Tile.cs" />
     <Compile Include="Scripts\Managers\UIManager.cs" />
     <Compile Include="Scripts\Objects\Weapon.cs" />
+    <Compile Include="Scripts\UIScreens\GameScreen.cs" />
+    <Compile Include="Scripts\UIScreens\UIScreen.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
@@ -88,7 +90,6 @@
     <Folder Include="Content\Music\" />
     <Folder Include="Content\Sfx\" />
     <Folder Include="Scripts\Abilities\" />
-    <Folder Include="Scripts\UIScreens\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

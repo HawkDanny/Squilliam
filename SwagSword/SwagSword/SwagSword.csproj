@@ -78,19 +78,23 @@
     <Content Include="Content\Objects\sword.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Sprites\goodGuy.png">
+    <Content Include="Content\Sprites\GGSpriteSheet.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Sprites\SpriteSheet.png">
+    <Content Include="Content\Sprites\goodGuy.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Content\Fonts\" />
     <Folder Include="Content\Music\" />
     <Folder Include="Content\Sfx\" />
     <Folder Include="Scripts\Abilities\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Fonts\vanillawhale.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

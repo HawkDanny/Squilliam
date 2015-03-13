@@ -145,3 +145,5 @@ C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\D
 C:\Users\Ryan Bell\Documents\Visual Studio 2013\Projects\SquillRepo\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\Map\Dirt.png
 C:\Users\Ryan Bell\Documents\Visual Studio 2013\Projects\SquillRepo\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\Objects\sword.png
 >>>>>>> origin/master
+C:\Users\Ryan Bell\Documents\Visual Studio 2013\Projects\SquillRepo\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\Sprites\GGSpriteSheet.png
+C:\Users\Ryan Bell\Documents\Visual Studio 2013\Projects\SquillRepo\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\Fonts\vanillawhale.xnb

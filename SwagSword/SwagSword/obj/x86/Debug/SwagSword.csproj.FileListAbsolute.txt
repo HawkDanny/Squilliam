@@ -147,3 +147,5 @@ C:\Users\Ryan Bell\Documents\Visual Studio 2013\Projects\SquillRepo\Squilliam\Sw
 >>>>>>> origin/master
 C:\Users\Ryan Bell\Documents\Visual Studio 2013\Projects\SquillRepo\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\Sprites\GGSpriteSheet.png
 C:\Users\Ryan Bell\Documents\Visual Studio 2013\Projects\SquillRepo\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\Fonts\vanillawhale.xnb
+C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\UIScreens\TitleScreenMock.png
+C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\UIScreens\GameOverScreen.png

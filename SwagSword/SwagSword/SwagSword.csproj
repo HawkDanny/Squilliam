@@ -55,7 +55,9 @@
     <Compile Include="Scripts\Objects\Tile.cs" />
     <Compile Include="Scripts\Managers\UIManager.cs" />
     <Compile Include="Scripts\Objects\Weapon.cs" />
+    <Compile Include="Scripts\UIScreens\GameOverScreen.cs" />
     <Compile Include="Scripts\UIScreens\GameScreen.cs" />
+    <Compile Include="Scripts\UIScreens\TitleScreen.cs" />
     <Compile Include="Scripts\UIScreens\UIScreen.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -82,6 +84,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Sprites\goodGuy.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\UIScreens\GameOverScreen.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\UIScreens\TitleScreenMock.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Icon.ico" />

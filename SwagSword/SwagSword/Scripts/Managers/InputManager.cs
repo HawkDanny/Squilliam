@@ -42,6 +42,11 @@ namespace SwagSword
         public InputType Ability3 { get { return binds[8]; } }
         public InputType Ability4 { get { return binds[9]; } }
 
+        public KeyboardState PrevKbState { get { return prevKbState; } }
+        public KeyboardState KbState { get { return kbState; } }
+        public MouseState PrevMState { get { return prevMState; } }
+        public MouseState MState { get { return mState; } }
+
         
 
         public InputManager(Game1 mainMan):base(mainMan)
@@ -86,6 +91,26 @@ namespace SwagSword
             binds[7] = new InputKeyboard(kbState, Keys.D2);
             binds[8] = new InputKeyboard(kbState, Keys.D3);
             binds[9] = new InputKeyboard(kbState, Keys.D4);
+        }
+
+        /// <summary>
+        /// Checks if a key is pressed just once instead f
+        /// being held down.
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public bool SingleKeyPress(Keys key)
+        {
+            bool temp1 = kbState.IsKeyDown(key);
+            bool temp2 = prevKbState.IsKeyUp(key);
+            if (temp1 && temp2)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         /// <summary>

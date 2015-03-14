@@ -83,6 +83,9 @@ namespace SwagSword
             drawMan.GoodGuyTextures.Add(Texture2D.FromStream(GraphicsDevice, goodGuyStream));
             goodGuyStream.Close();
 
+            //Load Screen Textures
+            drawMan.TitleImage = this.Content.Load<Texture2D>("UIScreens/TitleScreenMock.png");
+            drawMan.GameOverImage = this.Content.Load<Texture2D>("UIScreens/GameOverScreen.png");
 
             //Load Weapon textures
             drawMan.SwordTexture = this.Content.Load<Texture2D>("Objects/sword.png");
@@ -126,7 +129,6 @@ namespace SwagSword
             inputMan.Update();
             uiMan.Update();
             gameMan.MapMan.Update();
-
             base.Update(gameTime);
         }
 

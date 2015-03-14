@@ -7,15 +7,27 @@ using Microsoft.Xna.Framework;
 namespace SwagSword
 {
     /// <summary>
+    /// Game States that show what screen should be drawn.
+    /// </summary>
+    public enum GameState
+    {
+        title,
+        game,
+        gameOver
+    }
+
+    /// <summary>
     /// UI manager will update all UI screens and handle the camera
     /// </summary>
     public class UIManager:Manager
     {
         //Fields
         protected Stack<UIScreen> screens;
+        protected GameState state;
 
         //Properties
         public Stack<UIScreen> Screens { get { return screens; } }
+        public GameState State { get { return state; } set { state = value; } }
 
         public UIManager(Game1 mainMan):base(mainMan)
         {
@@ -26,7 +38,7 @@ namespace SwagSword
         public override void Init()
         {
             screens = new Stack<UIScreen>();
-            screens.Push(new GameScreen(mainMan));
+            screens.Push(new TitleScreen(mainMan));
         }
 
         /// <summary>

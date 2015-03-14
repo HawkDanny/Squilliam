@@ -16,7 +16,7 @@ namespace SwagSword
     //Enum containg all the different actions bindable to keys/buttons
     public enum Binds
     {
-        Up, Down, Left, Right, Attack, UseAbility, Ability1, Ability2, Ability3, Ability4
+        Up, Down, Left, Right, Attack, UseAbility, Ability1, Ability2, Ability3, Ability4, Pause
     }
 
     public class InputManager:Manager
@@ -41,6 +41,7 @@ namespace SwagSword
         public InputType Ability2 { get { return binds[7]; } }
         public InputType Ability3 { get { return binds[8]; } }
         public InputType Ability4 { get { return binds[9]; } }
+        public InputType Pause { get { return binds[10]; } }
 
         
 
@@ -56,7 +57,7 @@ namespace SwagSword
             prevKbState = new KeyboardState();
             mState = new MouseState();
 
-            binds = new InputType[10];
+            binds = new InputType[11];
 
             Default();
         }
@@ -86,6 +87,7 @@ namespace SwagSword
             binds[7] = new InputKeyboard(kbState, Keys.D2);
             binds[8] = new InputKeyboard(kbState, Keys.D3);
             binds[9] = new InputKeyboard(kbState, Keys.D4);
+            binds[10] = new InputKeyboard(kbState, Keys.P);
         }
 
         /// <summary>

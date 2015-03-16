@@ -17,7 +17,6 @@ namespace SwagSword
 {
     class Camera : Manager
     {
-        protected float rotation;
         protected Matrix transform;
         protected Vector2 position;
         protected int viewportWidth;
@@ -27,12 +26,13 @@ namespace SwagSword
 
         public Camera(Viewport viewport, Game1 mainMan) : base(mainMan)
         {
-            rotation = 0.0f;
             position = Vector2.Zero;
             viewportWidth = viewport.Width;
             viewportHeight = viewport.Height;
             worldWidth = mainMan.GameMan.MapMan.MapWidth * mainMan.GameMan.MapMan.TileSize;
             worldHeight = mainMan.GameMan.MapMan.MapHeight * mainMan.GameMan.MapMan.TileSize;
+            mainMan.MapWidth = worldWidth;
+            mainMan.MapHeight = worldHeight;
         }
 
         public void Move(Vector2 amount)
@@ -65,7 +65,6 @@ namespace SwagSword
         {
             transform =
                 Matrix.CreateTranslation(new Vector3(-position.X, -position.Y, 0)) *
-                Matrix.CreateRotationZ(rotation) *
                 Matrix.CreateTranslation(new Vector3(viewportWidth * 0.5f, viewportHeight * 0.5f, 0));
             return transform;
         }

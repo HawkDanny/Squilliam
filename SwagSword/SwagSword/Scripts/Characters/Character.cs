@@ -76,8 +76,21 @@ namespace SwagSword
         //Main
         public Texture2D Texture { get { return texture; } set { texture = value; } }
         public Rectangle Rectangle { get { return rectangle; } set { rectangle = value; } }
-        public float X { get { return position.X; } set { position.X = value; } }
-        public float Y { get { return position.Y; } set { position.Y = value; } }
+        public float X { get { return position.X; } 
+            set 
+            {
+                position.X = value;
+                if (position.X < 0)
+                    position.X = 0;
+                if (position.X > mainMan.MapWidth)
+                    position.X = mainMan.MapWidth;
+                if (position.Y < 0)
+                    position.Y = 0;
+                if (position.Y > mainMan.MapHeight)
+                    position.Y = mainMan.MapHeight;
+            } }
+        public float Y { get { return position.Y; } 
+            set { position.Y = value; } }
         public SpriteEffects SpriteEffect { get { return spriteEffect; } set { spriteEffect = value; } }
         public Faction Type { get { return type; } }
         public AnimationState AnimationState { get { return animationState; } set { animationState = value; } }

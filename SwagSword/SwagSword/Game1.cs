@@ -31,6 +31,8 @@ namespace SwagSword
         private int windowHeight;
         private int windowHalfWidth;
         private int windowHalfHeight;
+        private int mapWidth;
+        private int mapHeight;
         #endregion
 
         #region Properties
@@ -46,6 +48,8 @@ namespace SwagSword
         public int WindowHeight { get { return windowHeight; } }
         public int WindowHalfWidth { get { return windowHalfWidth; } }
         public int WindowHalfHeight { get { return windowHalfHeight; } }
+        public int MapWidth { get { return mapWidth; } set { mapWidth = value; } }
+        public int MapHeight { get { return mapHeight; } set { mapHeight = value; } }
         #endregion
 
         public Game1(): base()
@@ -108,10 +112,10 @@ namespace SwagSword
 
             //Load Fonts
             drawMan.HealthFont = Content.Load<SpriteFont>("Fonts/vanillawhale");
-
-            gameMan.SpawnMan.SpawnCharacter();
             gameMan.MapMan.Startup();
             drawMan.ActivateCamera();
+            gameMan.SpawnMan.SpawnCharacter();
+
 
             spriteBatch = new SpriteBatch(GraphicsDevice);
         }

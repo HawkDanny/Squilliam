@@ -5,6 +5,8 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
+//Names: Nelson Scott
+
 namespace SwagSword
 {
     //Enum for factions
@@ -124,9 +126,9 @@ namespace SwagSword
             this.texture = texture;
 
             //Set position
-            rectangle = new Rectangle(0, 0, 64, 64);
+            rectangle = new Rectangle(0, 0, 65, 65);
             position = new Vector2(x, y);
-            center = new Vector2(64 / 2, 64 / 2);
+            center = new Vector2(65.0f / 2f, 65.0f / 2f);
 
             //Set weapon, abilites
             weapon = new Weapon(this, mainMan);
@@ -143,8 +145,8 @@ namespace SwagSword
             //Init Animation
             frameX = 0;
             frameY = 0;
-            frameWidth = 64;
-            frameHeight = 64;
+            frameWidth = 65;
+            frameHeight = 65;
             totalFrames = 4;
             frameLength = 0.1f;
             frameTime = 0.0f;

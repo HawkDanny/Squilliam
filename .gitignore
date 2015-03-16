@@ -8,3 +8,7 @@ SwagSword/SwagSword/bin/Windows/Debug/SwagSword.exe
 SwagSword/SwagSword/bin/Windows/Debug/SwagSword.exe
 SwagSword/SwagSword/bin/Windows/Debug/SwagSword.exe
 SwagSword/SwagSword/bin/Windows/Debug/SwagSword.exe
+*.exe
+SwagSword/SwagSword/bin/Windows/Debug/SwagSword.exe
+SwagSword/SwagSword/bin/Windows/Debug/SwagSword.pdb
+SwagSword/SwagSword/obj/x86/Debug/SwagSword.exe

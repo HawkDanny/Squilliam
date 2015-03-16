@@ -20,6 +20,9 @@ namespace SwagSword
         private Texture2D titleImage;
         private Texture2D gameOverImage;
 
+        //UI Textures (buttons... what not)
+        private Texture2D pointerTexture;
+
         //Weapon Textures (Create a dictionary)
         private Texture2D swordTexture;
 
@@ -39,6 +42,10 @@ namespace SwagSword
         //Screen Textures
         public Texture2D TitleImage { get { return titleImage; } set { titleImage = value; } }
         public Texture2D GameOverImage { get { return gameOverImage; } set { gameOverImage = value; } }
+
+        //UI Textures
+        public Texture2D PointerTexture { get { return pointerTexture; } set { pointerTexture = value; } }
+
         //Weapon textures
         public Texture2D SwordTexture { get { return swordTexture; } set { swordTexture = value; } }
 
@@ -68,7 +75,7 @@ namespace SwagSword
         /// <summary>
         /// Used to call draw on all objects and determine draw order
         /// </summary>
-        public void Draw(SpriteBatch spritebatch)
+        public void Draw(SpriteBatch spritebatch, GameTime gameTime)
         {
             spritebatch.Begin();
             //The game states will determine what is being drawn for now.
@@ -83,7 +90,7 @@ namespace SwagSword
                 //Draw all characters
                 foreach (Character character in mainMan.GameMan.Characters)
                 {
-                    character.Draw(spritebatch);
+                    character.Draw(spritebatch, gameTime);
                 }
 
             }
@@ -92,6 +99,12 @@ namespace SwagSword
                 //For the game over/when character dies.
             }
             mainMan.UIMan.Screens.Peek().Draw(spritebatch);
+
+
+            //Draw the pointer
+            spritebatch.Draw(pointerTexture, mainMan.InputMan.PointerPosition,
+                new Rectangle(0, 0, pointerTexture.Width, pointerTexture.Height), Color.White, 0f,
+                new Vector2(pointerTexture.Width / 2, pointerTexture.Height / 2), 1.0f, SpriteEffects.None, 1);
 
             spritebatch.End();
         }

@@ -10,18 +10,33 @@ namespace SwagSword
     //Enum necessary for specifying mouse buttons in the inputMouse class   
     public enum MouseButton
     {
-        Left, Right, Middle
+        Left,
+        Right, 
+        Middle
     }
 
     //Enum containg all the different actions bindable to keys/buttons
     public enum Binds
     {
-        Up, Down, Left, Right, Attack, UseAbility, Ability1, Ability2, Ability3, Ability4, Pause
+        Up,
+        Down,
+        Left,
+        Right,
+        Attack,
+        UseAbility,
+        Ability1,
+        Ability2,
+        Ability3,
+        Ability4, 
+        Pause
     }
 
+    /// <summary>
+    /// Responsible for gathering input for all other classes to use
+    /// </summary>
     public class InputManager:Manager
     {
-        //Fields
+        #region Fields
         private KeyboardState prevKbState; //previous keyboard state
         private KeyboardState kbState;
         private MouseState prevMState; //previous mouse state
@@ -29,8 +44,10 @@ namespace SwagSword
         
         //list of all bound keys/buttons, in order of enum Binds (Line 19)
         private InputType[] binds;
+        #endregion
 
-        //Get properties for all actions
+        #region Properties
+        //Input Keys
         public InputType Up { get { return binds[0]; } }
         public InputType Down { get { return binds[1]; } }
         public InputType Left { get { return binds[2]; } }
@@ -43,12 +60,17 @@ namespace SwagSword
         public InputType Ability4 { get { return binds[9]; } }
         public InputType Pause { get { return binds[10]; } }
 
+        //Keyboard + Mouse States
         public KeyboardState PrevKbState { get { return prevKbState; } }
         public KeyboardState KbState { get { return kbState; } }
         public MouseState PrevMState { get { return prevMState; } }
         public MouseState MState { get { return mState; } }
 
-        
+        //Special Properties
+        public bool AllMovementKeysUp { get { return (Right.IsUp() && Left.IsUp() && Up.IsUp() && Down.IsUp()); } }
+        public Vector2 PointerPosition { get { return new Vector2(mState.X, mState.Y); } }
+        #endregion
+
 
         public InputManager(Game1 mainMan):base(mainMan)
         {
@@ -76,7 +98,40 @@ namespace SwagSword
             kbState = Keyboard.GetState();
             mState = Mouse.GetState();
         }
+        
 
+        /// <summary>
+        /// Checks if a key is pressed just once instead of being held down
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public bool SingleKeyPress(Keys key)
+        {
+            bool temp1 = kbState.IsKeyDown(key);
+            bool temp2 = prevKbState.IsKeyUp(key);
+            if (temp1 && temp2)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Returns the angle in degrees to the pointer, given X and Y
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
+        public float AngleToPointer(float x, float y)
+        {
+            return (float)Math.Atan2(mState.X - x, mState.Y - y) * 180f / (float)Math.PI;
+        }
+        
+
+        #region Key Binding
         /// <summary>
         /// Sets the default key bindings
         /// </summary>
@@ -93,26 +148,6 @@ namespace SwagSword
             binds[8] = new InputKeyboard(kbState, Keys.D3);
             binds[9] = new InputKeyboard(kbState, Keys.D4);
             binds[10] = new InputKeyboard(kbState, Keys.P);
-        }
-
-        /// <summary>
-        /// Checks if a key is pressed just once instead f
-        /// being held down.
-        /// </summary>
-        /// <param name="key"></param>
-        /// <returns></returns>
-        public bool SingleKeyPress(Keys key)
-        {
-            bool temp1 = kbState.IsKeyDown(key);
-            bool temp2 = prevKbState.IsKeyUp(key);
-            if (temp1 && temp2)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
         }
 
         /// <summary>
@@ -379,5 +414,6 @@ namespace SwagSword
                     break;
             }
         }
+        #endregion
     }
 }

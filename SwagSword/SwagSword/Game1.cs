@@ -79,13 +79,16 @@ namespace SwagSword
             //Load and set textures in draw manager
 
             //Good Guys
-            System.IO.Stream goodGuyStream = TitleContainer.OpenStream("Content/Sprites/goodGuy.png");
+            System.IO.Stream goodGuyStream = TitleContainer.OpenStream("Content/Sprites/goodGuy1.png");
             drawMan.GoodGuyTextures.Add(Texture2D.FromStream(GraphicsDevice, goodGuyStream));
             goodGuyStream.Close();
 
             //Load Screen Textures
             drawMan.TitleImage = this.Content.Load<Texture2D>("UIScreens/TitleScreenMock.png");
             drawMan.GameOverImage = this.Content.Load<Texture2D>("UIScreens/GameOverScreen.png");
+
+            //Load UI Textures
+            drawMan.PointerTexture = this.Content.Load<Texture2D>("Objects/pointer.png");
 
             //Load Weapon textures
             drawMan.SwordTexture = this.Content.Load<Texture2D>("Objects/sword.png");
@@ -138,7 +141,7 @@ namespace SwagSword
         {
             GraphicsDevice.Clear(Color.MediumPurple);
 
-            drawMan.Draw(spriteBatch);
+            drawMan.Draw(spriteBatch, gameTime);
 
             base.Draw(gameTime);
         }

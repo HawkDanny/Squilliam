@@ -35,6 +35,7 @@ namespace SwagSword
         #region Properties
         //Main
         public Texture2D Texture { get { return texture; } set { texture = value; } }
+        public float Angle { get { return currentAngle; } set { currentAngle = value; } }
         #endregion
 
         public Weapon(Character character, Game1 mainMan)
@@ -111,7 +112,7 @@ namespace SwagSword
 
         public void Draw(SpriteBatch spritebatch)
         {
-            spritebatch.Draw(texture, position, rectangle, Color.White, currentAngle, center, 1.0f, SpriteEffects.None, 1);
+            spritebatch.Draw(texture, position, rectangle, Color.White, (90f - currentAngle) * (float)Math.PI / 180f, center, 1.0f, SpriteEffects.None, 1);
         }
     }
 }

@@ -84,13 +84,17 @@ namespace SwagSword
                     position.X = 0;
                 if (position.X > mainMan.MapWidth)
                     position.X = mainMan.MapWidth;
+
+            } }
+        public float Y { get { return position.Y; } 
+            set 
+            {
+                position.Y = value;
                 if (position.Y < 0)
                     position.Y = 0;
                 if (position.Y > mainMan.MapHeight)
                     position.Y = mainMan.MapHeight;
             } }
-        public float Y { get { return position.Y; } 
-            set { position.Y = value; } }
         public SpriteEffects SpriteEffect { get { return spriteEffect; } set { spriteEffect = value; } }
         public Faction Type { get { return type; } }
         public AnimationState AnimationState { get { return animationState; } set { animationState = value; } }

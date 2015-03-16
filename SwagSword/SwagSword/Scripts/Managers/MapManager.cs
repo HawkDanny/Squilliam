@@ -49,8 +49,8 @@ namespace SwagSword
         public override void Init()
         {
             tileSize = 64;
-            mapWidth = 31;
-            mapHeight = 19;
+            mapWidth = 61;
+            mapHeight = 39;
             map = new Tile[mapWidth, mapHeight];
 
         }
@@ -65,6 +65,7 @@ namespace SwagSword
         {
             PopulateMap();
             generateSimplePath();
+            BoldenMap();
             BoldenMap();
         }
 
@@ -212,7 +213,7 @@ namespace SwagSword
             Tile origin = map[mapWidth / 2, mapHeight / 2];
             origin.Texture = mainMan.DrawMan.PathwayTexture;
             Tile subject = map[mapWidth / 2, mapHeight / 2 - 1];
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < 23; i++)
             {
                 subject.Texture = mainMan.DrawMan.PathwayTexture;
                 List<Tile> neighbors = getNeighbors(subject);
@@ -231,6 +232,68 @@ namespace SwagSword
                 if (bestNeighbors.Count > 0)
                     subject = bestNeighbors.ElementAt(choice);
             }
+            subject = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                subject.Texture = mainMan.DrawMan.PathwayTexture;
+                List<Tile> neighbors = getNeighbors(subject);
+                List<Tile> bestNeighbors = new List<Tile>();
+
+                foreach (Tile t in neighbors)
+                {
+                    if (t.Center.Y > subject.Center.Y)
+                    {
+                        bestNeighbors.Add(t);
+                    }
+                }
+                int choice = 0;
+                if (bestNeighbors.Count > 1)
+                    choice = rand.Next(bestNeighbors.Count - 1);
+                if (bestNeighbors.Count > 0)
+                    subject = bestNeighbors.ElementAt(choice);
+            }
+            subject = origin;
+            for (int i = 0; i < 33; i++)
+            {
+                subject.Texture = mainMan.DrawMan.PathwayTexture;
+                List<Tile> neighbors = getNeighbors(subject);
+                List<Tile> bestNeighbors = new List<Tile>();
+
+                foreach (Tile t in neighbors)
+                {
+                    if (t.Center.X < subject.Center.X)
+                    {
+                        bestNeighbors.Add(t);
+                    }
+                }
+                int choice = 0;
+                if (bestNeighbors.Count > 1)
+                    choice = rand.Next(bestNeighbors.Count - 1);
+                if (bestNeighbors.Count > 0)
+                    subject = bestNeighbors.ElementAt(choice);
+            }
+            subject = origin;
+            for (int i = 0; i < 33; i++)
+            {
+                subject.Texture = mainMan.DrawMan.PathwayTexture;
+                List<Tile> neighbors = getNeighbors(subject);
+                List<Tile> bestNeighbors = new List<Tile>();
+
+                foreach (Tile t in neighbors)
+                {
+                    if (t.Center.X > subject.Center.X)
+                    {
+                        bestNeighbors.Add(t);
+                    }
+                }
+                int choice = 0;
+                if (bestNeighbors.Count > 1)
+                    choice = rand.Next(bestNeighbors.Count - 1);
+                if (bestNeighbors.Count > 0)
+                    subject = bestNeighbors.ElementAt(choice);
+            }
+
+
 
         }
 
@@ -242,7 +305,7 @@ namespace SwagSword
         /// </summary>
         protected void BoldenMap()
         {
-            for (int x = mapWidth - 1; x >= 0; x--)                                                  //start at the lower right corner and iterate
+            for (int x = mapWidth - 2; x >= 0; x--)                                                  //start at the lower right corner and iterate
             {                                                                                       //  up to the upper left corner 
                 for (int y = mapHeight - 1; y >= 0; y--)                                            //...
                 {
@@ -251,12 +314,12 @@ namespace SwagSword
                         if (x < mapWidth + 2)                                                       //check bounds to avoid null exception
                         {
                             map[x + 1, y].Texture = mainMan.DrawMan.PathwayTexture;                 //make right tile a path as well
-                            if (y < mapHeight + 2)                                                  //check bounds to avoid null exception
+                            if (y < mapHeight - 2)                                                  //check bounds to avoid null exception
                             {
                                 map[x + 1, y + 1].Texture = mainMan.DrawMan.PathwayTexture;         //make lower right tile a path as well
                             }
                         }
-                        if (y < mapHeight + 2)                                                      //check bounds to avoid null exception
+                        if (y < mapHeight - 2)                                                      //check bounds to avoid null exception
                         {
                             map[x, y + 1].Texture = mainMan.DrawMan.PathwayTexture;                 //make the lower tile a path as well
                         }

@@ -27,6 +27,10 @@ namespace SwagSword
         int mapHeight;                                                      //Map height in tiles. It should also be odd if possible
         #endregion
 
+        public int TileSize { get { return tileSize; } }
+        public int MapWidth { get { return mapWidth; } }
+        public int MapHeight { get { return mapHeight; } }
+
         /// <summary>
         /// Default Constructor sets up reference to the main manager
         /// </summary>
@@ -48,11 +52,6 @@ namespace SwagSword
             mapWidth = 31;
             mapHeight = 19;
             map = new Tile[mapWidth, mapHeight];
-
-        }
-
-        public override void Update()
-        {
 
         }
 

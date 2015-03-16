@@ -33,6 +33,8 @@ namespace SwagSword
 
         //Fonts
         private SpriteFont healthFont;
+
+        private Camera camera;
         #endregion
 
         #region Properties
@@ -71,13 +73,32 @@ namespace SwagSword
             goodGuyTextures = new List<Texture2D>();
         }
 
+        public void Update()
+        {
+            Vector2 movement = Vector2.Zero;
+            if (mainMan.InputMan.Left.IsDown())
+                movement.X--;
+            if (mainMan.InputMan.Right.IsDown())
+                movement.X++;
+            if (mainMan.InputMan.Up.IsDown())
+                movement.Y--;
+            if (mainMan.InputMan.Down.IsDown())
+                movement.Y++;
+            camera.Position += movement * mainMan.GameMan.Characters.ElementAt(0).MovementSpeed;
+        }
+
+        public void ActivateCamera()
+        {
+            Viewport viewport = new Viewport(0, 0, mainMan.WindowWidth, mainMan.WindowHeight);
+            camera = new Camera(viewport, mainMan);
+        }
 
         /// <summary>
         /// Used to call draw on all objects and determine draw order
         /// </summary>
         public void Draw(SpriteBatch spritebatch, GameTime gameTime)
         {
-            spritebatch.Begin();
+            spritebatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, camera.getTransformation());
             //The game states will determine what is being drawn for now.
             if(mainMan.UIMan.State == GameState.title)
             {

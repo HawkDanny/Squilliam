@@ -111,6 +111,7 @@ namespace SwagSword
 
             gameMan.SpawnMan.SpawnCharacter();
             gameMan.MapMan.Startup();
+            drawMan.ActivateCamera();
 
             spriteBatch = new SpriteBatch(GraphicsDevice);
         }
@@ -131,7 +132,8 @@ namespace SwagSword
             gameMan.Update();
             inputMan.Update();
             uiMan.Update();
-            gameMan.MapMan.Update();
+
+            drawMan.Update();
             base.Update(gameTime);
         }
 

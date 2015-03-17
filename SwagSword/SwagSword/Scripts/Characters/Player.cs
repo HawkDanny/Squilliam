@@ -130,6 +130,29 @@ namespace SwagSword
 
                 //Swing the sword
                 character.Weapon.Angle = mainMan.InputMan.AngleToPointer(X, Y);
+
+                //Minor Animation
+                if (mainMan.InputMan.AllMovementKeysUp)
+                {
+                    float adjustedAngle = 180f - character.Weapon.Angle;
+                    if (adjustedAngle >= 45f && adjustedAngle < 135f)
+                    {
+                        character.AnimationState = AnimationState.FaceRight;
+                    }
+                    else if (adjustedAngle < 225f)
+                    {
+                        character.AnimationState = AnimationState.FaceDown;
+                    }
+                    else if (adjustedAngle < 315f)
+                    {
+                        character.AnimationState = AnimationState.FaceLeft;
+                    }
+                    if (adjustedAngle >= 315f || adjustedAngle < 45f)
+                    {
+                        character.AnimationState = AnimationState.FaceUp;
+                    }
+                }
+
                 character.Weapon.Swing();
             }
             else if (mainMan.InputMan.Attack.IsUp())

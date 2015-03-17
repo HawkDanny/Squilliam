@@ -44,6 +44,9 @@ namespace SwagSword
         
         //list of all bound keys/buttons, in order of enum Binds (Line 19)
         private InputType[] binds;
+
+        //Special helper fields
+        private bool attackHeld;
         #endregion
 
         #region Properties
@@ -69,6 +72,7 @@ namespace SwagSword
         //Special Properties
         public bool AllMovementKeysUp { get { return (Right.IsUp() && Left.IsUp() && Up.IsUp() && Down.IsUp()); } }
         public Vector2 PointerPosition { get { return new Vector2(mState.X, mState.Y); } }
+        public bool AttackHeld { get { return attackHeld; } set { attackHeld = value; } }
         #endregion
 
 
@@ -85,6 +89,8 @@ namespace SwagSword
             mState = new MouseState();
 
             binds = new InputType[11];
+
+            attackHeld = false;
 
             Default();
         }

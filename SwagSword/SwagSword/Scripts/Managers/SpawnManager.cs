@@ -12,8 +12,6 @@ namespace SwagSword
     /// </summary>
     public class SpawnManager:Manager
     {
-        //Fields
-        Random rnd;
 
         public SpawnManager(Game1 mainMan):base(mainMan)
         {
@@ -23,7 +21,7 @@ namespace SwagSword
         //Init
         public override void Init()
         {
-            rnd = new Random();
+
         }
 
         /// <summary>
@@ -37,7 +35,7 @@ namespace SwagSword
         public void SpawnCharacter()
         {
             //Spawn a dummy character
-            GoodCharacter character = new GoodCharacter(mainMan.WindowHalfWidth, mainMan.WindowHalfHeight, mainMan.DrawMan.GoodGuyTextures[rnd.Next(0, mainMan.DrawMan.GoodGuyTextures.Count)], mainMan);
+            GoodCharacter character = new GoodCharacter(mainMan.WindowHalfWidth, mainMan.WindowHalfHeight, mainMan.DrawMan.GoodGuyTextures[mainMan.Rnd.Next(0, mainMan.DrawMan.GoodGuyTextures.Count)], mainMan);
             mainMan.GameMan.Characters.Add(character);
             Player player = new Player(character, mainMan);
             mainMan.GameMan.Players.Add(player);

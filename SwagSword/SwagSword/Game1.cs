@@ -19,6 +19,7 @@ namespace SwagSword
         //Important
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        Random rnd;
 
         #region Fields
         //Managers
@@ -46,6 +47,7 @@ namespace SwagSword
         public UIManager UIMan { get { return uiMan; } }
 
         //Helpers
+        public Random Rnd { get { return rnd; } }
         public int WindowWidth { get { return windowWidth; } }
         public int WindowHeight { get { return windowHeight; } }
         public int WindowHalfWidth { get { return windowHalfWidth; } }
@@ -64,6 +66,9 @@ namespace SwagSword
 
         protected override void Initialize()
         {
+            //Init Random
+            rnd = new Random();
+
             //Init Managers
             drawMan = new DrawManager(this);
             inputMan = new InputManager(this);

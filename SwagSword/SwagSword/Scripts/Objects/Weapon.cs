@@ -20,6 +20,7 @@ namespace SwagSword
 
         //Main
         private Texture2D texture;
+        private SpriteEffects spriteEffect;
         private float x;
         private float y;
         private Rectangle rectangle;
@@ -28,9 +29,11 @@ namespace SwagSword
 
         //Swinging vars
         private bool isSwinging;
+        private bool isClockwise;
         private float spreadAngle;
         private float startAngle;
         private float stopAngle;
+        private float swingSpeed;
         private float currentAngle;
         #endregion
 
@@ -38,6 +41,9 @@ namespace SwagSword
         //Main
         public Texture2D Texture { get { return texture; } set { texture = value; } }
         public float Angle { get { return currentAngle; } set { currentAngle = value; } }
+
+        //Swinging vars
+        public bool IsSwinging { get { return isSwinging; } set { isSwinging = value; } }
         #endregion
 
         public Weapon(Character character, Game1 mainMan)
@@ -53,8 +59,10 @@ namespace SwagSword
             //Init Vars
             type = character.Type;
             isSwinging = false;
-            spreadAngle = 180f;
+            spreadAngle = 120f;
             currentAngle = 0f;
+            startAngle = 0f;
+            stopAngle = 0f;
 
             //Set Texture
             SetTexture(character.IsControlled, type);
@@ -69,9 +77,25 @@ namespace SwagSword
 
         public void Update()
         {
-            //Check for collisions if swinging
-            //Lerp weapon between start and target angle, set isSwinging to false when done
-            //Use the character's weapon speed to lerp
+            if (isSwinging)
+            {
+                if (isClockwise)
+                {
+                    currentAngle += swingSpeed;
+                    if (currentAngle > stopAngle)
+                    {
+                        StopSwing();
+                    }
+                }
+                else
+                {
+                    currentAngle -= swingSpeed;
+                    if (currentAngle < stopAngle)
+                    {
+                        StopSwing();
+                    }
+                }
+            }
 
             //Set Position
             x = character.X;
@@ -85,7 +109,37 @@ namespace SwagSword
         public void Swing()
         {
             isSwinging = true;
-            //Set init angle and target angle
+
+            if (mainMan.Rnd.Next(1, 3) == 1)
+            {
+                //Is a clockwise swing
+                isClockwise = true;
+                startAngle = currentAngle - spreadAngle / 2;
+                stopAngle = currentAngle + spreadAngle / 2;
+                spriteEffect = SpriteEffects.FlipVertically;
+            }
+            else
+            {
+                //Is a counter clockwise swing
+                isClockwise = false;
+                startAngle = currentAngle + spreadAngle / 2;
+                stopAngle = currentAngle - spreadAngle / 2;
+                spriteEffect = SpriteEffects.None;
+            }
+
+            swingSpeed = (float)mainMan.Rnd.Next((int)character.AttackSpeedMin, (int)character.AttackSpeedMax);
+            currentAngle = startAngle;
+        }
+
+        /// <summary>
+        /// Stops a swing if swinging
+        /// </summary>
+        public void StopSwing()
+        {
+            if (isSwinging)
+            {
+                isSwinging = false;
+            }
         }
 
         /// <summary>
@@ -114,7 +168,11 @@ namespace SwagSword
 
         public void Draw(SpriteBatch spritebatch)
         {
-            spritebatch.Draw(texture, position, rectangle, Color.White, (90f - currentAngle) * (float)Math.PI / 180f, center, 1.0f, SpriteEffects.None, 1);
+            //Should only draw when weapon is in motion
+            if (isSwinging)
+            {
+                spritebatch.Draw(texture, position, rectangle, Color.White, (90f - currentAngle) * (float)Math.PI / 180f, center, 1.0f, spriteEffect, 1);
+            }
         }
     }
 }

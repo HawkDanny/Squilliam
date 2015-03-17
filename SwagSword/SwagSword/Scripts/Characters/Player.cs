@@ -20,6 +20,7 @@ namespace SwagSword
 
         //Character
         private Character character;
+
         #endregion
 
         #region Properties
@@ -121,7 +122,23 @@ namespace SwagSword
             }
             #endregion
 
-            character.Weapon.Angle = mainMan.InputMan.AngleToPointer(X, Y);
+            #region Attack Input
+            if (mainMan.InputMan.Attack.IsDown() && mainMan.InputMan.AttackHeld == false)
+            {
+                //So the player can't just hold to swing
+                mainMan.InputMan.AttackHeld = true;
+
+                //Swing the sword
+                character.Weapon.Angle = mainMan.InputMan.AngleToPointer(X, Y);
+                character.Weapon.Swing();
+            }
+            else if (mainMan.InputMan.Attack.IsUp())
+            {
+                //Resets AttackHeld so the player can swing again
+                mainMan.InputMan.AttackHeld = false;
+            }
+            #endregion
+            
         }
 
 

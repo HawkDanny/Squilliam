@@ -66,6 +66,8 @@ namespace SwagSword
         private int maxHealth;
         private int strength;
         private float movementSpeed;
+        private float attackSpeedMin; //In degrees
+        private float attackSpeedMax;
 
         //Physics
         private float velocityX;
@@ -78,7 +80,9 @@ namespace SwagSword
         //Main
         public Texture2D Texture { get { return texture; } set { texture = value; } }
         public Rectangle Rectangle { get { return rectangle; } set { rectangle = value; } }
-        public float X { get { return position.X; } 
+        public float X 
+        { 
+            get { return position.X; } 
             set 
             {
                 position.X = value;
@@ -87,8 +91,11 @@ namespace SwagSword
                 if (position.X > mainMan.MapWidth)
                     position.X = mainMan.MapWidth;
 
-            } }
-        public float Y { get { return position.Y; } 
+            } 
+        }
+        public float Y 
+        { 
+            get { return position.Y; } 
             set 
             {
                 position.Y = value;
@@ -96,7 +103,8 @@ namespace SwagSword
                     position.Y = 0;
                 if (position.Y > mainMan.MapHeight)
                     position.Y = mainMan.MapHeight;
-            } }
+            } 
+        }
         public SpriteEffects SpriteEffect { get { return spriteEffect; } set { spriteEffect = value; } }
         public Faction Type { get { return type; } }
         public AnimationState AnimationState { get { return animationState; } set { animationState = value; } }
@@ -110,6 +118,8 @@ namespace SwagSword
         public int MaxHealth { get { return maxHealth; } }
         public int Strength { get { return strength; } }
         public float MovementSpeed { get { return movementSpeed; } }
+        public float AttackSpeedMin { get { return attackSpeedMin; } }
+        public float AttackSpeedMax { get { return attackSpeedMax; } }
 
         //Physics
         public float VelocityX { get { return velocityX; } set { velocityX = value; } }
@@ -141,6 +151,8 @@ namespace SwagSword
             InitStats();
             health = 10;
             maxHealth = 10;
+            attackSpeedMin = 10.0f;
+            attackSpeedMax = 20.0f;
 
             //Init Animation
             frameX = 0;

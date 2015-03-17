@@ -78,14 +78,25 @@ namespace SwagSword
         public override void Update()
         {
             Vector2 movement = Vector2.Zero;
-            if (mainMan.InputMan.Left.IsDown() && mainMan.GameMan.Players.ElementAt(0).X < camera.Position.X - mainMan.WindowWidth * 0.3)
+
+            if (mainMan.GameMan.Players[0].X < camera.Position.X - mainMan.WindowWidth * 0.3
+            || mainMan.GameMan.Players[0].X > camera.Position.X + mainMan.WindowWidth * 0.3
+            || mainMan.GameMan.Players[0].Y < camera.Position.Y - mainMan.WindowHeight * 0.3
+            || mainMan.GameMan.Players[0].Y > camera.Position.Y + mainMan.WindowHeight * 0.3)
+            {
+                movement.X += mainMan.GameMan.Players[0].Character.VelocityX;
+                movement.Y += mainMan.GameMan.Players[0].Character.VelocityY;
+            }
+
+
+            /*if (mainMan.InputMan.Left.IsDown() && mainMan.GameMan.Players.ElementAt(0).X < camera.Position.X - mainMan.WindowWidth * 0.3)
                 movement.X--;
             if (mainMan.InputMan.Right.IsDown() && mainMan.GameMan.Players.ElementAt(0).X > camera.Position.X + mainMan.WindowWidth * 0.3)
                 movement.X++;
             if (mainMan.InputMan.Up.IsDown() && mainMan.GameMan.Players.ElementAt(0).Y < camera.Position.Y - mainMan.WindowHeight * 0.3)
                 movement.Y--;
             if (mainMan.InputMan.Down.IsDown() && mainMan.GameMan.Players.ElementAt(0).Y > camera.Position.Y + mainMan.WindowHeight * 0.3)
-                movement.Y++;
+                movement.Y++;*/
             camera.Position += movement * mainMan.GameMan.Characters.ElementAt(0).MovementSpeed;
         }
 

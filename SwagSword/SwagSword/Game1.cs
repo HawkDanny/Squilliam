@@ -59,13 +59,20 @@ namespace SwagSword
         public Game1(): base()
         {
             graphics = new GraphicsDeviceManager(this);
-            Content.RootDirectory = "Content";
             
+            Content.RootDirectory = "Content";
         }
 
 
         protected override void Initialize()
         {
+            //Sets window size
+            graphics.PreferredBackBufferWidth = 950;
+            graphics.PreferredBackBufferHeight = 534;
+            graphics.IsFullScreen = true;
+            graphics.ApplyChanges();
+
+
             //Init Random
             rnd = new Random();
 

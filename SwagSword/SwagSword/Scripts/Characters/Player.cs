@@ -29,9 +29,13 @@ namespace SwagSword
         public float X { get { if (character != null) { return character.X; } else { return 0f; } } }
         public float Y { get { if (character != null) { return character.Y; } else { return 0f; } } }
 
+        //Shortcuts to character
+        public float VelocityX { get { return character.VelocityX; } }
+        public float VelocityY { get { return character.VelocityY; } }
+
         //Stats
-        public int Health { get { return Health; } }
-        public int MaxHealth { get { return MaxHealth; } }
+        public int Health { get { return character.Health; } }
+        public int MaxHealth { get { return character.MaxHealth; } }
         #endregion
 
         public Player(Character character, Game1 mainMan)

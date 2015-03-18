@@ -71,7 +71,7 @@ namespace SwagSword
 
         //Special Properties
         public bool AllMovementKeysUp { get { return (Right.IsUp() && Left.IsUp() && Up.IsUp() && Down.IsUp()); } }
-        public Vector2 PointerPosition { get { return new Vector2(mState.X, mState.Y); } }
+        public Vector2 PointerPosition { get { return new Vector2(mainMan.DrawMan.Camera.TopLeftPosition.X + mState.X, mainMan.DrawMan.Camera.TopLeftPosition.Y + mState.Y); } }
         public bool AttackHeld { get { return attackHeld; } set { attackHeld = value; } }
         #endregion
 
@@ -133,7 +133,7 @@ namespace SwagSword
         /// <returns></returns>
         public float AngleToPointer(float x, float y)
         {
-            return (float)Math.Atan2(mState.X - x, mState.Y - y) * 180f / (float)Math.PI;
+            return (float)Math.Atan2(PointerPosition.X - x, PointerPosition.Y - y) * 180f / (float)Math.PI;
         }
         
 

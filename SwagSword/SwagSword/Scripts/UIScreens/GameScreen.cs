@@ -47,14 +47,16 @@ namespace SwagSword
 
         public override void Draw(SpriteBatch spritebatch)
         {
+            int leftX = (int)mainMan.DrawMan.Camera.TopLeftPosition.X;
+            int topY = (int)mainMan.DrawMan.Camera.TopLeftPosition.Y;
             //Draws the back of the health bar as gray
-            spritebatch.Draw(rect, new Rectangle(20, 20, 200, 10), Color.Gray);
+            spritebatch.Draw(rect, new Rectangle(leftX + 20, topY + 20, 200, 10), Color.Gray);
             //Draws the actual Health meter as green
-            double health = 0.0 + mainMan.GameMan.Characters[0].Health;
-            double maxHealth = 0.0 + mainMan.GameMan.Characters[0].MaxHealth;
-            spritebatch.Draw(rect, new Rectangle(20, 20, (int)((health/maxHealth)*200), 10), Color.Green);
+            double health = 0.0 + mainMan.GameMan.Players[0].Health;
+            double maxHealth = 0.0 + mainMan.GameMan.Players[0].MaxHealth;
+            spritebatch.Draw(rect, new Rectangle(leftX + 20, topY + 20, (int)((health/maxHealth)*200), 10), Color.Green);
             //Draws the number of health next to the bar
-            spritebatch.DrawString(mainMan.DrawMan.HealthFont, mainMan.GameMan.Characters[0].Health + "/" + mainMan.GameMan.Characters[0].MaxHealth, new Vector2(225f, 14f), Color.Green);
+            spritebatch.DrawString(mainMan.DrawMan.HealthFont, mainMan.GameMan.Players[0].Health + "/" + mainMan.GameMan.Players[0].MaxHealth, new Vector2(leftX + 225f, topY + 14f), Color.Green);
             base.Draw(spritebatch);
         }
     }

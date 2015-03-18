@@ -21,6 +21,7 @@ namespace SwagSword
         //Characters
         private List<Character> characters;
         private List<Player> players;
+        private Dictionary<Faction, List<Character>> charactersDictionary; //Coming soon
         #endregion
 
 
@@ -32,6 +33,7 @@ namespace SwagSword
         //Characters
         public List<Character> Characters { get {return characters; } }
         public List<Player> Players { get { return players; } }
+        public Dictionary<Faction, List<Character>> CharactersDictionary { get { return charactersDictionary; } }
         #endregion
 
         public GameManager(Game1 mainMan):base(mainMan)
@@ -48,6 +50,11 @@ namespace SwagSword
 
             //Characters
             characters = new List<Character>();
+            charactersDictionary = new Dictionary<Faction, List<Character>>();
+            charactersDictionary.Add(Faction.Good, new List<Character>());
+            charactersDictionary.Add(Faction.Rich, new List<Character>());
+            charactersDictionary.Add(Faction.Thief, new List<Character>());
+            charactersDictionary.Add(Faction.Tribal, new List<Character>());
             players = new List<Player>();
         }
 

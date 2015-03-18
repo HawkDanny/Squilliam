@@ -128,7 +128,14 @@ namespace SwagSword
             drawMan.HealthFont = Content.Load<SpriteFont>("Fonts/vanillawhale");
             gameMan.MapMan.Startup();
             drawMan.ActivateCamera();
-            gameMan.SpawnMan.SpawnCharacter();
+
+
+            //Spawn some random characters
+            gameMan.SpawnMan.SpawnCharacter(Faction.Good);
+            for (int i = 0; i < 30; i++)
+            {
+                gameMan.SpawnMan.SpawnCharacter(Faction.Tribal);
+            }
 
 
             spriteBatch = new SpriteBatch(GraphicsDevice);

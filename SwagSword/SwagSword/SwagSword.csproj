@@ -37,6 +37,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Game1.cs" />
+    <Compile Include="Scripts\Characters\RichCharacter.cs" />
+    <Compile Include="Scripts\Characters\ThiefCharacter.cs" />
     <Compile Include="Scripts\Managers\Input Scripts\InputKeyboard.cs" />
     <Compile Include="Scripts\Managers\Input Scripts\InputMouse.cs" />
     <Compile Include="Scripts\Managers\Input Scripts\InputType.cs" />
@@ -56,6 +58,7 @@
     <Compile Include="Scripts\Objects\Tile.cs" />
     <Compile Include="Scripts\Managers\UIManager.cs" />
     <Compile Include="Scripts\Objects\Weapon.cs" />
+    <Compile Include="Scripts\Characters\TribalCharacter.cs" />
     <Compile Include="Scripts\UIScreens\GameOverScreen.cs" />
     <Compile Include="Scripts\UIScreens\GameScreen.cs" />
     <Compile Include="Scripts\UIScreens\TitleScreen.cs" />

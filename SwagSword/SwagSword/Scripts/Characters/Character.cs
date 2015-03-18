@@ -45,6 +45,7 @@ namespace SwagSword
         private Vector2 position;
         private Vector2 center; //The center point to be used for rotation
         private SpriteEffects spriteEffect; //Used for flipping the sprite
+        private Color color;
         private Faction type;
         private AnimationState animationState;
         private bool isControlled;
@@ -106,7 +107,8 @@ namespace SwagSword
             } 
         }
         public SpriteEffects SpriteEffect { get { return spriteEffect; } set { spriteEffect = value; } }
-        public Faction Type { get { return type; } }
+        public Color Color { get { return color; } set { color = value; } }
+        public Faction Type { get { return type; } set { type = value; } }
         public AnimationState AnimationState { get { return animationState; } set { animationState = value; } }
         public bool IsControlled { get { return isControlled; } set { isControlled = value; } }
 
@@ -309,7 +311,7 @@ namespace SwagSword
 
             rectangle = new Rectangle(frameX * frameWidth, frameY * frameHeight, frameWidth, frameHeight);
 
-            spritebatch.Draw(texture, position, rectangle, Color.White, angle, center, 1.0f, spriteEffect, 1);
+            spritebatch.Draw(texture, position, rectangle, color, angle, center, 1.0f, spriteEffect, 1);
 
             weapon.Draw(spritebatch);
         }

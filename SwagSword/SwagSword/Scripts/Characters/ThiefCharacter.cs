@@ -7,9 +7,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SwagSword
 {
-    class GoodCharacter : Character
+    class ThiefCharacter : Character
     {
-        public GoodCharacter(int x, int y, Texture2D texture, Game1 mainMan): base(x, y, texture, mainMan)
+        public ThiefCharacter(int x, int y, Texture2D texture, Game1 mainMan): base(x, y, texture, mainMan)
         {
             //Set config file here
             Init();
@@ -17,8 +17,8 @@ namespace SwagSword
 
         public override void Init()
         {
-            Type = Faction.Good;
-            Color = Color.White;
+            Type = Faction.Thief;
+            Color = Color.Red;
 
             base.Init();
         }

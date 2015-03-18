@@ -69,7 +69,6 @@ namespace SwagSword
             //Sets window size
             graphics.PreferredBackBufferWidth = 950;
             graphics.PreferredBackBufferHeight = 534;
-            graphics.IsFullScreen = true;
             graphics.ApplyChanges();
 
 

@@ -30,6 +30,15 @@ namespace SwagSword
         MoveRight
     }
 
+    public enum CharacterState
+    {
+        Spawn,
+        Switch,
+        Active,
+        Hurt,
+        Dead
+    }
+
     /// <summary>
     /// The base class for every type of Character
     /// </summary>
@@ -46,9 +55,13 @@ namespace SwagSword
         private Vector2 center; //The center point to be used for rotation
         private SpriteEffects spriteEffect; //Used for flipping the sprite
         private Color color;
+        private Color flashColor;
+        private Color normalColor;
         private Faction type;
         private AnimationState animationState;
         private bool isControlled;
+        private CharacterState characterState;
+        private float stateTimer;
 
         //Animation
         private int frameWidth;
@@ -65,7 +78,8 @@ namespace SwagSword
         //Stats
         private int health;
         private int maxHealth;
-        private int strength;
+        private int damage;
+        private float strength;
         private float movementSpeed;
         private float attackSpeedMin; //In degrees
         private float attackSpeedMax;
@@ -74,13 +88,14 @@ namespace SwagSword
         private float velocityX;
         private float velocityY;
         private float drag;
-        private float angle;
+        private float direction; //Think of it as the forward angle
         #endregion
 
         #region Properties
         //Main
         public Texture2D Texture { get { return texture; } set { texture = value; } }
         public Rectangle Rectangle { get { return rectangle; } set { rectangle = value; } }
+        public Rectangle HitBox { get { return new Rectangle((int)position.X - frameWidth / 2, (int)position.Y - frameWidth / 2, frameWidth, frameHeight); } }
         public float X 
         { 
             get { return position.X; } 
@@ -108,8 +123,12 @@ namespace SwagSword
         }
         public SpriteEffects SpriteEffect { get { return spriteEffect; } set { spriteEffect = value; } }
         public Color Color { get { return color; } set { color = value; } }
+        public Color FlashColor { get { return flashColor; } set { flashColor = value; } }
+        public Color NormalColor { get { return normalColor; } set { normalColor = value; } }
         public Faction Type { get { return type; } set { type = value; } }
         public AnimationState AnimationState { get { return animationState; } set { animationState = value; } }
+        public CharacterState CharacterState { get { return characterState; } set { characterState = value; } }
+        public float StateTimer { get { return stateTimer; } set { stateTimer = value; } }
         public bool IsControlled { get { return isControlled; } set { isControlled = value; } }
 
         //Weapon + Abilities
@@ -118,7 +137,8 @@ namespace SwagSword
         //Stats
         public int Health { get { return health; } set { health = value; } }
         public int MaxHealth { get { return maxHealth; } }
-        public int Strength { get { return strength; } }
+        public float Strength { get { return strength; } }
+        public int Damage { get { return damage; } }
         public float MovementSpeed { get { return movementSpeed; } }
         public float AttackSpeedMin { get { return attackSpeedMin; } }
         public float AttackSpeedMax { get { return attackSpeedMax; } }
@@ -127,6 +147,7 @@ namespace SwagSword
         public float VelocityX { get { return velocityX; } set { velocityX = value; } }
         public float VelocityY { get { return velocityY; } set { velocityY = value; } }
         public float Drag { get { return drag; } }
+        public float Direction { get { return direction; } set { direction = value; } }
         #endregion
 
         public Character(int x, int y, Texture2D texture, Game1 mainMan)
@@ -138,9 +159,9 @@ namespace SwagSword
             this.texture = texture;
 
             //Set position
-            rectangle = new Rectangle(0, 0, 65, 65);
+            rectangle = new Rectangle(0, 0, 66, 66);
             position = new Vector2(x, y);
-            center = new Vector2(65.0f / 2f, 65.0f / 2f);
+            center = new Vector2(66.0f / 2f, 66.0f / 2f);
 
             //Set weapon, abilites
             weapon = new Weapon(this, mainMan);
@@ -150,17 +171,15 @@ namespace SwagSword
         {
             //Init Stats
             isControlled = false;
+            SwitchState(CharacterState.Spawn);
+            Color = normalColor;
             InitStats();
-            health = 10;
-            maxHealth = 10;
-            attackSpeedMin = 10.0f;
-            attackSpeedMax = 20.0f;
 
             //Init Animation
             frameX = 0;
             frameY = 0;
-            frameWidth = 65;
-            frameHeight = 65;
+            frameWidth = 66;
+            frameHeight = 66;
             totalFrames = 4;
             frameLength = 0.1f;
             frameTime = 0.0f;
@@ -170,7 +189,7 @@ namespace SwagSword
             velocityX = 0;
             velocityY = 0;
             drag = movementSpeed; //Drag should never go above this
-            angle = 0f;
+            direction = 0f;
         }
 
         void InitStats()
@@ -179,14 +198,132 @@ namespace SwagSword
             //Example Health stats
             health = 100;
             maxHealth = 100;
-            movementSpeed = 3.5f;
-            strength = 10;
+            strength = 30f;
+            damage = 25;
+            attackSpeedMin = 10.0f;
+            attackSpeedMax = 20.0f;
+            movementSpeed = 5.0f;
         }
 
+        /// <summary>
+        /// The main update method
+        /// </summary>
         public virtual void Update()
         {
-            UpdatePhysics();
+            //Swap between character states
+            switch (characterState)
+            {
+                case CharacterState.Spawn:
+                    if (stateTimer % 0.2f < 0.1f)
+                    {
+                        FlashColors();
+                    }
+
+                    UpdatePhysics();
+
+                    stateTimer -= (float)mainMan.GameTime.ElapsedGameTime.TotalSeconds;
+                    if (stateTimer <= 0f)
+                    {
+                        SwitchState(CharacterState.Active);
+                    }
+                    break;
+
+                case CharacterState.Switch:
+                    if (stateTimer % 0.2f < 0.1f)
+                    {
+                        FlashColors();
+                    }
+
+                    UpdatePhysics();
+
+                    stateTimer -= (float)mainMan.GameTime.ElapsedGameTime.TotalSeconds;
+                    if (stateTimer <= 0f)
+                    {
+                        SwitchState(CharacterState.Active);
+                    }
+                    break;
+
+                case CharacterState.Active:
+                    UpdatePhysics();
+                    break;
+
+                case CharacterState.Hurt:
+                    if (stateTimer % 0.2f < 0.1f)
+                    {
+                        FlashColors();
+                    }
+
+                    UpdatePhysics();
+
+                    stateTimer -= (float)mainMan.GameTime.ElapsedGameTime.TotalSeconds;
+                    if (stateTimer <= 0f)
+                    {
+                        SwitchState(CharacterState.Active);
+                    }
+                    break;
+
+                case CharacterState.Dead:
+                    if (color.A - (byte)mainMan.GameTime.ElapsedGameTime.TotalMilliseconds <= 0)
+                    {
+                        Kill();
+                    }
+                    else
+                    {
+                        color.A -= (byte)mainMan.GameTime.ElapsedGameTime.TotalMilliseconds;
+                    }
+                    break;
+            }
+
             weapon.Update();
+        }
+
+        /// <summary>
+        /// Switches the characterState and updates stateTimer
+        /// </summary>
+        public void SwitchState(CharacterState state)
+        {
+            characterState = state;
+            color = normalColor;
+            switch (characterState)
+            {
+                case CharacterState.Spawn:
+                    stateTimer = 1.0f;
+                    flashColor = Color.GreenYellow;
+                    break;
+
+                case CharacterState.Switch:
+                    stateTimer = 1.0f;
+                    flashColor = Color.Gold;
+                    break;
+
+                case CharacterState.Active:
+                    stateTimer = 0f;
+                    break;
+
+                case CharacterState.Hurt:
+                    stateTimer = 0.2f;
+                    flashColor = Color.Red;
+                    break;
+
+                case CharacterState.Dead:
+                    
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// Swaps fast between the normal color and the flash color
+        /// </summary>
+        public void FlashColors()
+        {
+            if (color == normalColor)
+            {
+                color = flashColor;
+            }
+            else
+            {
+                color = normalColor;
+            }
         }
 
         /// <summary>
@@ -266,6 +403,46 @@ namespace SwagSword
             frameTime = 0.0f;
         }
 
+
+        /// <summary>
+        /// Used to damage character, knock them back
+        /// </summary>
+        /// <param name="damage"></param>
+        /// <param name="force"></param>
+        public void TakeHit(int damage, float force, float hitDirection)
+        {
+            //Take down health;
+            health -= damage;
+            if (health < 0)
+            {
+                SwitchState(CharacterState.Dead);
+                health = 0;
+            }
+            else
+            {
+                SwitchState(CharacterState.Hurt);
+            }
+
+            velocityX += force * (float)Math.Cos((90f - hitDirection) * Math.PI / 180f);
+            velocityY += force * (float)Math.Sin((90f - hitDirection) * Math.PI / 180f);
+        }
+
+        /// <summary>
+        /// Kills this character
+        /// </summary>
+        public void Kill()
+        {
+            if (isControlled)
+            {
+
+            }
+            else
+            {
+                
+            }
+            mainMan.GameMan.Characters.Remove(this);
+        }
+
         /// <summary>
         /// Each character will be responsible for drawing themselves
         /// </summary>
@@ -311,7 +488,7 @@ namespace SwagSword
 
             rectangle = new Rectangle(frameX * frameWidth, frameY * frameHeight, frameWidth, frameHeight);
 
-            spritebatch.Draw(texture, position, rectangle, color, angle, center, 1.0f, spriteEffect, 1);
+            spritebatch.Draw(texture, position, rectangle, color, 0f, center, 1.0f, spriteEffect, 1);
 
             weapon.Draw(spritebatch);
         }

@@ -89,16 +89,19 @@ namespace SwagSword
         {
             Vector2 movement = Vector2.Zero;
 
-            if (mainMan.InputMan.Left.IsDown() && mainMan.GameMan.Players[0].X < Position.X - mainMan.WindowWidth * 0.2)
-                movement.X--;
-            if (mainMan.InputMan.Right.IsDown() && mainMan.GameMan.Players[0].X > Position.X + mainMan.WindowWidth * 0.2)
-                movement.X++;
-            if (mainMan.InputMan.Up.IsDown() && mainMan.GameMan.Players[0].Y < Position.Y - mainMan.WindowHeight * 0.2)
-                movement.Y--;
-            if (mainMan.InputMan.Down.IsDown() && mainMan.GameMan.Players[0].Y > Position.Y + mainMan.WindowHeight * 0.2)
-                movement.Y++;
+            if (mainMan.GameMan.Players.Count > 0)
+            {
+                if (mainMan.InputMan.Left.IsDown() && mainMan.GameMan.Players[0].X < Position.X - mainMan.WindowWidth * 0.2)
+                    movement.X--;
+                if (mainMan.InputMan.Right.IsDown() && mainMan.GameMan.Players[0].X > Position.X + mainMan.WindowWidth * 0.2)
+                    movement.X++;
+                if (mainMan.InputMan.Up.IsDown() && mainMan.GameMan.Players[0].Y < Position.Y - mainMan.WindowHeight * 0.2)
+                    movement.Y--;
+                if (mainMan.InputMan.Down.IsDown() && mainMan.GameMan.Players[0].Y > Position.Y + mainMan.WindowHeight * 0.2)
+                    movement.Y++;
 
-            deltaMovement = movement * mainMan.GameMan.Players[0].Character.MovementSpeed;
+                deltaMovement = movement * mainMan.GameMan.Players[0].Character.MovementSpeed;
+            }
 
             Position += deltaMovement;
         }

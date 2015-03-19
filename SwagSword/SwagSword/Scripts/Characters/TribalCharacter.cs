@@ -18,7 +18,7 @@ namespace SwagSword
         public override void Init()
         {
             Type = Faction.Tribal;
-            Color = Color.Purple;
+            NormalColor = Color.Purple;
 
             base.Init();
         }

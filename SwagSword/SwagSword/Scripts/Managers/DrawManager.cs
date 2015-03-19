@@ -80,7 +80,6 @@ namespace SwagSword
 
         public override void Update()
         {
-            //Updates the camera position every frame
             camera.Update();
         }
 

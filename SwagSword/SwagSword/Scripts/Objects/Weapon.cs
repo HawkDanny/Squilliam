@@ -35,6 +35,8 @@ namespace SwagSword
         private float stopAngle;
         private float swingSpeed;
         private float currentAngle;
+        private Point endPoint;
+        private Point middlePoint;
         #endregion
 
         #region Properties
@@ -95,6 +97,13 @@ namespace SwagSword
                         StopSwing();
                     }
                 }
+
+                //Calc the middle + end points
+                middlePoint = new Point((int)character.X + (int)(texture.Width / 2 * Math.Cos((90f - currentAngle) * Math.PI / 180f)), (int)character.Y + (int)(texture.Width / 2 * Math.Sin((90f - currentAngle) * Math.PI / 180f)));
+                endPoint = new Point((int)character.X + (int)(texture.Width * Math.Cos((90f - currentAngle) * Math.PI / 180f)), (int)character.Y + (int)(texture.Width * Math.Sin((90f - currentAngle) * Math.PI / 180f)));
+
+                //Check if the weapon hit anything
+                CheckCollision();
             }
 
             //Set Position
@@ -143,6 +152,37 @@ namespace SwagSword
         }
 
         /// <summary>
+        /// Handles weapon collision, but only when swinging
+        /// </summary>
+        void CheckCollision()
+        {
+            if (character.IsControlled)
+            {
+                //Later add the ability to check collision based on current area
+                foreach (Character ch in mainMan.GameMan.Characters)
+                {
+                    if (ch.Type != character.Type && ch.CharacterState == CharacterState.Active)
+                    {
+                        if (ch.HitBox.Contains(new Point((int)character.X, (int)character.Y))
+                        || ch.HitBox.Contains(middlePoint) || ch.HitBox.Contains(endPoint))
+                        {
+                            ch.TakeHit(character.Damage, character.Strength, character.Direction);
+                        }
+                        
+                    }
+                }
+            }
+            else
+            {
+                //AI is swinging, check against players
+                foreach(Player player in mainMan.GameMan.Players)
+                {
+
+                }
+            }
+        }
+
+        /// <summary>
         /// Sets the proper texture for the weapon
         /// </summary>
         /// <param name="isControlled"></param>
@@ -172,6 +212,8 @@ namespace SwagSword
             if (isSwinging)
             {
                 spritebatch.Draw(texture, position, rectangle, Color.White, (90f - currentAngle) * (float)Math.PI / 180f, center, 1.0f, spriteEffect, 1);
+                spritebatch.Draw(mainMan.DrawMan.PointerTexture, new Vector2(endPoint.X, endPoint.Y), Color.White);
+                spritebatch.Draw(mainMan.DrawMan.PointerTexture, new Vector2(middlePoint.X, middlePoint.Y), Color.White);
             }
         }
     }

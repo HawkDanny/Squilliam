@@ -36,7 +36,7 @@ namespace SwagSword
             AITimers.Add(AIState.Ability, 3f);
 
             SightRange = 250f;
-            AttackRange = 50f;
+            AttackRange = 60f;
 
             base.Init();
 

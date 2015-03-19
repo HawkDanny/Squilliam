@@ -71,7 +71,7 @@ namespace SwagSword
         //The main update for player, character's update is not called
         public void Update()
         {
-            if (CharacterState == CharacterState.Dead)
+            if (CharacterState == CharacterState.Dead && !mainMan.GameMan.Characters.Contains(character))
             {
                 //remove the character reference
                 character = null;

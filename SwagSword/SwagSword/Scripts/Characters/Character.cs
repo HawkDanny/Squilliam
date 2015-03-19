@@ -42,6 +42,7 @@ namespace SwagSword
     public enum AIState
     {
         Attack, //Attack the player
+        Flank, //Move around the player
         Defend, //Retreat from the player
         Ability, //Use ability
         Ready, //Face and wait for opportunity
@@ -300,6 +301,7 @@ namespace SwagSword
                     break;
 
                 case CharacterState.Dead:
+                    UpdatePhysics();
                     if (color.A - (byte)mainMan.GameTime.ElapsedGameTime.TotalMilliseconds <= 0)
                     {
                         Kill();

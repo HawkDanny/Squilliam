@@ -18,7 +18,7 @@ namespace SwagSword
         public override void Init()
         {
             Type = Faction.Good;
-            Color = Color.White;
+            NormalColor = Color.White;
 
             base.Init();
         }

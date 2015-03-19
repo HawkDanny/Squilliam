@@ -33,7 +33,7 @@ namespace SwagSword
             {
                 mainMan.UIMan.Screens.Push(new GameScreen(mainMan));
                 mainMan.UIMan.State = GameState.game;
-                
+                mainMan.GameMan.StartGame();
             }
         }
     }

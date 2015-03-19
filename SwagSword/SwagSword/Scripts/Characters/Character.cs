@@ -39,6 +39,18 @@ namespace SwagSword
         Dead
     }
 
+    public enum AIState
+    {
+        Attack, //Attack the player
+        Defend, //Retreat from the player
+        Ability, //Use ability
+        Ready, //Face and wait for opportunity
+        Idle, //Waltz around
+        Swing, //Swing the sword
+        Switch, //The sword is up for grabs, get it!!!
+        Cower //Run away
+    }
+
     /// <summary>
     /// The base class for every type of Character
     /// </summary>
@@ -46,7 +58,7 @@ namespace SwagSword
     {
         #region Fields
         //Used to access Game
-        private Game1 mainMan;
+        protected Game1 mainMan;
 
         //Main
         private Texture2D texture;
@@ -76,19 +88,27 @@ namespace SwagSword
         private Weapon weapon;
 
         //Stats
-        private int health;
-        private int maxHealth;
-        private int damage;
-        private float strength;
-        private float movementSpeed;
-        private float attackSpeedMin; //In degrees
-        private float attackSpeedMax;
+        protected int health;
+        protected int maxHealth;
+        protected int damage;
+        protected float strength;
+        protected float movementSpeed;
+        protected float attackSpeedMin; //In degrees
+        protected float attackSpeedMax;
 
         //Physics
         private float velocityX;
         private float velocityY;
         private float drag;
         private float direction; //Think of it as the forward angle
+
+        //AI
+        private AIState aiState;
+        private float aiStateTimer;
+        private Dictionary<AIState, float> aiProbs;
+        private Dictionary<AIState, float> aiTimers;
+        private float sightRange;
+        private float attackRange;
         #endregion
 
         #region Properties
@@ -148,6 +168,14 @@ namespace SwagSword
         public float VelocityY { get { return velocityY; } set { velocityY = value; } }
         public float Drag { get { return drag; } }
         public float Direction { get { return direction; } set { direction = value; } }
+
+        //AI
+        public AIState AIState { get { return aiState; } set { aiState = value; } }
+        public float AIStateTimer { get { return aiStateTimer; } set { aiStateTimer = value; } }
+        public Dictionary<AIState, float> AIProbs { get { return aiProbs; } set { aiProbs = value; } }
+        public Dictionary<AIState, float> AITimers { get { return aiTimers; } set { aiTimers = value; } }
+        public float SightRange { get { return sightRange; } set { sightRange = value; } }
+        public float AttackRange { get { return attackRange; } set { attackRange = value; } }
         #endregion
 
         public Character(int x, int y, Texture2D texture, Game1 mainMan)
@@ -157,6 +185,10 @@ namespace SwagSword
 
             //Set texture
             this.texture = texture;
+
+            //AI
+            AIProbs = new Dictionary<AIState, float>();
+            AITimers = new Dictionary<AIState, float>();
 
             //Set position
             rectangle = new Rectangle(0, 0, 66, 66);
@@ -183,7 +215,10 @@ namespace SwagSword
             totalFrames = 4;
             frameLength = 0.1f;
             frameTime = 0.0f;
-            animationState = AnimationState.FaceRight;
+            animationState = AnimationState.FaceDown;
+
+            //Init AI
+            SwitchAIState(AIState.Idle);
 
             //Init physics
             velocityX = 0;
@@ -192,7 +227,7 @@ namespace SwagSword
             direction = 0f;
         }
 
-        void InitStats()
+        protected virtual void InitStats()
         {
             //Will init all stats based on a config file
             //Example Health stats
@@ -289,6 +324,7 @@ namespace SwagSword
                 case CharacterState.Spawn:
                     stateTimer = 1.0f;
                     flashColor = Color.GreenYellow;
+                    AIState = AIState.Idle;
                     break;
 
                 case CharacterState.Switch:
@@ -310,6 +346,36 @@ namespace SwagSword
                     break;
             }
         }
+
+        /// <summary>
+        /// Switches the current AI state and updates timers
+        /// </summary>
+        /// <param name="state"></param>
+        public void SwitchAIState(AIState state)
+        {
+            AIState = state;
+            switch (AIState)
+            {
+                case AIState.Attack:
+                    aiStateTimer = aiTimers[state];
+                    break;
+
+                case AIState.Swing:
+                    aiStateTimer = aiTimers[state];
+                    weapon.Angle = direction;
+                    weapon.Swing();
+                    break;
+
+                case AIState.Defend:
+                    aiStateTimer = aiTimers[state];
+                    break;
+
+                case AIState.Idle:
+                    StartAnimation(AnimationState.FaceDown);
+                    break;
+            }
+        }
+
 
         /// <summary>
         /// Swaps fast between the normal color and the flash color
@@ -372,6 +438,67 @@ namespace SwagSword
                     {
                         velocityY = 0;
                     }
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// Returns the characters distance to player specified at index
+        /// </summary>
+        /// <returns>Distance as a float</returns>
+        public float DistanceToPlayer(int index)
+        {
+            return (float)Math.Sqrt(Math.Pow(mainMan.GameMan.Players[index].X - X, 2) + Math.Pow(mainMan.GameMan.Players[index].Y - Y, 2));
+        }
+
+        /// <summary>
+        /// Sets the facing direction to the point specified
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        public void SetDirectionToPoint(float x, float y)
+        {
+            direction = (float)Math.Atan2(x - position.X, y - position.Y) * 180f / (float)Math.PI;
+        }
+
+        /// <summary>
+        /// Moves the AI to this point
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        public void MoveToPoint(float x, float y)
+        {
+            SetDirectionToPoint(x, y);
+
+            velocityX += (float)(MovementSpeed * Math.Cos((90f - direction) * Math.PI / 180f));
+            velocityY += (float)(MovementSpeed * Math.Sin((90f - direction) * Math.PI / 180f));
+
+            //Animation
+            if (Math.Abs(velocityX) > Math.Abs(VelocityY))
+            {
+                if (velocityX > 0)
+                {
+                    if (animationState != AnimationState.MoveRight)
+                        StartAnimation(AnimationState.MoveRight);
+                }
+                else if (velocityX < 0)
+                {
+                    if (animationState != AnimationState.MoveLeft)
+                        StartAnimation(AnimationState.MoveLeft);
+                }
+            }
+            else if (Math.Abs(velocityX) < Math.Abs(VelocityY))
+            {
+                if (velocityY > 0)
+                {
+                    if (animationState != AnimationState.MoveDown)
+                        StartAnimation(AnimationState.MoveDown);
+                }
+                else if (velocityY < 0)
+                {
+                    if (animationState != AnimationState.MoveUp)
+                        StartAnimation(AnimationState.MoveUp);
                 }
             }
         }

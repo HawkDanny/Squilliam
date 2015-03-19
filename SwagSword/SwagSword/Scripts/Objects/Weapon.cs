@@ -168,16 +168,23 @@ namespace SwagSword
                         {
                             ch.TakeHit(character.Damage, character.Strength, character.Direction);
                         }
-                        
                     }
                 }
             }
             else
             {
                 //AI is swinging, check against players
-                foreach(Player player in mainMan.GameMan.Players)
+                for (int i = mainMan.GameMan.Players.Count - 1; i >= 0; i--)
                 {
-
+                    Player tempPlayer = mainMan.GameMan.Players[i];
+                    if (tempPlayer.Character.CharacterState == CharacterState.Active)
+                    {
+                        if (tempPlayer.Character.HitBox.Contains(new Point((int)character.X, (int)character.Y))
+                        || tempPlayer.Character.HitBox.Contains(middlePoint) || tempPlayer.Character.HitBox.Contains(endPoint))
+                        {
+                            tempPlayer.Character.TakeHit(character.Damage, character.Strength, character.Direction);
+                        }
+                    }
                 }
             }
         }
@@ -212,8 +219,9 @@ namespace SwagSword
             if (isSwinging)
             {
                 spritebatch.Draw(texture, position, rectangle, Color.White, (90f - currentAngle) * (float)Math.PI / 180f, center, 1.0f, spriteEffect, 1);
-                spritebatch.Draw(mainMan.DrawMan.PointerTexture, new Vector2(endPoint.X, endPoint.Y), Color.White);
-                spritebatch.Draw(mainMan.DrawMan.PointerTexture, new Vector2(middlePoint.X, middlePoint.Y), Color.White);
+                //For debuging the path of the swing
+                //spritebatch.Draw(mainMan.DrawMan.PointerTexture, new Vector2(endPoint.X, endPoint.Y), Color.White);
+                //spritebatch.Draw(mainMan.DrawMan.PointerTexture, new Vector2(middlePoint.X, middlePoint.Y), Color.White);
             }
         }
     }

@@ -69,11 +69,11 @@ namespace SwagSword
                 characters[i].Update();
             }
 
-                //Call update on all players
-                foreach (Player player in players)
-                {
-                    player.Update();
-                }
+            //Call update on all players
+            foreach (Player player in players)
+            {
+                player.Update();
+            }
         }
 
         /// <summary>

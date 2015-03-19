@@ -245,6 +245,8 @@ namespace SwagSword
         /// </summary>
         public virtual void Update()
         {
+            weapon.Update();
+
             //Swap between character states
             switch (characterState)
             {
@@ -308,8 +310,6 @@ namespace SwagSword
                     }
                     break;
             }
-
-            weapon.Update();
         }
 
         /// <summary>
@@ -324,12 +324,13 @@ namespace SwagSword
                 case CharacterState.Spawn:
                     stateTimer = 1.0f;
                     flashColor = Color.GreenYellow;
-                    AIState = AIState.Idle;
+                    SwitchAIState(AIState.Idle);
                     break;
 
                 case CharacterState.Switch:
                     stateTimer = 1.0f;
                     flashColor = Color.Gold;
+                    AnimateFaceDirection();
                     break;
 
                 case CharacterState.Active:
@@ -364,6 +365,7 @@ namespace SwagSword
                     aiStateTimer = aiTimers[state];
                     weapon.Angle = direction;
                     weapon.Swing();
+                    AnimateFaceDirection();
                     break;
 
                 case AIState.Defend:
@@ -371,7 +373,7 @@ namespace SwagSword
                     break;
 
                 case AIState.Idle:
-                    StartAnimation(AnimationState.FaceDown);
+                    AnimateFaceDirection();
                     break;
             }
         }
@@ -504,6 +506,30 @@ namespace SwagSword
         }
 
         /// <summary>
+        /// Animates the AI to face its direction
+        /// </summary>
+        public void AnimateFaceDirection()
+        {
+            float adjustedAngle = 180f - direction;
+            if (adjustedAngle >= 45f && adjustedAngle < 135f)
+            {
+                StartAnimation(AnimationState.FaceRight);
+            }
+            else if (adjustedAngle < 225f)
+            {
+                StartAnimation(AnimationState.FaceDown);
+            }
+            else if (adjustedAngle < 315f)
+            {
+                StartAnimation(AnimationState.FaceLeft);
+            }
+            if (adjustedAngle >= 315f || adjustedAngle < 45f)
+            {
+                StartAnimation(AnimationState.FaceUp);
+            }
+        }
+
+        /// <summary>
         /// Starts a new animation by setting frameY and reseting the frame timer
         /// </summary>
         /// <param name="anim"></param>
@@ -540,7 +566,7 @@ namespace SwagSword
         {
             //Take down health;
             health -= damage;
-            if (health < 0)
+            if (health <= 0)
             {
                 SwitchState(CharacterState.Dead);
                 health = 0;
@@ -559,14 +585,6 @@ namespace SwagSword
         /// </summary>
         public void Kill()
         {
-            if (isControlled)
-            {
-
-            }
-            else
-            {
-                
-            }
             mainMan.GameMan.Characters.Remove(this);
         }
 

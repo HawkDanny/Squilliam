@@ -177,13 +177,19 @@ namespace SwagSword
                 for (int i = mainMan.GameMan.Players.Count - 1; i >= 0; i--)
                 {
                     Player tempPlayer = mainMan.GameMan.Players[i];
-                    if (tempPlayer.Character.CharacterState == CharacterState.Active)
+                    if (tempPlayer.CharacterState == CharacterState.Active)
                     {
                         if (tempPlayer.Character.HitBox.Contains(new Point((int)character.X, (int)character.Y))
                         || tempPlayer.Character.HitBox.Contains(middlePoint) || tempPlayer.Character.HitBox.Contains(endPoint))
                         {
                             tempPlayer.Character.TakeHit(character.Damage, character.Strength, character.Direction);
                         }
+                    }
+
+                    //Pick up sword if killed player
+                    if (tempPlayer.CharacterState == CharacterState.Dead)
+                    {
+                        character.SwitchAIState(AIState.Switch);
                     }
                 }
             }
@@ -207,7 +213,7 @@ namespace SwagSword
                 switch (type)
                 {
                     default:
-                        texture = mainMan.DrawMan.SwordTexture;
+                        texture = mainMan.DrawMan.WhipTexture;
                         break;
                 }
             }

@@ -31,12 +31,12 @@ namespace SwagSword
 
             //Set AI timers
             AITimers.Add(AIState.Attack, 7f);
-            AITimers.Add(AIState.Swing, 3f);
+            AITimers.Add(AIState.Swing, 0.25f);
             AITimers.Add(AIState.Defend, 5f);
             AITimers.Add(AIState.Ability, 3f);
 
-            SightRange = 300f;
-            AttackRange = 70f;
+            SightRange = 250f;
+            AttackRange = 80f;
 
             base.Init();
 
@@ -47,8 +47,8 @@ namespace SwagSword
         {
             health = 125;
             maxHealth = 125;
-            strength = 50f;
-            damage = 10;
+            strength = 40f;
+            damage = 5;
             attackSpeedMin = 8.0f;
             attackSpeedMax = 15.0f;
             movementSpeed = 3.5f;
@@ -81,7 +81,11 @@ namespace SwagSword
                         break;
 
                     case AIState.Swing:
-
+                        AIStateTimer -= (float)mainMan.GameTime.ElapsedGameTime.TotalSeconds;
+                        if (AIStateTimer <= 0f)
+                        {
+                            SwitchAIState(AIState.Idle);
+                        }
                         break;
 
                     case AIState.Defend:
@@ -90,9 +94,24 @@ namespace SwagSword
 
                     case AIState.Idle:
                         //Work out some random movement paths
-                        if (DistanceToPlayer(0) < SightRange)
+                        if (!mainMan.GameMan.Players[0].NoCharacter && mainMan.GameMan.Players[0].Character.Type != Type && mainMan.GameMan.Players[0].CharacterState == CharacterState.Active)
                         {
-                            SwitchAIState(AIState.Attack);
+                            if (DistanceToPlayer(0) < SightRange)
+                            {
+                                SwitchAIState(AIState.Attack);
+                            }
+                        }
+                        break;
+
+                    case AIState.Switch:
+                        //Move to sword
+                        MoveToPoint(mainMan.GameMan.Players[0].X, mainMan.GameMan.Players[0].Y);
+                        
+                        //Check if picked up
+                        if (HitBox.Contains(mainMan.GameMan.Players[0].Position))
+                        {
+                            //Pick it up!!!
+                            mainMan.GameMan.Players[0].SwitchBlade(this);
                         }
                         break;
 

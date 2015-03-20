@@ -31,11 +31,28 @@ namespace SwagSword
             //Checks to see if the characters health is done for.
             //Obviously in game, this won't have to be a game over screen,
             //but for checking that it works for now.
-            /*if(mainMan.GameMan.Players[0].Health == 0)
+            if(mainMan.GameMan.Players[0].Health == 0)
             {
                 mainMan.UIMan.Screens.Push(new GameOverScreen(mainMan));
                 mainMan.UIMan.State = GameState.gameOver;
-            }*/
+
+            }
+            
+            //Pauses the game
+            if(mainMan.InputMan.SingleKeyPress(Keys.P))
+            {
+                mainMan.UIMan.Screens.Push(new PauseScreen(mainMan, mainMan.UIMan.Screens.Pop()));
+                mainMan.UIMan.State = GameState.pause;
+            }
+
+            //Used to check how the health bar works.
+            //Press enter to decrease health by 1.
+            if(mainMan.InputMan.SingleKeyPress(Keys.Enter))
+            {
+                mainMan.GameMan.Characters[0].Health--;
+            }
+
+            
         }
 
         public override void Draw(SpriteBatch spritebatch)

@@ -105,9 +105,13 @@ namespace SwagSword
             //Load Screen Textures
             drawMan.TitleImage = this.Content.Load<Texture2D>("UIScreens/TitleScreenMock.png");
             drawMan.GameOverImage = this.Content.Load<Texture2D>("UIScreens/GameOverScreen.png");
+            drawMan.PauseImage = this.Content.Load<Texture2D>("UIScreens/PauseScreen.png");
 
             //Load UI Textures
             drawMan.PointerTexture = this.Content.Load<Texture2D>("Objects/pointer.png");
+            drawMan.ResumeTexture = this.Content.Load<Texture2D>("Buttons/ResumeButton.png");
+            drawMan.StatsTexture = this.Content.Load<Texture2D>("Buttons/StatsButton.png");
+            drawMan.ExitTexture = this.Content.Load<Texture2D>("Buttons/ExitButton.png");
 
             //Load Weapon textures
             drawMan.SwordTexture = this.Content.Load<Texture2D>("Objects/sword.png");
@@ -149,7 +153,11 @@ namespace SwagSword
             this.gameTime = gameTime;
 
             //Call update on all Managers that need it
-            gameMan.Update();
+            if(uiMan.State == GameState.game)
+            {
+                gameMan.Update();
+                
+            }
             inputMan.Update();
             uiMan.Update();
 

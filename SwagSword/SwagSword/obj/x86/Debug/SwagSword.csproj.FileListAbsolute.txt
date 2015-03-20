@@ -68,4 +68,8 @@ C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\D
 C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\obj\x86\Debug\SwagSword.csprojResolveAssemblyReference.cache
 C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\obj\x86\Debug\SwagSword.exe
 C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\obj\x86\Debug\SwagSword.pdb
-C:\Users\Owner\Desktop\Squilliam\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\Objects\whip.png
+C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\Buttons\ExitButton.png
+C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\Buttons\ResumeButton.png
+C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\Buttons\StatsButton.png
+C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\UIScreens\PauseScreen.png
+C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\Objects\whip.png

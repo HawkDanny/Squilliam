@@ -5,6 +5,8 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
+//Names: Peter Lockhart
+
 namespace SwagSword
 {
     //The base class for all screens for the game.

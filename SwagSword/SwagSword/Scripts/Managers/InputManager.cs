@@ -5,6 +5,8 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
+//Names: Danny Hawk, Nelson Scott, Peter Lockhart
+
 namespace SwagSword
 {
     //Enum necessary for specifying mouse buttons in the inputMouse class   

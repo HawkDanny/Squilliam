@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Storage;
 using Microsoft.Xna.Framework.GamerServices;
 #endregion
 
-//Names: Nelson Scott
+//Names: Nelson Scott, Peter Lockhart, Ryan Bell
 
 namespace SwagSword
 {

@@ -5,7 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-//Names: Nelson Scott
+//Names: Nelson Scott, Peter Lockhart, Ryan Bell
 
 namespace SwagSword
 {

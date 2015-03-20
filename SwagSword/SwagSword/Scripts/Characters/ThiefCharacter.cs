@@ -5,6 +5,8 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
+//Names: Nelson Scott
+
 namespace SwagSword
 {
     class ThiefCharacter : Character

@@ -5,6 +5,8 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
+//Names: Danny Hawk
+
 namespace SwagSword
 {
     class InputMouse : InputType

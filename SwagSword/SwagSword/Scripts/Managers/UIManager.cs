@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 
+//Names: Peter Lockhart
+
 namespace SwagSword
 {
     /// <summary>

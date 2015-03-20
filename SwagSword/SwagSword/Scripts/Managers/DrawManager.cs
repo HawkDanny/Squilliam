@@ -127,6 +127,11 @@ namespace SwagSword
                     character.Draw(spritebatch, gameTime);
                 }
 
+                //Draw player
+                foreach (Player player in mainMan.GameMan.Players)
+                {
+                    player.Draw(spritebatch);
+                }
             }
             if(mainMan.UIMan.State == GameState.gameOver)
             {

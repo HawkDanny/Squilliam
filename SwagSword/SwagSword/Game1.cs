@@ -118,13 +118,14 @@ namespace SwagSword
             drawMan.WhipTexture = this.Content.Load<Texture2D>("Objects/whip.png");
 
             //Load Map textures
-            System.IO.Stream pathStream = TitleContainer.OpenStream("Content/Map/SamplePath.png");
+            System.IO.Stream pathStream = TitleContainer.OpenStream("Content/Map/SamplePath3.png");
             drawMan.PathwayTexture = (Texture2D.FromStream(GraphicsDevice, pathStream));
             pathStream.Close();
 
             System.IO.Stream notPathStream = TitleContainer.OpenStream("Content/Map/SampleNotPath.png");
             drawMan.NotPathwayTexture = (Texture2D.FromStream(GraphicsDevice, notPathStream));
             notPathStream.Close();
+            
 
             System.IO.Stream dirtStream = TitleContainer.OpenStream("Content/Map/Dirt.png");
             drawMan.Dirt = Texture2D.FromStream(GraphicsDevice, dirtStream);

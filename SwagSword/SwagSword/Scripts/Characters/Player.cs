@@ -20,6 +20,7 @@ namespace SwagSword
 
         //Character
         private Character character;
+        private Character targetCharacter;
 
         //Player
         private float x;
@@ -29,6 +30,7 @@ namespace SwagSword
         #region Properties
         //Main
         public Character Character { get { return character; } set { character = value; } }
+        public Character TargetCharacter { get { return targetCharacter; } set { targetCharacter = value; } }
         public float X { get { return x; } }
         public float Y { get { return y; } }
         public Vector2 Position { get { return new Vector2(x, y); } }
@@ -66,6 +68,7 @@ namespace SwagSword
             this.character.Health = this.character.MaxHealth;
             this.character.Weapon.SetTexture(character.IsControlled, this.character.Type);
             this.character.SwitchState(CharacterState.Switch);
+            targetCharacter = null;
         }
 
         //The main update for player, character's update is not called

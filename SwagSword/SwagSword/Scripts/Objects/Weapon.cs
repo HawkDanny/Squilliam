@@ -187,9 +187,10 @@ namespace SwagSword
                     }
 
                     //Pick up sword if killed player
-                    if (tempPlayer.CharacterState == CharacterState.Dead)
+                    if (tempPlayer.CharacterState == CharacterState.Dead && tempPlayer.TargetCharacter == null)
                     {
                         character.SwitchAIState(AIState.Switch);
+                        tempPlayer.TargetCharacter = character;
                     }
                 }
             }

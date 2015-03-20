@@ -88,6 +88,7 @@ namespace SwagSword
         public void Update()
         {
             Vector2 movement = Vector2.Zero;
+            deltaMovement = movement;
 
             if (mainMan.GameMan.Players.Count > 0)
             {
@@ -103,6 +104,8 @@ namespace SwagSword
                         movement.Y++;
 
                     deltaMovement = movement * mainMan.GameMan.Players[0].Character.MovementSpeed;
+
+                    
                 }
             }
 

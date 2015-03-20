@@ -62,15 +62,22 @@ namespace SwagSword
                 switch (AIState)
                 {
                     case AIState.Attack:
-                        //Move close to attack
-                        if (DistanceToPlayer(0) > AttackRange)
+                        if (mainMan.GameMan.Players[0].CharacterState != CharacterState.Dead)
                         {
-                            MoveToPoint(mainMan.GameMan.Players[0].X, mainMan.GameMan.Players[0].Y);
+                            //Move close to attack
+                            if (DistanceToPlayer(0) > AttackRange)
+                            {
+                                MoveToPoint(mainMan.GameMan.Players[0].X, mainMan.GameMan.Players[0].Y);
+                            }
+                            else
+                            {
+                                //Fight them suckers
+                                SwitchAIState(AIState.Swing);
+                            }
                         }
                         else
                         {
-                            //Fight them suckers
-                            SwitchAIState(AIState.Swing);
+                            SwitchAIState(AIState.Idle);
                         }
 
                         AIStateTimer -= (float)mainMan.GameTime.ElapsedGameTime.TotalSeconds;

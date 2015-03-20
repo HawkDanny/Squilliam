@@ -72,3 +72,4 @@ C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\D
 C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\Buttons\ResumeButton.png
 C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\Buttons\StatsButton.png
 C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\UIScreens\PauseScreen.png
+C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\Objects\whip.png

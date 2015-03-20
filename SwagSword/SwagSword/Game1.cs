@@ -153,7 +153,11 @@ namespace SwagSword
             this.gameTime = gameTime;
 
             //Call update on all Managers that need it
-            gameMan.Update();
+            if(uiMan.State == GameState.game)
+            {
+                gameMan.Update();
+                
+            }
             inputMan.Update();
             uiMan.Update();
 

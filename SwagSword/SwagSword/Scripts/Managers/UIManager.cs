@@ -13,9 +13,7 @@ namespace SwagSword
     {
         title,
         game,
-        gameOver,
-        pause,
-        exit
+        gameOver
     }
 
     /// <summary>

@@ -38,13 +38,6 @@ namespace SwagSword
 <<<<<<< HEAD
             }
             
-            //Pauses the game
-            if(mainMan.InputMan.SingleKeyPress(Keys.P))
-            {
-                mainMan.UIMan.Screens.Push(new PauseScreen(mainMan, mainMan.UIMan.Screens.Pop()));
-                mainMan.UIMan.State = GameState.pause;
-            }
-
             //Used to check how the health bar works.
             //Press enter to decrease health by 1.
             if(mainMan.InputMan.SingleKeyPress(Keys.Enter))

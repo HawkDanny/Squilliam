@@ -54,7 +54,6 @@
     <Compile Include="Scripts\Managers\MapManager.cs" />
     <Compile Include="Scripts\Managers\SoundManager.cs" />
     <Compile Include="Scripts\Managers\SpawnManager.cs" />
-    <Compile Include="Scripts\Objects\Button.cs" />
     <Compile Include="Scripts\Objects\Camera.cs" />
     <Compile Include="Scripts\Objects\Tile.cs" />
     <Compile Include="Scripts\Managers\UIManager.cs" />
@@ -62,7 +61,6 @@
     <Compile Include="Scripts\Characters\TribalCharacter.cs" />
     <Compile Include="Scripts\UIScreens\GameOverScreen.cs" />
     <Compile Include="Scripts\UIScreens\GameScreen.cs" />
-    <Compile Include="Scripts\UIScreens\PauseScreen.cs" />
     <Compile Include="Scripts\UIScreens\TitleScreen.cs" />
     <Compile Include="Scripts\UIScreens\UIScreen.cs" />
   </ItemGroup>
@@ -74,15 +72,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Buttons\ExitButton.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Buttons\ResumeButton.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Buttons\StatsButton.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Content\Map\Dirt.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -108,9 +97,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\UIScreens\GameOverScreen.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\UIScreens\PauseScreen.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\UIScreens\TitleScreenMock.png">

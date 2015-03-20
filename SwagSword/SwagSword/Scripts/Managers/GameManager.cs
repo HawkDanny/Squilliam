@@ -64,12 +64,9 @@ namespace SwagSword
         public override void Update()
         {
             //Call update on all characters
-            foreach (Character character in characters)
+            for (int i = characters.Count - 1; i >= 0; i--)
             {
-                if (!character.IsControlled)
-                {
-                    character.Update();
-                }
+                characters[i].Update();
             }
 
             //Call update on all players
@@ -79,6 +76,18 @@ namespace SwagSword
             }
         }
 
+        /// <summary>
+        /// Just a plain start game method
+        /// </summary>
+        public void StartGame()
+        {
+            //Spawn some random characters
+            SpawnMan.SpawnCharacter(Faction.Good);
+            for (int i = 0; i < 30; i++)
+            {
+                SpawnMan.SpawnCharacter(Faction.Tribal);
+            }
+        }
 
     }
 }

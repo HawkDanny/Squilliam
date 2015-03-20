@@ -19,7 +19,8 @@ namespace SwagSword
         //Important
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        Random rnd;
+        private Random rnd;
+        private GameTime gameTime;
 
         #region Fields
         //Managers
@@ -48,6 +49,7 @@ namespace SwagSword
 
         //Helpers
         public Random Rnd { get { return rnd; } }
+        public GameTime GameTime { get { return gameTime; } }
         public int WindowWidth { get { return windowWidth; } }
         public int WindowHeight { get { return windowHeight; } }
         public int WindowHalfWidth { get { return windowHalfWidth; } }
@@ -113,6 +115,7 @@ namespace SwagSword
 
             //Load Weapon textures
             drawMan.SwordTexture = this.Content.Load<Texture2D>("Objects/sword.png");
+            drawMan.WhipTexture = this.Content.Load<Texture2D>("Objects/whip.png");
 
             //Load Map textures
             System.IO.Stream pathStream = TitleContainer.OpenStream("Content/Map/SamplePath.png");
@@ -132,15 +135,6 @@ namespace SwagSword
             gameMan.MapMan.Startup();
             drawMan.ActivateCamera();
 
-
-            //Spawn some random characters
-            gameMan.SpawnMan.SpawnCharacter(Faction.Good);
-            for (int i = 0; i < 30; i++)
-            {
-                gameMan.SpawnMan.SpawnCharacter(Faction.Tribal);
-            }
-
-
             spriteBatch = new SpriteBatch(GraphicsDevice);
         }
 
@@ -155,6 +149,8 @@ namespace SwagSword
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
+
+            this.gameTime = gameTime;
 
             //Call update on all Managers that need it
             gameMan.Update();

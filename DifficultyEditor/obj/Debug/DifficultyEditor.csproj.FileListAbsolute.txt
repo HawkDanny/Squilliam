@@ -1,0 +1,24 @@
+c:\users\danny\documents\visual studio 2013\Projects\DifficultyEditor\bin\Debug\DifficultyEditor.exe.config
+c:\users\danny\documents\visual studio 2013\Projects\DifficultyEditor\obj\Debug\DifficultyEditor.csprojResolveAssemblyReference.cache
+c:\users\danny\documents\visual studio 2013\Projects\DifficultyEditor\obj\Debug\DifficultyEditor.difficultyEditor.resources
+c:\users\danny\documents\visual studio 2013\Projects\DifficultyEditor\obj\Debug\DifficultyEditor.Properties.Resources.resources
+c:\users\danny\documents\visual studio 2013\Projects\DifficultyEditor\obj\Debug\DifficultyEditor.csproj.GenerateResource.Cache
+c:\users\danny\documents\visual studio 2013\Projects\DifficultyEditor\bin\Debug\DifficultyEditor.exe
+c:\users\danny\documents\visual studio 2013\Projects\DifficultyEditor\bin\Debug\DifficultyEditor.pdb
+c:\users\danny\documents\visual studio 2013\Projects\DifficultyEditor\obj\Debug\DifficultyEditor.exe
+c:\users\danny\documents\visual studio 2013\Projects\DifficultyEditor\obj\Debug\DifficultyEditor.pdb
+c:\users\danny\documents\visual studio 2013\Projects\DifficultyEditor\bin\Debug\Newtonsoft.Json.dll
+c:\users\danny\documents\visual studio 2013\Projects\DifficultyEditor\bin\Debug\Newtonsoft.Json.xml
+C:\Git\Squilliam\DifficultyEditor\bin\Debug\DifficultyEditor.exe.config
+C:\Git\Squilliam\DifficultyEditor\obj\Debug\DifficultyEditor.exe
+C:\Git\Squilliam\DifficultyEditor\obj\Debug\DifficultyEditor.pdb
+C:\Users\Owner\Desktop\Squilliam\Squilliam\DifficultyEditor\bin\Debug\DifficultyEditor.exe.config
+C:\Users\Owner\Desktop\Squilliam\Squilliam\DifficultyEditor\obj\Debug\DifficultyEditor.pdb
+C:\Users\Owner\Desktop\Squilliam\Squilliam\DifficultyEditor\bin\Debug\DifficultyEditor.exe
+C:\Users\Owner\Desktop\Squilliam\Squilliam\DifficultyEditor\bin\Debug\DifficultyEditor.pdb
+C:\Users\Owner\Desktop\Squilliam\Squilliam\DifficultyEditor\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Owner\Desktop\Squilliam\Squilliam\DifficultyEditor\obj\Debug\DifficultyEditor.csprojResolveAssemblyReference.cache
+C:\Users\Owner\Desktop\Squilliam\Squilliam\DifficultyEditor\obj\Debug\DifficultyEditor.difficultyEditor.resources
+C:\Users\Owner\Desktop\Squilliam\Squilliam\DifficultyEditor\obj\Debug\DifficultyEditor.Properties.Resources.resources
+C:\Users\Owner\Desktop\Squilliam\Squilliam\DifficultyEditor\obj\Debug\DifficultyEditor.csproj.GenerateResource.Cache
+C:\Users\Owner\Desktop\Squilliam\Squilliam\DifficultyEditor\obj\Debug\DifficultyEditor.exe

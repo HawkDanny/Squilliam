@@ -138,9 +138,9 @@ namespace SwagSword
             this.texture = texture;
 
             //Set position
-            rectangle = new Rectangle(0, 0, 65, 65);
+            rectangle = new Rectangle(0, 0, 66, 66);
             position = new Vector2(x, y);
-            center = new Vector2(65.0f / 2f, 65.0f / 2f);
+            center = new Vector2(66.0f / 2f, 66.0f / 2f);
 
             //Set weapon, abilites
             weapon = new Weapon(this, mainMan);
@@ -159,8 +159,8 @@ namespace SwagSword
             //Init Animation
             frameX = 0;
             frameY = 0;
-            frameWidth = 65;
-            frameHeight = 65;
+            frameWidth = 66;
+            frameHeight = 66;
             totalFrames = 4;
             frameLength = 0.1f;
             frameTime = 0.0f;

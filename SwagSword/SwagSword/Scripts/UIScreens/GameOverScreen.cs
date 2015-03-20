@@ -21,7 +21,7 @@ namespace SwagSword
 
         public override void Draw(SpriteBatch spritebatch)
         {
-            spritebatch.Draw(mainMan.DrawMan.GameOverImage, new Rectangle(0, 0, mainMan.WindowWidth, mainMan.WindowHeight), Color.White);
+            spritebatch.Draw(mainMan.DrawMan.GameOverImage, new Rectangle((int)mainMan.DrawMan.Camera.TopLeftPosition.X, (int)mainMan.DrawMan.Camera.TopLeftPosition.Y, mainMan.WindowWidth, mainMan.WindowHeight), Color.White);
         }
     }
 }

@@ -21,9 +21,13 @@ namespace SwagSword
         //Screens Texture
         private Texture2D titleImage;
         private Texture2D gameOverImage;
+        private Texture2D pauseImage;
 
         //UI Textures (buttons... what not)
         private Texture2D pointerTexture;
+        private Texture2D resumeTexture;
+        private Texture2D statsTexture;
+        private Texture2D exitTexture;
 
         //Weapon Textures (Create a dictionary)
         private Texture2D swordTexture;
@@ -46,9 +50,13 @@ namespace SwagSword
         //Screen Textures
         public Texture2D TitleImage { get { return titleImage; } set { titleImage = value; } }
         public Texture2D GameOverImage { get { return gameOverImage; } set { gameOverImage = value; } }
+        public Texture2D PauseImage { get { return pauseImage; } set { pauseImage = value; } }
 
         //UI Textures
         public Texture2D PointerTexture { get { return pointerTexture; } set { pointerTexture = value; } }
+        public Texture2D ResumeTexture { get { return resumeTexture; } set { resumeTexture = value; } }
+        public Texture2D StatsTexture { get { return statsTexture; } set { statsTexture = value; } }
+        public Texture2D ExitTexture { get { return exitTexture; } set { exitTexture = value; } }
 
         //Weapon textures
         public Texture2D SwordTexture { get { return swordTexture; } set { swordTexture = value; } }
@@ -81,7 +89,8 @@ namespace SwagSword
         public override void Update()
         {
             //Updates the camera position every frame
-            camera.Update();
+                camera.Update();
+
         }
 
         public void ActivateCamera()
@@ -101,6 +110,11 @@ namespace SwagSword
             {
                 //For the beginning of the game with the title screen.
             }
+
+            if(mainMan.UIMan.State == GameState.pause)
+            {
+
+            }
             
             if(mainMan.UIMan.State == GameState.game)
             {
@@ -115,6 +129,10 @@ namespace SwagSword
             if(mainMan.UIMan.State == GameState.gameOver)
             {
                 //For the game over/when character dies.
+            }
+            if(mainMan.UIMan.State == GameState.exit)
+            {
+                mainMan.Exit();
             }
             mainMan.UIMan.Screens.Peek().Draw(spritebatch);
 

@@ -37,6 +37,7 @@ namespace SwagSword
         private Texture2D pathwayTexture;
         private Texture2D notPathwayTexture;
         private Texture2D dirt;
+        private Texture2D stronghold;
 
         //Fonts
         private SpriteFont healthFont;
@@ -67,6 +68,7 @@ namespace SwagSword
         public Texture2D PathwayTexture { get { return pathwayTexture; } set { pathwayTexture = value; } }
         public Texture2D NotPathwayTexture { get { return notPathwayTexture; } set { notPathwayTexture = value; } }
         public Texture2D Dirt { get { return dirt; } set { dirt = value; } }
+        public Texture2D Stronghold { get { return stronghold; } set { stronghold = value; } }
 
         //SpriteFonts
         public SpriteFont HealthFont { get { return healthFont; } set { healthFont = value; } }

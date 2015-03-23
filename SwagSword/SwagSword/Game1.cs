@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Storage;
-using Microsoft.Xna.Framework.GamerServices;
+//using Microsoft.Xna.Framework.GamerServices;
 #endregion
 
 //Names: Nelson Scott, Peter Lockhart, Ryan Bell
@@ -118,18 +118,9 @@ namespace SwagSword
             drawMan.WhipTexture = this.Content.Load<Texture2D>("Objects/whip.png");
 
             //Load Map textures
-            System.IO.Stream pathStream = TitleContainer.OpenStream("Content/Map/SamplePath3.png");
-            drawMan.PathwayTexture = (Texture2D.FromStream(GraphicsDevice, pathStream));
-            pathStream.Close();
-
-            System.IO.Stream notPathStream = TitleContainer.OpenStream("Content/Map/SampleNotPath.png");
-            drawMan.NotPathwayTexture = (Texture2D.FromStream(GraphicsDevice, notPathStream));
-            notPathStream.Close();
-            
-
-            System.IO.Stream dirtStream = TitleContainer.OpenStream("Content/Map/Dirt.png");
-            drawMan.Dirt = Texture2D.FromStream(GraphicsDevice, dirtStream);
-            dirtStream.Close();
+            drawMan.PathwayTexture = Content.Load<Texture2D>("Map/SamplePath3.png");
+            drawMan.NotPathwayTexture = Content.Load<Texture2D>("Map/SampleNotPath.png");
+            drawMan.Stronghold = Content.Load<Texture2D>("Map/Stronghold.jpg");
 
             //Load Fonts
             drawMan.HealthFont = Content.Load<SpriteFont>("Fonts/vanillawhale");

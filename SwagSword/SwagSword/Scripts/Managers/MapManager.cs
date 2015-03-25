@@ -36,8 +36,9 @@ namespace SwagSword
         Tile rightCenter;
         Tile topCenter;
         Tile lowerCenter;
-        int baseWidth;
-        int baseHeight;
+        int strongholdWidth;
+        int strongholdHeight;
+        Texture2D canvas;
         #endregion
 
         public int TileSize { get { return tileSize; } }
@@ -75,10 +76,9 @@ namespace SwagSword
             branches.Add(rightBranch);
             branches.Add(topBranch);
             branches.Add(lowerBranch);
-            baseWidth = tileSize * 3;
-            baseHeight = tileSize * 3;
-
-
+            strongholdWidth = tileSize * 3;
+            strongholdHeight = tileSize * 3;
+            canvas = new Texture2D(mainMan.GraphicsDevice, 64, 64);
         }
 
 
@@ -93,8 +93,6 @@ namespace SwagSword
             generateSimplePath();
             BoldenMap();
             BoldenMap();
-            //BoldenMap();
-            //BoldenMap();
             GenerateCircles();
         }
 
@@ -108,10 +106,52 @@ namespace SwagSword
                 {
                     //at the current position in the map grid,
                     //assign a new tile with the 'notPathway' texture.
-                    //the center is calculated with an initial value of one half tile size,
-                    //plus a full size for each additional tile in either direction
-                    map[x, y] = new Tile(mainMan.DrawMan.NotPathwayTexture, new Point(tileSize * x + (tileSize / 2), tileSize * y + (tileSize / 2)));
+                    map[x, y] = new Tile(mainMan.DrawMan.NotPathwayTexture, new Point(x, y), this);
                 }
+
+
+            for (int x = 0; x < mapWidth; x++)                                                   //Iterate through the grid in x
+                for (int y = 0; y < mapHeight; y++)                                             //and y direction
+                {
+                    if (x > 0)
+                    {
+                        map[x, y].Left = map[x - 1, y];
+                        if(y > 0)
+                        {
+                            map[x, y].DUL = map[x - 1, y - 1];
+                        }
+                        if (y < mapHeight - 1)
+                        {
+                            map[x, y].DLL = map[x - 1, y + 1];
+                        }
+                    }
+                    if (x < mapWidth - 1)
+                    {
+                        map[x, y].Right = map[x + 1, y];
+                        if (y > 0)
+                        {
+                            map[x, y].DUR = map[x + 1, y - 1];
+                        }
+                        if (y < mapHeight - 1)
+                        {
+                            map[x, y].DLR = map[x + 1, y + 1];
+                        }
+                    }
+                    if (y > 0)
+                    {
+                        map[x, y].Top = map[x, y - 1];
+                    }
+                    if (y < mapHeight - 1)
+                    {
+                        map[x, y].Lower = map[x, y + 1];
+                    }
+                    //Console.WriteLine(x + " , " + y +" , " + map[x, y].ToString());
+                }
+            foreach (Tile t in map)
+            {
+                t.FormGroups();
+            }
+
         }
 
         /// <summary>
@@ -121,6 +161,7 @@ namespace SwagSword
         /// </summary>
         /// <param name="subject"></param>
         /// <returns></returns>
+        /*
         List<Tile> getNeighbors(Tile subject)
         {
             //recalculate the position in the map grid based on the center attribute of the given tile (which is in pixels)
@@ -222,7 +263,8 @@ namespace SwagSword
             }
             return neighbors;                                                                   //return the lsit of valid adjacent neighbors
         }
-
+        */
+         
         /// <summary>
         /// this method provides some simple distance calculation 2 points
         /// used with the center points of 2 tiles
@@ -236,6 +278,84 @@ namespace SwagSword
         }
 
 
+        void generateSimplePath()
+        {
+            Random rand = mainMan.Rnd;
+            Tile origin = map[mapWidth / 2, mapHeight / 2];
+            origin.Texture = mainMan.DrawMan.PathwayTexture;
+            Tile subject = map[mapWidth / 2, mapHeight / 2 - 1];
+            bool atEdge = false;
+            //top branch
+            for (int i = 0; !atEdge; i++)
+            {
+                subject.Texture = mainMan.DrawMan.PathwayTexture;
+                int choice = 0;
+                if (subject.GroupTop.Count > 1)
+                    choice = rand.Next(subject.GroupTop.Count - 1);
+                if (subject.GroupTop.Count > 0)
+                    subject = subject.GroupTop.ElementAt(choice);
+                topBranch.Add(subject);
+                if (subject.Center.Y <= circleRadius * tileSize)
+                    atEdge = true;
+            }
+
+            topCenter = subject;
+            atEdge = false;
+            subject = origin;
+            //lower branch
+            for (int i = 0; !atEdge; i++)
+            {
+                subject.Texture = mainMan.DrawMan.PathwayTexture;
+                int choice = 0;
+                if (subject.GroupLower.Count > 1)
+                    choice = rand.Next(subject.GroupLower.Count - 1);
+                if (subject.GroupLower.Count > 0)
+                    subject = subject.GroupLower.ElementAt(choice);
+                lowerBranch.Add(subject);
+                if (subject.Center.Y >= (mapHeight - circleRadius) * tileSize)
+                    atEdge = true;
+
+            }
+            lowerCenter = subject;
+            atEdge = false;
+            subject = origin;
+            //left Branch
+            for (int i = 0; !atEdge; i++)
+            {
+                subject.Texture = mainMan.DrawMan.PathwayTexture;
+                int choice = 0;
+                if (subject.GroupLeft.Count > 1)
+                    choice = rand.Next(subject.GroupLeft.Count - 1);
+                if (subject.GroupLeft.Count > 0)
+                    subject = subject.GroupLeft.ElementAt(choice);
+                leftBranch.Add(subject);
+                if (subject.Center.X <= circleRadius * tileSize)
+                    atEdge = true;
+
+            }
+            leftCenter = subject;
+            atEdge = false;
+            subject = origin;
+            //right branch
+            for (int i = 0; !atEdge; i++)
+            {
+                subject.Texture = mainMan.DrawMan.PathwayTexture;
+                int choice = 0;
+                if (subject.GroupRight.Count > 1)
+                    choice = rand.Next(subject.GroupRight.Count - 1);
+                if (subject.GroupRight.Count > 0)
+                    subject = subject.GroupRight.ElementAt(choice);
+                rightBranch.Add(subject);
+                if (subject.Center.X >= (mapWidth - circleRadius) * tileSize)
+                    atEdge = true;
+            }
+            rightCenter = subject;
+        }
+
+
+
+
+        /*
         void generateSimplePath()
         {
             Random rand = new Random();
@@ -352,11 +472,11 @@ namespace SwagSword
             }
             rightCenter = subject;
             //generateCircle(subject, circleRadius);
-
+       
 
 
         }
-        /*
+        
         protected void generateCircle(Tile centerTile, int radRemain)
         {
             centerTile.Texture = mainMan.DrawMan.PathwayTexture;
@@ -397,10 +517,7 @@ namespace SwagSword
 
             }
         }
-        protected void SpawnBases()
-        {
-            return;
-        }
+
 
 
         /// <summary>
@@ -444,10 +561,11 @@ namespace SwagSword
                 
                 spriteBatch.Draw(t.Texture, r, Color.White);
             }
-            spriteBatch.Draw(mainMan.DrawMan.Stronghold, new Rectangle(leftCenter.Center.X - baseWidth / 2, leftCenter.Center.Y - baseHeight / 2, baseWidth, baseHeight), Color.White);
-            spriteBatch.Draw(mainMan.DrawMan.Stronghold, new Rectangle(rightCenter.Center.X - baseWidth / 2, rightCenter.Center.Y - baseHeight / 2, baseWidth, baseHeight), Color.White);
-            spriteBatch.Draw(mainMan.DrawMan.Stronghold, new Rectangle(topCenter.Center.X - baseWidth / 2, topCenter.Center.Y - baseHeight / 2, baseWidth, baseHeight), Color.White);
-            spriteBatch.Draw(mainMan.DrawMan.Stronghold, new Rectangle(lowerCenter.Center.X - baseWidth / 2, lowerCenter.Center.Y - baseHeight / 2, baseWidth, baseHeight), Color.White);
+            spriteBatch.Draw(mainMan.DrawMan.Stronghold, new Rectangle(leftCenter.Center.X - strongholdWidth / 2, leftCenter.Center.Y - strongholdHeight / 2, strongholdWidth, strongholdHeight), Color.White);
+            spriteBatch.Draw(mainMan.DrawMan.Stronghold, new Rectangle(rightCenter.Center.X - strongholdWidth / 2, rightCenter.Center.Y - strongholdHeight / 2, strongholdWidth, strongholdHeight), Color.White);
+            spriteBatch.Draw(mainMan.DrawMan.Stronghold, new Rectangle(topCenter.Center.X - strongholdWidth / 2, topCenter.Center.Y - strongholdHeight / 2, strongholdWidth, strongholdHeight), Color.White);
+            spriteBatch.Draw(mainMan.DrawMan.Stronghold, new Rectangle(lowerCenter.Center.X - strongholdWidth / 2, lowerCenter.Center.Y - strongholdHeight / 2, strongholdWidth, strongholdHeight), Color.White);
+            spriteBatch.Draw(canvas, new Rectangle(64, 64, 64, 64), Color.White);
         }
 
 

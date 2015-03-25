@@ -169,7 +169,7 @@ namespace SwagSword
 
         void generateSimplePath()
         {
-            Random rand = mainMan.Rnd;
+            Random rand = new Random();
             Tile origin = map[mapWidth / 2, mapHeight / 2];
             origin.Texture = mainMan.DrawMan.PathwayTexture;
             Tile subject = map[mapWidth / 2, mapHeight / 2 - 1];
@@ -179,8 +179,8 @@ namespace SwagSword
             {
                 subject.Texture = mainMan.DrawMan.PathwayTexture;
                 int choice = 0;
-                if (subject.GroupTop.Count > 1)
-                    choice = rand.Next(subject.GroupTop.Count - 1);
+                if (subject.GroupTop.Count >= 1)
+                    choice = rand.Next(subject.GroupTop.Count);
                 if (subject.GroupTop.Count > 0)
                     subject = subject.GroupTop.ElementAt(choice);
                 topBranch.Add(subject);
@@ -196,8 +196,8 @@ namespace SwagSword
             {
                 subject.Texture = mainMan.DrawMan.PathwayTexture;
                 int choice = 0;
-                if (subject.GroupLower.Count > 1)
-                    choice = rand.Next(subject.GroupLower.Count - 1);
+                if (subject.GroupLower.Count >= 1)
+                    choice = rand.Next(subject.GroupLower.Count);
                 if (subject.GroupLower.Count > 0)
                     subject = subject.GroupLower.ElementAt(choice);
                 lowerBranch.Add(subject);
@@ -213,8 +213,8 @@ namespace SwagSword
             {
                 subject.Texture = mainMan.DrawMan.PathwayTexture;
                 int choice = 0;
-                if (subject.GroupLeft.Count > 1)
-                    choice = rand.Next(subject.GroupLeft.Count - 1);
+                if (subject.GroupLeft.Count >= 1)
+                    choice = rand.Next(subject.GroupLeft.Count);
                 if (subject.GroupLeft.Count > 0)
                     subject = subject.GroupLeft.ElementAt(choice);
                 leftBranch.Add(subject);
@@ -230,8 +230,8 @@ namespace SwagSword
             {
                 subject.Texture = mainMan.DrawMan.PathwayTexture;
                 int choice = 0;
-                if (subject.GroupRight.Count > 1)
-                    choice = rand.Next(subject.GroupRight.Count - 1);
+                if (subject.GroupRight.Count >= 1)
+                    choice = rand.Next(subject.GroupRight.Count);
                 if (subject.GroupRight.Count > 0)
                     subject = subject.GroupRight.ElementAt(choice);
                 rightBranch.Add(subject);

@@ -172,7 +172,7 @@ namespace SwagSword
             groupLeft = new List<Tile>();
             groupLeft.Add(dul);
             groupLeft.Add(left);
-            groupLeft.Add(dlr);
+            groupLeft.Add(dll);
             groupRight = new List<Tile>();
             groupRight.Add(dur);
             groupRight.Add(right);

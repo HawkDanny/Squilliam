@@ -19,6 +19,7 @@ namespace SwagSword
     {
 
         #region fields
+        bool pathway;
         Texture2D texture;
         Point center;
         Point coordinates;
@@ -41,7 +42,11 @@ namespace SwagSword
 
         public Tile(Texture2D t, Point coords, MapManager mapMan)
         {
-            texture = t;
+            
+            texture = new Texture2D(mapMan.GraphicsDevice, t.Width, t.Height);
+            Color[] colors = new Color[t.Width * t.Height];
+            t.GetData<Color>(colors);
+            texture.SetData<Color>(colors);
             coordinates = coords;
             this.mapMan = mapMan;
             Init();
@@ -50,9 +55,11 @@ namespace SwagSword
         protected void Init()
         {
             center = new Point(coordinates.X * mapMan.TileSize + mapMan.TileSize / 2, coordinates.Y * mapMan.TileSize + mapMan.TileSize / 2);
+            pathway = false;
         }
 
         #region Properties
+        public bool Pathway { get { return pathway; } set { pathway = value; } }
         public Texture2D Texture { get { return texture; } set { texture = value; } }
         public Point Center { get { return center; } set { center = value; } }
         public Tile Top { get { return top; } set { top = value; } }
@@ -146,7 +153,24 @@ namespace SwagSword
 
         public void OverlayTexture(Texture2D overlay)
         {
-            return;
+            if (overlay == null)
+                return;
+            else
+            {
+                Color[] overlayData = new Color[overlay.Width * overlay.Height];
+                Color[] textureData = new Color[texture.Width * texture.Height];
+                texture.GetData<Color>(textureData);
+                overlay.GetData<Color>(overlayData);
+                for (int x = 0; x < texture.Width; x++)
+                {
+                    for (int y = 0; y < texture.Height; y++)
+                    {
+                        textureData[x * texture.Height + y] = new Color((textureData[x * texture.Height + y].R + overlayData[x * texture.Height + y].R) / 2, (textureData[x * texture.Height + y].G + overlayData[x * texture.Height + y].G) / 2, (textureData[x * texture.Height + y].B + overlayData[x * texture.Height + y].B) / 2/*, (textureData[x * texture.Height + y].A + overlayData[x * texture.Height + y].A) / 2*/);
+                    }
+                }
+                texture.SetData<Color>(textureData);
+                
+            }
         }
 
         public void FormGroups()

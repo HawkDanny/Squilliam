@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Storage;
+using System.IO;
 //using Microsoft.Xna.Framework.GamerServices;
 #endregion
 
@@ -39,11 +40,17 @@ namespace SwagSword
         int strongholdWidth;
         int strongholdHeight;
         Texture2D canvas;
+        GraphicsDevice graphicsDevice2;
+        Color[] pathData;
+        Color[] notPathData;
         #endregion
 
         public int TileSize { get { return tileSize; } }
         public int MapWidth { get { return mapWidth; } }
         public int MapHeight { get { return mapHeight; } }
+        public GraphicsDevice GraphicsDevice { get { return graphicsDevice2; } }
+        private Color[] PathData { get { return pathData; } }
+        private Color[] NotPathData { get { return notPathData; } }
 
         /// <summary>
         /// Default Constructor sets up reference to the main manager
@@ -79,6 +86,7 @@ namespace SwagSword
             strongholdWidth = tileSize * 3;
             strongholdHeight = tileSize * 3;
             canvas = new Texture2D(mainMan.GraphicsDevice, 64, 64);
+            graphicsDevice2 = mainMan.GraphicsDevice;
         }
 
 
@@ -90,10 +98,16 @@ namespace SwagSword
         public void Startup()
         {
             PopulateMap();
-            generateSimplePath();
+            GenerateSimplePath();
             BoldenMap();
             BoldenMap();
             GenerateCircles();
+            SmoothMap();
+            
+            
+            //smooth map edges
+                //calculate overlay and pass tex2d into overlay of tile
+            //generate foliage
         }
 
         /// <summary>
@@ -108,7 +122,11 @@ namespace SwagSword
                     //assign a new tile with the 'notPathway' texture.
                     map[x, y] = new Tile(mainMan.DrawMan.NotPathwayTexture, new Point(x, y), this);
                 }
+            UpdateReferences();
+        }
 
+        protected void UpdateReferences()
+        {
 
             for (int x = 0; x < mapWidth; x++)                                                   //Iterate through the grid in x
                 for (int y = 0; y < mapHeight; y++)                                             //and y direction
@@ -116,7 +134,7 @@ namespace SwagSword
                     if (x > 0)
                     {
                         map[x, y].Left = map[x - 1, y];
-                        if(y > 0)
+                        if (y > 0)
                         {
                             map[x, y].DUL = map[x - 1, y - 1];
                         }
@@ -151,7 +169,6 @@ namespace SwagSword
             {
                 t.FormGroups();
             }
-
         }
 
         /// <summary>
@@ -166,8 +183,7 @@ namespace SwagSword
             return Math.Sqrt(Math.Pow(a1.X - a0.X, 2) + Math.Pow(a1.Y - a0.Y, 2));              //the distance formula
         }
 
-
-        void generateSimplePath()
+        void GenerateSimplePath()
         {
             Random rand = new Random();
             Tile origin = map[mapWidth / 2, mapHeight / 2];
@@ -178,6 +194,7 @@ namespace SwagSword
             for (int i = 0; !atEdge; i++)
             {
                 subject.Texture = mainMan.DrawMan.PathwayTexture;
+                subject.Pathway = true;
                 int choice = 0;
                 if (subject.GroupTop.Count >= 1)
                     choice = rand.Next(subject.GroupTop.Count);
@@ -195,6 +212,7 @@ namespace SwagSword
             for (int i = 0; !atEdge; i++)
             {
                 subject.Texture = mainMan.DrawMan.PathwayTexture;
+                subject.Pathway = true;
                 int choice = 0;
                 if (subject.GroupLower.Count >= 1)
                     choice = rand.Next(subject.GroupLower.Count);
@@ -212,6 +230,7 @@ namespace SwagSword
             for (int i = 0; !atEdge; i++)
             {
                 subject.Texture = mainMan.DrawMan.PathwayTexture;
+                subject.Pathway = true;
                 int choice = 0;
                 if (subject.GroupLeft.Count >= 1)
                     choice = rand.Next(subject.GroupLeft.Count);
@@ -229,6 +248,7 @@ namespace SwagSword
             for (int i = 0; !atEdge; i++)
             {
                 subject.Texture = mainMan.DrawMan.PathwayTexture;
+                subject.Pathway = true;
                 int choice = 0;
                 if (subject.GroupRight.Count >= 1)
                     choice = rand.Next(subject.GroupRight.Count);
@@ -248,24 +268,26 @@ namespace SwagSword
                 if(CalcDistance(t.Center, leftCenter.Center) <= circleRadius * tileSize)
                 {
                     t.Texture = mainMan.DrawMan.PathwayTexture;
+                    t.Pathway = true;
                 }
                 if (CalcDistance(t.Center, rightCenter.Center) <= circleRadius * tileSize)
                 {
                     t.Texture = mainMan.DrawMan.PathwayTexture;
+                    t.Pathway = true;
                 }
                 if (CalcDistance(t.Center, topCenter.Center) <= circleRadius * tileSize)
                 {
                     t.Texture = mainMan.DrawMan.PathwayTexture;
+                    t.Pathway = true;
                 }
                 if (CalcDistance(t.Center, lowerCenter.Center) <= circleRadius * tileSize)
                 {
                     t.Texture = mainMan.DrawMan.PathwayTexture;
+                    t.Pathway = true;
                 }
 
             }
         }
-
-
 
         /// <summary>
         /// This method runs through the map and widens the paths.
@@ -283,19 +305,127 @@ namespace SwagSword
                         if (x < mapWidth + 2)                                                       //check bounds to avoid null exception
                         {
                             map[x + 1, y].Texture = mainMan.DrawMan.PathwayTexture;                 //make right tile a path as well
+                            map[x + 1, y].Pathway = true;
                             if (y < mapHeight - 2)                                                  //check bounds to avoid null exception
                             {
                                 map[x + 1, y + 1].Texture = mainMan.DrawMan.PathwayTexture;         //make lower right tile a path as well
+                                map[x + 1, y + 1].Pathway = true;
                             }
                         }
                         if (y < mapHeight - 2)                                                      //check bounds to avoid null exception
                         {
                             map[x, y + 1].Texture = mainMan.DrawMan.PathwayTexture;                 //make the lower tile a path as well
+                            map[x, y + 1].Pathway = true;
                         }
 
                     }
                 }
             }
+        }
+
+        protected void SmoothMap()
+        {
+
+            pathData = new Color[tileSize * tileSize];
+            mainMan.DrawMan.PathwayTexture.GetData<Color>(pathData);
+
+            notPathData = new Color[tileSize * tileSize];
+            mainMan.DrawMan.NotPathwayTexture.GetData<Color>(notPathData);
+
+            //UpdateReferences();
+            for (int x = 1; x < mapWidth - 1; x++)
+                for (int y = 1; y < mapHeight - 1; y++ )
+                {
+                    /*
+                    if (map[x, y].Texture == mainMan.DrawMan.PathwayTexture)
+                        if (map[x - 1, y].Texture == mainMan.DrawMan.PathwayTexture)
+                            if (map[x + 1, y].Texture == mainMan.DrawMan.PathwayTexture)
+                                if (map[x, y - 1].Texture == mainMan.DrawMan.PathwayTexture)
+                                    if (map[x, y + 1].Texture == mainMan.DrawMan.PathwayTexture)
+                                        continue;
+                    if (map[x, y].Texture == mainMan.DrawMan.NotPathwayTexture)
+                        if (map[x - 1, y].Texture == mainMan.DrawMan.NotPathwayTexture)
+                            if (map[x + 1, y].Texture == mainMan.DrawMan.NotPathwayTexture)
+                                if (map[x, y - 1].Texture == mainMan.DrawMan.NotPathwayTexture)
+                                    if (map[x, y + 1].Texture == mainMan.DrawMan.NotPathwayTexture)
+                                        continue;
+                  */
+                    if (map[x, y].Pathway == map[x - 1, y].Pathway)
+                        if (map[x, y].Pathway == map[x + 1, y].Pathway)
+                            if (map[x, y].Pathway == map[x, y - 1].Pathway)
+                                if (map[x, y].Pathway == map[x, y + 1].Pathway)
+                                    continue;
+                    map[x, y].OverlayTexture(CalculateOverlay(map[x, y]));
+                }
+        }
+
+        protected Texture2D CalculateOverlay(Tile subject)
+        {      
+            Texture2D overlay = new Texture2D(mainMan.GraphicsDevice, tileSize, tileSize);
+            
+            /*if (subject.Texture == mainMan.DrawMan.PathwayTexture)
+                overlay.SetData<Color>(PathData);
+            else
+                overlay.SetData<Color>(PathData);
+             */
+            overlay.SetData<Color>(PathData);
+            Color[] colorData = new Color[tileSize * tileSize];
+            overlay.GetData<Color>(colorData);
+
+            Color[,] colorData2D = new Color[tileSize,tileSize];
+            for(int x = 0; x < tileSize; x++)
+            {
+                for (int y = 0; y < tileSize; y++)
+                {
+                    colorData2D[x, y] = colorData[x * tileSize + y];
+                }
+            }
+            //colorData2D[5, 5] = new Color(1,1,1);
+
+            int xInterpStart;
+            int xInterpEnd;
+            int yInterpStart;
+            int yInterpEnd;
+            if (subject.Left.Pathway == subject.Pathway)
+                xInterpStart = 1;
+            else
+                xInterpStart = 0;
+            if (subject.Right.Pathway == subject.Pathway)
+                xInterpEnd = 1;
+            else
+                xInterpEnd = 0;
+            if (subject.Top.Pathway == subject.Pathway)
+                yInterpStart = 1;
+            else
+                yInterpStart = 0;
+            if (subject.Lower.Pathway == subject.Pathway)
+                yInterpEnd = 1;
+            else
+                yInterpEnd = 0;
+            int R;
+            int G;
+            int B;
+            int value;
+            int n;
+            for (int x = 0; x < tileSize; x++)
+            {
+                for (int y = 0; y < tileSize; y++)
+                {
+                    //calculate the alpha weight value
+                    //n = 
+                    //value = 
+                }
+            }
+            for (int x = 0; x < tileSize; x++)
+            {
+                for (int y = 0; y < tileSize; y++)
+                {
+                    colorData[x * tileSize + y] = colorData2D[x, y];
+                }
+            }
+            overlay.SetData<Color>(colorData);
+            return overlay;
+            
         }
 
         //**************************************************************************************************************************
@@ -308,11 +438,11 @@ namespace SwagSword
                 
                 spriteBatch.Draw(t.Texture, r, Color.White);
             }
-            spriteBatch.Draw(mainMan.DrawMan.Stronghold, new Rectangle(leftCenter.Center.X - strongholdWidth / 2, leftCenter.Center.Y - strongholdHeight / 2, strongholdWidth, strongholdHeight), Color.White);
-            spriteBatch.Draw(mainMan.DrawMan.Stronghold, new Rectangle(rightCenter.Center.X - strongholdWidth / 2, rightCenter.Center.Y - strongholdHeight / 2, strongholdWidth, strongholdHeight), Color.White);
-            spriteBatch.Draw(mainMan.DrawMan.Stronghold, new Rectangle(topCenter.Center.X - strongholdWidth / 2, topCenter.Center.Y - strongholdHeight / 2, strongholdWidth, strongholdHeight), Color.White);
-            spriteBatch.Draw(mainMan.DrawMan.Stronghold, new Rectangle(lowerCenter.Center.X - strongholdWidth / 2, lowerCenter.Center.Y - strongholdHeight / 2, strongholdWidth, strongholdHeight), Color.White);
-            spriteBatch.Draw(canvas, new Rectangle(64, 64, 64, 64), Color.White);
+            //spriteBatch.Draw(mainMan.DrawMan.Stronghold, new Rectangle(leftCenter.Center.X - strongholdWidth / 2, leftCenter.Center.Y - strongholdHeight / 2, strongholdWidth, strongholdHeight), Color.White);
+            //spriteBatch.Draw(mainMan.DrawMan.Stronghold, new Rectangle(rightCenter.Center.X - strongholdWidth / 2, rightCenter.Center.Y - strongholdHeight / 2, strongholdWidth, strongholdHeight), Color.White);
+            //spriteBatch.Draw(mainMan.DrawMan.Stronghold, new Rectangle(topCenter.Center.X - strongholdWidth / 2, topCenter.Center.Y - strongholdHeight / 2, strongholdWidth, strongholdHeight), Color.White);
+            //spriteBatch.Draw(mainMan.DrawMan.Stronghold, new Rectangle(lowerCenter.Center.X - strongholdWidth / 2, lowerCenter.Center.Y - strongholdHeight / 2, strongholdWidth, strongholdHeight), Color.White);
+            //spriteBatch.Draw(canvas, new Rectangle(64, 64, 64, 64), Color.White);
         }
 
 

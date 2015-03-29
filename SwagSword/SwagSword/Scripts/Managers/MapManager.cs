@@ -355,6 +355,8 @@ namespace SwagSword
                             if (map[x, y].Pathway == map[x, y - 1].Pathway)
                                 if (map[x, y].Pathway == map[x, y + 1].Pathway)
                                     continue;
+                    if (map[x, y].Pathway)
+                        continue;
                     map[x, y].OverlayTexture(CalculateOverlay(map[x, y]));
                 }
         }
@@ -362,12 +364,12 @@ namespace SwagSword
         protected Texture2D CalculateOverlay(Tile subject)
         {      
             Texture2D overlay = new Texture2D(mainMan.GraphicsDevice, tileSize, tileSize);
-            
-            /*if (subject.Texture == mainMan.DrawMan.PathwayTexture)
-                overlay.SetData<Color>(PathData);
+            /*
+            if (subject.Texture == mainMan.DrawMan.PathwayTexture)
+                overlay.SetData<Color>(NotPathData);
             else
                 overlay.SetData<Color>(PathData);
-             */
+            */ 
             overlay.SetData<Color>(PathData);
             Color[] colorData = new Color[tileSize * tileSize];
             overlay.GetData<Color>(colorData);
@@ -405,7 +407,7 @@ namespace SwagSword
             int R;
             int G;
             int B;
-            int value;
+            double value = 0;
             int n;
             for (int x = 0; x < tileSize; x++)
             {
@@ -413,8 +415,20 @@ namespace SwagSword
                 {
                     //calculate the alpha weight value
                     //n = 
-                    //value = 
+                    Point pixel = new Point(subject.Center.X + x - tileSize / 2, subject.Center.Y + y - tileSize / 2);
+                    if (subject.Left.Pathway == true)
+                        value += (CalcDistance(pixel, subject.Left.Center) - tileSize / 2) / tileSize;
+                    if (subject.Right.Pathway == true)
+                        value += (CalcDistance(pixel, subject.Right.Center) - tileSize / 2) / tileSize;
+                    if (subject.Top.Pathway == true)
+                        value += (CalcDistance(pixel, subject.Top.Center) - tileSize / 2) / tileSize;
+                    if (subject.Lower.Pathway == true)
+                        value += (CalcDistance(pixel, subject.Lower.Center) - tileSize / 2) / tileSize;
+                    MathHelper.Clamp((int)(value / 4), 0, 1);
+                    colorData2D[x, y].A = (byte)((value * 255));
+                    value = 0;
                 }
+                
             }
             for (int x = 0; x < tileSize; x++)
             {

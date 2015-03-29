@@ -165,7 +165,13 @@ namespace SwagSword
                 {
                     for (int y = 0; y < texture.Height; y++)
                     {
-                        textureData[x * texture.Height + y] = new Color((textureData[x * texture.Height + y].R + overlayData[x * texture.Height + y].R) / 2, (textureData[x * texture.Height + y].G + overlayData[x * texture.Height + y].G) / 2, (textureData[x * texture.Height + y].B + overlayData[x * texture.Height + y].B) / 2/*, (textureData[x * texture.Height + y].A + overlayData[x * texture.Height + y].A) / 2*/);
+                        int value = overlayData[x * texture.Height + y].A / 255;
+                        int R;
+                        int G;
+                        int B;
+                        textureData[x * texture.Height + y] = new Color((textureData[x * texture.Height + y].R + 0 * overlayData[x * texture.Height + y].R) / 2, (textureData[x * texture.Height + y].G + 0 * overlayData[x * texture.Height + y].G) / 2, (textureData[x * texture.Height + y].B + value * overlayData[x * texture.Height + y].B) / 2, MathHelper.Clamp((textureData[x * texture.Height + y].A + overlayData[x * texture.Height + y].A) / 2, 0, 255));
+                        //textureData[x * texture.Height + y].A = (byte)MathHelper.Clamp((textureData[x * texture.Height + y].A + overlayData[x * texture.Height + y].A) / 2, 0, 255);
+                        
                     }
                 }
                 texture.SetData<Color>(textureData);

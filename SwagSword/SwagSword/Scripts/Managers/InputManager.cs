@@ -43,6 +43,8 @@ namespace SwagSword
         private KeyboardState kbState;
         private MouseState prevMState; //previous mouse state
         private MouseState mState;
+        private GamePadState gamePadState1;
+        private GamePadState prevGamePadState1;
         
         //list of all bound keys/buttons, in order of enum Binds (Line 19)
         private InputType[] binds;
@@ -70,6 +72,8 @@ namespace SwagSword
         public KeyboardState KbState { get { return kbState; } }
         public MouseState PrevMState { get { return prevMState; } }
         public MouseState MState { get { return mState; } }
+        public GamePadState GamePadState1 { get { return gamePadState1; } }
+        public GamePadState PrevGamePadState1 { get { return prevGamePadState1; } }
 
         //Special Properties
         public bool AllMovementKeysUp { get { return (Right.IsUp() && Left.IsUp() && Up.IsUp() && Down.IsUp()); } }
@@ -89,7 +93,8 @@ namespace SwagSword
             kbState = new KeyboardState();
             prevKbState = new KeyboardState();
             mState = new MouseState();
-
+            gamePadState1 = new Microsoft.Xna.Framework.Input.GamePadState();
+            prevGamePadState1 = new Microsoft.Xna.Framework.Input.GamePadState();
             binds = new InputType[11];
 
             attackHeld = false;
@@ -105,6 +110,8 @@ namespace SwagSword
             prevKbState = kbState;
             kbState = Keyboard.GetState();
             mState = Mouse.GetState();
+            prevGamePadState1 = gamePadState1;
+            gamePadState1 = GamePad.GetState(PlayerIndex.One);
         }
         
 

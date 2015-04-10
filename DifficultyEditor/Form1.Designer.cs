@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(difficultyEditor));
-            this.goodGuyPic = new System.Windows.Forms.PictureBox();
+            this.factionPic = new System.Windows.Forms.PictureBox();
             this.aggressionLabel = new System.Windows.Forms.Label();
             this.defenseLabel = new System.Windows.Forms.Label();
             this.nameLabel = new System.Windows.Forms.Label();
@@ -52,22 +52,22 @@
             this.abilitiesPercentLabel = new System.Windows.Forms.Label();
             this.cowardicePercentLabel = new System.Windows.Forms.Label();
             this.createButton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.goodGuyPic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.factionPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.aggressionTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.defenseTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.abilitiesTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cowardiceTrackBar)).BeginInit();
             this.SuspendLayout();
             // 
-            // goodGuyPic
+            // factionPic
             // 
-            this.goodGuyPic.Image = ((System.Drawing.Image)(resources.GetObject("goodGuyPic.Image")));
-            this.goodGuyPic.Location = new System.Drawing.Point(346, 82);
-            this.goodGuyPic.Name = "goodGuyPic";
-            this.goodGuyPic.Size = new System.Drawing.Size(74, 74);
-            this.goodGuyPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.goodGuyPic.TabIndex = 0;
-            this.goodGuyPic.TabStop = false;
+            this.factionPic.Image = ((System.Drawing.Image)(resources.GetObject("factionPic.Image")));
+            this.factionPic.Location = new System.Drawing.Point(346, 82);
+            this.factionPic.Name = "factionPic";
+            this.factionPic.Size = new System.Drawing.Size(74, 74);
+            this.factionPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.factionPic.TabIndex = 0;
+            this.factionPic.TabStop = false;
             // 
             // aggressionLabel
             // 
@@ -109,6 +109,7 @@
             this.factionButton4.TabIndex = 4;
             this.factionButton4.TabStop = true;
             this.factionButton4.UseVisualStyleBackColor = true;
+            this.factionButton4.CheckedChanged += new System.EventHandler(this.factionButton4_CheckedChanged);
             // 
             // factionButton3
             // 
@@ -118,6 +119,7 @@
             this.factionButton3.Size = new System.Drawing.Size(14, 13);
             this.factionButton3.TabIndex = 3;
             this.factionButton3.UseVisualStyleBackColor = true;
+            this.factionButton3.CheckedChanged += new System.EventHandler(this.factionButton3_CheckedChanged);
             // 
             // factionButton2
             // 
@@ -127,6 +129,7 @@
             this.factionButton2.Size = new System.Drawing.Size(14, 13);
             this.factionButton2.TabIndex = 2;
             this.factionButton2.UseVisualStyleBackColor = true;
+            this.factionButton2.CheckedChanged += new System.EventHandler(this.factionButton2_CheckedChanged);
             // 
             // factionButton1
             // 
@@ -136,7 +139,9 @@
             this.factionButton1.Name = "factionButton1";
             this.factionButton1.Size = new System.Drawing.Size(14, 13);
             this.factionButton1.TabIndex = 1;
+            this.factionButton1.TabStop = true;
             this.factionButton1.UseVisualStyleBackColor = true;
+            this.factionButton1.CheckedChanged += new System.EventHandler(this.factionButton1_CheckedChanged);
             // 
             // factionTypeLabel
             // 
@@ -331,10 +336,10 @@
             this.Controls.Add(this.nameLabel);
             this.Controls.Add(this.defenseLabel);
             this.Controls.Add(this.aggressionLabel);
-            this.Controls.Add(this.goodGuyPic);
+            this.Controls.Add(this.factionPic);
             this.Name = "difficultyEditor";
             this.Text = "Individual Enemy Creator";
-            ((System.ComponentModel.ISupportInitialize)(this.goodGuyPic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.factionPic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.aggressionTrackBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.defenseTrackBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.abilitiesTrackBar)).EndInit();
@@ -346,7 +351,7 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox goodGuyPic;
+        private System.Windows.Forms.PictureBox factionPic;
         private System.Windows.Forms.Label aggressionLabel;
         private System.Windows.Forms.Label defenseLabel;
         private System.Windows.Forms.Label nameLabel;

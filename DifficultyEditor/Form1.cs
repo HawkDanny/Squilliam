@@ -200,7 +200,35 @@ namespace DifficultyEditor
             //Create and write to a text file using JSON
 
             string json = JsonConvert.SerializeObject(character);
-            System.IO.File.WriteAllText("../../../SwagSword/" + nameTextBox.Text + "_CustomCharacter.txt", json);
+            System.IO.File.WriteAllText("../../../SwagSword/SwagSword/Content/CustomEnemies/" + nameTextBox.Text + "_CustomCharacter.txt", json);
+        }
+
+        private void factionButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            Stream picStream = new FileStream("../../sprites/goodGuy.png", FileMode.Open);
+            factionPic.Image = Image.FromStream(picStream);
+            picStream.Close();
+        }
+
+        private void factionButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            Stream picStream = new FileStream("../../sprites/richGuy.png", FileMode.Open);
+            factionPic.Image = Image.FromStream(picStream);
+            picStream.Close();
+        }
+
+        private void factionButton3_CheckedChanged(object sender, EventArgs e)
+        {
+            Stream picStream = new FileStream("../../sprites/banditGuy.png", FileMode.Open);
+            factionPic.Image = Image.FromStream(picStream);
+            picStream.Close();
+        }
+
+        private void factionButton4_CheckedChanged(object sender, EventArgs e)
+        {
+            Stream picStream = new FileStream("../../sprites/tribalGuy.png", FileMode.Open);
+            factionPic.Image = Image.FromStream(picStream);
+            picStream.Close();
         }
     }
 }

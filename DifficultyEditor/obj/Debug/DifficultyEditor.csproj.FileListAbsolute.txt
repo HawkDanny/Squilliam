@@ -32,3 +32,11 @@ D:\Users\djh9683\Squilliam\DifficultyEditor\obj\Debug\DifficultyEditor.Propertie
 D:\Users\djh9683\Squilliam\DifficultyEditor\obj\Debug\DifficultyEditor.csproj.GenerateResource.Cache
 D:\Users\djh9683\Squilliam\DifficultyEditor\obj\Debug\DifficultyEditor.exe
 D:\Users\djh9683\Squilliam\DifficultyEditor\obj\Debug\DifficultyEditor.pdb
+C:\Git\Squilliam\DifficultyEditor\bin\Debug\DifficultyEditor.exe
+C:\Git\Squilliam\DifficultyEditor\bin\Debug\DifficultyEditor.pdb
+C:\Git\Squilliam\DifficultyEditor\bin\Debug\Newtonsoft.Json.dll
+C:\Git\Squilliam\DifficultyEditor\bin\Debug\Newtonsoft.Json.xml
+C:\Git\Squilliam\DifficultyEditor\obj\Debug\DifficultyEditor.csprojResolveAssemblyReference.cache
+C:\Git\Squilliam\DifficultyEditor\obj\Debug\DifficultyEditor.difficultyEditor.resources
+C:\Git\Squilliam\DifficultyEditor\obj\Debug\DifficultyEditor.Properties.Resources.resources
+C:\Git\Squilliam\DifficultyEditor\obj\Debug\DifficultyEditor.csproj.GenerateResource.Cache

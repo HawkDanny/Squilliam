@@ -118,7 +118,7 @@ namespace SwagSword
             drawMan.WhipTexture = this.Content.Load<Texture2D>("Objects/whip.png");
 
             //Load Map textures
-            drawMan.PathwayTexture = Content.Load<Texture2D>("Map/SamplePath.png");
+            drawMan.PathwayTexture = Content.Load<Texture2D>("Map/SamplePath3.png");
             drawMan.NotPathwayTexture = Content.Load<Texture2D>("Map/SampleNotPath.png");
             drawMan.Stronghold = Content.Load<Texture2D>("Map/Stronghold.jpg");
 

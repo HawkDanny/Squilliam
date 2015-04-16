@@ -57,6 +57,7 @@
     <Compile Include="Scripts\Managers\InputManager.cs" />
     <Compile Include="Scripts\Managers\Manager.cs" />
     <Compile Include="Scripts\Managers\MapManager.cs" />
+    <Compile Include="Scripts\Managers\PerlinNoise.cs" />
     <Compile Include="Scripts\Managers\SoundManager.cs" />
     <Compile Include="Scripts\Managers\SpawnManager.cs" />
     <Compile Include="Scripts\Objects\BoomerangObject.cs" />

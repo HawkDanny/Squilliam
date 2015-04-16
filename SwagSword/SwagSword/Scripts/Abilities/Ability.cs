@@ -62,5 +62,13 @@ namespace SwagSword
         {
             inUse = true;
         }
+
+        /// <summary>
+        /// This is for if the AI uses the ability different than the player
+        /// </summary>
+        public virtual void AIUse()
+        {
+            inUse = true;
+        }
     }
 }

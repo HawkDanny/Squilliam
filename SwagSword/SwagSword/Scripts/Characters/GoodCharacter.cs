@@ -25,6 +25,8 @@ namespace SwagSword
             Type = Faction.Good;
             NormalColor = Color.White;
 
+            AITimers.Add(AIState.Idle, 0.5f);
+
             base.Init();
         }
 

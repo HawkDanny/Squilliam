@@ -110,6 +110,7 @@ namespace SwagSword
         private float aiStateTimer;
         private Dictionary<AIState, float> aiProbs;
         private Dictionary<AIState, float> aiTimers;
+        private List<AIState> encounterAIStates;
         private float sightRange;
         private float attackRange;
         #endregion
@@ -180,6 +181,7 @@ namespace SwagSword
         public float AIStateTimer { get { return aiStateTimer; } set { aiStateTimer = value; } }
         public Dictionary<AIState, float> AIProbs { get { return aiProbs; } set { aiProbs = value; } }
         public Dictionary<AIState, float> AITimers { get { return aiTimers; } set { aiTimers = value; } }
+        public List<AIState> EncounterAIStates { get { return encounterAIStates; } set { encounterAIStates = value; } }
         public float SightRange { get { return sightRange; } set { sightRange = value; } }
         public float AttackRange { get { return attackRange; } set { attackRange = value; } }
         #endregion
@@ -195,6 +197,7 @@ namespace SwagSword
             //AI
             AIProbs = new Dictionary<AIState, float>();
             AITimers = new Dictionary<AIState, float>();
+            encounterAIStates = new List<AIState>();
 
             //Set position
             rectangle = new Rectangle(0, 0, 66, 66);
@@ -382,8 +385,26 @@ namespace SwagSword
 
                 case AIState.Idle:
                     AnimateFaceDirection();
+                    aiStateTimer = aiTimers[state];
                     break;
             }
+        }
+
+        /// <summary>
+        /// returns a random AI state from a list of state options. Returns AIState.Idle if one is not chosen
+        /// </summary>
+        /// <param name="states"></param>
+        public AIState GetRandomAIState(List<AIState> states)
+        {
+            foreach (AIState state in states)
+            {
+                if ((float)mainMan.Rnd.Next(0, 100) / 100f < AIProbs[state])
+                {
+                    return state;
+                }
+            }
+
+            return AIState.Idle;
         }
 
 

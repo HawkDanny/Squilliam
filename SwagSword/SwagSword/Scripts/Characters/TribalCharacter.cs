@@ -26,8 +26,9 @@ namespace SwagSword
             NormalColor = Color.Purple;
 
             //Set AI state prob
-            AIProbs.Add(AIState.Attack, 0.3f);
-            AIProbs.Add(AIState.Ability, 0.2f);
+            AIProbs.Add(AIState.Attack, 0.5f);
+            AIProbs.Add(AIState.Flank, 0.1f);
+            AIProbs.Add(AIState.Ability, 0.5f);
             AIProbs.Add(AIState.Defend, 0.4f);
             AIProbs.Add(AIState.Cower, 0.3f);
             AIProbs.Add(AIState.Ready, 0.3f);
@@ -38,6 +39,11 @@ namespace SwagSword
             AITimers.Add(AIState.Swing, 0.25f);
             AITimers.Add(AIState.Defend, 5f);
             AITimers.Add(AIState.Ability, 3f);
+            AITimers.Add(AIState.Idle, 0.2f);
+
+            //Encounter AI State list
+            EncounterAIStates.Add(AIState.Attack);
+            EncounterAIStates.Add(AIState.Ability);
 
             SightRange = 250f;
             AttackRange = 50f;
@@ -72,6 +78,8 @@ namespace SwagSword
                             if (DistanceToPlayer(0) > AttackRange)
                             {
                                 MoveToPoint(mainMan.GameMan.Players[0].X, mainMan.GameMan.Players[0].Y);
+
+
                             }
                             else
                             {
@@ -93,6 +101,7 @@ namespace SwagSword
 
                     case AIState.Swing:
                         AIStateTimer -= (float)mainMan.GameTime.ElapsedGameTime.TotalSeconds;
+
                         if (AIStateTimer <= 0f)
                         {
                             SwitchAIState(AIState.Idle);
@@ -104,12 +113,22 @@ namespace SwagSword
                         break;
 
                     case AIState.Idle:
-                        //Work out some random movement paths
-                        if (!mainMan.GameMan.Players[0].NoCharacter && mainMan.GameMan.Players[0].Character.Type != Type && mainMan.GameMan.Players[0].CharacterState == CharacterState.Active)
+                        AIStateTimer -= (float)mainMan.GameTime.ElapsedGameTime.TotalSeconds;
+
+                        if (AIStateTimer <= 0f)
                         {
-                            if (DistanceToPlayer(0) < SightRange)
+                            //random movement?
+                            if (!mainMan.GameMan.Players[0].NoCharacter && mainMan.GameMan.Players[0].Character.Type != Type && mainMan.GameMan.Players[0].CharacterState == CharacterState.Active)
                             {
-                                SwitchAIState(AIState.Attack);
+                                if (DistanceToPlayer(0) < SightRange)
+                                {
+                                    //Get random
+                                    SwitchAIState(GetRandomAIState(EncounterAIStates));
+                                }
+                            }
+                            else
+                            {
+                                AIStateTimer = AITimers[AIState];
                             }
                         }
                         break;
@@ -127,7 +146,9 @@ namespace SwagSword
                         break;
 
                     case AIState.Ability:
-
+                        //Warp to player
+                        CurrentAbility.AIUse();
+                        SwitchAIState(AIState.Idle);
                         break;
 
                     case AIState.Cower:

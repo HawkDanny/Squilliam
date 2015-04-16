@@ -226,6 +226,7 @@ namespace SwagSword
                                 if (character.VelocityX != 0f || character.VelocityY != 0f)
                                 {
                                     character.CurrentAbility.Use();
+                                    //mainMan.DrawMan.Camera.Position += new Vector2(character.VelocityX, character.VelocityY);
                                 }
                                 break;
 

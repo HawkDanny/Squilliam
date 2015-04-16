@@ -26,7 +26,7 @@ namespace SwagSword
         {
             speed = 150f;
 
-            coolDownMax = 0.700f;
+            coolDownMax = 0.600f;
             coolDownTimer = 0f;
 
             base.Init();
@@ -55,11 +55,46 @@ namespace SwagSword
         {
             character.VelocityX = (float)(speed * Math.Cos((90f - character.Direction) * Math.PI / 180f));
             character.VelocityY = (float)(speed * Math.Sin((90f - character.Direction) * Math.PI / 180f));
-
+            
             coolDownTimer = coolDownMax;
 
             base.Use();
         }
 
+        
+
+        /// <summary>
+        /// Used for the AI to warp to the player's position
+        /// </summary>
+        /// <param name="target"></param>
+        public override void AIUse()
+        {
+            if (!InUse)
+            {
+                character.SetDirectionToPoint(mainMan.GameMan.Players[0].X, mainMan.GameMan.Players[0].Y);
+                character.AnimateFaceDirection();
+
+                
+
+                if (character.DistanceToPlayer(0) < 80f)
+                {
+                    //character is too close, so warp away
+                    character.VelocityX = (float)(40f * Math.Cos((90f - character.Direction - 180f) * Math.PI / 180f));
+                    character.VelocityY = (float)(40f * Math.Sin((90f - character.Direction - 180f) * Math.PI / 180f));
+                }
+                else
+                {
+                    float targetX = mainMan.GameMan.Players[0].X + (float)(60f * Math.Cos((90f - character.Direction - 180f) * Math.PI / 180f));
+                    float targetY = mainMan.GameMan.Players[0].Y + (float)(60f * Math.Sin((90f - character.Direction - 180f) * Math.PI / 180f));
+                    character.X = targetX;
+                    character.Y = targetY;
+                }
+
+
+                coolDownTimer = coolDownMax;
+
+                base.AIUse();
+            }
+        }
     }
 }

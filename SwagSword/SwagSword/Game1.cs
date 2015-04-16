@@ -61,7 +61,7 @@ namespace SwagSword
         public Game1(): base()
         {
             graphics = new GraphicsDeviceManager(this);
-            
+            //graphics.IsFullScreen = true;
             Content.RootDirectory = "Content";
         }
 

@@ -22,6 +22,8 @@ namespace SwagSword
         int mapHeight;
         int resWidth;
         int resHeight;
+        Texture2D noiseOffset;
+        Random rand;
         GraphicsDevice graphicsDevice;
 
         public int TileSize { get { return tileSize; } }
@@ -37,45 +39,29 @@ namespace SwagSword
         public override void Init()
         {
             tileSize = 64;
-            mapWidth = 15;
-            mapHeight = 15;
             resWidth = 1920;
             resHeight = 1920;
+            mapWidth = resWidth / tileSize;
+            mapHeight = resHeight / tileSize;
+            rand = new Random();
             graphicsDevice = mainMan.GraphicsDevice;
         }
 
         //called after the textures are loaded
         public void Startup()
         {
-            NoiseToTexture();
+            PerlinNoise noiseGen = new PerlinNoise(resWidth, resHeight, rand, graphicsDevice);
+            noiseOffset = noiseGen.NoiseToTexture();
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            //noiseButton_Click();
             //while loading draw the loading screen (would require threading)
-            spriteBatch.Draw(noise, new Rectangle(10, 10, resWidth, resHeight), Color.White);
+            spriteBatch.Draw(noiseOffset, new Rectangle(0, 0, resWidth, resHeight), Color.White);
         }
 
-        Texture2D noise;
-        private void NoiseToTexture()
-        {
-            Random rand = new Random();
-            PerlinNoise perlinNoise = new PerlinNoise(resWidth, resHeight, rand);
-            noise = new Texture2D(graphicsDevice, resWidth, resHeight);
-            float[][] noiseData = perlinNoise.Init();
 
-            Color[] colorData = new Color[resWidth * resHeight];
-            for (int x = 0; x < resWidth - 1; x++)
-            {
-                for (int y = 0; y < resHeight - 1; y++)
-                {
-                    int val = (int)(noiseData[x][y] * 255);
-                    colorData[x * resHeight + y] = new Color(val, val, val);
-                }
-            }
-            noise.SetData<Color>(colorData);
-        }
+
 
     }
 }

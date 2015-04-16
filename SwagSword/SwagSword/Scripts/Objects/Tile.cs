@@ -21,6 +21,7 @@ namespace SwagSword
         #region fields
         bool pathway;
         Texture2D texture;
+        Texture2D overlay;
         Point center;
         Point coordinates;
         MapManager mapMan;
@@ -44,6 +45,7 @@ namespace SwagSword
         {
             
             texture = new Texture2D(mapMan.GraphicsDevice, t.Width, t.Height);
+            overlay = null;
             Color[] colors = new Color[t.Width * t.Height];
             t.GetData<Color>(colors);
             texture.SetData<Color>(colors);
@@ -61,6 +63,7 @@ namespace SwagSword
         #region Properties
         public bool Pathway { get { return pathway; } set { pathway = value; } }
         public Texture2D Texture { get { return texture; } set { texture = value; } }
+        public Texture2D Overlay { get { return overlay; } set { overlay = value; } }
         public Point Center { get { return center; } set { center = value; } }
         public Tile Top { get { return top; } set { top = value; } }
         public Tile Left { get { return left; } set { left = value; } }
@@ -150,7 +153,7 @@ namespace SwagSword
         }
 
         #endregion
-
+        /*
         public void OverlayTexture(Texture2D overlay)
         {
             if (overlay == null)
@@ -169,16 +172,15 @@ namespace SwagSword
                         int R;
                         int G;
                         int B;
-                        textureData[x * texture.Height + y] = new Color((textureData[x * texture.Height + y].R + 0 * overlayData[x * texture.Height + y].R) / 2, (textureData[x * texture.Height + y].G + 0 * overlayData[x * texture.Height + y].G) / 2, (textureData[x * texture.Height + y].B + value * overlayData[x * texture.Height + y].B) / 2, MathHelper.Clamp((textureData[x * texture.Height + y].A + overlayData[x * texture.Height + y].A) / 2, 0, 255));
+                        textureData[x * texture.Height + y] = new Color((textureData[x * texture.Height + y].R + overlayData[x * texture.Height + y].R) / 2, (textureData[x * texture.Height + y].G + overlayData[x * texture.Height + y].G) / 2, (textureData[x * texture.Height + y].B + overlayData[x * texture.Height + y].B) / 2, MathHelper.Clamp((textureData[x * texture.Height + y].A + overlayData[x * texture.Height + y].A) / 2, 0, 255));
                         //textureData[x * texture.Height + y].A = (byte)MathHelper.Clamp((textureData[x * texture.Height + y].A + overlayData[x * texture.Height + y].A) / 2, 0, 255);
-                        
                     }
                 }
                 texture.SetData<Color>(textureData);
                 
             }
         }
-
+        */
         public void FormGroups()
         {
             cardinals = new List<Tile>();

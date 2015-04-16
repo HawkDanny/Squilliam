@@ -180,7 +180,7 @@ namespace SwagSword
         /// <returns></returns>
         protected double CalcDistance(Point a0, Point a1)
         {
-            return Math.Sqrt(Math.Pow(a1.X - a0.X, 2) + Math.Pow(a1.Y - a0.Y, 2));              //the distance formula
+            return Math.Sqrt(Math.Pow(a1.X - a0.X, 2) + Math.Pow(a1.Y - a0.Y, 2));
         }
 
         void GenerateSimplePath()
@@ -357,20 +357,22 @@ namespace SwagSword
                                     continue;
                     if (map[x, y].Pathway)
                         continue;
-                    map[x, y].OverlayTexture(CalculateOverlay(map[x, y]));
+                    map[x, y].Overlay = CalculateOverlay(map[x, y]);
+
+
                 }
         }
 
         protected Texture2D CalculateOverlay(Tile subject)
         {      
             Texture2D overlay = new Texture2D(mainMan.GraphicsDevice, tileSize, tileSize);
-            /*
+            
             if (subject.Texture == mainMan.DrawMan.PathwayTexture)
                 overlay.SetData<Color>(NotPathData);
             else
                 overlay.SetData<Color>(PathData);
-            */ 
-            overlay.SetData<Color>(PathData);
+            
+            //overlay.SetData<Color>(PathData);
             Color[] colorData = new Color[tileSize * tileSize];
             overlay.GetData<Color>(colorData);
 
@@ -382,9 +384,82 @@ namespace SwagSword
                     colorData2D[x, y] = colorData[x * tileSize + y];
                 }
             }
-            //colorData2D[5, 5] = new Color(1,1,1);
+            int xStart = 0;
+            int xEnd = 0;
+            int yStart = 0;
+            int yEnd = 0;
+            int xChange = 0;
+            int yChange = 0;
+            int count = 0;
+            Point circleCenter = subject.Center;
+            if (subject.Left.Pathway == true)
+                count++;
+            //value +=  64 - (CalcDistance(pixel, subject.Left.Center));
+            if (subject.Right.Pathway == true)
+                count++;
+            //value += 64 - (CalcDistance(pixel, subject.Right.Center));
+            if (subject.Top.Pathway == true)
+                count++;
+            //value += 64 - (CalcDistance(pixel, subject.Top.Center));
+            if (subject.Lower.Pathway == true)
+                count++;
+            //value += 64 - (CalcDistance(pixel, subject.Lower.Center));
+            if (count > 2)
+                return overlay;
+            if (count < 2)
+                return null;
+            if (count == 2)
+            {
+                if (subject.Lower.Pathway == true && subject.Top.Pathway == true)
+                    return null;
+                if (subject.Left.Pathway == true && subject.Right.Pathway == true)
+                    return null;
 
-            int xInterpStart;
+                if (subject.Left.Pathway && subject.Top.Pathway)
+                {
+                    circleCenter = new Point(subject.Center.X - tileSize / 2, subject.Center.Y - tileSize / 2);
+                    xStart = 0;
+                    xEnd = tileSize - 1;
+                    xChange = 1;
+                    yStart = 0;
+                    yEnd = tileSize - 1;
+                    yChange = 1;
+                }
+                if (subject.Left.Pathway && subject.Lower.Pathway)
+                {
+                    circleCenter = new Point(subject.Center.X - tileSize / 2, subject.Center.Y - tileSize / 2);
+                    xStart = 0;
+                    xEnd = tileSize - 1;
+                    yStart = tileSize - 1;
+                    yEnd = 0;
+                    xChange = 1;
+                    yChange = -1;
+                }
+                if (subject.Right.Pathway && subject.Top.Pathway)
+                {
+                    circleCenter = new Point(subject.Center.X - tileSize / 2, subject.Center.Y - tileSize / 2);
+                    xStart = tileSize - 1;
+                    xEnd = 0;
+                    xChange = -1;
+                    yStart = 0;
+                    yEnd = tileSize - 1;
+                    yChange = 1;
+                }
+                if (subject.Right.Pathway && subject.Lower.Pathway)
+                {
+                    circleCenter = new Point(subject.Center.X - tileSize / 2, subject.Center.Y - tileSize / 2);
+                    xStart = tileSize - 1;
+                    xEnd = 0;
+                    xChange = -1;
+                    yStart = tileSize - 1;
+                    yEnd = 0;
+                    yChange = -1;
+                }
+            }
+
+            //colorData2D[10, 10] = Color.Pink;
+
+            /*int xInterpStart;
             int xInterpEnd;
             int yInterpStart;
             int yInterpEnd;
@@ -404,29 +479,26 @@ namespace SwagSword
                 yInterpEnd = 1;
             else
                 yInterpEnd = 0;
-            int R;
-            int G;
-            int B;
+             */
+            //int R;
+            //int G;
+            //int B;
             double value = 0;
-            int n;
-            for (int x = 0; x < tileSize; x++)
+
+
+
+
+            for (int x = xStart; x != xEnd; x += xChange)
             {
-                for (int y = 0; y < tileSize; y++)
+                for (int y = yStart; y != yEnd; y += yChange)
                 {
                     //calculate the alpha weight value
-                    //n = 
                     Point pixel = new Point(subject.Center.X + x - tileSize / 2, subject.Center.Y + y - tileSize / 2);
-                    if (subject.Left.Pathway == true)
-                        value += (CalcDistance(pixel, subject.Left.Center) - tileSize / 2) / tileSize;
-                    if (subject.Right.Pathway == true)
-                        value += (CalcDistance(pixel, subject.Right.Center) - tileSize / 2) / tileSize;
-                    if (subject.Top.Pathway == true)
-                        value += (CalcDistance(pixel, subject.Top.Center) - tileSize / 2) / tileSize;
-                    if (subject.Lower.Pathway == true)
-                        value += (CalcDistance(pixel, subject.Lower.Center) - tileSize / 2) / tileSize;
-                    MathHelper.Clamp((int)(value / 4), 0, 1);
-                    colorData2D[x, y].A = (byte)((value * 255));
+                    value = 255 - 3.5 * CalcDistance(circleCenter, pixel);
+                    value = MathHelper.Clamp((int)value, 0, 255);
+                    colorData2D[x, y].A = (byte)((value));
                     value = 0;
+                    
                 }
                 
             }
@@ -451,11 +523,13 @@ namespace SwagSword
                 Rectangle r = new Rectangle(t.Center.X - tileSize / 2, t.Center.Y - tileSize / 2,  tileSize, tileSize);
                 
                 spriteBatch.Draw(t.Texture, r, Color.White);
+                if(t.Overlay != null)
+                    spriteBatch.Draw(t.Overlay, r, Color.White);
             }
-            //spriteBatch.Draw(mainMan.DrawMan.Stronghold, new Rectangle(leftCenter.Center.X - strongholdWidth / 2, leftCenter.Center.Y - strongholdHeight / 2, strongholdWidth, strongholdHeight), Color.White);
-            //spriteBatch.Draw(mainMan.DrawMan.Stronghold, new Rectangle(rightCenter.Center.X - strongholdWidth / 2, rightCenter.Center.Y - strongholdHeight / 2, strongholdWidth, strongholdHeight), Color.White);
-            //spriteBatch.Draw(mainMan.DrawMan.Stronghold, new Rectangle(topCenter.Center.X - strongholdWidth / 2, topCenter.Center.Y - strongholdHeight / 2, strongholdWidth, strongholdHeight), Color.White);
-            //spriteBatch.Draw(mainMan.DrawMan.Stronghold, new Rectangle(lowerCenter.Center.X - strongholdWidth / 2, lowerCenter.Center.Y - strongholdHeight / 2, strongholdWidth, strongholdHeight), Color.White);
+            spriteBatch.Draw(mainMan.DrawMan.Stronghold, new Rectangle(leftCenter.Center.X - strongholdWidth / 2, leftCenter.Center.Y - strongholdHeight / 2, strongholdWidth, strongholdHeight), Color.White);
+            spriteBatch.Draw(mainMan.DrawMan.Stronghold, new Rectangle(rightCenter.Center.X - strongholdWidth / 2, rightCenter.Center.Y - strongholdHeight / 2, strongholdWidth, strongholdHeight), Color.White);
+            spriteBatch.Draw(mainMan.DrawMan.Stronghold, new Rectangle(topCenter.Center.X - strongholdWidth / 2, topCenter.Center.Y - strongholdHeight / 2, strongholdWidth, strongholdHeight), Color.White);
+            spriteBatch.Draw(mainMan.DrawMan.Stronghold, new Rectangle(lowerCenter.Center.X - strongholdWidth / 2, lowerCenter.Center.Y - strongholdHeight / 2, strongholdWidth, strongholdHeight), Color.White);
             //spriteBatch.Draw(canvas, new Rectangle(64, 64, 64, 64), Color.White);
         }
 

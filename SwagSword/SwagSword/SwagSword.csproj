@@ -93,6 +93,9 @@
     <Content Include="Content\Buttons\StatsButton.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\Map\Grass.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\Map\Stronghold.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

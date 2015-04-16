@@ -39,8 +39,8 @@ namespace SwagSword
 
         //Map Textures
         private Texture2D pathwayTexture;
-        private Texture2D notPathwayTexture;
-        private Texture2D dirt;
+        private Texture2D sandyTexture;
+        private Texture2D grassTexture;
         private Texture2D stronghold;
 
         //Fonts
@@ -77,8 +77,8 @@ namespace SwagSword
 
         //Map textures
         public Texture2D PathwayTexture { get { return pathwayTexture; } set { pathwayTexture = value; } }
-        public Texture2D NotPathwayTexture { get { return notPathwayTexture; } set { notPathwayTexture = value; } }
-        public Texture2D Dirt { get { return dirt; } set { dirt = value; } }
+        public Texture2D SandyTexture { get { return sandyTexture; } set { sandyTexture = value; } }
+        public Texture2D GrassTexture { get { return grassTexture; } set { grassTexture = value; } }        
         public Texture2D Stronghold { get { return stronghold; } set { stronghold = value; } }
 
         //SpriteFonts

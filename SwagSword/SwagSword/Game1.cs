@@ -127,7 +127,8 @@ namespace SwagSword
 
             //Load Map textures
             drawMan.PathwayTexture = Content.Load<Texture2D>("Map/SamplePath3.png");
-            drawMan.NotPathwayTexture = Content.Load<Texture2D>("Map/SampleNotPath.png");
+            drawMan.SandyTexture = Content.Load<Texture2D>("Map/SampleNotPath.png");
+            drawMan.GrassTexture = Content.Load<Texture2D>("Map/Grass.jpg");
             drawMan.Stronghold = Content.Load<Texture2D>("Map/Stronghold.jpg");
 
             //Load Fonts

@@ -75,6 +75,17 @@ namespace SwagSword
                 );
         }
 
+        Color InterpLinearColor(Color a, Color b, double w)
+        {
+            double weight = w;
+            return new Color
+                (
+                (int)(a.R * (1 - weight) + b.R * weight),
+                (int)(a.G * (1 - weight) + b.G * weight),
+                (int)(a.B * (1 - weight) + b.B * weight)
+                );
+        }
+
         public Texture2D NoiseToTexture()
         {
             Texture2D newNoise = new Texture2D(graphicsDevice, width, height);
@@ -204,35 +215,54 @@ namespace SwagSword
         #endregion
 
         #region ImageManip
-        /*
+        
+        public Texture2D AdjustConstrast(Texture2D baseTexture, double factor)
+        {
+            
+            Color[] originalColor = new Color[baseTexture.Width * baseTexture.Height];
+            Color[] adjustedColor = new Color[baseTexture.Width * baseTexture.Height];
+            baseTexture.GetData<Color>(originalColor);
+            double average = 0;
+            for(int i = 0; i < originalColor.Length; i++)
+            {
+                average += (originalColor[i].R + originalColor[i].G + originalColor[i].B);
+            }
+            average /= (3 * originalColor.Length);
+            for (int i = 0; i < originalColor.Length; i++)
+            {
+                double deltaR = originalColor[i].R - average;
+                double deltaG = originalColor[i].G - average;
+                double deltaB = originalColor[i].B - average;
+                adjustedColor[i] = new Color((int)(average + (deltaR * factor)), (int)(average + (deltaG * factor)), (int)(average + (deltaB * factor)));
+            }
+            baseTexture.SetData<Color>(adjustedColor);
+            return baseTexture;
+
+        }
+
         public Texture2D AddGradient(Texture2D baseTexture, Color gradientStart, Color gradientEnd)
         {
-            return ConvertArrayToTexture(MapGradient(gradientStart, gradientEnd, ConvertTextureToArray(baseTexture)));
+
+            Color[] colorData = new Color[baseTexture.Width * baseTexture.Height];
+            baseTexture.GetData<Color>(colorData);
+            double weight = 0;
+            for(int i = 0; i < baseTexture.Width; i++)
+            {
+                for (int j = 0; j < baseTexture.Height; j++)
+                {
+                    weight = ((double)j / (double)baseTexture.Height);
+                    Color addition = InterpLinearColor(gradientStart, gradientEnd, weight);
+                    colorData[i * baseTexture.Height + j].R = (byte)((colorData[i * baseTexture.Height + j].R + addition.R) / 2);
+                    colorData[i * baseTexture.Height + j].G = (byte)((colorData[i * baseTexture.Height + j].G + addition.G) / 2);
+                    colorData[i * baseTexture.Height + j].B = (byte)((colorData[i * baseTexture.Height + j].B + addition.B) / 2);
+                    
+                }
+                weight = 0;
+            }
+            baseTexture.SetData<Color>(colorData);
+            return baseTexture;
         }
 
-        private Color GetColor(Color gradientStart, Color gradientEnd, float weight)
-        {
-            Color color = new Color
-                (
-                (int)(gradientStart.R * (1 - weight) + gradientEnd.R * weight),
-                (int)(gradientStart.G * (1 - weight) + gradientEnd.G * weight),
-                (int)(gradientStart.B * (1 - weight) + gradientEnd.B * weight)
-                );
-            return color;
-        }
-
-        private Color[][] MapGradient(Color gradientStart, Color gradientEnd, Color[][] noise)
-        {
-            width = noise.Length;
-            height = noise[0].Length;
-            
-            Color[][] gradient = GetEmptyColorArray(width, height);
-            for (int i = 0; i < width; i++)
-                for (int j = 0; j < height; j++)
-                    gradient[i][j] = GetColor(gradientStart, gradientEnd, noise[i][j].R);
-            return gradient;
-        }
-        */
         public Texture2D BlendImages(Texture2D texture1, Texture2D texture2, Texture2D mask)
         {
             //return ConvertArrayToTexture(BlendImages(ConvertTextureToArray(texture1), ConvertTextureToArray(texture2), ConvertTextureToArray(mask)));

@@ -15,7 +15,7 @@ namespace SwagSword
         {
             //Set config file here
 
-            CurrentAbility = new Warp(mainMan, this);
+            CurrentAbility = new Boomerang(mainMan, this);
 
             Init();
         }

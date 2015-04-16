@@ -94,14 +94,18 @@ namespace SwagSword
                         }
                         character.VelocityX = character.MovementSpeed;
 
+                        character.Direction = 90f;
+
                         //In case moving diagonal
                         if (mainMan.InputMan.Up.IsDown())
                         {
                             character.VelocityY = -character.MovementSpeed;
+                            character.Direction = 135f;
                         }
                         else if (mainMan.InputMan.Down.IsDown())
                         {
                             character.VelocityY = character.MovementSpeed;
+                            character.Direction = 45f;
                         }
                     }
                     else if (mainMan.InputMan.Left.IsDown())
@@ -112,14 +116,18 @@ namespace SwagSword
                         }
                         character.VelocityX = -character.MovementSpeed;
 
+                        character.Direction = -90f;
+
                         //In case moving diagonal
                         if (mainMan.InputMan.Up.IsDown())
                         {
                             character.VelocityY = -character.MovementSpeed;
+                            character.Direction = -135f;
                         }
                         else if (mainMan.InputMan.Down.IsDown())
                         {
                             character.VelocityY = character.MovementSpeed;
+                            character.Direction = -45f;
                         }
                     }
                     else
@@ -131,6 +139,8 @@ namespace SwagSword
                                 character.StartAnimation(AnimationState.MoveUp);
                             }
                             character.VelocityY = -character.MovementSpeed;
+
+                            character.Direction = 180f;
                         }
                         else if (mainMan.InputMan.Down.IsDown())
                         {
@@ -139,6 +149,8 @@ namespace SwagSword
                                 character.StartAnimation(AnimationState.MoveDown);
                             }
                             character.VelocityY = character.MovementSpeed;
+
+                            character.Direction = 0f;
                         }
                     }
 
@@ -171,7 +183,7 @@ namespace SwagSword
 
                         //Swing the sword
                         character.Weapon.Angle = mainMan.InputMan.AngleToPointer(X, Y);
-                        Direction = character.Weapon.Angle;
+                        //Direction = character.Weapon.Angle;
 
                         //Minor Animation
                         if (mainMan.InputMan.AllMovementKeysUp)
@@ -201,6 +213,26 @@ namespace SwagSword
                     {
                         //Resets AttackHeld so the player can swing again
                         mainMan.InputMan.AttackHeld = false;
+                    }
+                    #endregion
+
+                    #region Ability Input
+                    if (mainMan.InputMan.UseAbility.IsDown() && !Character.CurrentAbility.InUse)
+                    {
+                        //Custom use logic
+                        switch (character.CurrentAbility.Type)
+                        {
+                            case Abilities.Warp:
+                                if (character.VelocityX != 0f || character.VelocityY != 0f)
+                                {
+                                    character.CurrentAbility.Use();
+                                }
+                                break;
+
+                            default:
+                                character.CurrentAbility.Use();
+                                break;
+                        }
                     }
                     #endregion
 

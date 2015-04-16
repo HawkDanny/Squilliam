@@ -15,6 +15,8 @@ namespace SwagSword
         {
             //Set config file here
 
+            CurrentAbility = new Warp(mainMan, this);
+
             Init();
         }
 

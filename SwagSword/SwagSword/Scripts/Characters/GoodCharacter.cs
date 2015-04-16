@@ -14,6 +14,9 @@ namespace SwagSword
         public GoodCharacter(int x, int y, Texture2D texture, Game1 mainMan): base(x, y, texture, mainMan)
         {
             //Set config file here
+
+            CurrentAbility = new Warp(mainMan, this);
+
             Init();
         }
 

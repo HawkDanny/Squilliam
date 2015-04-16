@@ -5,8 +5,20 @@ using System.Text;
 
 namespace SwagSword
 {
-    class Minion
+    class Minion : Ability
     {
+        public Minion(Game1 mainMan, Character character):base(mainMan, Abilities.Minion, character)
+        {
 
+        }
+
+
+        /// <summary>
+        /// </summary>
+        public override void Update()
+        {
+
+            base.Update();
+        }
     }
 }

@@ -65,5 +65,7 @@ namespace SwagSword
 
             mainMan.GameMan.Characters.Add(character);
         }
+
+
     }
 }

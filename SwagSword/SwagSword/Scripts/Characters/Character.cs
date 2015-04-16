@@ -87,6 +87,8 @@ namespace SwagSword
 
         //Weapon + Abilities
         private Weapon weapon;
+        private List<Ability> abilities;
+        private Ability currentAbility;
 
         //Stats
         protected int health;
@@ -154,6 +156,9 @@ namespace SwagSword
 
         //Weapon + Abilities
         public Weapon Weapon { get { return weapon; } }
+        public List<Ability> Abilities { get { return abilities; } }
+        public Ability CurrentAbility { get { return currentAbility; } set { currentAbility = value; } }
+        
 
         //Stats
         public int Health { get { return health; } set { health = value; } }
@@ -247,6 +252,7 @@ namespace SwagSword
         public virtual void Update()
         {
             weapon.Update();
+            currentAbility.Update();
 
             //Swap between character states
             switch (characterState)

@@ -37,6 +37,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Game1.cs" />
+    <Compile Include="Scripts\Abilities\Ability.cs" />
+    <Compile Include="Scripts\Abilities\Boomerang.cs" />
+    <Compile Include="Scripts\Abilities\Decoy.cs" />
+    <Compile Include="Scripts\Abilities\Minion.cs" />
+    <Compile Include="Scripts\Abilities\Warp.cs" />
     <Compile Include="Scripts\Characters\RichCharacter.cs" />
     <Compile Include="Scripts\Characters\ThiefCharacter.cs" />
     <Compile Include="Scripts\Managers\Input Scripts\InputKeyboard.cs" />
@@ -139,7 +144,6 @@
   <ItemGroup>
     <Folder Include="Content\Music\" />
     <Folder Include="Content\Sfx\" />
-    <Folder Include="Scripts\Abilities\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Fonts\vanillawhale.xnb">

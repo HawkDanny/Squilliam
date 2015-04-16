@@ -166,7 +166,7 @@ namespace SwagSword
                         if (ch.HitBox.Contains(new Point((int)character.X, (int)character.Y))
                         || ch.HitBox.Contains(middlePoint) || ch.HitBox.Contains(endPoint))
                         {
-                            ch.TakeHit(character.Damage, character.Strength, character.Direction);
+                            ch.TakeHit(character.Damage, character.Strength, currentAngle);
                         }
                     }
                 }
@@ -182,7 +182,7 @@ namespace SwagSword
                         if (tempPlayer.Character.HitBox.Contains(new Point((int)character.X, (int)character.Y))
                         || tempPlayer.Character.HitBox.Contains(middlePoint) || tempPlayer.Character.HitBox.Contains(endPoint))
                         {
-                            tempPlayer.Character.TakeHit(character.Damage, character.Strength, character.Direction);
+                            tempPlayer.Character.TakeHit(character.Damage, character.Strength, currentAngle);
                         }
                     }
 

@@ -39,25 +39,28 @@ namespace SwagSword
         public override void Init()
         {
             tileSize = 64;
-            resWidth = 1920;
-            resHeight = 1920;
+            resWidth = 1000;
+            resHeight = 1000;
             mapWidth = resWidth / tileSize;
             mapHeight = resHeight / tileSize;
             rand = new Random();
             graphicsDevice = mainMan.GraphicsDevice;
         }
 
+        Texture2D noiseOffset2;
         //called after the textures are loaded
         public void Startup()
         {
             PerlinNoise noiseGen = new PerlinNoise(resWidth, resHeight, rand, graphicsDevice);
             noiseOffset = noiseGen.NoiseToTexture();
+            noiseOffset2 = noiseGen.BlendImages(mainMan.DrawMan.PathwayTexture, mainMan.DrawMan.Stronghold, noiseOffset);
+            //noiseOffset = noiseGen.BlendImages(mainMan.DrawMan.Stronghold, mainMan.DrawMan.PathwayTexture, noiseOffset2);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             //while loading draw the loading screen (would require threading)
-            spriteBatch.Draw(noiseOffset, new Rectangle(0, 0, resWidth, resHeight), Color.White);
+            spriteBatch.Draw(noiseOffset2, new Rectangle(0, 0, resWidth, resHeight), Color.White);
         }
 
 

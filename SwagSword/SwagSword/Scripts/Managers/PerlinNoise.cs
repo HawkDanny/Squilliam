@@ -64,8 +64,9 @@ namespace SwagSword
             return (float)(x0 * (1 - f) + x1 * f);
         }
 
-        Color InterpLinearColor(Color a, Color b, float weight)
+        Color InterpLinearColor(Color a, Color b, Color w)
         {
+            double weight = (double)w.R / 255;
             return new Color
                 (
                 (int)(a.R * (1 - weight) + b.R * weight),
@@ -203,7 +204,7 @@ namespace SwagSword
         #endregion
 
         #region ImageManip
-
+        /*
         public Texture2D AddGradient(Texture2D baseTexture, Color gradientStart, Color gradientEnd)
         {
             return ConvertArrayToTexture(MapGradient(gradientStart, gradientEnd, ConvertTextureToArray(baseTexture)));
@@ -231,22 +232,33 @@ namespace SwagSword
                     gradient[i][j] = GetColor(gradientStart, gradientEnd, noise[i][j].R);
             return gradient;
         }
-
+        */
         public Texture2D BlendImages(Texture2D texture1, Texture2D texture2, Texture2D mask)
         {
-            return ConvertArrayToTexture(BlendImages(ConvertTextureToArray(texture1), ConvertTextureToArray(texture2), ConvertTextureToArray(mask)));
-        }
+            //return ConvertArrayToTexture(BlendImages(ConvertTextureToArray(texture1), ConvertTextureToArray(texture2), ConvertTextureToArray(mask)));
+            Color[] dataTex1 = new Color[texture1.Width * texture1.Height];
+            texture1.GetData<Color>(dataTex1);
+            Color[] dataTex2 = new Color[texture2.Width * texture2.Height];
+            texture2.GetData<Color>(dataTex2);
+            Color[] dataMask = new Color[mask.Width * mask.Height];
+            mask.GetData<Color>(dataMask);
+            Color[] image = new Color[mask.Width * mask.Height];
+            Texture2D imageTexture = new Texture2D(graphicsDevice, mask.Width, mask.Height);
+            
+            for (int i = 0; i < mask.Width; i++ )
+            {
+                for (int j = 0; j < mask.Height; j++)
+                {
+                    
+                    image[i * mask.Height + j] = InterpLinearColor(
+                        dataTex1[((i % texture1.Width) * texture1.Height) + j % texture1.Height],
+                        dataTex2[((i % texture2.Width) * texture2.Height) + j % texture2.Height],
+                        dataMask[i * mask.Height + j]);
+                }
 
-        private Color[][] BlendImages(Color[][] image1, Color[][] image2, Color[][] noise)
-        {
-            width = image1.Length;
-            height = image1[0].Length;
-
-            Color[][] image = GetEmptyColorArray(width, height);
-            for (int i = 0; i < width; i++)
-                for (int j = 0; j < height; j++)
-                    image[i][j] = InterpLinearColor(image1[i][j], image2[i][j], noise[i][j].R);
-            return image;
+            }
+            imageTexture.SetData<Color>(image);
+            return imageTexture;
         }
 
         #endregion

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 //Names: Nelson Scott
 
@@ -69,6 +70,15 @@ namespace SwagSword
         public virtual void AIUse()
         {
             inUse = true;
+        }
+
+        /// <summary>
+        /// For abilities that need to be drawn
+        /// </summary>
+        /// <param name="spritebatch"></param>
+        public virtual void Draw(SpriteBatch spritebatch)
+        {
+
         }
     }
 }

@@ -176,7 +176,8 @@ namespace SwagSword
                     #endregion
 
                     #region Attack Input
-                    if (mainMan.InputMan.Attack.IsDown() && mainMan.InputMan.AttackHeld == false)
+                    if ((mainMan.InputMan.Attack.IsDown() && mainMan.InputMan.AttackHeld == false) 
+                    && !(Character.CurrentAbility.Type == Abilities.Boomerang && Character.CurrentAbility.InUse))
                     {
                         //So the player can't just hold to swing
                         mainMan.InputMan.AttackHeld = true;
@@ -228,6 +229,11 @@ namespace SwagSword
                                     character.CurrentAbility.Use();
                                     //mainMan.DrawMan.Camera.Position += new Vector2(character.VelocityX, character.VelocityY);
                                 }
+                                break;
+
+                            case Abilities.Boomerang:
+                                character.Weapon.Angle = mainMan.InputMan.AngleToPointer(X, Y);
+                                character.CurrentAbility.Use();
                                 break;
 
                             default:

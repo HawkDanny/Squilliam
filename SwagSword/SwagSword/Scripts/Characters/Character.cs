@@ -623,6 +623,8 @@ namespace SwagSword
         /// <param name="spritebatch"></param>
         public void Draw(SpriteBatch spritebatch, GameTime gameTime)
         {
+            currentAbility.Draw(spritebatch);
+
             switch (animationState)
             {
                 case AnimationState.FaceDown:
@@ -665,6 +667,8 @@ namespace SwagSword
             spritebatch.Draw(texture, position, rectangle, color, 0f, center, 1.0f, spriteEffect, 1);
 
             weapon.Draw(spritebatch);
+
+            
         }
     }
 }

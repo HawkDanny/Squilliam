@@ -59,6 +59,7 @@
     <Compile Include="Scripts\Managers\MapManager.cs" />
     <Compile Include="Scripts\Managers\SoundManager.cs" />
     <Compile Include="Scripts\Managers\SpawnManager.cs" />
+    <Compile Include="Scripts\Objects\BoomerangObject.cs" />
     <Compile Include="Scripts\Objects\Button.cs" />
     <Compile Include="Scripts\Objects\Camera.cs" />
     <Compile Include="Scripts\Objects\Tile.cs" />

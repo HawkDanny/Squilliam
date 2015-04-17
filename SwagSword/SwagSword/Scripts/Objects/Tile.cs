@@ -16,6 +16,7 @@ namespace SwagSword
 {
     public class Tile
     {
+        Texture2D texture;
 
     }
 }

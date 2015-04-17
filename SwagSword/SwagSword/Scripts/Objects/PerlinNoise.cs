@@ -255,7 +255,6 @@ namespace SwagSword
                     colorData[i * baseTexture.Height + j].R = (byte)((colorData[i * baseTexture.Height + j].R + addition.R) / 2);
                     colorData[i * baseTexture.Height + j].G = (byte)((colorData[i * baseTexture.Height + j].G + addition.G) / 2);
                     colorData[i * baseTexture.Height + j].B = (byte)((colorData[i * baseTexture.Height + j].B + addition.B) / 2);
-                    
                 }
                 weight = 0;
             }

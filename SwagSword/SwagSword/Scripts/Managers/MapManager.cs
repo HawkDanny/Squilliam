@@ -22,8 +22,8 @@ namespace SwagSword
         int mapHeight;
         int resWidth;
         int resHeight;
-        Texture2D noiseOffset;
-        Random rand;
+        //temp variable
+        Texture2D map;
         GraphicsDevice graphicsDevice;
 
         public int TileSize { get { return tileSize; } }
@@ -43,7 +43,7 @@ namespace SwagSword
             resHeight = 2000;
             mapWidth = resWidth / tileSize;
             mapHeight = resHeight / tileSize;
-            rand = new Random();
+            
             graphicsDevice = mainMan.GraphicsDevice;
         }
 
@@ -51,17 +51,17 @@ namespace SwagSword
         //called after the textures are loaded
         public void Startup()
         {
-            PerlinNoise noiseGen = new PerlinNoise(resWidth, resHeight, rand, graphicsDevice);
-            noiseOffset = noiseGen.NoiseToTexture();
-            noiseOffset = noiseGen.AdjustConstrast(noiseOffset, 4);
-            noiseOffset = noiseGen.AddGradient(noiseOffset, Color.Black, Color.White);
-            noiseOffset = noiseGen.BlendImages(mainMan.DrawMan.SandyTexture, mainMan.DrawMan.GrassTexture, noiseOffset);
+            MapMaker mapMaker = new MapMaker(tileSize, resWidth, resHeight, graphicsDevice, mainMan);
+            map = mapMaker.MakeMap();
+            //make map
+            //temporarily keep as single texture
+            //map = ...
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             //while loading draw the loading screen (would require threading)
-            spriteBatch.Draw(noiseOffset, new Rectangle(0, 0, resWidth, resHeight), Color.White);
+            spriteBatch.Draw(map, new Rectangle(0, 0, resWidth, resHeight), Color.White);
         }
 
 

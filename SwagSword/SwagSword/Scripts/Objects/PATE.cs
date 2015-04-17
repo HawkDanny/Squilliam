@@ -21,7 +21,8 @@ namespace SwagSword
         private Vector2 position;
         private float angle;
         private Vector2 center; //The center point to be used for rotation
-        private Character owner; //The thrower of the boomerang
+        private Character owner;
+        private Character target;
         private bool reverse;
 
         //Physics
@@ -99,6 +100,23 @@ namespace SwagSword
                     }
                 }
             }
+
+
+            //Follow logic
+            if (owner.VelocityX != 0f || owner.VelocityY != 0f)
+            {
+                if ((float)Math.Sqrt(Math.Pow(owner.X - position.X, 2) + Math.Pow(owner.Y - position.Y, 2)) > 250f)
+                {
+                    direction = (float)Math.Atan2(owner.X - position.X, owner.Y - position.Y) * 180f / (float)Math.PI;
+                    velocityX += (float)(2f * Math.Cos((90f - direction) * Math.PI / 180f));
+                    velocityY += (float)(2f * Math.Sin((90f - direction) * Math.PI / 180f));
+
+                    if (target == null)
+                    {
+                        angle = direction;
+                    }
+                }
+            }
         }
 
         public void Deploy(float x, float y)
@@ -112,7 +130,7 @@ namespace SwagSword
             //Draw the sword to be picked up
             if (owner.CurrentAbility.InUse)
             {
-                spritebatch.Draw(texture, position, rectangle, Color.White, angle, center, 1.0f, SpriteEffects.None, 1);
+                spritebatch.Draw(texture, position, rectangle, Color.White, (180f - angle) * (float)Math.PI / 180f, center, 1.0f, SpriteEffects.None, 1);
                 //spritebatch.Draw(texture, HitBox, Color.Red);
             }
         }

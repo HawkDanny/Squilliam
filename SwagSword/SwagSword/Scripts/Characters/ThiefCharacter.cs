@@ -20,7 +20,8 @@ namespace SwagSword
         public override void Init()
         {
             Type = Faction.Thief;
-            NormalColor = Color.OrangeRed;
+            NormalColor = Color.White;
+            //NormalColor = Color.OrangeRed;
 
             base.Init();
         }

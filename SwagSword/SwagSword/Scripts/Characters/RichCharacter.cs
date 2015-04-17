@@ -23,7 +23,8 @@ namespace SwagSword
         public override void Init()
         {
             Type = Faction.Rich;
-            NormalColor = Color.SteelBlue;
+            NormalColor = Color.White;
+            //NormalColor = Color.SteelBlue;
 
             //Set AI state prob
             AIProbs.Add(AIState.Attack, 0.5f);

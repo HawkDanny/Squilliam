@@ -669,6 +669,11 @@ namespace SwagSword
 
                 rectangle = new Rectangle(frameX * frameWidth, frameY * frameHeight, frameWidth, frameHeight);
             }
+            else
+            {
+                rectangle = new Rectangle(0, 0, frameWidth, frameHeight);
+            }
+            
 
             spritebatch.Draw(texture, position, rectangle, color, 0f, center, 1.0f, spriteEffect, 1);
 

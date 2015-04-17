@@ -50,17 +50,17 @@ namespace SwagSword
                     break;
 
                 case Faction.Tribal:
-                    character = new TribalCharacter(mainMan.Rnd.Next(0, mainMan.MapWidth), mainMan.Rnd.Next(0, mainMan.MapHeight), mainMan.DrawMan.GoodGuyTextures[0], mainMan);
+                    character = new TribalCharacter(mainMan.Rnd.Next(0, mainMan.MapWidth), mainMan.Rnd.Next(0, mainMan.MapHeight), mainMan.DrawMan.SpriteDict[Faction.Tribal], mainMan);
                     break;
 
                 case Faction.Rich:
-                    character = new RichCharacter(mainMan.Rnd.Next(0, mainMan.MapWidth), mainMan.Rnd.Next(0, mainMan.MapHeight), mainMan.DrawMan.GoodGuyTextures[0], mainMan);
+                    character = new RichCharacter(mainMan.Rnd.Next(0, mainMan.MapWidth), mainMan.Rnd.Next(0, mainMan.MapHeight), mainMan.DrawMan.SpriteDict[Faction.Rich], mainMan);
                     Player player = new Player(character, mainMan);
                     mainMan.GameMan.Players.Add(player);
                     break;
 
                 case Faction.Thief:
-                    character = new ThiefCharacter(mainMan.Rnd.Next(0, mainMan.MapWidth), mainMan.Rnd.Next(0, mainMan.MapHeight), mainMan.DrawMan.GoodGuyTextures[0], mainMan);
+                    character = new ThiefCharacter(mainMan.Rnd.Next(0, mainMan.MapWidth), mainMan.Rnd.Next(0, mainMan.MapHeight), mainMan.DrawMan.SpriteDict[Faction.Thief], mainMan);
                     break;
             }
 

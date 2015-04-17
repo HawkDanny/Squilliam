@@ -36,15 +36,13 @@ namespace SwagSword
 
         public Texture2D MakeMap()
         {
-            
-                PerlinNoise noiseGen = new PerlinNoise(resWidth, resHeight, rand, graphicsDevice);
-                noiseOffset = noiseGen.NoiseToTexture();
-                pathMask = MergeTextures(ShiftPathHorizontal(BasePathHorizontal(), noiseOffset), ShiftPathVertical(BasePathVertical(), noiseOffset));
-                
-                noiseOffset = noiseGen.AdjustConstrast(noiseOffset, 4);
-                noiseOffset = noiseGen.AddGradient(noiseOffset, Color.Black, Color.White);
-                noiseOffset = noiseGen.BlendImages(mainMan.DrawMan.SandyTexture, mainMan.DrawMan.GrassTexture, noiseOffset);
-                return noiseGen.BlendImages(noiseOffset, mainMan.DrawMan.PathwayTexture, pathMask);
+            PerlinNoise noiseGen = new PerlinNoise(resWidth, resHeight, rand, graphicsDevice);
+            noiseOffset = noiseGen.NoiseToTexture();
+            pathMask = MergeTextures(ShiftPathHorizontal(BasePathHorizontal(), noiseOffset), ShiftPathVertical(BasePathVertical(), noiseOffset));
+            noiseOffset = noiseGen.AdjustConstrast(noiseOffset, 4);
+            noiseOffset = noiseGen.AddGradient(noiseOffset, Color.Black, Color.White);
+            noiseOffset = noiseGen.BlendImages(mainMan.DrawMan.SandyTexture, mainMan.DrawMan.GrassTexture, noiseOffset);
+            return noiseGen.BlendImages(noiseOffset, mainMan.DrawMan.PathwayTexture, pathMask);
         }
         private Texture2D BasePathVertical()
         {
@@ -54,7 +52,7 @@ namespace SwagSword
             {
                 for (int j = ((resHeight / 2) - (pathThickness / 2)); j < ((resHeight / 2) + (pathThickness / 2)); j++)
                 {
-                    colorData[i * resHeight + j] = Color.White;
+                    colorData[i * resHeight + j] = Color.Red;
                 }
             }
             HPB.SetData<Color>(colorData);
@@ -68,7 +66,7 @@ namespace SwagSword
             {
                 for (int j = radius; j < resHeight - radius; j++ )
                 {
-                    colorData[i * resHeight + j] = Color.White;
+                    colorData[i * resHeight + j] = Color.Red;
                 }
             }
             VPB.SetData<Color>(colorData);
@@ -84,7 +82,6 @@ namespace SwagSword
             Color[] noiseData = new Color[noise.Width * noise.Height];
             noise.GetData<Color>(noiseData);
             Color[,] noiseData2D = new Color[noise.Width, noise.Height];
-            //2 series of two for loops for adjusting pixels
             for(int i = 0; i < subject.Width; i++)
                 for (int j = 0; j < subject.Height; j++)
                 {
@@ -107,7 +104,6 @@ namespace SwagSword
                     subData2D[y, x] = maskColor;
                     if (y < (topRow - topShift) + 10)
                         maskColor.R += 25;
-                    //maskColor.R += (byte)Tfalloff;
                 }
                 maskColor = Color.Black;
                 for(int y = bottomRow + bottomShift; y >= bottomRow; y--)
@@ -115,7 +111,6 @@ namespace SwagSword
                     subData2D[y, x] = maskColor;
                     if (y > (bottomRow + bottomShift) - 10)
                         maskColor.R += 25;
-                    //maskColor.R += (byte)Bfalloff;
                 }
             }
             for (int i = 0; i < subject.Width; i++)
@@ -135,7 +130,6 @@ namespace SwagSword
             Color[] noiseData = new Color[noise.Width * noise.Height];
             noise.GetData<Color>(noiseData);
             Color[,] noiseData2D = new Color[noise.Width, noise.Height];
-            //2 series of two for loops for adjusting pixels
             for (int i = 0; i < subject.Width; i++)
                 for (int j = 0; j < subject.Height; j++)
                 {
@@ -158,7 +152,6 @@ namespace SwagSword
                     subData2D[x, y] = maskColor;
                     if (y < (leftRow - leftShift) + 10)
                         maskColor.R += 25;
-                    //maskColor.R += (byte)Lfalloff;
                 }
                 maskColor = Color.Black;
                 for (int y = rightRow + rightShift; y >= rightRow; y--)
@@ -166,7 +159,6 @@ namespace SwagSword
                     subData2D[x, y] = maskColor;
                     if (y > (rightRow + rightShift) - 10)
                         maskColor.R += 25;
-                    //maskColor.R += (byte)Rfalloff;
                 }
             }
             for (int i = 0; i < subject.Width; i++)
@@ -192,10 +184,7 @@ namespace SwagSword
         /*
 
         private bool[,] GetWalkables()
-        {
-           
-           
-        }
+        {}
         private Texture2D NoiseyCircle(int radius, Texture2D noise)
         {
             //use shiftpath

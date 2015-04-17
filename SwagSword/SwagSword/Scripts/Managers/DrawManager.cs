@@ -33,6 +33,7 @@ namespace SwagSword
         //Weapon Textures (Create a dictionary)
         private Texture2D swordTexture;
         private Texture2D whipTexture;
+        private Texture2D pateTexture;
 
         //Map Textures
         private Texture2D pathwayTexture;
@@ -64,6 +65,7 @@ namespace SwagSword
         //Weapon textures
         public Texture2D SwordTexture { get { return swordTexture; } set { swordTexture = value; } }
         public Texture2D WhipTexture { get { return whipTexture; } set { whipTexture = value; } }
+        public Texture2D PateTexture { get { return pateTexture; } set { pateTexture = value; } }
 
         //Map textures
         public Texture2D PathwayTexture { get { return pathwayTexture; } set { pathwayTexture = value; } }

@@ -62,6 +62,7 @@
     <Compile Include="Scripts\Objects\BoomerangObject.cs" />
     <Compile Include="Scripts\Objects\Button.cs" />
     <Compile Include="Scripts\Objects\Camera.cs" />
+    <Compile Include="Scripts\Objects\PATE.cs" />
     <Compile Include="Scripts\Objects\Tile.cs" />
     <Compile Include="Scripts\Managers\UIManager.cs" />
     <Compile Include="Scripts\Objects\Weapon.cs" />
@@ -105,6 +106,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Map\SamplePath3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Objects\PAT-E.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Objects\pointer.png">

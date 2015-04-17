@@ -24,9 +24,6 @@ namespace SwagSword
         private Character owner; //The thrower of the boomerang
         private bool reverse;
 
-        //Stats
-        protected int damage;
-
         //Physics
         private float velocityX;
         private float velocityY;
@@ -152,7 +149,6 @@ namespace SwagSword
             if (owner.CurrentAbility.InUse)
             {
                 angle += 1.0f;
-                Console.WriteLine(position.X);
                 spritebatch.Draw(texture, position, rectangle, Color.White, angle, center, 1.0f, SpriteEffects.None, 1);
                 //spritebatch.Draw(texture, HitBox, Color.Red);
             }

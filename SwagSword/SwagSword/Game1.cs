@@ -116,6 +116,7 @@ namespace SwagSword
             //Load Weapon textures
             drawMan.SwordTexture = this.Content.Load<Texture2D>("Objects/sword.png");
             drawMan.WhipTexture = this.Content.Load<Texture2D>("Objects/whip.png");
+            drawMan.PateTexture = this.Content.Load<Texture2D>("Objects/PAT-E.png");
 
             //Load Map textures
             drawMan.PathwayTexture = Content.Load<Texture2D>("Map/SamplePath3.png");

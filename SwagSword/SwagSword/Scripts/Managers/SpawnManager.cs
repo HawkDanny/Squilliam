@@ -46,8 +46,7 @@ namespace SwagSword
             {
                 case Faction.Good:
                     character = new GoodCharacter(mainMan.WindowHalfWidth, mainMan.WindowHalfHeight, mainMan.DrawMan.GoodGuyTextures[mainMan.Rnd.Next(0, mainMan.DrawMan.GoodGuyTextures.Count)], mainMan);
-                    Player player = new Player(character, mainMan);
-                    mainMan.GameMan.Players.Add(player);
+                    
                     break;
 
                 case Faction.Tribal:
@@ -56,6 +55,8 @@ namespace SwagSword
 
                 case Faction.Rich:
                     character = new RichCharacter(mainMan.Rnd.Next(0, mainMan.MapWidth), mainMan.Rnd.Next(0, mainMan.MapHeight), mainMan.DrawMan.GoodGuyTextures[0], mainMan);
+                    Player player = new Player(character, mainMan);
+                    mainMan.GameMan.Players.Add(player);
                     break;
 
                 case Faction.Thief:

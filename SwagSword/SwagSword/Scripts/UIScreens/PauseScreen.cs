@@ -42,8 +42,8 @@ namespace SwagSword
                                               (int)mainMan.DrawMan.Camera.TopLeftPosition.Y + (mainMan.WindowHeight / 2) - 25,
                                               mainMan.DrawMan.StatsTexture.Width,
                                               50),
-                               gameScreen,
-                               GameState.game
+                               new StatScreen(mainMan),
+                               GameState.pause
                                );
             exit = new Button(mainMan,
                               mainMan.DrawMan.ExitTexture,

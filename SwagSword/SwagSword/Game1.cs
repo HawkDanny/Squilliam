@@ -106,6 +106,7 @@ namespace SwagSword
             drawMan.TitleImage = this.Content.Load<Texture2D>("UIScreens/TitleScreenMock.png");
             drawMan.GameOverImage = this.Content.Load<Texture2D>("UIScreens/GameOverScreen.png");
             drawMan.PauseImage = this.Content.Load<Texture2D>("UIScreens/PauseScreen.png");
+            drawMan.SwordStatScreen = this.Content.Load<Texture2D>("UIScreens/SwordStatScreen.png");
 
             //Load UI Textures
             drawMan.PointerTexture = this.Content.Load<Texture2D>("Objects/pointer.png");
@@ -125,8 +126,16 @@ namespace SwagSword
 
             //Load Fonts
             drawMan.HealthFont = Content.Load<SpriteFont>("Fonts/vanillawhale");
+            drawMan.StatFont = Content.Load<SpriteFont>("Fonts/pressstart2p");
+
             gameMan.MapMan.Startup();
             drawMan.ActivateCamera();
+
+            //Load Front Sprites into Dictionary
+            drawMan.SpriteDict.Add(Faction.Good, Content.Load<Texture2D>("Sprites/goodGuy.png"));
+            drawMan.SpriteDict.Add(Faction.Rich, Content.Load<Texture2D>("Sprites/RichGuy.png"));
+            drawMan.SpriteDict.Add(Faction.Thief, Content.Load<Texture2D>("Sprites/BanditGuy.png"));
+            drawMan.SpriteDict.Add(Faction.Tribal, Content.Load<Texture2D>("Sprites/TribalGuy.png"));
 
             spriteBatch = new SpriteBatch(GraphicsDevice);
         }

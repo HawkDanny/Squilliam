@@ -44,7 +44,10 @@ namespace SwagSword
             spritebatch.DrawString(mainMan.DrawMan.StatFont, "Force", new Vector2(leftX + 465, topY + 385), Color.RoyalBlue);
             spritebatch.DrawString(mainMan.DrawMan.StatFont, "Health", new Vector2(leftX + 690, topY + 333), Color.RoyalBlue);
             //Names of Character Stats
-            spritebatch.DrawString(mainMan.DrawMan.StatFont, "Health: ", new Vector2(leftX + 300, topY + 100), Color.White);
+            spritebatch.DrawString(mainMan.DrawMan.StatFont, "Health: " + mainMan.GameMan.Players[0].Character.Health + "/" + mainMan.GameMan.Players[0].Character.MaxHealth, new Vector2(leftX + 280, topY + 80), Color.White);
+            spritebatch.DrawString(mainMan.DrawMan.StatFont, "Damage: " + mainMan.GameMan.Players[0].Character.Damage, new Vector2(leftX + 280, topY + 110), Color.White);
+            spritebatch.DrawString(mainMan.DrawMan.StatFont, "Speed: " + mainMan.GameMan.Players[0].Character.MovementSpeed, new Vector2(leftX + 280, topY + 140), Color.White);
+            spritebatch.DrawString(mainMan.DrawMan.StatFont, "Attack Speed: " + mainMan.GameMan.Players[0].Character.AttackSpeedMin, new Vector2(leftX + 280, topY + 170), Color.White);
         }
 
         public override void Update()

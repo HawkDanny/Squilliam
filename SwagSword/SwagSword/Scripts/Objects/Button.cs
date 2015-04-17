@@ -75,7 +75,6 @@ namespace SwagSword
             if(mainMan.InputMan.MState.LeftButton == ButtonState.Pressed)
             {
                 mainMan.UIMan.State = nextState;
-                mainMan.UIMan.Screens.Pop();
                 mainMan.UIMan.Screens.Push(nextScreen);
             }
         }

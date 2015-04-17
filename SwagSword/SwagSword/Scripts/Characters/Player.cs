@@ -237,13 +237,13 @@ namespace SwagSword
                     #endregion
 
                     #region Ability Input
-                    if (mainMan.InputMan.UseAbility.IsDown() && !Character.CurrentAbility.InUse)
+                    if (mainMan.InputMan.UseAbility.IsDown())
                     {
                         //Custom use logic
                         switch (character.CurrentAbility.Type)
                         {
                             case Abilities.Warp:
-                                if (character.VelocityX != 0f || character.VelocityY != 0f)
+                                if (!character.CurrentAbility.InUse && (character.VelocityX != 0f || character.VelocityY != 0f))
                                 {
                                     character.CurrentAbility.Use();
                                     //mainMan.DrawMan.Camera.Position += new Vector2(character.VelocityX, character.VelocityY);
@@ -251,8 +251,18 @@ namespace SwagSword
                                 break;
 
                             case Abilities.Boomerang:
-                                character.Weapon.Angle = mainMan.InputMan.AngleToPointer(X, Y);
-                                character.CurrentAbility.Use();
+                                if (!character.CurrentAbility.InUse)
+                                {
+                                    character.Weapon.Angle = mainMan.InputMan.AngleToPointer(X, Y);
+                                    character.CurrentAbility.Use();
+                                }
+                                break;
+
+                            case Abilities.Minion:
+                                if (!character.CurrentAbility.InUse)
+                                {
+                                    character.CurrentAbility.Use();
+                                }
                                 break;
 
                             default:

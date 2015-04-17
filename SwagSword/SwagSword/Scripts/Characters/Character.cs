@@ -146,6 +146,7 @@ namespace SwagSword
                     position.Y = mainMan.MapHeight;
             } 
         }
+        public Vector2 Center { get { return center; } }
         public SpriteEffects SpriteEffect { get { return spriteEffect; } set { spriteEffect = value; } }
         public Color Color { get { return color; } set { color = value; } }
         public Color FlashColor { get { return flashColor; } set { flashColor = value; } }
@@ -673,9 +674,12 @@ namespace SwagSword
             {
                 rectangle = new Rectangle(0, 0, frameWidth, frameHeight);
             }
-            
 
-            spritebatch.Draw(texture, position, rectangle, color, 0f, center, 1.0f, spriteEffect, 1);
+
+            if (!(CurrentAbility.Type == SwagSword.Abilities.Decoy && currentAbility.InUse))
+            {
+                spritebatch.Draw(texture, position, rectangle, color, 0f, center, 1.0f, spriteEffect, 1);
+            }
 
 
             weapon.Draw(spritebatch);

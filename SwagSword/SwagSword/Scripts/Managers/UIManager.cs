@@ -17,6 +17,7 @@ namespace SwagSword
         game,
         gameOver,
         pause,
+        win,
         exit
     }
 
@@ -29,9 +30,11 @@ namespace SwagSword
         protected Stack<UIScreen> screens;
         protected GameState state;
 
+
         //Properties
         public Stack<UIScreen> Screens { get { return screens; } }
         public GameState State { get { return state; } set { state = value; } }
+
 
         public UIManager(Game1 mainMan):base(mainMan)
         {

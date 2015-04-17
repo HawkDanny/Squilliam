@@ -77,19 +77,22 @@ namespace SwagSword
             //Init Random
             rnd = new Random();
 
+
             //Init Managers
             drawMan = new DrawManager(this);
             inputMan = new InputManager(this);
             gameMan = new GameManager(this);
             soundMan = new SoundManager(this);
-            uiMan = new UIManager(this);
 
             //Helpers
             windowWidth = GraphicsDevice.Viewport.Width;
             windowHeight = GraphicsDevice.Viewport.Height;
             windowHalfWidth = windowWidth / 2;
             windowHalfHeight = windowHeight / 2;
-            
+
+            drawMan.ActivateCamera();
+            uiMan = new UIManager(this);
+
             base.Initialize();
         }
 
@@ -113,6 +116,7 @@ namespace SwagSword
             drawMan.ResumeTexture = this.Content.Load<Texture2D>("Buttons/ResumeButton.png");
             drawMan.StatsTexture = this.Content.Load<Texture2D>("Buttons/StatsButton.png");
             drawMan.ExitTexture = this.Content.Load<Texture2D>("Buttons/ExitButton.png");
+            drawMan.WinTexture = this.Content.Load<Texture2D>("UIScreens/ryanbell.jpg");
 
             //Load Weapon textures
             drawMan.SwordTexture = this.Content.Load<Texture2D>("Objects/sword.png");
@@ -129,7 +133,7 @@ namespace SwagSword
             drawMan.StatFont = Content.Load<SpriteFont>("Fonts/pressstart2p");
 
             gameMan.MapMan.Startup();
-            drawMan.ActivateCamera();
+
 
             //Load Front Sprites into Dictionary
             drawMan.SpriteDict.Add(Faction.Good, Content.Load<Texture2D>("Sprites/goodGuy.png"));

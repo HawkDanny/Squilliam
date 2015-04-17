@@ -14,7 +14,10 @@ namespace SwagSword
     {
         //Fields
         //Rectangle texture
-        Texture2D rect;
+        private Texture2D rect;
+
+        private int leftX;
+        private int topY; 
 
         /// <summary>
         /// Creates the screen that holds the health bar and other
@@ -26,6 +29,8 @@ namespace SwagSword
         {
             rect = new Texture2D(mainMan.GraphicsDevice, 1, 1);
             rect.SetData(new[] { Color.White });
+            leftX = (int)mainMan.DrawMan.Camera.TopLeftPosition.X;
+            topY = (int)mainMan.DrawMan.Camera.TopLeftPosition.Y;
         }
 
         public override void Update()
@@ -45,6 +50,13 @@ namespace SwagSword
             {
                 mainMan.UIMan.Screens.Push(new PauseScreen(mainMan, mainMan.UIMan.Screens.Pop()));
                 mainMan.UIMan.State = GameState.pause;
+            }
+
+            //Win Screen
+            if(mainMan.InputMan.SingleKeyPress(Keys.O))
+            {
+                mainMan.UIMan.Screens.Push(new WinScreen(mainMan));
+                mainMan.UIMan.State = GameState.win;
             }
 
             //Used to check how the health bar works.

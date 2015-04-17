@@ -625,46 +625,50 @@ namespace SwagSword
         {
             currentAbility.Draw(spritebatch);
 
-            switch (animationState)
+            if (type == Faction.Good)
             {
-                case AnimationState.FaceDown:
-                    frameX = 0;
-                    frameY = 0;
-                    break;
-                case AnimationState.FaceUp:
-                    frameX = 3;
-                    frameY = 0;
-                    break;
-                case AnimationState.FaceLeft:
-                    frameX = 2;
-                    frameY = 0;
-                    break;
-                case AnimationState.FaceRight:
-                    frameX = 1;
-                    frameY = 0;
-                    break;
+                switch (animationState)
+                {
+                    case AnimationState.FaceDown:
+                        frameX = 0;
+                        frameY = 0;
+                        break;
+                    case AnimationState.FaceUp:
+                        frameX = 3;
+                        frameY = 0;
+                        break;
+                    case AnimationState.FaceLeft:
+                        frameX = 2;
+                        frameY = 0;
+                        break;
+                    case AnimationState.FaceRight:
+                        frameX = 1;
+                        frameY = 0;
+                        break;
 
-                default:
-                    frameTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
+                    default:
+                        frameTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-                    while (frameTime > frameLength)
-                    {
-                        if (frameX < totalFrames - 1)
+                        while (frameTime > frameLength)
                         {
-                            frameX++;
+                            if (frameX < totalFrames - 1)
+                            {
+                                frameX++;
+                            }
+                            else
+                            {
+                                frameX = 0;
+                            }
+                            frameTime = 0f;
                         }
-                        else
-                        {
-                            frameX = 0;
-                        }
-                        frameTime = 0f;
-                    }
-                    break;
+                        break;
+                }
+
+                rectangle = new Rectangle(frameX * frameWidth, frameY * frameHeight, frameWidth, frameHeight);
             }
 
-            rectangle = new Rectangle(frameX * frameWidth, frameY * frameHeight, frameWidth, frameHeight);
-
             spritebatch.Draw(texture, position, rectangle, color, 0f, center, 1.0f, spriteEffect, 1);
+
 
             weapon.Draw(spritebatch);
 

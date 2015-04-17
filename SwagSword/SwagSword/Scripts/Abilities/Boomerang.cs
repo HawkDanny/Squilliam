@@ -33,7 +33,10 @@ namespace SwagSword
         /// </summary>
         public override void Update()
         {
-            boomerang.Update();
+            if (InUse)
+            {
+                boomerang.Update();
+            }
             base.Update();
         }
 

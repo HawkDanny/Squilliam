@@ -123,6 +123,18 @@ namespace SwagSword
                     owner.CurrentAbility.InUse = false;
                 }
             }
+
+            //Check collisions, this should probably change
+            foreach (Character character in mainMan.GameMan.Characters)
+            {
+                if (character.Type != owner.Type)
+                {
+                    if (character.CharacterState == CharacterState.Active && character.HitBox.Intersects(HitBox))
+                    {
+                        character.TakeHit(owner.Damage / 2, 0f, 0f);
+                    }
+                }
+            }
         }
 
         public void Throw(float velX, float velY)

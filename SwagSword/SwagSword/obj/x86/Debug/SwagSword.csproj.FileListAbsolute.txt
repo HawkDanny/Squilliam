@@ -87,3 +87,4 @@ C:\Users\Owner\Desktop\Squilliam\Squilliam\SwagSword\SwagSword\bin\Windows\Debug
 C:\Users\Owner\Desktop\Squilliam\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\Objects\PAT-E.png
 C:\Users\Owner\Desktop\Squilliam\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\UIScreens\SwordStatScreen.png
 C:\Users\Owner\Desktop\Squilliam\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\Fonts\pressstart2p.xnb
+C:\Users\Owner\Desktop\Squilliam\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\UIScreens\ryanbell.jpg

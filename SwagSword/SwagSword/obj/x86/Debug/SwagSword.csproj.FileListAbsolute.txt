@@ -52,7 +52,6 @@ C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\D
 C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\SharpDX.Direct3D11.dll
 C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\SharpDX.DXGI.dll
 C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\SharpDX.Direct2D1.dll
-C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Lidgren.Network.dll
 C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\SharpDX.XInput.dll
 C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\SharpDX.RawInput.dll
 C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\SharpDX.Direct3D9.dll
@@ -84,3 +83,12 @@ C:\Users\Owner\Desktop\Squilliam\Squilliam\SwagSword\SwagSword\bin\Windows\Debug
 C:\Users\Owner\Desktop\Squilliam\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\Sprites\RichGuy.png
 C:\Users\Owner\Desktop\Squilliam\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\Sprites\TribalGuy.png
 C:\Users\Owner\Desktop\Squilliam\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\Map\Stronghold.jpg
+C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\Map\SamplePath3.png
+C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\Sprites\BanditGuy.png
+C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\Sprites\RichGuy.png
+C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\Sprites\TribalGuy.png
+C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\Map\Stronghold.jpg
+C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\Map\SamplePath2.jpg
+C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\MonoGame.Framework.xml
+C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\Fonts\pressstart2p.xnb
+C:\Users\Peter\Documents\School Work\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\UIScreens\SwordStatScreen.png

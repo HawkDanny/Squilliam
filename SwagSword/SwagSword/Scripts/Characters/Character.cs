@@ -91,6 +91,7 @@ namespace SwagSword
         private Ability currentAbility;
 
         //Stats
+        protected String name;
         protected int health;
         protected int maxHealth;
         protected int damage;
@@ -162,6 +163,7 @@ namespace SwagSword
         
 
         //Stats
+        public String Name { get { return name; } set { name = value; } }
         public int Health { get { return health; } set { health = value; } }
         public int MaxHealth { get { return maxHealth; } }
         public float Strength { get { return strength; } }
@@ -240,6 +242,7 @@ namespace SwagSword
         {
             //Will init all stats based on a config file
             //Example Health stats
+            name = "Peter";
             health = 100;
             maxHealth = 100;
             strength = 30f;

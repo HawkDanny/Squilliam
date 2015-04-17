@@ -23,6 +23,7 @@ namespace SwagSword
         private Texture2D titleImage;
         private Texture2D gameOverImage;
         private Texture2D pauseImage;
+        private Texture2D swordStatScreen;
 
         //UI Textures (buttons... what not)
         private Texture2D pointerTexture;
@@ -42,6 +43,10 @@ namespace SwagSword
 
         //Fonts
         private SpriteFont healthFont;
+        private SpriteFont statFont;
+
+        //Dictionary of faction sprites
+        private Dictionary<Faction, Texture2D> spriteDict;
 
         private Camera camera;
         #endregion
@@ -54,6 +59,7 @@ namespace SwagSword
         public Texture2D TitleImage { get { return titleImage; } set { titleImage = value; } }
         public Texture2D GameOverImage { get { return gameOverImage; } set { gameOverImage = value; } }
         public Texture2D PauseImage { get { return pauseImage; } set { pauseImage = value; } }
+        public Texture2D SwordStatScreen { get { return swordStatScreen; } set { swordStatScreen = value; } }
 
         //UI Textures
         public Texture2D PointerTexture { get { return pointerTexture; } set { pointerTexture = value; } }
@@ -73,6 +79,10 @@ namespace SwagSword
 
         //SpriteFonts
         public SpriteFont HealthFont { get { return healthFont; } set { healthFont = value; } }
+        public SpriteFont StatFont { get { return statFont; } set { statFont = value; } }
+
+        //Sprite Dictionary
+        public Dictionary<Faction, Texture2D> SpriteDict { get { return spriteDict; } set { spriteDict = value; } }
 
         //Camera
         public Camera Camera { get { return camera; } }
@@ -89,6 +99,8 @@ namespace SwagSword
         {
             //Init Texture lists
             goodGuyTextures = new List<Texture2D>();
+            //Sprite dictionary
+            spriteDict = new Dictionary<Faction, Texture2D>();
         }
 
         public override void Update()

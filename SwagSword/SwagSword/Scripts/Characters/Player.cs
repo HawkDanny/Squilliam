@@ -22,6 +22,13 @@ namespace SwagSword
         private Character character;
         private Character targetCharacter;
 
+        //Stat Multipliers
+        private float healthMultiplier;
+        private float damageMultiplier;
+        private float attackSpeedMultiplier;
+        private float knockbackMultiplier;
+        private float movementSpeedMultiplier;
+
         //Player
         private float x;
         private float y;
@@ -45,6 +52,13 @@ namespace SwagSword
         public int Health { get { if (NoCharacter) { return 0; } else { return character.Health; } } }
         public int MaxHealth { get { if (NoCharacter) { return 0; } else { return character.MaxHealth; } } }
 
+        //Stat Multipliers
+        public float HealthMultiplier { get { return healthMultiplier; } set { healthMultiplier = value; } }
+        public float DamageMultiplier { get { return damageMultiplier; } set { damageMultiplier = value; } }
+        public float AttackSpeedMultiplier { get { return attackSpeedMultiplier; } set { attackSpeedMultiplier = value; } }
+        public float KnockbackMultplier { get { return knockbackMultiplier; } set { knockbackMultiplier = value; } }
+        public float MovementSpeedMultiplier { get { return movementSpeedMultiplier; } set { movementSpeedMultiplier = value; } }
+
         //Switch helpers
         public bool NoCharacter { get { return character == null; } }
         public Rectangle SwordRect { get { return new Rectangle(0, 0, mainMan.DrawMan.SwordTexture.Width, mainMan.DrawMan.SwordTexture.Height); } }
@@ -55,6 +69,11 @@ namespace SwagSword
         {
             this.mainMan = mainMan;
             SwitchBlade(character);
+            healthMultiplier = 1;
+            damageMultiplier = 1;
+            knockbackMultiplier = 1;
+            attackSpeedMultiplier = 1;
+            movementSpeedMultiplier = 1;
         }
 
         /// <summary>

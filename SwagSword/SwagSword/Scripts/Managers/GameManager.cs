@@ -85,7 +85,7 @@ namespace SwagSword
             SpawnMan.SpawnCharacter(Faction.Good);
             for (int i = 0; i < 20; i++)
             {
-                //SpawnMan.SpawnCharacter(Faction.Tribal);
+                SpawnMan.SpawnCharacter(Faction.Tribal);
             }
             for (int i = 0; i < 20; i++)
             {

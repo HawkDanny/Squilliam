@@ -39,8 +39,8 @@ namespace SwagSword
         public override void Init()
         {
             tileSize = 64;
-            resWidth = 2000;
-            resHeight = 2000;
+            resWidth = 3260;
+            resHeight = 3260;
             mapWidth = resWidth / tileSize;
             mapHeight = resHeight / tileSize;
             

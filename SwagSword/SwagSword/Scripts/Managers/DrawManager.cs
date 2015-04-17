@@ -30,6 +30,7 @@ namespace SwagSword
         private Texture2D resumeTexture;
         private Texture2D statsTexture;
         private Texture2D exitTexture;
+        private Texture2D winTexture;
 
         //Weapon Textures (Create a dictionary)
         private Texture2D swordTexture;
@@ -67,6 +68,7 @@ namespace SwagSword
         public Texture2D ResumeTexture { get { return resumeTexture; } set { resumeTexture = value; } }
         public Texture2D StatsTexture { get { return statsTexture; } set { statsTexture = value; } }
         public Texture2D ExitTexture { get { return exitTexture; } set { exitTexture = value; } }
+        public Texture2D WinTexture { get { return winTexture; } set { winTexture = value; } }
 
         //Weapon textures
         public Texture2D SwordTexture { get { return swordTexture; } set { swordTexture = value; } }

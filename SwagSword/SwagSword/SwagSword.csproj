@@ -73,6 +73,7 @@
     <Compile Include="Scripts\UIScreens\StatScreen.cs" />
     <Compile Include="Scripts\UIScreens\TitleScreen.cs" />
     <Compile Include="Scripts\UIScreens\UIScreen.cs" />
+    <Compile Include="Scripts\UIScreens\WinScreen.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
@@ -140,6 +141,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\UIScreens\PauseScreen.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\UIScreens\ryanbell.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\UIScreens\SwordStatScreen.png">

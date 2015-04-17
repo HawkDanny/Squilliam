@@ -84,11 +84,13 @@ namespace SwagSword
             gameMan = new GameManager(this);
             soundMan = new SoundManager(this);
 
+
             //Helpers
             windowWidth = GraphicsDevice.Viewport.Width;
             windowHeight = GraphicsDevice.Viewport.Height;
             windowHalfWidth = windowWidth / 2;
             windowHalfHeight = windowHeight / 2;
+
 
             drawMan.ActivateCamera();
             uiMan = new UIManager(this);
@@ -133,7 +135,6 @@ namespace SwagSword
             drawMan.StatFont = Content.Load<SpriteFont>("Fonts/pressstart2p");
 
             gameMan.MapMan.Startup();
-
 
             //Load Front Sprites into Dictionary
             drawMan.SpriteDict.Add(Faction.Good, Content.Load<Texture2D>("Sprites/goodGuy.png"));

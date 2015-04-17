@@ -56,6 +56,102 @@ namespace SwagSword
 
         public override void Update()
         {
+            if (!IsControlled && CharacterState == CharacterState.Active)
+            {
+                #region AI Behavior
+                switch (AIState)
+                {
+                    case AIState.Attack:
+                        if (mainMan.GameMan.Players[0].CharacterState != CharacterState.Dead)
+                        {
+                            //Move close to attack
+                            if (DistanceToPlayer(0) > AttackRange)
+                            {
+                                MoveToPoint(mainMan.GameMan.Players[0].X, mainMan.GameMan.Players[0].Y);
+
+
+                            }
+                            else
+                            {
+                                //Fight them suckers
+                                SwitchAIState(AIState.Swing);
+                            }
+                        }
+                        else
+                        {
+                            SwitchAIState(AIState.Idle);
+                        }
+
+                        AIStateTimer -= (float)mainMan.GameTime.ElapsedGameTime.TotalSeconds;
+                        if (AIStateTimer <= 0f)
+                        {
+                            SwitchAIState(AIState.Idle);
+                        }
+                        break;
+
+                    case AIState.Swing:
+                        AIStateTimer -= (float)mainMan.GameTime.ElapsedGameTime.TotalSeconds;
+
+                        if (AIStateTimer <= 0f)
+                        {
+                            SwitchAIState(AIState.Idle);
+                        }
+                        break;
+
+                    case AIState.Defend:
+
+                        break;
+
+                    case AIState.Idle:
+                        AIStateTimer -= (float)mainMan.GameTime.ElapsedGameTime.TotalSeconds;
+
+                        if (AIStateTimer <= 0f)
+                        {
+                            //random movement?
+                            if (!mainMan.GameMan.Players[0].NoCharacter && mainMan.GameMan.Players[0].Character.Type != Type && mainMan.GameMan.Players[0].CharacterState == CharacterState.Active)
+                            {
+                                if (DistanceToPlayer(0) < SightRange)
+                                {
+                                    //Get random
+                                    SwitchAIState(GetRandomAIState(EncounterAIStates));
+                                }
+                            }
+                            else
+                            {
+                                AIStateTimer = AITimers[AIState];
+                            }
+                        }
+                        break;
+
+                    case AIState.Switch:
+                        //Move to sword
+                        MoveToPoint(mainMan.GameMan.Players[0].X, mainMan.GameMan.Players[0].Y);
+
+                        //Check if picked up
+                        if (HitBox.Contains(mainMan.GameMan.Players[0].Position))
+                        {
+                            //Pick it up!!!
+                            mainMan.GameMan.Players[0].SwitchBlade(this);
+                        }
+                        break;
+
+                    case AIState.Ability:
+                        //Warp to player
+                        CurrentAbility.AIUse();
+                        SwitchAIState(AIState.Idle);
+                        break;
+
+                    case AIState.Cower:
+
+                        break;
+
+                    case AIState.Ready:
+
+                        break;
+                }
+                #endregion
+            }
+
             base.Update();
         }
     }

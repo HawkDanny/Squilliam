@@ -2,21 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using Newtonsoft.Json;
 
-//Names: Danny Hawk
-
-namespace DifficultyEditor
+namespace SwagSword
 {
-    enum Faction
-    {
-        //Good, Tribal, Rich, Thief
-        Tribal,
-        Good,
-        Rich,
-        Thief
-    }
-
     class CustomCharacter
     {
         private Faction currentFaction;

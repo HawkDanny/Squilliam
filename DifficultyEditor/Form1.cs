@@ -184,15 +184,15 @@ namespace DifficultyEditor
             informationLabel.Text = "Successfully created!";
             informationLabel.ForeColor = Color.Green;
 
-            Faction characterFaction;
+            faction characterFaction;
             if (factionButton1.Checked)
-                characterFaction = Faction.Good;
+                characterFaction = faction.Good;
             else if (factionButton2.Checked)
-                characterFaction = Faction.Rich;
+                characterFaction = faction.Rich;
             else if (factionButton3.Checked)
-                characterFaction = Faction.Thief;
+                characterFaction = faction.Thief;
             else
-                characterFaction = Faction.Tribal;
+                characterFaction = faction.Tribal;
 
 
             CustomCharacter character = new CustomCharacter(characterFaction, nameTextBox.Text, (aggressionTrackBar.Value / 20.0), (defenseTrackBar.Value / 20.0), (abilitiesTrackBar.Value / 20.0), (cowardiceTrackBar.Value / 20.0));

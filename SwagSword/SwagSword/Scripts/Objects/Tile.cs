@@ -16,7 +16,21 @@ namespace SwagSword
 {
     public class Tile
     {
+        #region Fields
         Texture2D texture;
+        #endregion
+
+        #region Properties
+
+        #endregion
+
+        #region ConstructorInit
+        public Tile()
+        {
+
+        }
+
+        #endregion
 
     }
 }

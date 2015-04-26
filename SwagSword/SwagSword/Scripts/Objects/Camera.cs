@@ -62,8 +62,8 @@ namespace SwagSword
             position = Vector2.Zero;
             viewportWidth = viewport.Width;
             viewportHeight = viewport.Height;
-            worldWidth = mainMan.GameMan.MapMan.MapWidth * mainMan.GameMan.MapMan.TileSize;
-            worldHeight = mainMan.GameMan.MapMan.MapHeight * mainMan.GameMan.MapMan.TileSize;
+            worldWidth = mainMan.GameMan.MapMan.MapWidth * mainMan.GameMan.MapMan.TileSize + 10;
+            worldHeight = mainMan.GameMan.MapMan.MapHeight * mainMan.GameMan.MapMan.TileSize + 10;
             mainMan.MapWidth = worldWidth;
             mainMan.MapHeight = worldHeight;
         }
@@ -102,13 +102,9 @@ namespace SwagSword
                         movement.Y--;
                     if (mainMan.GameMan.Players[0].Y > Position.Y + mainMan.WindowHeight * 0.1)
                         movement.Y++;
-
-                    deltaMovement = movement * mainMan.GameMan.Players[0].Character.MovementSpeed;
-
-                    
+                    deltaMovement = movement * mainMan.GameMan.Players[0].Character.MovementSpeed;       
                 }
             }
-
             Position += deltaMovement;
         }
     }

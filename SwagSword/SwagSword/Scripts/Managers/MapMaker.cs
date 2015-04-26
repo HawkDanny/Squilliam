@@ -201,10 +201,13 @@ namespace SwagSword
             layer1.SetData<Color>(layer1Data);
             return layer1;
         }
-        /*
-
+        
+/*
         private bool[,] GetWalkables()
-        {}
+        {
+
+        }
+        /*
         private Texture2D NoiseyCircle(int radius, Texture2D noise)
         {
             //use shiftpath

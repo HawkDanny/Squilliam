@@ -20,6 +20,7 @@ namespace DifficultyEditor
         //private int health, strength, speed;
         private double aggression, defense, ability, cowardice;
 
+        #region properties
         public faction Faction
         {
             get { return currentFaction; }
@@ -50,6 +51,7 @@ namespace DifficultyEditor
             get { return cowardice; }
             set { cowardice = value; }
         }
+        #endregion
 
         public CustomCharacter(faction currentFaction, string name, double aggression, double defense, double ability, double cowardice)
         {

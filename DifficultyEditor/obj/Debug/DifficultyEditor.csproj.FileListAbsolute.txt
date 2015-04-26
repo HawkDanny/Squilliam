@@ -40,3 +40,5 @@ C:\Git\Squilliam\DifficultyEditor\obj\Debug\DifficultyEditor.csprojResolveAssemb
 C:\Git\Squilliam\DifficultyEditor\obj\Debug\DifficultyEditor.difficultyEditor.resources
 C:\Git\Squilliam\DifficultyEditor\obj\Debug\DifficultyEditor.Properties.Resources.resources
 C:\Git\Squilliam\DifficultyEditor\obj\Debug\DifficultyEditor.csproj.GenerateResource.Cache
+C:\Git\SwitchBlade\DifficultyEditor\bin\Debug\DifficultyEditor.exe.config
+C:\Git\SwitchBlade\DifficultyEditor\obj\Debug\DifficultyEditor.pdb

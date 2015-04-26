@@ -44,7 +44,7 @@ namespace SwagSword
 
         /// <summary>
         /// Public facing method that runs through the steps in making the map
-        /// and interfaces a lot iwth the perlin noise class of which it makes an object of
+        /// and interfaces a lot with the perlin noise class of which it makes an object of
         /// </summary>
         public Texture2D MakeMap()
         {
@@ -58,32 +58,43 @@ namespace SwagSword
         }
 
         #region BasePaths
+        /// <summary>
+        /// Creates the basic masking layer for the horizontal path
+        /// before a noise shift is applied
+        /// </summary>
+        /// <returns></returns>
         private Texture2D BasePathVertical()
         {
-            Texture2D HPB = new Texture2D(graphicsDevice, resWidth, resHeight);
-            Color[] colorData = new Color[resWidth * resHeight];
-            for(int i = radius; i < resWidth - radius; i++)
+            Texture2D HPB = new Texture2D(graphicsDevice, resWidth, resHeight);                                         //create a new texture
+            Color[] colorData = new Color[resWidth * resHeight];                                                        //create color array to hold the color data
+            for(int i = radius; i < resWidth - radius; i++)                                                             //start and end leaving a buffer of size radius
             {
-                for (int j = ((resHeight / 2) - (pathThickness / 2)); j < ((resHeight / 2) + (pathThickness / 2)); j++)
-                {
-                    colorData[i * resHeight + j] = Color.Red;
+                for (int j = ((resHeight / 2) - (pathThickness / 2)); j < ((resHeight / 2) + (pathThickness / 2)); j++) //vertically loop from 1/2 path width less than 
+                {                                                                                                       //center to 1/2 path width more than center
+                    colorData[i * resHeight + j] = Color.Red;                                                           //change the color at all of these pixels to red
                 }
             }
-            HPB.SetData<Color>(colorData);
+            HPB.SetData<Color>(colorData);                                                                              //set the color data of the texture to the color array
             return HPB;
         }
+
+        /// <summary>
+        /// Creates the basic masking layer for the vertical path
+        /// before a noise shift is applied
+        /// </summary>
+        /// <returns></returns>
         private Texture2D BasePathHorizontal()
         {
-            Texture2D VPB = new Texture2D(graphicsDevice, resWidth, resHeight);
-            Color[] colorData = new Color[resWidth * resHeight];
-            for (int i = ((resHeight / 2) - (pathThickness / 2)); i < ((resHeight / 2) + (pathThickness / 2)); i++)
-            {
-                for (int j = radius; j < resHeight - radius; j++ )
+            Texture2D VPB = new Texture2D(graphicsDevice, resWidth, resHeight);                                         //create a new texture
+            Color[] colorData = new Color[resWidth * resHeight];                                                        //create color array to hold the color data
+            for (int i = ((resHeight / 2) - (pathThickness / 2)); i < ((resHeight / 2) + (pathThickness / 2)); i++)     //horizontally loop from 1/2 path width less than
+            {                                                                                                           //center to 1/2 path width more than center
+                for (int j = radius; j < resHeight - radius; j++ )                                                      //start and end leaving a buffer of size radius
                 {
-                    colorData[i * resHeight + j] = Color.Red;
+                    colorData[i * resHeight + j] = Color.Red;                                                           //change the color at all of these pixels to red
                 }
             }
-            VPB.SetData<Color>(colorData);
+            VPB.SetData<Color>(colorData);                                                                              //set the color data of the texture to the color array
             return VPB;
         }
         #endregion
@@ -186,19 +197,20 @@ namespace SwagSword
         }
         #endregion
 
-
+        /// <summary>
+        /// Merges 2 texture masks together using the red channel of each
+        /// </summary>
         private Texture2D MergeTextures(Texture2D layer1, Texture2D layer2)
         {
-            //average the pixels, not just additive
-            Color[] layer1Data = new Color[layer1.Width * layer1.Height];
-            Color[] layer2Data = new Color[layer2.Width * layer2.Height];
-            layer1.GetData<Color>(layer1Data);
-            layer2.GetData<Color>(layer2Data);
-            for(int i = 0; i < layer1Data.Length; i++)
+            Color[] layer1Data = new Color[layer1.Width * layer1.Height];                                               //color array to hold extracted color data of tex1
+            Color[] layer2Data = new Color[layer2.Width * layer2.Height];                                               //color array to hold extracted color data of tex2
+            layer1.GetData<Color>(layer1Data);                                                                          //extract tex1 color data
+            layer2.GetData<Color>(layer2Data);                                                                          //extract tex2 color data
+            for(int i = 0; i < layer1Data.Length; i++)                                                                  //loop through the pixels
             {
-                layer1Data[i].R = (byte)(MathHelper.Clamp(layer1Data[i].R + layer2Data[i].R, 0, 255));
+                layer1Data[i].R = (byte)(MathHelper.Clamp(layer1Data[i].R + layer2Data[i].R, 0, 255));                  //add the 2 red channels but clamp them to between 0-255
             }
-            layer1.SetData<Color>(layer1Data);
+            layer1.SetData<Color>(layer1Data);                                                                          //set the color data of tex1 and return it
             return layer1;
         }
         /*

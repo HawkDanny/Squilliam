@@ -45,6 +45,7 @@ namespace SwagSword
         public override void Init()
         {
             tileSize = 64;
+            //max resolution of the map is around 3260x3260 because of the limitaions of array/texture2D size
             resWidth = 3260;
             resHeight = 3260;
             mapWidth = resWidth / tileSize;
@@ -62,6 +63,7 @@ namespace SwagSword
             MapMaker mapMaker = new MapMaker(tileSize, resWidth, resHeight, graphicsDevice, mainMan);
             //make map
             //temporarily keep as single texture
+            //will be tiled soon
             map = mapMaker.MakeMap();
 
         }

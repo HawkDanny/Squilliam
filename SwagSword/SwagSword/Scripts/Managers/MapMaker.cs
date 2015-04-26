@@ -1,4 +1,5 @@
-﻿using System;
+﻿#region Using Statements
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,33 +8,44 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Storage;
+#endregion
 
 namespace SwagSword
 {
     class MapMaker
     {
+        #region Fields
+        int resWidth;                                                                       //the pixel width of the map
+        int resHeight;                                                                      //the pixel height of the map
+        int radius;                                                                         //the pixel radius of the stronghold circles
+        int pathThickness;                                                                  //the width of the pathways
+        Texture2D noiseOffset;                                                              //noise map used to find path offsets
+        Texture2D pathMask;                                                                 //holds a mask for the pathway placement
+        Random rand;                                                                        //a random object
+        GraphicsDevice graphicsDevice;                                                      //holds a reference to the graphics device to create new textures
+        Game1 mainMan;                                                                      //holds a reference to game1
+        #endregion
 
-        int resWidth;
-        int resHeight;
-        int radius;
-        int pathThickness;
-        Texture2D noiseOffset;
-        Texture2D pathMask;
-        Random rand;
-        GraphicsDevice graphicsDevice;
-        Game1 mainMan;
-
+        #region Contructor
+        /// <summary>
+        /// sets the applicable variables to the params given 
+        /// </summary>
         public MapMaker(int ts, int rw, int rh, GraphicsDevice graphicsDevice, Game1 mainMan)
         {
             resWidth = rw;
             resHeight = rh;
-            radius = 200;
-            pathThickness = 230;
-            this.graphicsDevice = graphicsDevice;
+            radius = 200;                                                                   //hardcode in the stronghold radius
+            pathThickness = 230;                                                            //hardcode in the path thickness
+            this.graphicsDevice = graphicsDevice;                                   
             rand = new Random();
             this.mainMan = mainMan;
         }
+        #endregion
 
+        /// <summary>
+        /// Public facing method that runs through the steps in making the map
+        /// and interfaces a lot iwth the perlin noise class of which it makes an object of
+        /// </summary>
         public Texture2D MakeMap()
         {
             PerlinNoise noiseGen = new PerlinNoise(resWidth, resHeight, rand, graphicsDevice);
@@ -44,6 +56,8 @@ namespace SwagSword
             noiseOffset = noiseGen.BlendImages(mainMan.DrawMan.SandyTexture, mainMan.DrawMan.GrassTexture, noiseOffset);
             return noiseGen.BlendImages(noiseOffset, mainMan.DrawMan.PathwayTexture, pathMask);
         }
+
+        #region BasePaths
         private Texture2D BasePathVertical()
         {
             Texture2D HPB = new Texture2D(graphicsDevice, resWidth, resHeight);
@@ -72,6 +86,9 @@ namespace SwagSword
             VPB.SetData<Color>(colorData);
             return VPB;
         }
+        #endregion
+
+        #region ShiftPaths
         private Texture2D ShiftPathHorizontal(Texture2D subject, Texture2D noise)
         {
             int topRow = ((resHeight / 2) - (pathThickness / 2));
@@ -167,6 +184,9 @@ namespace SwagSword
             subject.SetData<Color>(subjectData);
             return subject;
         }
+        #endregion
+
+
         private Texture2D MergeTextures(Texture2D layer1, Texture2D layer2)
         {
             //average the pixels, not just additive

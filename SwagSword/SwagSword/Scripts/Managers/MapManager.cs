@@ -17,19 +17,25 @@ namespace SwagSword
 {
     public class MapManager : Manager
     {
-        int tileSize;
+        #region Fields
+        int tileSize;                                                       
         int mapWidth;
         int mapHeight;
         int resWidth;
         int resHeight;
-        //temp variable
+        int SHO;
+        int radius;
         Texture2D map;
         GraphicsDevice graphicsDevice;
+        #endregion
 
+        #region Properties
         public int TileSize { get { return tileSize; } }
         public int MapWidth { get { return mapWidth; } }
         public int MapHeight { get { return mapHeight; } }
+        #endregion
 
+        #region ConstructInit
         public MapManager(Game1 mainMan)
             : base(mainMan)
         {
@@ -46,21 +52,21 @@ namespace SwagSword
 
             graphicsDevice = mainMan.GraphicsDevice;
         }
+        #endregion
 
-        
         //called after the textures are loaded
         public void Startup()
         {
             SHO = mainMan.DrawMan.Stronghold.Width / 4;
             radius = 200;
             MapMaker mapMaker = new MapMaker(tileSize, resWidth, resHeight, graphicsDevice, mainMan);
-            map = mapMaker.MakeMap();
             //make map
             //temporarily keep as single texture
-            //map = ...
+            map = mapMaker.MakeMap();
+
         }
-        int SHO;
-        int radius;
+
+        
         public void Draw(SpriteBatch spriteBatch)
         {
             

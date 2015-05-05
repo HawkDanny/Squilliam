@@ -17,6 +17,8 @@ namespace SwagSword
         private float coolDownMax;
         #endregion
 
+
+
         public Warp(Game1 mainMan, Character character):base(mainMan, Abilities.Warp, character)
         {
             Init();

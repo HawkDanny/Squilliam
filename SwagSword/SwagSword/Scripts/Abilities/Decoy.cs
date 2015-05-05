@@ -14,6 +14,10 @@ namespace SwagSword
         //Fields
         Vector2 position;
 
+        //Properties
+        public Rectangle HitBox { get { return new Rectangle((int)position.X - character.Rectangle.Width / 2, (int)position.Y - character.Rectangle.Height / 2, character.Rectangle.Width, character.Rectangle.Height); } }
+
+
         public Decoy(Game1 mainMan, Character character):base(mainMan, Abilities.Decoy, character)
         {
             Init();

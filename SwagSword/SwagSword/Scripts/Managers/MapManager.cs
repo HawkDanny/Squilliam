@@ -23,7 +23,7 @@ namespace SwagSword
         int mapHeight;
         int resWidth;
         int resHeight;
-        int SHO;
+        int strongholdWidth;
         int radius;
         Texture2D map;
         GraphicsDevice graphicsDevice;
@@ -45,8 +45,8 @@ namespace SwagSword
         public override void Init()
         {
             tileSize = 64;
-            resWidth = 3260;
-            resHeight = 3260;
+            resWidth = 3200;
+            resHeight = 3200;
             mapWidth = resWidth / tileSize;
             mapHeight = resHeight / tileSize;
 
@@ -57,29 +57,28 @@ namespace SwagSword
         //called after the textures are loaded
         public void Startup()
         {
-            //SHO = mainMan.DrawMan.Stronghold.Width / 8;
-            SHO = 128;
+            strongholdWidth = tileSize * 2;
             radius = 200;
             MapMaker mapMaker = new MapMaker(tileSize, resWidth, resHeight, graphicsDevice, mainMan);
             //make map
-            //temporarily keep as single texture
             map = mapMaker.MakeMap();
+            //Strongholds set
 
         }
 
         
         public void Draw(SpriteBatch spriteBatch)
         {
-            
-            //while loading draw the loading screen (would require threading)
             spriteBatch.Draw(map, new Rectangle(0, 0, resWidth, resHeight), Color.White);
             //draw the strongholds
             //actual position values will be given later
             //but for now, the paths are straight so there is no need
-            //spriteBatch.Draw(mainMan.DrawMan.Stronghold, new Rectangle(, SHO, SHO), Color.White);
-            //spriteBatch.Draw(mainMan.DrawMan.Stronghold, new Rectangle(,SHO, SHO), Color.White);
-            //spriteBatch.Draw(mainMan.DrawMan.Stronghold, new Rectangle(, SHO, SHO), Color.White);
-            //spriteBatch.Draw(mainMan.DrawMan.Stronghold, new Rectangle(, SHO, SHO), Color.White);
+
+
+            //spriteBatch.Draw(mainMan.DrawMan.LeftStronghold, mainMan.GameMan.LeftStrong, Color.White);
+            //spriteBatch.Draw(mainMan.DrawMan.RightStronghold, mainMan.GameMan.RightStrong, Color.White);
+            //spriteBatch.Draw(mainMan.DrawMan.TopStronghold, mainMan.GameMan.TopStrong, Color.White);
+            //spriteBatch.Draw(mainMan.DrawMan.LowerStronghold, mainMan.GameMan.LowerStrong, Color.White);
         }
 
 

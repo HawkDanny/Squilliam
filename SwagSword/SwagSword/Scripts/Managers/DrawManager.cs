@@ -42,7 +42,10 @@ namespace SwagSword
         private Texture2D pathwayTexture;
         private Texture2D sandyTexture;
         private Texture2D grassTexture;
-        private Texture2D stronghold;
+        private Texture2D leftStronghold;
+        private Texture2D rightStronghold;
+        private Texture2D topStronghold;
+        private Texture2D lowerStronghold;
 
         //Fonts
         private SpriteFont healthFont;
@@ -81,7 +84,10 @@ namespace SwagSword
         public Texture2D PathwayTexture { get { return pathwayTexture; } set { pathwayTexture = value; } }
         public Texture2D SandyTexture { get { return sandyTexture; } set { sandyTexture = value; } }
         public Texture2D GrassTexture { get { return grassTexture; } set { grassTexture = value; } }        
-        public Texture2D Stronghold { get { return stronghold; } set { stronghold = value; } }
+        public Texture2D LeftStronghold { get { return leftStronghold; } set { leftStronghold = value; } }
+        public Texture2D RightStronghold { get { return rightStronghold; } set { rightStronghold = value; } }
+        public Texture2D TopStronghold { get { return topStronghold; } set { topStronghold = value; } }
+        public Texture2D LowerStronghold { get { return lowerStronghold; } set { lowerStronghold = value; } }
 
         //SpriteFonts
         public SpriteFont HealthFont { get { return healthFont; } set { healthFont = value; } }

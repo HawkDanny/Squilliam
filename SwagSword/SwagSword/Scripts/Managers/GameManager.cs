@@ -22,6 +22,20 @@ namespace SwagSword
         private List<Character> characters;
         private List<Player> players;
         private Dictionary<Faction, List<Character>> charactersDictionary; //Coming soon
+
+        //Boundaries
+        private Rectangle leftPathBound;
+        private Rectangle rightPathBound;
+        private Rectangle topPathBound;
+        private Rectangle lowerPathBound;
+        private Rectangle centerBound;
+
+        //Strongholds
+        private Rectangle leftStrong;
+        private Rectangle rightStrong;
+        private Rectangle topStrong;
+        private Rectangle lowerStrong;
+
         #endregion
 
 
@@ -34,6 +48,19 @@ namespace SwagSword
         public List<Character> Characters { get {return characters; } }
         public List<Player> Players { get { return players; } }
         public Dictionary<Faction, List<Character>> CharactersDictionary { get { return charactersDictionary; } }
+
+        //Boundaries
+        public Rectangle LeftPathBound { get { return leftPathBound; } set { leftPathBound = value; } }
+        public Rectangle RightPathBound { get { return rightPathBound; } set { rightPathBound = value; } }
+        public Rectangle TopPathBound { get { return topPathBound; } set { topPathBound = value; } }
+        public Rectangle LowerPathBound { get { return lowerPathBound; } set { lowerPathBound = value; } }
+        public Rectangle CenterBound { get { return centerBound; } set { centerBound = value; } }
+
+        //Strongholds
+        public Rectangle LeftStrong { get { return leftStrong; } set { leftStrong = value; } }
+        public Rectangle RightStrong { get { return rightStrong; } set { rightStrong = value; } }
+        public Rectangle TopStrong { get { return topStrong; } set { topStrong = value; } }
+        public Rectangle LowerStrong { get { return lowerStrong; } set { lowerStrong = value; } }
         #endregion
 
         public GameManager(Game1 mainMan):base(mainMan)

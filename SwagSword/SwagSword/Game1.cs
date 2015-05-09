@@ -39,6 +39,7 @@ namespace SwagSword
         private int mapWidth;
         private int mapHeight;
         Thread t;
+        bool freshSet = true;
         #endregion
 
         #region Properties
@@ -114,6 +115,7 @@ namespace SwagSword
             drawMan.GameOverImage = this.Content.Load<Texture2D>("UIScreens/GameOverScreen.png");
             drawMan.PauseImage = this.Content.Load<Texture2D>("UIScreens/PauseScreen.png");
             drawMan.SwordStatScreen = this.Content.Load<Texture2D>("UIScreens/SwordStatScreen.png");
+            drawMan.LoadingScreen = this.Content.Load<Texture2D>("UIScreens/LoadingScreen.jpg");
 
             //Load UI Textures
             drawMan.PointerTexture = this.Content.Load<Texture2D>("Objects/pointer.png");
@@ -169,9 +171,14 @@ namespace SwagSword
                 gameMan.Update();
                 
             }
-            if(t.ThreadState == ThreadState.Stopped)
+            if (t.ThreadState == ThreadState.Running)
             {
-                uiMan.State = GameState.game;
+                uiMan.State = GameState.loading;
+            }
+            if(t.ThreadState == ThreadState.Stopped && freshSet)
+            {
+                uiMan.State = GameState.title;
+                freshSet = false;
             }
             inputMan.Update();
             uiMan.Update();
@@ -184,16 +191,12 @@ namespace SwagSword
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.Red);
-            if(t.ThreadState == ThreadState.Running)
-            {
-                //drawman . draw the loading screen
-                uiMan.State = GameState.loading;
-            }
-            else
-            {   
-                drawMan.Draw(spriteBatch, gameTime);   
-            }
+            GraphicsDevice.Clear(Color.Black);
+
+
+            drawMan.Draw(spriteBatch, gameTime);
+
+            
 
             base.Draw(gameTime);
         }

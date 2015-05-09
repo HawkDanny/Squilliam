@@ -24,6 +24,7 @@ namespace SwagSword
         private Texture2D gameOverImage;
         private Texture2D pauseImage;
         private Texture2D swordStatScreen;
+        private Texture2D loadingScreen;
 
         //UI Textures (buttons... what not)
         private Texture2D pointerTexture;
@@ -62,6 +63,7 @@ namespace SwagSword
         public Texture2D GameOverImage { get { return gameOverImage; } set { gameOverImage = value; } }
         public Texture2D PauseImage { get { return pauseImage; } set { pauseImage = value; } }
         public Texture2D SwordStatScreen { get { return swordStatScreen; } set { swordStatScreen = value; } }
+        public Texture2D LoadingScreen { get { return loadingScreen; } set { loadingScreen = value; } }
 
         //UI Textures
         public Texture2D PointerTexture { get { return pointerTexture; } set { pointerTexture = value; } }

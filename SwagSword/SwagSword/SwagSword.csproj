@@ -71,6 +71,7 @@
     <Compile Include="Scripts\Characters\TribalCharacter.cs" />
     <Compile Include="Scripts\UIScreens\GameOverScreen.cs" />
     <Compile Include="Scripts\UIScreens\GameScreen.cs" />
+    <Compile Include="Scripts\UIScreens\LoadingScreen.cs" />
     <Compile Include="Scripts\UIScreens\PauseScreen.cs" />
     <Compile Include="Scripts\UIScreens\StatScreen.cs" />
     <Compile Include="Scripts\UIScreens\TitleScreen.cs" />
@@ -92,6 +93,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Buttons\StatsButton.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\UIScreens\LoadingScreen.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Map\Grass.jpg">

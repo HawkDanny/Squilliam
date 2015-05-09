@@ -46,7 +46,8 @@ namespace SwagSword
         public override void Init()
         {
             screens = new Stack<UIScreen>();
-            screens.Push(new TitleScreen(mainMan));
+            screens.Push(new LoadingScreen(mainMan));
+            //screens.Push(new TitleScreen(mainMan));
         }
 
         /// <summary>

@@ -62,8 +62,12 @@ namespace SwagSword
             MapMaker mapMaker = new MapMaker(tileSize, resWidth, resHeight, graphicsDevice, mainMan);
             //make map
             map = mapMaker.MakeMap();
+            
             //Strongholds set
-
+            mainMan.GameMan.LeftStrong = new Rectangle(radius - strongholdWidth / 2, resHeight / 2 - strongholdWidth / 2, strongholdWidth, strongholdWidth);
+            mainMan.GameMan.RightStrong = new Rectangle(resWidth - radius - strongholdWidth / 2, resHeight / 2 - strongholdWidth / 2, strongholdWidth, strongholdWidth);
+            mainMan.GameMan.TopStrong = new Rectangle(resWidth / 2 - strongholdWidth / 2, radius - strongholdWidth / 2, strongholdWidth, strongholdWidth);
+            mainMan.GameMan.LowerStrong = new Rectangle(resWidth / 2 - strongholdWidth / 2, resHeight - radius - strongholdWidth / 2, strongholdWidth, strongholdWidth);
         }
 
         

@@ -55,8 +55,14 @@ namespace SwagSword
             noiseOffset = noiseGen.AdjustConstrast(noiseOffset, 4);
             noiseOffset = noiseGen.AddGradient(noiseOffset, Color.Black, Color.White);
             noiseOffset = noiseGen.BlendImages(mainMan.DrawMan.SandyTexture, mainMan.DrawMan.GrassTexture, noiseOffset);
-            //Boundary set
 
+            //Boundary set
+            mainMan.GameMan.CenterBound = new Rectangle(resWidth / 2 - pathThickness / 2, resHeight / 2 - pathThickness / 2, pathThickness, pathThickness);
+            mainMan.GameMan.LeftPathBound = new Rectangle(radius * 2 - 40, resHeight / 2 - pathThickness / 2, (resWidth - 4 * radius + 80) / 2 - pathThickness / 2, pathThickness);
+            mainMan.GameMan.RightPathBound = new Rectangle(mainMan.GameMan.CenterBound.X + pathThickness, mainMan.GameMan.CenterBound.Y, (resWidth - 4 * radius + 80) / 2 - pathThickness / 2, pathThickness);
+            mainMan.GameMan.TopPathBound = new Rectangle(resHeight / 2 - pathThickness / 2, radius * 2 - 40, pathThickness, (resWidth - radius * 4 + 80) / 2 - pathThickness / 2);
+            mainMan.GameMan.LowerPathBound = new Rectangle(resHeight / 2 - pathThickness / 2, mainMan.GameMan.CenterBound.Y + pathThickness, pathThickness, (resWidth - radius * 4 + 80) / 2 - pathThickness / 2);
+            
 
             return noiseGen.BlendImages(noiseOffset, mainMan.DrawMan.PathwayTexture, pathMask);
         }

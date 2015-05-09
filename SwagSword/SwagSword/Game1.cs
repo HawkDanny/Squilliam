@@ -174,13 +174,14 @@ namespace SwagSword
                 gameMan.Update();
                 
             }
-            if (t.ThreadState == ThreadState.Running)
+            if (t.IsAlive)
             {
                 uiMan.State = GameState.loading;
             }
-            if(t.ThreadState == ThreadState.Stopped && freshSet)
+            if(!t.IsAlive && freshSet)
             {
                 uiMan.State = GameState.title;
+                gameMan.SpawnMan.Start();
                 freshSet = false;
             }
             inputMan.Update();

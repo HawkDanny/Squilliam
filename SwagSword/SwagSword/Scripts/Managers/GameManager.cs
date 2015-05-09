@@ -109,19 +109,15 @@ namespace SwagSword
         public void StartGame()
         {
             //Spawn some random characters
-            SpawnMan.SpawnCharacter(Faction.Good);
-            for (int i = 0; i < 20; i++)
+            SpawnMan.SpawnPlayer(Faction.Good);
+            for (int i = 0; i < 5; i++)
             {
+                SpawnMan.SpawnCharacter(Faction.Good);
                 SpawnMan.SpawnCharacter(Faction.Tribal);
-            }
-            for (int i = 0; i < 20; i++)
-            {
+                SpawnMan.SpawnCharacter(Faction.Thief);
                 SpawnMan.SpawnCharacter(Faction.Rich);
             }
-            for (int i = 0; i < 20; i++)
-            {
-                SpawnMan.SpawnCharacter(Faction.Thief);
-            }
+
         }
 
     }

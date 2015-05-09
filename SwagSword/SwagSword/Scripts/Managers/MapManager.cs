@@ -57,7 +57,7 @@ namespace SwagSword
         //called after the textures are loaded
         public void Startup()
         {
-            strongholdWidth = tileSize * 2;
+            strongholdWidth = tileSize * 3;
             radius = 350;
             MapMaker mapMaker = new MapMaker(radius, tileSize, resWidth, resHeight, graphicsDevice, mainMan);
             //make map
@@ -68,6 +68,7 @@ namespace SwagSword
             mainMan.GameMan.RightStrong = new Rectangle(resWidth - radius - strongholdWidth / 2, resHeight / 2 - strongholdWidth / 2, strongholdWidth, strongholdWidth);
             mainMan.GameMan.TopStrong = new Rectangle(resWidth / 2 - strongholdWidth / 2, radius - strongholdWidth / 2, strongholdWidth, strongholdWidth);
             mainMan.GameMan.LowerStrong = new Rectangle(resWidth / 2 - strongholdWidth / 2, resHeight - radius - strongholdWidth / 2, strongholdWidth, strongholdWidth);
+            return;
         }
 
         

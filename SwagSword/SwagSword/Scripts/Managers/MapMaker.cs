@@ -218,6 +218,10 @@ namespace SwagSword
             Point RightCenterPoint = new Point(resWidth - radius, resHeight / 2);
             Point UpperCenterPoint = new Point(resWidth / 2, radius);
             Point LowerCenterPoint = new Point(resWidth / 2, resHeight - radius);
+            mainMan.GameMan.MapMan.LeftCenterPoint = LeftCenterPoint;
+            mainMan.GameMan.MapMan.RightCenterPoint = RightCenterPoint;
+            mainMan.GameMan.MapMan.UpperCenterPoint = UpperCenterPoint;
+            mainMan.GameMan.MapMan.LowerCenterPoint = LowerCenterPoint;
             Texture2D circleMask = new Texture2D(graphicsDevice, resWidth, resHeight);
             Color[,] colorData2D = new Color[resWidth, resHeight];
             

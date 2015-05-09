@@ -59,13 +59,18 @@ namespace SwagSword
         public Camera(Viewport viewport, Game1 mainMan)
         {
             this.mainMan = mainMan;
-            position = Vector2.Zero;
             viewportWidth = viewport.Width;
             viewportHeight = viewport.Height;
-            worldWidth = mainMan.GameMan.MapMan.MapWidth * mainMan.GameMan.MapMan.TileSize + 10;
-            worldHeight = mainMan.GameMan.MapMan.MapHeight * mainMan.GameMan.MapMan.TileSize + 10;
+            worldWidth = mainMan.GameMan.MapMan.ResWidth;
+            worldHeight = mainMan.GameMan.MapMan.ResHeight;
+            position = Vector2.Zero;
             mainMan.MapWidth = worldWidth;
             mainMan.MapHeight = worldHeight;
+        }
+
+        public void SnapToCenter()
+        {
+            position = new Vector2(worldWidth / 2, worldHeight / 2);
         }
 
         public void Move(Vector2 amount)

@@ -475,8 +475,121 @@ namespace SwagSword
                     }
                 }
             }
+            CheckBounds();
         }
 
+        public void CheckBounds()
+        {
+            //break if in rects
+            if (mainMan.GameMan.CenterBound.Contains(X, Y))
+                return;
+            if (mainMan.GameMan.LeftPathBound.Contains(X, Y))
+                return;
+            if (mainMan.GameMan.RightPathBound.Contains(X, Y))
+                return;
+            if (mainMan.GameMan.LowerPathBound.Contains(X, Y))
+                return;
+            if (mainMan.GameMan.TopPathBound.Contains(X, Y))
+                return;
+            //break if in circles
+            if (Distance(mainMan.GameMan.MapMan.LeftCenterPoint, X, Y) < mainMan.GameMan.MapMan.Radius)
+                return;
+            if (Distance(mainMan.GameMan.MapMan.RightCenterPoint, X, Y) < mainMan.GameMan.MapMan.Radius)
+                return;
+            if (Distance(mainMan.GameMan.MapMan.UpperCenterPoint, X, Y) < mainMan.GameMan.MapMan.Radius)
+                return;
+            if (Distance(mainMan.GameMan.MapMan.LowerCenterPoint, X, Y) < mainMan.GameMan.MapMan.Radius)
+                return;
+            //if it is not in bounds make it so
+            //top triangle
+            if(Y < X && (Y < mainMan.GameMan.MapMan.ResHeight - X))
+            {
+                //in top tri
+                //check indiv x and y bs
+                //and circle
+
+                //check if in line with circle
+                if (Y < mainMan.GameMan.MapMan.Radius * 2)
+                {
+                    //find theta
+                    double deltaY = mainMan.GameMan.MapMan.UpperCenterPoint.Y - Y;
+                    double delatX = mainMan.GameMan.MapMan.UpperCenterPoint.X - X;
+                    double theta = Math.Atan2(deltaY, delatX);
+                    X = (float)(mainMan.GameMan.MapMan.UpperCenterPoint.X + Math.Cos(theta + Math.PI) * mainMan.GameMan.MapMan.Radius);
+                    Y = (float)(mainMan.GameMan.MapMan.UpperCenterPoint.Y + Math.Sin(theta + Math.PI) * mainMan.GameMan.MapMan.Radius);
+                }
+                else
+                {
+                    X = MathHelper.Clamp(X, mainMan.GameMan.TopPathBound.X, mainMan.GameMan.TopPathBound.X + mainMan.GameMan.TopPathBound.Width);
+                }
+            }
+            //left triangle
+            else if(Y > X && (Y < mainMan.GameMan.MapMan.ResHeight - X))
+            {
+                //in left tri
+
+                //check if in line with circle
+                if(X < mainMan.GameMan.MapMan.Radius * 2)
+                {
+                    //find theta
+                    double deltaY = mainMan.GameMan.MapMan.LeftCenterPoint.Y - Y;
+                    double delatX = mainMan.GameMan.MapMan.LeftCenterPoint.X - X;
+                    double theta = Math.Atan2(deltaY, delatX);
+                    X = (float)(mainMan.GameMan.MapMan.LeftCenterPoint.X + Math.Cos(theta + Math.PI) * mainMan.GameMan.MapMan.Radius);
+                    Y = (float)(mainMan.GameMan.MapMan.LeftCenterPoint.Y + Math.Sin(theta + Math.PI) * mainMan.GameMan.MapMan.Radius);
+                }
+                else
+                {
+                    Y = MathHelper.Clamp(Y, mainMan.GameMan.LeftPathBound.Y, mainMan.GameMan.LeftPathBound.Y + mainMan.GameMan.LeftPathBound.Height);
+                }
+            }
+            //right triangle
+            else if(Y < X && (Y > mainMan.GameMan.MapMan.ResHeight - X))
+            {
+                //in right tri
+
+                if (X > mainMan.GameMan.MapMan.ResWidth - mainMan.GameMan.MapMan.Radius * 2)
+                {
+                    //find theta
+                    double deltaY = mainMan.GameMan.MapMan.RightCenterPoint.Y - Y;
+                    double delatX = mainMan.GameMan.MapMan.RightCenterPoint.X - X;
+                    double theta = Math.Atan2(deltaY, delatX);
+                    X = (float)(mainMan.GameMan.MapMan.RightCenterPoint.X + Math.Cos(theta + Math.PI) * mainMan.GameMan.MapMan.Radius);
+                    Y = (float)(mainMan.GameMan.MapMan.RightCenterPoint.Y + Math.Sin(theta + Math.PI) * mainMan.GameMan.MapMan.Radius);
+                }
+                else
+                {
+                    Y = MathHelper.Clamp(Y, mainMan.GameMan.RightPathBound.Y, mainMan.GameMan.RightPathBound.Y + mainMan.GameMan.RightPathBound.Height);
+                }
+            }
+            //lower triangle
+            else if(Y > X && (Y > mainMan.GameMan.MapMan.ResHeight - X))
+            {
+                //in lower tri
+
+                //check if in line with circle
+                if (Y > mainMan.GameMan.MapMan.ResHeight - mainMan.GameMan.MapMan.Radius * 2)
+                {
+                    //find theta
+                    double deltaY = mainMan.GameMan.MapMan.LowerCenterPoint.Y - Y;
+                    double delatX = mainMan.GameMan.MapMan.LowerCenterPoint.X - X;
+                    double theta = Math.Atan2(deltaY, delatX);
+                    X = (float)(mainMan.GameMan.MapMan.LowerCenterPoint.X + Math.Cos(theta + Math.PI) * mainMan.GameMan.MapMan.Radius);
+                    Y = (float)(mainMan.GameMan.MapMan.LowerCenterPoint.Y + Math.Sin(theta + Math.PI) * mainMan.GameMan.MapMan.Radius);
+                }
+                else
+                {
+                    X = MathHelper.Clamp(X, mainMan.GameMan.LowerPathBound.X, mainMan.GameMan.LowerPathBound.X + mainMan.GameMan.LowerPathBound.Width);
+                }
+            }
+
+
+        }
+
+        public float Distance(Point a, float bx, float by)
+        {
+            return (float)Math.Sqrt(Math.Pow(a.X - bx, 2) + Math.Pow(a.Y - by, 2));
+        }
 
         /// <summary>
         /// Returns the characters distance to player specified at index

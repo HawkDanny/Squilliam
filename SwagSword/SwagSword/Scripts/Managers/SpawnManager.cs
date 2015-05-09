@@ -93,7 +93,7 @@ namespace SwagSword
             switch (type)
             {
                 case Faction.Good:
-                    character = new GoodCharacter(mainMan.WindowHalfWidth, mainMan.WindowHalfHeight, mainMan.DrawMan.GoodGuyTextures[0], mainMan);
+                    character = new GoodCharacter(mainMan.GameMan.MapMan.ResWidth / 2, mainMan.GameMan.MapMan.ResHeight / 2, mainMan.DrawMan.GoodGuyTextures[0], mainMan);
                     break;
 
                 //add the other types for multiplayer support

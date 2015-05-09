@@ -25,6 +25,10 @@ namespace SwagSword
         int resHeight;
         int strongholdWidth;
         int radius;
+        Point rightCenterPoint;
+        Point leftCenterPoint;
+        Point upperCenterPoint;
+        Point lowerCenterPoint;
         Texture2D map;
         GraphicsDevice graphicsDevice;
         #endregion
@@ -33,6 +37,13 @@ namespace SwagSword
         public int TileSize { get { return tileSize; } }
         public int MapWidth { get { return mapWidth; } }
         public int MapHeight { get { return mapHeight; } }
+        public int ResWidth { get { return resWidth; } }
+        public int ResHeight { get { return resHeight; } }
+        public Point RightCenterPoint { get { return rightCenterPoint; } set { rightCenterPoint = value; } }
+        public Point LeftCenterPoint { get { return leftCenterPoint; } set { leftCenterPoint = value; } }
+        public Point UpperCenterPoint { get { return upperCenterPoint; } set { upperCenterPoint = value; } }
+        public Point LowerCenterPoint { get { return lowerCenterPoint; } set { lowerCenterPoint = value; } }
+        public int Radius { get { return radius; } }
         #endregion
 
         #region ConstructInit

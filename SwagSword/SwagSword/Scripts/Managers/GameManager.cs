@@ -117,6 +117,7 @@ namespace SwagSword
                 SpawnMan.SpawnCharacter(Faction.Thief);
                 SpawnMan.SpawnCharacter(Faction.Rich);
             }
+            mainMan.DrawMan.Camera.SnapToCenter();
 
         }
 

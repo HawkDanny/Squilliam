@@ -62,7 +62,8 @@
     <Compile Include="Scripts\Managers\SoundManager.cs" />
     <Compile Include="Scripts\Managers\SpawnManager.cs" />
     <Compile Include="Scripts\Objects\BoomerangObject.cs" />
-    <Compile Include="Scripts\Objects\Button.cs" />
+    <Compile Include="Scripts\Objects\Buttons\Button.cs" />
+    <Compile Include="Scripts\Objects\Buttons\StatButton.cs" />
     <Compile Include="Scripts\Objects\Camera.cs" />
     <Compile Include="Scripts\Objects\PATE.cs" />
     <Compile Include="Scripts\Objects\Tile.cs" />

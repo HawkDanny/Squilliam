@@ -45,8 +45,8 @@ namespace SwagSword
         public override void Init()
         {
             tileSize = 64;
-            resWidth = 3200;
-            resHeight = 3200;
+            resWidth = 3260;
+            resHeight = 3260;
             mapWidth = resWidth / tileSize;
             mapHeight = resHeight / tileSize;
 
@@ -58,8 +58,8 @@ namespace SwagSword
         public void Startup()
         {
             strongholdWidth = tileSize * 2;
-            radius = 200;
-            MapMaker mapMaker = new MapMaker(tileSize, resWidth, resHeight, graphicsDevice, mainMan);
+            radius = 350;
+            MapMaker mapMaker = new MapMaker(radius, tileSize, resWidth, resHeight, graphicsDevice, mainMan);
             //make map
             map = mapMaker.MakeMap();
             
@@ -79,10 +79,10 @@ namespace SwagSword
             //but for now, the paths are straight so there is no need
 
 
-            //spriteBatch.Draw(mainMan.DrawMan.LeftStronghold, mainMan.GameMan.LeftStrong, Color.White);
-            //spriteBatch.Draw(mainMan.DrawMan.RightStronghold, mainMan.GameMan.RightStrong, Color.White);
-            //spriteBatch.Draw(mainMan.DrawMan.TopStronghold, mainMan.GameMan.TopStrong, Color.White);
-            //spriteBatch.Draw(mainMan.DrawMan.LowerStronghold, mainMan.GameMan.LowerStrong, Color.White);
+            spriteBatch.Draw(mainMan.DrawMan.LeftStronghold, mainMan.GameMan.LeftStrong, Color.White);
+            spriteBatch.Draw(mainMan.DrawMan.RightStronghold, mainMan.GameMan.RightStrong, Color.White);
+            spriteBatch.Draw(mainMan.DrawMan.TopStronghold, mainMan.GameMan.TopStrong, Color.White);
+            spriteBatch.Draw(mainMan.DrawMan.LowerStronghold, mainMan.GameMan.LowerStrong, Color.White);
         }
 
 

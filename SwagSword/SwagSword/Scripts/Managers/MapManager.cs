@@ -57,7 +57,8 @@ namespace SwagSword
         //called after the textures are loaded
         public void Startup()
         {
-            SHO = mainMan.DrawMan.Stronghold.Width / 4;
+            //SHO = mainMan.DrawMan.Stronghold.Width / 8;
+            SHO = 128;
             radius = 200;
             MapMaker mapMaker = new MapMaker(tileSize, resWidth, resHeight, graphicsDevice, mainMan);
             //make map
@@ -75,10 +76,10 @@ namespace SwagSword
             //draw the strongholds
             //actual position values will be given later
             //but for now, the paths are straight so there is no need
-            spriteBatch.Draw(mainMan.DrawMan.Stronghold, new Rectangle(resWidth / 2 - SHO, radius - SHO, SHO * 2, SHO * 2), Color.White);
-            spriteBatch.Draw(mainMan.DrawMan.Stronghold, new Rectangle(resWidth / 2 - SHO, resHeight - radius - SHO, SHO * 2, SHO * 2), Color.White);
-            spriteBatch.Draw(mainMan.DrawMan.Stronghold, new Rectangle(radius - SHO, resHeight / 2 - SHO, SHO * 2, SHO * 2), Color.White);
-            spriteBatch.Draw(mainMan.DrawMan.Stronghold, new Rectangle(resWidth - radius - SHO, resHeight / 2 - SHO, SHO * 2, SHO * 2), Color.White);
+            //spriteBatch.Draw(mainMan.DrawMan.Stronghold, new Rectangle(, SHO, SHO), Color.White);
+            //spriteBatch.Draw(mainMan.DrawMan.Stronghold, new Rectangle(,SHO, SHO), Color.White);
+            //spriteBatch.Draw(mainMan.DrawMan.Stronghold, new Rectangle(, SHO, SHO), Color.White);
+            //spriteBatch.Draw(mainMan.DrawMan.Stronghold, new Rectangle(, SHO, SHO), Color.White);
         }
 
 

@@ -13,6 +13,7 @@ namespace SwagSword
     /// </summary>
     public enum GameState
     {
+        loading,
         title,
         game,
         gameOver,

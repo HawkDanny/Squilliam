@@ -34,7 +34,7 @@ namespace SwagSword
         {
             resWidth = rw;
             resHeight = rh;
-            radius = 200;                                                                   //hardcode in the stronghold radius
+            radius = 350;                                                                   //hardcode in the stronghold radius
             pathThickness = 230;                                                            //hardcode in the path thickness
             this.graphicsDevice = graphicsDevice;                                   
             rand = new Random();
@@ -51,6 +51,7 @@ namespace SwagSword
             PerlinNoise noiseGen = new PerlinNoise(resWidth, resHeight, rand, graphicsDevice);
             noiseOffset = noiseGen.NoiseToTexture();
             pathMask = MergeTextures(ShiftPathHorizontal(BasePathHorizontal(), noiseOffset), ShiftPathVertical(BasePathVertical(), noiseOffset));
+            pathMask = MergeTextures(pathMask, NoiseyCircle(getNoiseValues(noiseOffset, 1000)));
             noiseOffset = noiseGen.AdjustConstrast(noiseOffset, 4);
             noiseOffset = noiseGen.AddGradient(noiseOffset, Color.Black, Color.White);
             noiseOffset = noiseGen.BlendImages(mainMan.DrawMan.SandyTexture, mainMan.DrawMan.GrassTexture, noiseOffset);
@@ -62,7 +63,7 @@ namespace SwagSword
         {
             Texture2D HPB = new Texture2D(graphicsDevice, resWidth, resHeight);
             Color[] colorData = new Color[resWidth * resHeight];
-            for(int i = radius; i < resWidth - radius; i++)
+            for(int i = radius * 2 - 40; i < resWidth - radius * 2 + 40; i++)
             {
                 for (int j = ((resHeight / 2) - (pathThickness / 2)); j < ((resHeight / 2) + (pathThickness / 2)); j++)
                 {
@@ -78,7 +79,7 @@ namespace SwagSword
             Color[] colorData = new Color[resWidth * resHeight];
             for (int i = ((resHeight / 2) - (pathThickness / 2)); i < ((resHeight / 2) + (pathThickness / 2)); i++)
             {
-                for (int j = radius; j < resHeight - radius; j++ )
+                for (int j = radius * 2 - 40; j < resHeight - radius * 2 + 40; j++ )
                 {
                     colorData[i * resHeight + j] = Color.Red;
                 }
@@ -207,12 +208,75 @@ namespace SwagSword
         {
 
         }
-        /*
-        private Texture2D NoiseyCircle(int radius, Texture2D noise)
+        */
+        
+        private Texture2D NoiseyCircle(double[] radii)
         {
-            //use shiftpath
-            //use blur 2x
+            Point LeftCenterPoint = new Point(radius, resHeight / 2);
+            Point RightCenterPoint = new Point(resWidth - radius, resHeight / 2);
+            Point UpperCenterPoint = new Point(resWidth / 2, radius);
+            Point LowerCenterPoint = new Point(resWidth / 2, resHeight - radius);
+            Texture2D circleMask = new Texture2D(graphicsDevice, resWidth, resHeight);
+            Color[,] colorData2D = new Color[resWidth, resHeight];
+            
+            int k = 0;
+            int factor = 50;
+            int count = radii.Length;
+            int delta = 1;
+            for (int i = 0; i < resWidth; i++)
+            {
+                for (int j = 0; j < resHeight; j++)
+                {
+                    if(CalcDistance(i, j, LeftCenterPoint.X, LeftCenterPoint.Y) < radius + radii[k] * factor)
+                    {
+                        colorData2D[i, j].R = 255;
+                    }
+                    if (CalcDistance(i, j, RightCenterPoint.X, RightCenterPoint.Y) < radius + radii[k] * factor)
+                    {
+                        colorData2D[i, j].R = 255;
+                    }
+                    if (CalcDistance(i, j, UpperCenterPoint.X, UpperCenterPoint.Y) < radius + radii[k] * factor)
+                    {
+                        colorData2D[i, j].R = 255;
+                    }
+                    if (CalcDistance(i, j, LowerCenterPoint.X, LowerCenterPoint.Y) < radius + radii[k] * factor)
+                    {
+                        colorData2D[i, j].R = 255;
+                    }
+
+                }
+
+            }
+
+            Color[] colorData = new Color[resHeight * resWidth];
+            for (int i = 0; i < resWidth; i++)
+                for (int j = 0; j < resHeight; j++)
+                    colorData[i * resHeight + j] = colorData2D[i, j];
+            circleMask.SetData<Color>(colorData);
+            //return ShiftPathHorizontal(ShiftPathVertical(circleMask, noise), noise);
+            return circleMask;
         }
-*/
+
+        private double CalcDistance(Point a, Point b)
+        {
+            return Math.Sqrt(Math.Pow((a.X - b.X), 2) + Math.Pow((a.Y - b.Y), 2));
+        }
+        private double CalcDistance(int aX, int aY, int bX, int bY)
+        {
+            return Math.Sqrt(Math.Pow((aX - bX), 2) + Math.Pow((aY - bY), 2));
+        }
+        private double[] getNoiseValues(Texture2D noise, int count)
+        {
+            double[] partialData = new double[count];
+            Color[] fullData = new Color[resWidth * resHeight];
+            //noise.GetData<Color>(data,0,count);
+            noise.GetData<Color>(fullData);
+            for (int i = 0; i < count; i++)
+                partialData[i] = i;
+                //partialData[i] = (double)fullData[i].R / 255;
+                 
+                return partialData;
+        }
+
     }
 }

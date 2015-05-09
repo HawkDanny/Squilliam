@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Storage;
+using System.Threading;
 //using Microsoft.Xna.Framework.GamerServices;
 #endregion
 
@@ -37,6 +38,7 @@ namespace SwagSword
         private int windowHalfHeight;
         private int mapWidth;
         private int mapHeight;
+        Thread t;
         #endregion
 
         #region Properties
@@ -134,8 +136,9 @@ namespace SwagSword
             //Load Fonts
             drawMan.HealthFont = Content.Load<SpriteFont>("Fonts/vanillawhale");
             drawMan.StatFont = Content.Load<SpriteFont>("Fonts/pressstart2p");
-
-            gameMan.MapMan.Startup();
+            t = new Thread(new ThreadStart(gameMan.MapMan.Startup));
+            t.Start();
+            //gameMan.MapMan.Startup();
 
             //Load Front Sprites into Dictionary
             drawMan.SpriteDict.Add(Faction.Good, Content.Load<Texture2D>("Sprites/goodGuy.png"));
@@ -166,6 +169,10 @@ namespace SwagSword
                 gameMan.Update();
                 
             }
+            if(t.ThreadState == ThreadState.Stopped)
+            {
+                uiMan.State = GameState.game;
+            }
             inputMan.Update();
             uiMan.Update();
 
@@ -177,9 +184,16 @@ namespace SwagSword
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.Black);
-
-            drawMan.Draw(spriteBatch, gameTime);
+            GraphicsDevice.Clear(Color.Red);
+            if(t.ThreadState == ThreadState.Running)
+            {
+                //drawman . draw the loading screen
+                uiMan.State = GameState.loading;
+            }
+            else
+            {   
+                drawMan.Draw(spriteBatch, gameTime);   
+            }
 
             base.Draw(gameTime);
         }

@@ -331,12 +331,12 @@ namespace SwagSword
             {                               
                 for (int j = 0; j < baseTexture.Height; j++)                                                        //loop through the pixel rows in the texture
                 {
-                    weight = ((double)j / (double)baseTexture.Height);                                              //adjust the wieght based on the current row
+                    weight = ((double)MathHelper.Min(MathHelper.Max(j, 100), baseTexture.Height - 100) / (double)baseTexture.Height);//adjust the wieght based on the current row
                     Color addition = InterpLinearColor(gradientStart, gradientEnd, weight);                         //interpolate between the 2 colors based on calculated weight
                     //average the R, G, B values of the original image and the calculated R, G, B values of the gradient
-                    colorData[i * baseTexture.Height + j].R = (byte)((colorData[i * baseTexture.Height + j].R + addition.R) / 2);
-                    colorData[i * baseTexture.Height + j].G = (byte)((colorData[i * baseTexture.Height + j].G + addition.G) / 2);
-                    colorData[i * baseTexture.Height + j].B = (byte)((colorData[i * baseTexture.Height + j].B + addition.B) / 2);
+                    colorData[i * baseTexture.Height + j].R = (byte)((colorData[i * baseTexture.Height + j].R + 2 * addition.R) / 3);
+                    colorData[i * baseTexture.Height + j].G = (byte)((colorData[i * baseTexture.Height + j].G + 2 * addition.G) / 3);
+                    colorData[i * baseTexture.Height + j].B = (byte)((colorData[i * baseTexture.Height + j].B + 2 * addition.B) / 3);
                 }
                 weight = 0;                                                                                         
             }

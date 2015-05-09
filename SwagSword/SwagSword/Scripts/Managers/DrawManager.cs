@@ -129,7 +129,7 @@ namespace SwagSword
             //The game states will determine what is being drawn for now.
             if(mainMan.UIMan.State == GameState.title)
             {
-                //For the beginning of the game with the title screen.
+
             }
 
             if(mainMan.UIMan.State == GameState.pause)

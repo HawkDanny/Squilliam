@@ -58,6 +58,7 @@
     <Compile Include="Scripts\Managers\Manager.cs" />
     <Compile Include="Scripts\Managers\MapMaker.cs" />
     <Compile Include="Scripts\Managers\MapManager.cs" />
+    <Compile Include="Scripts\Objects\Stronghold.cs" />
     <Compile Include="Scripts\Objects\PerlinNoise.cs" />
     <Compile Include="Scripts\Managers\SoundManager.cs" />
     <Compile Include="Scripts\Managers\SpawnManager.cs" />

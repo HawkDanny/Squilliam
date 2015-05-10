@@ -54,14 +54,43 @@ namespace SwagSword
         /// </summary>
         public override void Update()
         {
+            foreach (Faction type in Enum.GetValues(typeof(Faction)))
+                for (int i = 0; i < mainMan.GameMan.NumCharacters - mainMan.GameMan.CharactersDictionary[type].Count; i++)
+                    mainMan.GameMan.CharactersDictionary[type].Add(ReplenishCharacter(type));
+        }
 
+        private Character ReplenishCharacter(Faction type)
+        {
+            Character character = null;
+
+            switch (type)
+            {
+                case Faction.Good:
+                    character = new GoodCharacter(mainMan.GameMan.LeftStrong.Center.X, mainMan.GameMan.LeftStrong.Center.Y, mainMan.DrawMan.SpriteDict[Faction.Good], mainMan);
+                    break;
+
+                case Faction.Tribal:
+                    character = new TribalCharacter(mainMan.GameMan.RightStrong.Center.X, mainMan.GameMan.RightStrong.Center.Y, mainMan.DrawMan.SpriteDict[Faction.Tribal], mainMan);
+                    break;
+
+                case Faction.Rich:
+                    character = new RichCharacter(mainMan.GameMan.TopStrong.Center.X, mainMan.GameMan.TopStrong.Center.Y, mainMan.DrawMan.SpriteDict[Faction.Rich], mainMan);
+                    break;
+
+                case Faction.Thief:
+                    character = new ThiefCharacter(mainMan.GameMan.LowerStrong.Center.X, mainMan.GameMan.LowerStrong.Center.Y, mainMan.DrawMan.SpriteDict[Faction.Thief], mainMan);
+                    break;
+            }
+
+            mainMan.GameMan.Characters.Add(character);
+            return character;
         }
 
         /// <summary>
         /// Spawns a character given the faction, should decide position and random texture
         /// </summary>
         /// <param name="type"></param>
-        public void SpawnCharacter(Faction type)
+        public Character SpawnCharacter(Faction type)
         {
             Character character = null;
 
@@ -85,6 +114,7 @@ namespace SwagSword
             }
 
             mainMan.GameMan.Characters.Add(character);
+            return character;
         }
 
         public void SpawnPlayer(Faction type)

@@ -31,6 +31,11 @@ namespace SwagSword
         Point lowerCenterPoint;
         Texture2D map;
         GraphicsDevice graphicsDevice;
+        Stronghold leftStronghold;
+        Stronghold rightStronghold;
+        Stronghold topStronghold;
+        Stronghold lowerStronghold;
+        List<Stronghold> strongholds;
         #endregion
 
         #region Properties
@@ -44,6 +49,7 @@ namespace SwagSword
         public Point UpperCenterPoint { get { return upperCenterPoint; } set { upperCenterPoint = value; } }
         public Point LowerCenterPoint { get { return lowerCenterPoint; } set { lowerCenterPoint = value; } }
         public int Radius { get { return radius; } }
+        public List<Stronghold> Strongholds { get { return strongholds; } }
         #endregion
 
         #region ConstructInit
@@ -68,17 +74,28 @@ namespace SwagSword
         //called after the textures are loaded
         public void Startup()
         {
-            strongholdWidth = tileSize * 3;
+            strongholdWidth = tileSize * 5;
             radius = 550;
             MapMaker mapMaker = new MapMaker(radius, tileSize, resWidth, resHeight, graphicsDevice, mainMan);
             //make map
             map = mapMaker.MakeMap();
             
             //Strongholds set
-            mainMan.GameMan.LeftStrong = new Rectangle(radius - strongholdWidth / 2, resHeight / 2 - strongholdWidth / 2, strongholdWidth, strongholdWidth);
-            mainMan.GameMan.RightStrong = new Rectangle(resWidth - radius - strongholdWidth / 2, resHeight / 2 - strongholdWidth / 2, strongholdWidth, strongholdWidth);
-            mainMan.GameMan.TopStrong = new Rectangle(resWidth / 2 - strongholdWidth / 2, radius - strongholdWidth / 2, strongholdWidth, strongholdWidth);
-            mainMan.GameMan.LowerStrong = new Rectangle(resWidth / 2 - strongholdWidth / 2, resHeight - radius - strongholdWidth / 2, strongholdWidth, strongholdWidth);
+            leftStronghold = new Stronghold(mainMan.DrawMan.LeftStronghold, new Rectangle(radius - strongholdWidth / 2, resHeight / 2 - strongholdWidth / 2, strongholdWidth, strongholdWidth));
+            rightStronghold = new Stronghold(mainMan.DrawMan.RightStronghold, new Rectangle(resWidth - radius - strongholdWidth / 2, resHeight / 2 - strongholdWidth / 2, strongholdWidth, strongholdWidth));
+            topStronghold = new Stronghold(mainMan.DrawMan.TopStronghold, new Rectangle(resWidth / 2 - strongholdWidth / 2, radius - strongholdWidth / 2, strongholdWidth, strongholdWidth));
+            lowerStronghold = new Stronghold(mainMan.DrawMan.LowerStronghold, new Rectangle(resWidth / 2 - strongholdWidth / 2, resHeight - radius - strongholdWidth / 2, strongholdWidth, strongholdWidth));
+
+            mainMan.GameMan.LeftStrong = leftStronghold.Rect;
+            mainMan.GameMan.RightStrong = rightStronghold.Rect;
+            mainMan.GameMan.TopStrong = topStronghold.Rect;
+            mainMan.GameMan.LowerStrong = lowerStronghold.Rect;
+
+            strongholds = new List<Stronghold>();
+            strongholds.Add(leftStronghold);
+            strongholds.Add(rightStronghold);
+            strongholds.Add(topStronghold);
+            strongholds.Add(lowerStronghold);
             return;
         }
 
@@ -86,15 +103,12 @@ namespace SwagSword
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(map, new Rectangle(0, 0, resWidth, resHeight), Color.White);
+            
             //draw the strongholds
-            //actual position values will be given later
-            //but for now, the paths are straight so there is no need
-
-
-            spriteBatch.Draw(mainMan.DrawMan.LeftStronghold, mainMan.GameMan.LeftStrong, Color.White);
-            spriteBatch.Draw(mainMan.DrawMan.RightStronghold, mainMan.GameMan.RightStrong, Color.White);
-            spriteBatch.Draw(mainMan.DrawMan.TopStronghold, mainMan.GameMan.TopStrong, Color.White);
-            spriteBatch.Draw(mainMan.DrawMan.LowerStronghold, mainMan.GameMan.LowerStrong, Color.White);
+            foreach(Stronghold s in strongholds)
+            {
+                s.Draw(spriteBatch);
+            }
         }
 
 

@@ -6,6 +6,8 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Storage;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Media;
 using System.Threading;
 //using Microsoft.Xna.Framework.GamerServices;
 #endregion
@@ -110,6 +112,11 @@ namespace SwagSword
             drawMan.GoodGuyTextures.Add(Texture2D.FromStream(GraphicsDevice, goodGuyStream));
             goodGuyStream.Close();
 
+            //Load Sounds
+            //soundMan.OpeningMusic = this.Content.Load<Song>("TitleScreenMusic");
+            //soundMan.GameMusic = this.Content.Load<Song>("Music/GameMusic.mp3");            
+            //soundMan.StartIntro();
+
             //Load Screen Textures
             drawMan.TitleImage = this.Content.Load<Texture2D>("UIScreens/TitleScreenMock.png");
             drawMan.GameOverImage = this.Content.Load<Texture2D>("UIScreens/GameOverScreen.png");
@@ -141,9 +148,10 @@ namespace SwagSword
             //Load Fonts
             drawMan.HealthFont = Content.Load<SpriteFont>("Fonts/vanillawhale");
             drawMan.StatFont = Content.Load<SpriteFont>("Fonts/pressstart2p");
+
+            //Start the map
             t = new Thread(new ThreadStart(gameMan.MapMan.Startup));
             t.Start();
-            //gameMan.MapMan.Startup();
 
             //Load Front Sprites into Dictionary
             drawMan.SpriteDict.Add(Faction.Good, Content.Load<Texture2D>("Sprites/goodGuy.png"));

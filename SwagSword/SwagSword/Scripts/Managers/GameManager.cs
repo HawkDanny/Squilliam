@@ -118,6 +118,7 @@ namespace SwagSword
                 SpawnMan.SpawnCharacter(Faction.Rich);
             }
             mainMan.DrawMan.Camera.SnapToCenter();
+            //mainMan.SoundMan.StopIntro();
 
         }
 

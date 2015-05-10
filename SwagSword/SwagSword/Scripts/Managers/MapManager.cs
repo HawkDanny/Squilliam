@@ -56,8 +56,8 @@ namespace SwagSword
         public override void Init()
         {
             tileSize = 64;
-            resWidth = 3260;
-            resHeight = 3260;
+            resWidth = 5248;
+            resHeight = 5248;
             mapWidth = resWidth / tileSize;
             mapHeight = resHeight / tileSize;
 
@@ -69,7 +69,7 @@ namespace SwagSword
         public void Startup()
         {
             strongholdWidth = tileSize * 3;
-            radius = 350;
+            radius = 550;
             MapMaker mapMaker = new MapMaker(radius, tileSize, resWidth, resHeight, graphicsDevice, mainMan);
             //make map
             map = mapMaker.MakeMap();

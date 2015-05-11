@@ -61,6 +61,7 @@ namespace SwagSword
         {
             Character repChar;
             foreach (Faction type in Enum.GetValues(typeof(Faction)))
+                if(type != Faction.Neutral)
                 for (int i = 0; i < mainMan.GameMan.NumCharacters - mainMan.GameMan.CharactersDictionary[type].Count; i++)
                     if ((repChar = ReplenishCharacter(type)) != null)
                         mainMan.GameMan.CharactersDictionary[type].Add(repChar);

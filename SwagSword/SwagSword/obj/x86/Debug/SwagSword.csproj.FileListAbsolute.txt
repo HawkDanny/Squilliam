@@ -16,7 +16,6 @@ C:\Users\Owner\Desktop\Squilliam\Squilliam\SwagSword\SwagSword\bin\Windows\Debug
 C:\Users\Owner\Desktop\Squilliam\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\SharpDX.Direct3D11.dll
 C:\Users\Owner\Desktop\Squilliam\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\SharpDX.DXGI.dll
 C:\Users\Owner\Desktop\Squilliam\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\SharpDX.Direct2D1.dll
-C:\Users\Owner\Desktop\Squilliam\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Lidgren.Network.dll
 C:\Users\Owner\Desktop\Squilliam\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\SharpDX.XInput.dll
 C:\Users\Owner\Desktop\Squilliam\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\SharpDX.RawInput.dll
 C:\Users\Owner\Desktop\Squilliam\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\SharpDX.Direct3D9.dll
@@ -83,7 +82,6 @@ C:\Users\Owner\Desktop\Squilliam\Squilliam\SwagSword\SwagSword\bin\Windows\Debug
 C:\Users\Owner\Desktop\Squilliam\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\Sprites\BanditGuy.png
 C:\Users\Owner\Desktop\Squilliam\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\Sprites\RichGuy.png
 C:\Users\Owner\Desktop\Squilliam\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\Sprites\TribalGuy.png
-C:\Users\Owner\Desktop\Squilliam\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\Map\Stronghold.jpg
 C:\Users\Owner\Desktop\Squilliam\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\Objects\PAT-E.png
 C:\Users\Owner\Desktop\Squilliam\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\UIScreens\SwordStatScreen.png
 C:\Users\Owner\Desktop\Squilliam\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\Fonts\pressstart2p.xnb
@@ -139,3 +137,11 @@ C:\Git\SwitchBlade\SwagSword\SwagSword\bin\Windows\Debug\SharpDX.Direct3D9.xml
 C:\Git\SwitchBlade\SwagSword\SwagSword\obj\x86\Debug\SwagSword.csprojResolveAssemblyReference.cache
 C:\Git\SwitchBlade\SwagSword\SwagSword\obj\x86\Debug\SwagSword.exe
 C:\Git\SwitchBlade\SwagSword\SwagSword\obj\x86\Debug\SwagSword.pdb
+C:\Users\Owner\Desktop\Squilliam\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\Map\Grass.jpg
+C:\Users\Owner\Desktop\Squilliam\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\MonoGame.Framework.xml
+C:\Users\Owner\Desktop\Squilliam\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\Map\LowerStronghold.jpg
+C:\Users\Owner\Desktop\Squilliam\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\Map\TopStronghold.jpg
+C:\Users\Owner\Desktop\Squilliam\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\Map\RightStronghold.jpg
+C:\Users\Owner\Desktop\Squilliam\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\UIScreens\LoadingScreen.jpg
+C:\Users\Owner\Desktop\Squilliam\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\Map\LeftStronghold.jpg
+C:\Users\Owner\Desktop\Squilliam\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\Objects\bullet.png

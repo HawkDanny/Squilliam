@@ -58,6 +58,7 @@
     <Compile Include="Scripts\Managers\Manager.cs" />
     <Compile Include="Scripts\Managers\MapMaker.cs" />
     <Compile Include="Scripts\Managers\MapManager.cs" />
+    <Compile Include="Scripts\Objects\BulletObject.cs" />
     <Compile Include="Scripts\Objects\PerlinNoise.cs" />
     <Compile Include="Scripts\Managers\SoundManager.cs" />
     <Compile Include="Scripts\Managers\SpawnManager.cs" />
@@ -103,6 +104,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Map\RightStronghold.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Objects\bullet.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\UIScreens\LoadingScreen.jpg">

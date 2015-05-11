@@ -73,7 +73,7 @@ namespace SwagSword
                 switch (AIState)
                 {
                     case AIState.Attack:
-                        if (mainMan.GameMan.Players[0].CharacterState != CharacterState.Dead)
+                        if (mainMan.GameMan.Players[0].CharacterState != CharacterState.Dead && PlayerInArea())
                         {
                             //Move close to attack
                             if (DistanceToPlayer(0) > AttackRange)
@@ -119,7 +119,7 @@ namespace SwagSword
                         if (AIStateTimer <= 0f)
                         {
                             //random movement?
-                            if (!mainMan.GameMan.Players[0].NoCharacter && mainMan.GameMan.Players[0].Character.Type != Type && mainMan.GameMan.Players[0].CharacterState == CharacterState.Active)
+                            if (!mainMan.GameMan.Players[0].NoCharacter && PlayerInArea() && mainMan.GameMan.Players[0].Character.Type != Type && mainMan.GameMan.Players[0].CharacterState == CharacterState.Active)
                             {
                                 if (DistanceToPlayer(0) < SightRange)
                                 {

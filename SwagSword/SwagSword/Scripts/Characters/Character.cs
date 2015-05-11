@@ -15,7 +15,8 @@ namespace SwagSword
         Tribal,
         Good,
         Rich,
-        Thief
+        Thief,
+        Neutral
     }
 
     public enum AnimationState
@@ -75,6 +76,7 @@ namespace SwagSword
         private bool isControlled;
         private CharacterState characterState;
         private float stateTimer;
+        private Faction currentArea;
 
         //Animation
         private int frameWidth;
@@ -156,6 +158,7 @@ namespace SwagSword
         public CharacterState CharacterState { get { return characterState; } set { characterState = value; } }
         public float StateTimer { get { return stateTimer; } set { stateTimer = value; } }
         public bool IsControlled { get { return isControlled; } set { isControlled = value; } }
+        public Faction CurrentArea { get { return currentArea; } set { currentArea = value; } }
 
         //Weapon + Abilities
         public Weapon Weapon { get { return weapon; } }
@@ -475,6 +478,8 @@ namespace SwagSword
                     }
                 }
             }
+
+            //Keep character in map
             CheckBounds();
         }
 
@@ -482,24 +487,53 @@ namespace SwagSword
         {
             //break if in rects
             if (mainMan.GameMan.CenterBound.Contains(X, Y))
+            {
+                currentArea = Faction.Neutral;
                 return;
+            }
             if (mainMan.GameMan.LeftPathBound.Contains(X, Y))
+            {
+                currentArea = Faction.Good;
                 return;
+            }
             if (mainMan.GameMan.RightPathBound.Contains(X, Y))
+            {
+                currentArea = Faction.Tribal;
                 return;
+            }
             if (mainMan.GameMan.LowerPathBound.Contains(X, Y))
+            {
+                currentArea = Faction.Thief;
                 return;
+            }
             if (mainMan.GameMan.TopPathBound.Contains(X, Y))
+            {
+                currentArea = Faction.Rich;
                 return;
+            }
+
             //break if in circles
             if (Distance(mainMan.GameMan.MapMan.LeftCenterPoint, X, Y) < mainMan.GameMan.MapMan.Radius)
+            {
+                currentArea = Faction.Good;
                 return;
+            }
             if (Distance(mainMan.GameMan.MapMan.RightCenterPoint, X, Y) < mainMan.GameMan.MapMan.Radius)
+            {
+                currentArea = Faction.Tribal;
                 return;
+            }
             if (Distance(mainMan.GameMan.MapMan.UpperCenterPoint, X, Y) < mainMan.GameMan.MapMan.Radius)
+            {
+                currentArea = Faction.Rich;
                 return;
+            }
             if (Distance(mainMan.GameMan.MapMan.LowerCenterPoint, X, Y) < mainMan.GameMan.MapMan.Radius)
+            {
+                currentArea = Faction.Thief;
                 return;
+            }
+
             //if it is not in bounds make it so
             //top triangle
             if(Y < X && (Y < mainMan.GameMan.MapMan.ResHeight - X))
@@ -652,6 +686,15 @@ namespace SwagSword
         }
 
         /// <summary>
+        /// Returns if player is in this character's area
+        /// </summary>
+        /// <returns></returns>
+        public bool PlayerInArea()
+        {
+            return (mainMan.GameMan.Players[0].CurrentArea == currentArea);
+        }
+
+        /// <summary>
         /// Animates the AI to face its direction
         /// </summary>
         public void AnimateFaceDirection()
@@ -732,6 +775,7 @@ namespace SwagSword
         public void Kill()
         {
             mainMan.GameMan.Characters.Remove(this);
+            mainMan.GameMan.CharactersDictionary[type].Remove(this);
         }
 
         /// <summary>
@@ -742,7 +786,7 @@ namespace SwagSword
         {
             currentAbility.Draw(spritebatch);
 
-            if (type == Faction.Good)
+            if (type == Faction.Neutral)
             {
                 switch (animationState)
                 {

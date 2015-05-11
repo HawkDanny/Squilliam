@@ -41,6 +41,7 @@ namespace SwagSword
         public float X { get { return x; } }
         public float Y { get { return y; } }
         public Vector2 Position { get { return new Vector2(x, y); } }
+        public Faction CurrentArea { get { return Character.CurrentArea; } }
 
         //Shortcuts to character
         public float VelocityX { get { return character.VelocityX; } }

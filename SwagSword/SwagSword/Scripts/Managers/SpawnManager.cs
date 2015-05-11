@@ -16,6 +16,7 @@ namespace SwagSword
     {
         #region Fields
         int lx, ly, lw, lh, rx, ry, rw, rh, tx, ty, tw, th, bx, by, bw, bh;
+        int goodNum, tribalNum, richNum, thiefNum;
         #endregion
 
         public SpawnManager(Game1 mainMan):base(mainMan)
@@ -47,6 +48,10 @@ namespace SwagSword
             by = mainMan.GameMan.LowerPathBound.Y;
             bw = mainMan.GameMan.LowerPathBound.Width;
             bh = mainMan.GameMan.LowerPathBound.Height;
+            tribalNum = 30;
+            goodNum = 30;
+            thiefNum = 30;
+            richNum = 30;
         }
 
         /// <summary>
@@ -54,14 +59,61 @@ namespace SwagSword
         /// </summary>
         public override void Update()
         {
+            Character repChar;
+            foreach (Faction type in Enum.GetValues(typeof(Faction)))
+                for (int i = 0; i < mainMan.GameMan.NumCharacters - mainMan.GameMan.CharactersDictionary[type].Count; i++)
+                    if ((repChar = ReplenishCharacter(type)) != null)
+                        mainMan.GameMan.CharactersDictionary[type].Add(repChar);
+        }
 
+        private Character ReplenishCharacter(Faction type)
+        {
+            Character character = null;
+
+            switch (type)
+            {
+                case Faction.Good:
+                    if (goodNum > 0)
+                    {
+                        character = new GoodCharacter(mainMan.GameMan.LeftStrong.Center.X, mainMan.GameMan.LeftStrong.Center.Y, mainMan.DrawMan.SpriteDict[Faction.Good], mainMan);
+                        goodNum--;
+                    }
+                    break;
+
+                case Faction.Tribal:
+                    if (tribalNum > 0)
+                    {
+                        character = new TribalCharacter(mainMan.GameMan.RightStrong.Center.X, mainMan.GameMan.RightStrong.Center.Y, mainMan.DrawMan.SpriteDict[Faction.Tribal], mainMan);
+                        tribalNum--;
+                    }
+                    break;
+
+                case Faction.Rich:
+                    if (richNum > 0)
+                    {
+                        character = new RichCharacter(mainMan.GameMan.TopStrong.Center.X, mainMan.GameMan.TopStrong.Center.Y, mainMan.DrawMan.SpriteDict[Faction.Rich], mainMan);
+                        richNum--;
+                    }
+                    break;
+
+                case Faction.Thief:
+                    if (thiefNum > 0)
+                    {
+                        character = new ThiefCharacter(mainMan.GameMan.LowerStrong.Center.X, mainMan.GameMan.LowerStrong.Center.Y, mainMan.DrawMan.SpriteDict[Faction.Thief], mainMan);
+                        thiefNum--;
+                    }
+                    break;
+            }
+            if (character != null)
+                mainMan.GameMan.Characters.Add(character);
+            return character;
         }
 
         /// <summary>
         /// Spawns a character given the faction, should decide position and random texture
         /// </summary>
         /// <param name="type"></param>
-        public void SpawnCharacter(Faction type)
+        public Character SpawnCharacter(Faction type)
         {
             Character character = null;
 
@@ -85,6 +137,7 @@ namespace SwagSword
             }
 
             mainMan.GameMan.Characters.Add(character);
+            return character;
         }
 
         public void SpawnPlayer(Faction type)

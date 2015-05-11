@@ -35,7 +35,7 @@ namespace SwagSword
             resWidth = rw;
             resHeight = rh;
             radius = r;                                                                   //hardcode in the stronghold radius
-            pathThickness = 230;                                                            //hardcode in the path thickness
+            pathThickness = 430;                                                            //hardcode in the path thickness
             this.graphicsDevice = graphicsDevice;                                   
             rand = new Random();
             this.mainMan = mainMan;

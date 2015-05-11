@@ -22,6 +22,7 @@ namespace SwagSword
         private List<Character> characters;
         private List<Player> players;
         private Dictionary<Faction, List<Character>> charactersDictionary; //Coming soon
+        private int NUM_CHARACTERS;
 
         //Boundaries
         private Rectangle leftPathBound;
@@ -48,6 +49,7 @@ namespace SwagSword
         public List<Character> Characters { get {return characters; } }
         public List<Player> Players { get { return players; } }
         public Dictionary<Faction, List<Character>> CharactersDictionary { get { return charactersDictionary; } }
+        public int NumCharacters { get { return NUM_CHARACTERS; } }
 
         //Boundaries
         public Rectangle LeftPathBound { get { return leftPathBound; } set { leftPathBound = value; } }
@@ -71,6 +73,7 @@ namespace SwagSword
         //Init
         public override void Init()
         {
+            NUM_CHARACTERS = 8;
             //Managers
             mapMan = new MapManager(mainMan);
             spawnMan = new SpawnManager(mainMan);
@@ -101,6 +104,7 @@ namespace SwagSword
             {
                 player.Update();
             }
+            spawnMan.Update();
         }
 
         /// <summary>
@@ -110,16 +114,16 @@ namespace SwagSword
         {
             //Spawn some random characters
             SpawnMan.SpawnPlayer(Faction.Good);
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < NUM_CHARACTERS; i++)
             {
-                SpawnMan.SpawnCharacter(Faction.Good);
-                SpawnMan.SpawnCharacter(Faction.Tribal);
-                SpawnMan.SpawnCharacter(Faction.Thief);
-                SpawnMan.SpawnCharacter(Faction.Rich);
+                charactersDictionary[Faction.Good].Add(SpawnMan.SpawnCharacter(Faction.Good));
+                charactersDictionary[Faction.Tribal].Add(SpawnMan.SpawnCharacter(Faction.Tribal));
+                charactersDictionary[Faction.Thief].Add(SpawnMan.SpawnCharacter(Faction.Thief));
+                charactersDictionary[Faction.Rich].Add(SpawnMan.SpawnCharacter(Faction.Rich));
             }
+
             mainMan.DrawMan.Camera.SnapToCenter();
             //mainMan.SoundMan.StopIntro();
-
         }
 
     }

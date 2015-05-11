@@ -774,6 +774,7 @@ namespace SwagSword
         /// </summary>
         public void Kill()
         {
+            mainMan.GameMan.CharactersDictionary[this.type].Remove(this);
             mainMan.GameMan.Characters.Remove(this);
             mainMan.GameMan.CharactersDictionary[type].Remove(this);
         }

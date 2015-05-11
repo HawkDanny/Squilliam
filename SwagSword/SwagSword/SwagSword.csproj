@@ -58,7 +58,11 @@
     <Compile Include="Scripts\Managers\Manager.cs" />
     <Compile Include="Scripts\Managers\MapMaker.cs" />
     <Compile Include="Scripts\Managers\MapManager.cs" />
+<<<<<<< HEAD
     <Compile Include="Scripts\Objects\BulletObject.cs" />
+=======
+    <Compile Include="Scripts\Objects\Stronghold.cs" />
+>>>>>>> 57f0da73c87bd80d5abc40ab15de3156e7464cd5
     <Compile Include="Scripts\Objects\PerlinNoise.cs" />
     <Compile Include="Scripts\Managers\SoundManager.cs" />
     <Compile Include="Scripts\Managers\SpawnManager.cs" />

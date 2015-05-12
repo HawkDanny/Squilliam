@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+
 
 //Names: Nelson Scott
 
@@ -774,9 +776,11 @@ namespace SwagSword
         /// </summary>
         public void Kill()
         {
-            mainMan.GameMan.CharactersDictionary[this.type].Remove(this);
-            mainMan.GameMan.Characters.Remove(this);
             mainMan.GameMan.CharactersDictionary[type].Remove(this);
+            mainMan.GameMan.Characters.Remove(this);
+            //Thread t = new Thread(() => mainMan.GameMan.SpawnMan.ReplenishCharacter(type));
+            //t.Start();
+            mainMan.GameMan.SpawnMan.ReplenishCharacter(type);
         }
 
         /// <summary>

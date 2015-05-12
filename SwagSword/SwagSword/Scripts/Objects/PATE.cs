@@ -154,7 +154,7 @@ namespace SwagSword
                     {
                         angle = direction;
                     }
-                    else if (owner.Distance(position.ToPoint(), target.X, target.Y) > 250f)
+                    else if (owner.Distance(new Point((int)position.X, (int)position.Y)/*position.ToPoint()*/, target.X, target.Y) > 250f)
                     {
                         target = null;
                     }
@@ -169,7 +169,7 @@ namespace SwagSword
                 {
                     foreach (Character character in mainMan.GameMan.Characters)
                     {
-                        if (character.Type != owner.Type && character.CharacterState != CharacterState.Dead && owner.Distance(position.ToPoint(), character.X, character.Y) < 200f)
+                        if (character.Type != owner.Type && character.CharacterState != CharacterState.Dead && owner.Distance(new Point((int)position.X, (int)position.Y)/*position.ToPoint()*/, character.X, character.Y) < 200f)
                         {
                             target = character;
                         }

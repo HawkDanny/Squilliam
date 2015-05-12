@@ -69,7 +69,7 @@ namespace SwagSword
                 velocityY = (float)(5f * Math.Sin((90f - direction) * Math.PI / 180f));
 
                 //Collision/bounds check
-                if (owner.Owner.Distance(position.ToPoint(), owner.X, owner.Y) > 500f || owner.Target == null)
+                if (owner.Owner.Distance(new Point((int)position.X, (int)position.Y)/*position.ToPoint()*/, owner.X, owner.Y) > 500f || owner.Target == null)
                 {
                     isFired = false;
                 }

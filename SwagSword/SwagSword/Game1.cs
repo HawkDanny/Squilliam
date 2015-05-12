@@ -195,6 +195,9 @@ namespace SwagSword
             }
             inputMan.Update();
             uiMan.Update();
+            if(!t.IsAlive)
+            foreach (Stronghold s in gameMan.MapMan.Strongholds)
+                s.Update();
 
             drawMan.Update();
             base.Update(gameTime);

@@ -17,6 +17,7 @@ namespace SwagSword
         #region Fields
         int lx, ly, lw, lh, rx, ry, rw, rh, tx, ty, tw, th, bx, by, bw, bh;
         int goodNum, tribalNum, richNum, thiefNum;
+        int respawnTime;
         #endregion
 
         public SpawnManager(Game1 mainMan):base(mainMan)
@@ -52,6 +53,7 @@ namespace SwagSword
             goodNum = 30;
             thiefNum = 30;
             richNum = 30;
+            respawnTime = 5;
         }
 
         /// <summary>
@@ -59,17 +61,26 @@ namespace SwagSword
         /// </summary>
         public override void Update()
         {
+            /*
             Character repChar;
             foreach (Faction type in Enum.GetValues(typeof(Faction)))
                 if(type != Faction.Neutral)
                 for (int i = 0; i < mainMan.GameMan.NumCharacters - mainMan.GameMan.CharactersDictionary[type].Count; i++)
                     if ((repChar = ReplenishCharacter(type)) != null)
                         mainMan.GameMan.CharactersDictionary[type].Add(repChar);
+             * 
+             */
         }
 
-        private Character ReplenishCharacter(Faction type)
+        public void ReplenishCharacter(Faction type)
         {
             Character character = null;
+            //double initialTime = mainMan.GameTime.TotalGameTime.TotalSeconds;
+            //double elapsed = 0;
+            //while(elapsed < respawnTime)
+            //{
+            //    elapsed = (mainMan.GameTime.TotalGameTime.TotalSeconds - initialTime);
+            //}
 
             switch (type)
             {
@@ -106,8 +117,11 @@ namespace SwagSword
                     break;
             }
             if (character != null)
+            {
                 mainMan.GameMan.Characters.Add(character);
-            return character;
+                mainMan.GameMan.CharactersDictionary[type].Add(character);
+            }
+            
         }
 
         /// <summary>

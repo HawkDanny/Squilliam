@@ -18,6 +18,8 @@ namespace SwagSword
         int lx, ly, lw, lh, rx, ry, rw, rh, tx, ty, tw, th, bx, by, bw, bh;
         int goodNum, tribalNum, richNum, thiefNum;
         int respawnTime;
+
+
         #endregion
 
         public SpawnManager(Game1 mainMan):base(mainMan)
@@ -54,6 +56,9 @@ namespace SwagSword
             thiefNum = 30;
             richNum = 30;
             respawnTime = 5;
+
+            //Loading in the Custom Characters
+
         }
 
         /// <summary>

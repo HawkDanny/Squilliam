@@ -8,20 +8,24 @@ using System.Threading.Tasks;
 
 namespace DifficultyEditor
 {
-    enum faction
+    public enum Faction
     {
-        Good, Tribal, Rich, Thief
+        Tribal,
+        Good,
+        Rich,
+        Thief,
+        Neutral
     }
 
     class CustomCharacter
     {
-        private faction currentFaction;
+        private Faction currentFaction;
         private string name;
         //private int health, strength, speed;
         private double aggression, defense, ability, cowardice;
 
         #region properties
-        public faction Faction
+        public Faction Faction
         {
             get { return currentFaction; }
             set { currentFaction = value; }
@@ -53,7 +57,7 @@ namespace DifficultyEditor
         }
         #endregion
 
-        public CustomCharacter(faction currentFaction, string name, double aggression, double defense, double ability, double cowardice)
+        public CustomCharacter(Faction currentFaction, string name, double aggression, double defense, double ability, double cowardice)
         {
             this.currentFaction = currentFaction;
             this.name = name;

@@ -42,3 +42,12 @@ C:\Git\Squilliam\DifficultyEditor\obj\Debug\DifficultyEditor.Properties.Resource
 C:\Git\Squilliam\DifficultyEditor\obj\Debug\DifficultyEditor.csproj.GenerateResource.Cache
 C:\Git\SwitchBlade\DifficultyEditor\bin\Debug\DifficultyEditor.exe.config
 C:\Git\SwitchBlade\DifficultyEditor\obj\Debug\DifficultyEditor.pdb
+C:\Git\SwitchBlade\DifficultyEditor\bin\Debug\DifficultyEditor.exe
+C:\Git\SwitchBlade\DifficultyEditor\bin\Debug\DifficultyEditor.pdb
+C:\Git\SwitchBlade\DifficultyEditor\bin\Debug\Newtonsoft.Json.dll
+C:\Git\SwitchBlade\DifficultyEditor\bin\Debug\Newtonsoft.Json.xml
+C:\Git\SwitchBlade\DifficultyEditor\obj\Debug\DifficultyEditor.csprojResolveAssemblyReference.cache
+C:\Git\SwitchBlade\DifficultyEditor\obj\Debug\DifficultyEditor.difficultyEditor.resources
+C:\Git\SwitchBlade\DifficultyEditor\obj\Debug\DifficultyEditor.Properties.Resources.resources
+C:\Git\SwitchBlade\DifficultyEditor\obj\Debug\DifficultyEditor.csproj.GenerateResource.Cache
+C:\Git\SwitchBlade\DifficultyEditor\obj\Debug\DifficultyEditor.exe

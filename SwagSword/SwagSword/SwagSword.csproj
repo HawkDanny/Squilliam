@@ -36,6 +36,7 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Scripts\Characters\CustomCharacter.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Scripts\Abilities\Ability.cs" />
     <Compile Include="Scripts\Abilities\Boomerang.cs" />

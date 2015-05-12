@@ -109,7 +109,6 @@ C:\Git\SwitchBlade\SwagSword\SwagSword\bin\Windows\Debug\Content\UIScreens\Sword
 C:\Git\SwitchBlade\SwagSword\SwagSword\bin\Windows\Debug\Content\UIScreens\TitleScreenMock.png
 C:\Git\SwitchBlade\SwagSword\SwagSword\bin\Windows\Debug\Content\Fonts\vanillawhale.xnb
 C:\Git\SwitchBlade\SwagSword\SwagSword\bin\Windows\Debug\Content\Map\Grass.jpg
-C:\Git\SwitchBlade\SwagSword\SwagSword\bin\Windows\Debug\Content\Map\Stronghold.jpg
 C:\Git\SwitchBlade\SwagSword\SwagSword\bin\Windows\Debug\Content\Map\SamplePath2.jpg
 C:\Git\SwitchBlade\SwagSword\SwagSword\bin\Windows\Debug\Content\Fonts\pressstart2p.xnb
 C:\Git\SwitchBlade\SwagSword\SwagSword\bin\Windows\Debug\SwagSword.exe
@@ -121,7 +120,6 @@ C:\Git\SwitchBlade\SwagSword\SwagSword\bin\Windows\Debug\SharpDX.XAudio2.dll
 C:\Git\SwitchBlade\SwagSword\SwagSword\bin\Windows\Debug\SharpDX.Direct3D11.dll
 C:\Git\SwitchBlade\SwagSword\SwagSword\bin\Windows\Debug\SharpDX.DXGI.dll
 C:\Git\SwitchBlade\SwagSword\SwagSword\bin\Windows\Debug\SharpDX.Direct2D1.dll
-C:\Git\SwitchBlade\SwagSword\SwagSword\bin\Windows\Debug\Lidgren.Network.dll
 C:\Git\SwitchBlade\SwagSword\SwagSword\bin\Windows\Debug\SharpDX.XInput.dll
 C:\Git\SwitchBlade\SwagSword\SwagSword\bin\Windows\Debug\SharpDX.RawInput.dll
 C:\Git\SwitchBlade\SwagSword\SwagSword\bin\Windows\Debug\SharpDX.Direct3D9.dll
@@ -145,3 +143,10 @@ C:\Users\Owner\Desktop\Squilliam\Squilliam\SwagSword\SwagSword\bin\Windows\Debug
 C:\Users\Owner\Desktop\Squilliam\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\UIScreens\LoadingScreen.jpg
 C:\Users\Owner\Desktop\Squilliam\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\Map\LeftStronghold.jpg
 C:\Users\Owner\Desktop\Squilliam\Squilliam\SwagSword\SwagSword\bin\Windows\Debug\Content\Objects\bullet.png
+C:\Git\SwitchBlade\SwagSword\SwagSword\bin\Windows\Debug\Content\Map\LowerStronghold.jpg
+C:\Git\SwitchBlade\SwagSword\SwagSword\bin\Windows\Debug\Content\Map\TopStronghold.jpg
+C:\Git\SwitchBlade\SwagSword\SwagSword\bin\Windows\Debug\Content\Map\RightStronghold.jpg
+C:\Git\SwitchBlade\SwagSword\SwagSword\bin\Windows\Debug\Content\Objects\bullet.png
+C:\Git\SwitchBlade\SwagSword\SwagSword\bin\Windows\Debug\Content\UIScreens\LoadingScreen.jpg
+C:\Git\SwitchBlade\SwagSword\SwagSword\bin\Windows\Debug\Content\Map\LeftStronghold.jpg
+C:\Git\SwitchBlade\SwagSword\SwagSword\bin\Windows\Debug\MonoGame.Framework.xml

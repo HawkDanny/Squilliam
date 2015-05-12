@@ -19,7 +19,7 @@ namespace SwagSword
         int goodNum, tribalNum, richNum, thiefNum;
         int respawnTime;
 
-
+        Dictionary<String, CustomCharacter> customCharacterDict;
         #endregion
 
         public SpawnManager(Game1 mainMan):base(mainMan)
@@ -30,7 +30,7 @@ namespace SwagSword
         //Init
         public override void Init()
         {
-
+            customCharacterDict = new Dictionary<string, CustomCharacter>();
         }
 
         public void Start()

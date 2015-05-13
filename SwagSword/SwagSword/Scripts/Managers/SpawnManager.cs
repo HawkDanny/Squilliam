@@ -73,9 +73,6 @@ namespace SwagSword
                 CustomCharacter dummy = JsonConvert.DeserializeObject<CustomCharacter>(customCharacterString);
                 customCharacterList.Add(dummy);
             }
-
-            string me = "danny";
-            me += me;
         }
 
         /// <summary>

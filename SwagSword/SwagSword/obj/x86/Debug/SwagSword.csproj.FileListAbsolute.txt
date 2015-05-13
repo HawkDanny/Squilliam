@@ -150,3 +150,5 @@ C:\Git\SwitchBlade\SwagSword\SwagSword\bin\Windows\Debug\Content\Objects\bullet.
 C:\Git\SwitchBlade\SwagSword\SwagSword\bin\Windows\Debug\Content\UIScreens\LoadingScreen.jpg
 C:\Git\SwitchBlade\SwagSword\SwagSword\bin\Windows\Debug\Content\Map\LeftStronghold.jpg
 C:\Git\SwitchBlade\SwagSword\SwagSword\bin\Windows\Debug\MonoGame.Framework.xml
+C:\Git\SwitchBlade\SwagSword\SwagSword\bin\Windows\Debug\Newtonsoft.Json.dll
+C:\Git\SwitchBlade\SwagSword\SwagSword\bin\Windows\Debug\Newtonsoft.Json.xml

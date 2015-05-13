@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Newtonsoft.Json;
 
-//Names: Nelson Scott
+//Names: Nelson Scott, Ryan Bell, Danny Hawk
 
 namespace SwagSword
 {
@@ -19,7 +21,7 @@ namespace SwagSword
         int goodNum, tribalNum, richNum, thiefNum;
         int respawnTime;
 
-        Dictionary<String, CustomCharacter> customCharacterDict;
+        List<CustomCharacter> customCharacterList;
         #endregion
 
         public SpawnManager(Game1 mainMan):base(mainMan)
@@ -30,7 +32,7 @@ namespace SwagSword
         //Init
         public override void Init()
         {
-            customCharacterDict = new Dictionary<string, CustomCharacter>();
+            customCharacterList = new List<CustomCharacter>();
         }
 
         public void Start()
@@ -57,8 +59,23 @@ namespace SwagSword
             richNum = 30;
             respawnTime = 5;
 
-            //Loading in the Custom Characters
 
+
+            //Loading in the Custom Characters
+            String[] fileNames = Directory.GetFiles("../../../Content/CustomEnemies");
+
+            StreamReader input;
+            for (int i = 0; i < fileNames.Length; i++)
+            {
+                input = new StreamReader(fileNames[i]);
+
+                string customCharacterString = input.ReadLine();
+                CustomCharacter dummy = JsonConvert.DeserializeObject<CustomCharacter>(customCharacterString);
+                customCharacterList.Add(dummy);
+            }
+
+            string me = "danny";
+            me += me;
         }
 
         /// <summary>

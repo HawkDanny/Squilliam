@@ -778,8 +778,6 @@ namespace SwagSword
         {
             mainMan.GameMan.CharactersDictionary[type].Remove(this);
             mainMan.GameMan.Characters.Remove(this);
-            //Thread t = new Thread(() => mainMan.GameMan.SpawnMan.ReplenishCharacter(type));
-            //t.Start();
             mainMan.GameMan.SpawnMan.ReplenishCharacter(type);
         }
 

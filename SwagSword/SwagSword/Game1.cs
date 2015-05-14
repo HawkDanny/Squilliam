@@ -124,7 +124,7 @@ namespace SwagSword
             drawMan.ResumeTexture = this.Content.Load<Texture2D>("Buttons/ResumeButton.png");
             drawMan.StatsTexture = this.Content.Load<Texture2D>("Buttons/StatsButton.png");
             drawMan.ExitTexture = this.Content.Load<Texture2D>("Buttons/ExitButton.png");
-            drawMan.WinTexture = this.Content.Load<Texture2D>("UIScreens/ryanbell.jpg");
+            drawMan.WinTexture = this.Content.Load<Texture2D>("UIScreens/win-screen.png");
 
             //Load Weapon textures
             drawMan.SwordTexture = this.Content.Load<Texture2D>("Objects/sword.png");
@@ -140,6 +140,11 @@ namespace SwagSword
             drawMan.RightStronghold = Content.Load<Texture2D>("Map/RightStronghold.jpg");
             drawMan.TopStronghold = Content.Load<Texture2D>("Map/TopStronghold.jpg");
             drawMan.LowerStronghold = Content.Load<Texture2D>("Map/LowerStronghold.jpg");
+            drawMan.LeftStrongholdCap = Content.Load<Texture2D>("Map/LeftStrongholdCap.jpg");
+            drawMan.RightStrongholdCap = Content.Load<Texture2D>("Map/RightStrongholdCap.jpg");
+            drawMan.LowerStongholdCap = Content.Load<Texture2D>("Map/LowerStrongholdCap.jpg");
+            drawMan.TopStongholdCap = Content.Load<Texture2D>("Map/TopStrongholdCap.jpg");
+            drawMan.DefaultMap = Content.Load<Texture2D>("Map/defaultMap.png");
 
             //Load Fonts
             drawMan.HealthFont = Content.Load<SpriteFont>("Fonts/vanillawhale");

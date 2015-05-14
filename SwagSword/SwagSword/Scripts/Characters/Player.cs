@@ -32,6 +32,7 @@ namespace SwagSword
         //Player
         private float x;
         private float y;
+        private int lives;
         #endregion
 
         #region Properties
@@ -42,6 +43,7 @@ namespace SwagSword
         public float Y { get { return y; } }
         public Vector2 Position { get { return new Vector2(x, y); } }
         public Faction CurrentArea { get { return Character.CurrentArea; } }
+        public int Lives { get { return lives; } }
 
         //Shortcuts to character
         public float VelocityX { get { return character.VelocityX; } }
@@ -75,6 +77,7 @@ namespace SwagSword
             knockbackMultiplier = 1;
             attackSpeedMultiplier = 1;
             movementSpeedMultiplier = 1;
+            lives = 5;
         }
 
         /// <summary>
@@ -89,6 +92,7 @@ namespace SwagSword
             this.character.Weapon.SetTexture(character.IsControlled, this.character.Type);
             this.character.SwitchState(CharacterState.Switch);
             targetCharacter = null;
+            lives--;
         }
 
         //The main update for player, character's update is not called

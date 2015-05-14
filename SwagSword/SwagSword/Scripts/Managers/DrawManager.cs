@@ -47,6 +47,11 @@ namespace SwagSword
         private Texture2D rightStronghold;
         private Texture2D topStronghold;
         private Texture2D lowerStronghold;
+        private Texture2D leftStrongholdCap;
+        private Texture2D rightStrongholdCap;
+        private Texture2D lowerStrongholdCap;
+        private Texture2D topStrongholdCap;
+        private Texture2D defaultMap;
 
         //Fonts
         private SpriteFont healthFont;
@@ -90,6 +95,11 @@ namespace SwagSword
         public Texture2D RightStronghold { get { return rightStronghold; } set { rightStronghold = value; } }
         public Texture2D TopStronghold { get { return topStronghold; } set { topStronghold = value; } }
         public Texture2D LowerStronghold { get { return lowerStronghold; } set { lowerStronghold = value; } }
+        public Texture2D LeftStrongholdCap { get { return leftStrongholdCap; } set { leftStrongholdCap = value; } }
+        public Texture2D RightStrongholdCap { get { return rightStrongholdCap; } set { rightStrongholdCap = value; } }
+        public Texture2D LowerStongholdCap { get { return lowerStrongholdCap; } set { lowerStrongholdCap = value; } }
+        public Texture2D TopStongholdCap { get { return topStrongholdCap; } set { topStrongholdCap = value; } }
+        public Texture2D DefaultMap { get { return defaultMap; } set { defaultMap = value; } }
 
         //SpriteFonts
         public SpriteFont HealthFont { get { return healthFont; } set { healthFont = value; } }

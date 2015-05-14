@@ -62,8 +62,8 @@ namespace SwagSword
         public override void Init()
         {
             tileSize = 64;
-            resWidth = 3248;
-            resHeight = 3248;
+            resWidth = 5248;
+            resHeight = 5248;
             //5248
             mapWidth = resWidth / tileSize;
             mapHeight = resHeight / tileSize;
@@ -76,17 +76,17 @@ namespace SwagSword
         public void Startup()
         {
             strongholdWidth = tileSize * 5;
-            radius = 480;
-            //radius = 550;
+            radius = 560;
+            //radius = 560;
             MapMaker mapMaker = new MapMaker(radius, tileSize, resWidth, resHeight, graphicsDevice, mainMan);
             //make map
             map = mapMaker.MakeMap();
             
             //Strongholds set
-            leftStronghold = new Stronghold(mainMan.DrawMan.LeftStronghold, new Rectangle(radius - strongholdWidth / 2, resHeight / 2 - strongholdWidth / 2, strongholdWidth, strongholdWidth), mainMan);
-            rightStronghold = new Stronghold(mainMan.DrawMan.RightStronghold, new Rectangle(resWidth - radius - strongholdWidth / 2, resHeight / 2 - strongholdWidth / 2, strongholdWidth, strongholdWidth), mainMan);
-            topStronghold = new Stronghold(mainMan.DrawMan.TopStronghold, new Rectangle(resWidth / 2 - strongholdWidth / 2, radius - strongholdWidth / 2, strongholdWidth, strongholdWidth), mainMan);
-            lowerStronghold = new Stronghold(mainMan.DrawMan.LowerStronghold, new Rectangle(resWidth / 2 - strongholdWidth / 2, resHeight - radius - strongholdWidth / 2, strongholdWidth, strongholdWidth), mainMan);
+            leftStronghold = new Stronghold(mainMan.DrawMan.LeftStronghold,mainMan.DrawMan.LeftStrongholdCap, new Rectangle(radius - strongholdWidth / 2, resHeight / 2 - strongholdWidth / 2, strongholdWidth, strongholdWidth), mainMan, Faction.Good);
+            rightStronghold = new Stronghold(mainMan.DrawMan.RightStronghold,mainMan.DrawMan.RightStrongholdCap, new Rectangle(resWidth - radius - strongholdWidth / 2, resHeight / 2 - strongholdWidth / 2, strongholdWidth, strongholdWidth), mainMan, Faction.Tribal);
+            topStronghold = new Stronghold(mainMan.DrawMan.TopStronghold,mainMan.DrawMan.LowerStongholdCap, new Rectangle(resWidth / 2 - strongholdWidth / 2, radius - strongholdWidth / 2, strongholdWidth, strongholdWidth), mainMan, Faction.Rich);
+            lowerStronghold = new Stronghold(mainMan.DrawMan.LowerStronghold,mainMan.DrawMan.TopStongholdCap, new Rectangle(resWidth / 2 - strongholdWidth / 2, resHeight - radius - strongholdWidth / 2, strongholdWidth, strongholdWidth), mainMan, Faction.Thief);
 
             mainMan.GameMan.LeftStrong = leftStronghold.Rect;
             mainMan.GameMan.RightStrong = rightStronghold.Rect;
@@ -113,7 +113,14 @@ namespace SwagSword
             }
         }
 
-
+        public double CalcDistance(Point a, Point b)
+        {
+            return Math.Sqrt(Math.Pow((a.X - b.X), 2) + Math.Pow((a.Y - b.Y), 2));
+        }
+        public double CalcDistance(int aX, int aY, int bX, int bY)
+        {
+            return Math.Sqrt(Math.Pow((aX - bX), 2) + Math.Pow((aY - bY), 2));
+        }
 
 
     }

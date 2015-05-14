@@ -19,6 +19,7 @@ namespace SwagSword
         Game1 mainMan;
         Rectangle rect;
         Texture2D texture;
+        Texture2D textureBroken;
         bool captured;
         double percentCaptured;
         double prevTime;
@@ -26,18 +27,22 @@ namespace SwagSword
         Color capColor;
         Texture2D captex;
         Rectangle capRect;
+        Faction type;
         #endregion
 
         #region Properties
         public Rectangle Rect { get { return rect; } set { rect = value; } }
         public Texture2D Texture { get { return texture; } set { texture = value; } }
+        public Texture2D TextureBroken { get { return textureBroken; } set { textureBroken = value; } }
         public bool Captured { get { return captured; } set { captured = value; } }
         public double PercentCaptured { get { return percentCaptured; } set { percentCaptured = value; } }
+        public Faction Type { get { return type; } }
         #endregion
 
-        public Stronghold(Texture2D tex, Rectangle r, Game1 mainMan)
+        public Stronghold(Texture2D tex, Texture2D br, Rectangle r, Game1 mainMan, Faction type)
         {
             texture = tex;
+            textureBroken = br;
             rect = r;
             this.mainMan = mainMan;
             capColor = Color.Green;
@@ -46,6 +51,7 @@ namespace SwagSword
             colors[0] = Color.White;
             captex.SetData<Color>(colors);
             capRect = new Rectangle(rect.X, rect.Y, rect.Width, 15);
+            this.type = type;
             Init();
         }
 
@@ -53,40 +59,55 @@ namespace SwagSword
         {
             captured = false;
             percentCaptured = 0;
+            System.Threading.Thread.Sleep(500);
             prevTime = mainMan.GameTime.TotalGameTime.TotalMilliseconds;
             curTime = prevTime;
         }
 
         public void Update()
         {
-            curTime = mainMan.GameTime.TotalGameTime.TotalMilliseconds;
-            if (curTime - prevTime > 200)
+            if (!captured)
             {
-                foreach (Player p in mainMan.GameMan.Players)
+                curTime = mainMan.GameTime.TotalGameTime.TotalMilliseconds;
+                if (curTime - prevTime > 200)
                 {
-                    if (rect.Contains(new Point((int)p.Position.X, (int)p.Position.Y)))
+                    foreach (Player p in mainMan.GameMan.Players)
                     {
-                        percentCaptured += .05;
+                        if (rect.Contains(new Point((int)p.Position.X, (int)p.Position.Y)))
+                        {
+                            if(p.CharacterState != CharacterState.Dead && p.Character.Type != type)
+                            percentCaptured += .05;
+                        }
                     }
+                    percentCaptured -= .02;
+                    if (percentCaptured > 1)
+                        percentCaptured = 1;
+                    if (percentCaptured < 0)
+                        percentCaptured = 0;
+                    if (percentCaptured == 1)
+                        captured = true;
+                    capRect.Width = (int)(rect.Width * percentCaptured);
+
+
+                    capColor.R = (byte)(255 * percentCaptured);
+                    capColor.G = (byte)(255 * (1 - percentCaptured));
+                    prevTime = curTime;
                 }
-                percentCaptured -= .02;
-                if (percentCaptured > 1)
-                    percentCaptured = 1;
-                if (percentCaptured < 0)
-                    percentCaptured = 0;
-                capRect.Width = (int)(rect.Width * percentCaptured);
-                
-                capColor.R = (byte)(255 * percentCaptured);
-                capColor.G = (byte)(255 * (1 - percentCaptured));
-                prevTime = curTime;
             }
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            //spriteBatch.Draw(captex, capRect, capColor);
-            spriteBatch.Draw(texture, rect, Color.White);
-            spriteBatch.Draw(captex, capRect, capColor);
+            if(captured)
+            {
+                spriteBatch.Draw(textureBroken, rect, Color.White);
+            }
+            else
+            {
+                spriteBatch.Draw(texture, rect, Color.White);
+                spriteBatch.Draw(captex, capRect, capColor);
+            }
+
         }
     }
 }

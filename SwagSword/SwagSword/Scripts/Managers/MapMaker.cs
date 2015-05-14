@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -24,6 +25,7 @@ namespace SwagSword
         Random rand;                                                                        //a random object
         GraphicsDevice graphicsDevice;                                                      //holds a reference to the graphics device to create new textures
         Game1 mainMan;                                                                      //holds a reference to game1
+        bool PetersVeryOwnArtDevelopmentVariableForTheAdvancementOfAssetsInAnIndependantGame0000AStudyOfTheAggregateCyclesOfTheAverageArtDeveloper;
         #endregion
 
         #region Contructor
@@ -48,24 +50,32 @@ namespace SwagSword
         /// </summary>
         public Texture2D MakeMap()
         {
-            PerlinNoise noiseGen = new PerlinNoise(resWidth, resHeight, rand, graphicsDevice);
-            noiseOffset = noiseGen.NoiseToTexture();
-            pathMask = MergeTextures(ShiftPathHorizontal(BasePathHorizontal(), noiseOffset), ShiftPathVertical(BasePathVertical(), noiseOffset));
-            pathMask = MergeTextures(pathMask, NoiseyCircle());
-            noiseOffset = noiseGen.AdjustConstrast(noiseOffset, 4);
-            noiseOffset = noiseGen.AddGradient(noiseOffset, Color.Black, Color.White);
-            noiseOffset = noiseGen.BlendImages(mainMan.DrawMan.SandyTexture, mainMan.DrawMan.GrassTexture, noiseOffset);
-
+            PerlinNoise noiseGen = null;
+            PetersVeryOwnArtDevelopmentVariableForTheAdvancementOfAssetsInAnIndependantGame0000AStudyOfTheAggregateCyclesOfTheAverageArtDeveloper = false;
+            if (!PetersVeryOwnArtDevelopmentVariableForTheAdvancementOfAssetsInAnIndependantGame0000AStudyOfTheAggregateCyclesOfTheAverageArtDeveloper)
+            {
+                noiseGen = new PerlinNoise(resWidth, resHeight, rand, graphicsDevice);
+                noiseOffset = noiseGen.NoiseToTexture();
+                pathMask = MergeTextures(ShiftPathHorizontal(BasePathHorizontal(), noiseOffset), ShiftPathVertical(BasePathVertical(), noiseOffset));
+                pathMask = MergeTextures(pathMask, NoiseyCircle());
+                noiseOffset = noiseGen.AdjustConstrast(noiseOffset, 4);
+                noiseOffset = noiseGen.AddGradient(noiseOffset, Color.Black, Color.White);
+                noiseOffset = noiseGen.BlendImages(mainMan.DrawMan.SandyTexture, mainMan.DrawMan.GrassTexture, noiseOffset);
+            }
             //Boundary set
             mainMan.GameMan.CenterBound = new Rectangle(resWidth / 2 - pathThickness / 2, resHeight / 2 - pathThickness / 2, pathThickness, pathThickness);
             mainMan.GameMan.LeftPathBound = new Rectangle(radius * 2 - 40, resHeight / 2 - pathThickness / 2, (resWidth - 4 * radius + 80) / 2 - pathThickness / 2, pathThickness);
             mainMan.GameMan.RightPathBound = new Rectangle(mainMan.GameMan.CenterBound.X + pathThickness, mainMan.GameMan.CenterBound.Y, (resWidth - 4 * radius + 80) / 2 - pathThickness / 2, pathThickness);
             mainMan.GameMan.TopPathBound = new Rectangle(resHeight / 2 - pathThickness / 2, radius * 2 - 40, pathThickness, (resWidth - radius * 4 + 80) / 2 - pathThickness / 2);
             mainMan.GameMan.LowerPathBound = new Rectangle(resHeight / 2 - pathThickness / 2, mainMan.GameMan.CenterBound.Y + pathThickness, pathThickness, (resWidth - radius * 4 + 80) / 2 - pathThickness / 2);
-            
 
-            return noiseGen.BlendImages(noiseOffset, mainMan.DrawMan.PathwayTexture, pathMask);
+            if (!PetersVeryOwnArtDevelopmentVariableForTheAdvancementOfAssetsInAnIndependantGame0000AStudyOfTheAggregateCyclesOfTheAverageArtDeveloper)
+                return noiseGen.BlendImages(noiseOffset, mainMan.DrawMan.PathwayTexture, pathMask);
+            else
+                return mainMan.DrawMan.DefaultMap;
+            
         }
+
 
         #region BasePaths
         private Texture2D BasePathVertical()

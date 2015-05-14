@@ -94,11 +94,15 @@ namespace SwagSword
         {
             Vector2 movement = Vector2.Zero;
             deltaMovement = movement;
-
+            
             if (mainMan.GameMan.Players.Count > 0)
             {
                 if (!mainMan.GameMan.Players[0].NoCharacter && mainMan.GameMan.Players[0].CharacterState != CharacterState.Dead)
                 {
+                    if(mainMan.GameMan.MapMan.CalcDistance((int)position.X, (int)position.Y, (int)mainMan.GameMan.Players[0].X, (int)mainMan.GameMan.Players[0].Y) > mainMan.WindowHalfHeight)
+                    {
+                        position = mainMan.GameMan.Players[0].Position;
+                    }
                     if (mainMan.GameMan.Players[0].X < Position.X - mainMan.WindowWidth * 0.1)
                         movement.X--;
                     if (mainMan.GameMan.Players[0].X > Position.X + mainMan.WindowWidth * 0.1)

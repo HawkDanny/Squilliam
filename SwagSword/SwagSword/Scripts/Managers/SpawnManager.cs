@@ -104,7 +104,7 @@ namespace SwagSword
             switch (type)
             {
                 case Faction.Good:
-                    if (goodNum > 0)
+                    if (goodNum > 0 && !mainMan.GameMan.MapMan.Strongholds[0].Captured)
                     {
                         character = new GoodCharacter(mainMan.GameMan.LeftStrong.Center.X, mainMan.GameMan.LeftStrong.Center.Y, mainMan.DrawMan.CharacterTextures[Faction.Good], mainMan);
                         goodNum--;
@@ -112,7 +112,7 @@ namespace SwagSword
                     break;
 
                 case Faction.Tribal:
-                    if (tribalNum > 0)
+                    if (tribalNum > 0 && !mainMan.GameMan.MapMan.Strongholds[1].Captured)
                     {
                         character = new TribalCharacter(mainMan.GameMan.RightStrong.Center.X, mainMan.GameMan.RightStrong.Center.Y, mainMan.DrawMan.CharacterTextures[Faction.Tribal], mainMan);
                         tribalNum--;
@@ -120,7 +120,7 @@ namespace SwagSword
                     break;
 
                 case Faction.Rich:
-                    if (richNum > 0)
+                    if (richNum > 0 && !mainMan.GameMan.MapMan.Strongholds[2].Captured)
                     {
                         character = new RichCharacter(mainMan.GameMan.TopStrong.Center.X, mainMan.GameMan.TopStrong.Center.Y, mainMan.DrawMan.CharacterTextures[Faction.Rich], mainMan);
                         richNum--;
@@ -128,7 +128,7 @@ namespace SwagSword
                     break;
 
                 case Faction.Thief:
-                    if (thiefNum > 0)
+                    if (thiefNum > 0 && !mainMan.GameMan.MapMan.Strongholds[3].Captured)
                     {
                         character = new ThiefCharacter(mainMan.GameMan.LowerStrong.Center.X, mainMan.GameMan.LowerStrong.Center.Y, mainMan.DrawMan.CharacterTextures[Faction.Thief], mainMan);
                         thiefNum--;

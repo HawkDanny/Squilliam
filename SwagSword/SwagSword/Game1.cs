@@ -107,11 +107,6 @@ namespace SwagSword
         {
             //Load and set textures in draw manager
 
-            //Good Guys
-            System.IO.Stream goodGuyStream = TitleContainer.OpenStream("Content/Sprites/goodGuy1.png");
-            drawMan.GoodGuyTextures.Add(Texture2D.FromStream(GraphicsDevice, goodGuyStream));
-            goodGuyStream.Close();
-
             //Load Sounds
             //soundMan.OpeningMusic = this.Content.Load<Song>("TitleScreenMusic");
             //soundMan.GameMusic = this.Content.Load<Song>("Music/GameMusic.mp3");            
@@ -159,6 +154,12 @@ namespace SwagSword
             drawMan.SpriteDict.Add(Faction.Rich, Content.Load<Texture2D>("Sprites/RichGuy.png"));
             drawMan.SpriteDict.Add(Faction.Thief, Content.Load<Texture2D>("Sprites/BanditGuy.png"));
             drawMan.SpriteDict.Add(Faction.Tribal, Content.Load<Texture2D>("Sprites/TribalGuy.png"));
+
+            //Load animation sprites to dictionary
+            drawMan.CharacterTextures.Add(Faction.Good, Content.Load<Texture2D>("Sprites/goodGuy1.png"));
+            drawMan.CharacterTextures.Add(Faction.Thief, Content.Load<Texture2D>("Sprites/BanditSpriteSheet.png"));
+            drawMan.CharacterTextures.Add(Faction.Rich, Content.Load<Texture2D>("Sprites/RichGuySpriteSheet.png"));
+            drawMan.CharacterTextures.Add(Faction.Tribal, Content.Load<Texture2D>("Sprites/TribalSpriteSheet.png"));
 
             spriteBatch = new SpriteBatch(GraphicsDevice);
         }

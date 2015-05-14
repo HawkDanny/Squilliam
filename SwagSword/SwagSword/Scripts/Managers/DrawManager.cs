@@ -16,8 +16,8 @@ namespace SwagSword
     public class DrawManager:Manager
     {
         #region Fields
-        //Character texture lists
-        private List<Texture2D> goodGuyTextures;
+        //Character textures
+        Dictionary<Faction, Texture2D> characterTextures;
 
         //Screens Texture
         private Texture2D titleImage;
@@ -60,7 +60,7 @@ namespace SwagSword
 
         #region Properties
         //Character texture lists
-        public List<Texture2D> GoodGuyTextures { get { return goodGuyTextures; } }
+        public Dictionary<Faction, Texture2D> CharacterTextures { get { return characterTextures; } }
 
         //Screen Textures
         public Texture2D TitleImage { get { return titleImage; } set { titleImage = value; } }
@@ -112,9 +112,11 @@ namespace SwagSword
         public override void Init()
         {
             //Init Texture lists
-            goodGuyTextures = new List<Texture2D>();
+            //goodGuyTextures = new List<Texture2D>();
+            characterTextures = new Dictionary<Faction, Texture2D>(); //This is for the animations
+            
             //Sprite dictionary
-            spriteDict = new Dictionary<Faction, Texture2D>();
+            spriteDict = new Dictionary<Faction, Texture2D>(); //For the singular sprites
         }
 
         public override void Update()

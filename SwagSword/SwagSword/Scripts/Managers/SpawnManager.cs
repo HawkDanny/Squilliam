@@ -106,7 +106,7 @@ namespace SwagSword
                 case Faction.Good:
                     if (goodNum > 0)
                     {
-                        character = new GoodCharacter(mainMan.GameMan.LeftStrong.Center.X, mainMan.GameMan.LeftStrong.Center.Y, mainMan.DrawMan.SpriteDict[Faction.Good], mainMan);
+                        character = new GoodCharacter(mainMan.GameMan.LeftStrong.Center.X, mainMan.GameMan.LeftStrong.Center.Y, mainMan.DrawMan.CharacterTextures[Faction.Good], mainMan);
                         goodNum--;
                     }
                     break;
@@ -114,7 +114,7 @@ namespace SwagSword
                 case Faction.Tribal:
                     if (tribalNum > 0)
                     {
-                        character = new TribalCharacter(mainMan.GameMan.RightStrong.Center.X, mainMan.GameMan.RightStrong.Center.Y, mainMan.DrawMan.SpriteDict[Faction.Tribal], mainMan);
+                        character = new TribalCharacter(mainMan.GameMan.RightStrong.Center.X, mainMan.GameMan.RightStrong.Center.Y, mainMan.DrawMan.CharacterTextures[Faction.Tribal], mainMan);
                         tribalNum--;
                     }
                     break;
@@ -122,7 +122,7 @@ namespace SwagSword
                 case Faction.Rich:
                     if (richNum > 0)
                     {
-                        character = new RichCharacter(mainMan.GameMan.TopStrong.Center.X, mainMan.GameMan.TopStrong.Center.Y, mainMan.DrawMan.SpriteDict[Faction.Rich], mainMan);
+                        character = new RichCharacter(mainMan.GameMan.TopStrong.Center.X, mainMan.GameMan.TopStrong.Center.Y, mainMan.DrawMan.CharacterTextures[Faction.Rich], mainMan);
                         richNum--;
                     }
                     break;
@@ -130,7 +130,7 @@ namespace SwagSword
                 case Faction.Thief:
                     if (thiefNum > 0)
                     {
-                        character = new ThiefCharacter(mainMan.GameMan.LowerStrong.Center.X, mainMan.GameMan.LowerStrong.Center.Y, mainMan.DrawMan.SpriteDict[Faction.Thief], mainMan);
+                        character = new ThiefCharacter(mainMan.GameMan.LowerStrong.Center.X, mainMan.GameMan.LowerStrong.Center.Y, mainMan.DrawMan.CharacterTextures[Faction.Thief], mainMan);
                         thiefNum--;
                     }
                     break;
@@ -154,19 +154,19 @@ namespace SwagSword
             switch (type)
             {
                 case Faction.Good:
-                    character = new GoodCharacter(mainMan.Rnd.Next(lx, lx + lw), mainMan.Rnd.Next(ly, ly + lh), mainMan.DrawMan.SpriteDict[Faction.Good], mainMan);
+                    character = new GoodCharacter(mainMan.Rnd.Next(lx, lx + lw), mainMan.Rnd.Next(ly, ly + lh), mainMan.DrawMan.CharacterTextures[Faction.Good], mainMan);
                     break;
 
                 case Faction.Tribal:
-                    character = new TribalCharacter(mainMan.Rnd.Next(rx, rx + rw), mainMan.Rnd.Next(ry, ry + rh), mainMan.DrawMan.SpriteDict[Faction.Tribal], mainMan);
+                    character = new TribalCharacter(mainMan.Rnd.Next(rx, rx + rw), mainMan.Rnd.Next(ry, ry + rh), mainMan.DrawMan.CharacterTextures[Faction.Tribal], mainMan);
                     break;
 
                 case Faction.Rich:
-                    character = new RichCharacter(mainMan.Rnd.Next(tx, tx + tw), mainMan.Rnd.Next(ty, ty + th), mainMan.DrawMan.SpriteDict[Faction.Rich], mainMan);
+                    character = new RichCharacter(mainMan.Rnd.Next(tx, tx + tw), mainMan.Rnd.Next(ty, ty + th), mainMan.DrawMan.CharacterTextures[Faction.Rich], mainMan);
                     break;
 
                 case Faction.Thief:
-                    character = new ThiefCharacter(mainMan.Rnd.Next(bx, bx + bw), mainMan.Rnd.Next(by, by + bh), mainMan.DrawMan.SpriteDict[Faction.Thief], mainMan);
+                    character = new ThiefCharacter(mainMan.Rnd.Next(bx, bx + bw), mainMan.Rnd.Next(by, by + bh), mainMan.DrawMan.CharacterTextures[Faction.Thief], mainMan);
                     break;
             }
 
@@ -180,7 +180,7 @@ namespace SwagSword
             switch (type)
             {
                 case Faction.Good:
-                    character = new GoodCharacter(mainMan.Rnd.Next(lx, lx + lw), mainMan.Rnd.Next(ly, ly + lh), mainMan.DrawMan.GoodGuyTextures[0], mainMan);
+                    character = new GoodCharacter(mainMan.Rnd.Next(lx, lx + lw), mainMan.Rnd.Next(ly, ly + lh), mainMan.DrawMan.CharacterTextures[Faction.Good], mainMan);
                     break;
 
                 //add the other types for multiplayer support

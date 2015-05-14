@@ -791,8 +791,8 @@ namespace SwagSword
         {
             currentAbility.Draw(spritebatch);
 
-            if (type == Faction.Neutral)
-            {
+            //if (type == Faction.Neutral)
+            //{
                 switch (animationState)
                 {
                     case AnimationState.FaceDown:
@@ -831,11 +831,11 @@ namespace SwagSword
                 }
 
                 rectangle = new Rectangle(frameX * frameWidth, frameY * frameHeight, frameWidth, frameHeight);
-            }
+            /*}
             else
             {
                 rectangle = new Rectangle(0, 0, frameWidth, frameHeight);
-            }
+            }*/
 
 
             if (!(CurrentAbility.Type == SwagSword.Abilities.Decoy && currentAbility.InUse))

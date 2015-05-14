@@ -27,9 +27,9 @@ namespace SwagSword
             //NormalColor = Color.Purple;
 
             //Set AI state prob
-            AIProbs.Add(AIState.Attack, 0.3f);
+            AIProbs.Add(AIState.Attack, 0.2f);
             AIProbs.Add(AIState.Flank, 0.1f);
-            AIProbs.Add(AIState.Ability, 0.3f);
+            AIProbs.Add(AIState.Ability, 0.4f);
             AIProbs.Add(AIState.Defend, 0.7f);
             AIProbs.Add(AIState.Cower, 0.3f);
             AIProbs.Add(AIState.Ready, 0.3f);

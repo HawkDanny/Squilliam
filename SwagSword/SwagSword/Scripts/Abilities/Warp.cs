@@ -78,7 +78,7 @@ namespace SwagSword
 
                 
 
-                if (character.DistanceToPlayer(0) < 80f)
+                if (character.DistanceToPlayer(0) < 120f)
                 {
                     //character is too close, so warp away
                     character.VelocityX = (float)(70f * Math.Cos((90f - character.Direction - 180f) * Math.PI / 180f));

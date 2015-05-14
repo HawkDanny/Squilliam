@@ -776,6 +776,7 @@ namespace SwagSword
         /// </summary>
         public void Kill()
         {
+            mainMan.GameMan.Players[0].Exp += 10;
             mainMan.GameMan.CharactersDictionary[type].Remove(this);
             mainMan.GameMan.Characters.Remove(this);
             mainMan.GameMan.SpawnMan.ReplenishCharacter(type);

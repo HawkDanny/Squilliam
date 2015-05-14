@@ -36,15 +36,16 @@ namespace SwagSword
             AIProbs.Add(AIState.Idle, 0.4f);
 
             //Set AI timers
-            AITimers.Add(AIState.Attack, 4f);
+            AITimers.Add(AIState.Attack, 3f);
             AITimers.Add(AIState.Swing, 0.25f);
-            AITimers.Add(AIState.Defend, 5f);
+            AITimers.Add(AIState.Defend, 3f);
             AITimers.Add(AIState.Ability, 4f);
             AITimers.Add(AIState.Idle, 0.2f);
 
             //Encounter AI State list
             EncounterAIStates.Add(AIState.Attack);
             EncounterAIStates.Add(AIState.Ability);
+            EncounterAIStates.Add(AIState.Defend);
 
             SightRange = 300f;
             AttackRange = 50f;
@@ -108,7 +109,25 @@ namespace SwagSword
                         break;
 
                     case AIState.Defend:
+                        if (mainMan.GameMan.Players[0].CharacterState != CharacterState.Dead && PlayerInArea())
+                        {
+                            //Check if player is too close and move back
+                            if (DistanceToPlayer(0) < SightRange / 1.5)
+                            {
+                                SetDirectionToPoint(mainMan.GameMan.Players[0].X, mainMan.GameMan.Players[0].Y);
+                                MoveToPoint(X + (float)(MovementSpeed * Math.Cos((270f - Direction) * Math.PI / 180f)), Y + (float)(MovementSpeed * Math.Sin((270f - Direction) * Math.PI / 180f)));
+                            }
+                        }
+                        else
+                        {
+                            SwitchAIState(AIState.Idle);
+                        }
 
+                        AIStateTimer -= (float)mainMan.GameTime.ElapsedGameTime.TotalSeconds;
+                        if (AIStateTimer <= 0f)
+                        {
+                            SwitchAIState(AIState.Idle);
+                        }
                         break;
 
                     case AIState.Idle:

@@ -48,7 +48,7 @@ namespace SwagSword
             float velX = (float)(speed * Math.Cos((90f - character.Weapon.Angle) * Math.PI / 180f));
             float velY = (float)(speed * Math.Sin((90f - character.Weapon.Angle) * Math.PI / 180f));
 
-            minion.Deploy(character.X, character.Y);
+            minion.Deploy(character.X + mainMan.Rnd.Next(-20, 20), character.Y + mainMan.Rnd.Next(-20, 20));
 
             base.Use();
         }

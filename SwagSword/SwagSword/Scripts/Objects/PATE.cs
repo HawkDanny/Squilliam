@@ -147,8 +147,8 @@ namespace SwagSword
                 if ((float)Math.Sqrt(Math.Pow(owner.X - position.X, 2) + Math.Pow(owner.Y - position.Y, 2)) > 250f)
                 {
                     direction = (float)Math.Atan2(owner.X - (position.X + mainMan.Rnd.Next(-20, 20)), owner.Y - (position.Y + mainMan.Rnd.Next(-20, 20))) * 180f / (float)Math.PI;
-                    velocityX += (float)(30f * Math.Cos((90f - direction) * Math.PI / 180f));
-                    velocityY += (float)(30f * Math.Sin((90f - direction) * Math.PI / 180f));
+                    velocityX += (float)(25f * Math.Cos((90f - direction) * Math.PI / 180f));
+                    velocityY += (float)(25f * Math.Sin((90f - direction) * Math.PI / 180f));
 
                     if (target == null)
                     {

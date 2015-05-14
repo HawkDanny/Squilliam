@@ -27,24 +27,25 @@ namespace SwagSword
             //NormalColor = Color.SteelBlue;
 
             //Set AI state prob
-            AIProbs.Add(AIState.Attack, 0.5f);
+            AIProbs.Add(AIState.Attack, 0.2f);
             AIProbs.Add(AIState.Flank, 0.1f);
-            AIProbs.Add(AIState.Ability, 0.5f);
-            AIProbs.Add(AIState.Defend, 0.4f);
+            AIProbs.Add(AIState.Ability, 0.8f);
+            AIProbs.Add(AIState.Defend, 0.9f);
             AIProbs.Add(AIState.Cower, 0.3f);
             AIProbs.Add(AIState.Ready, 0.3f);
             AIProbs.Add(AIState.Idle, 0.4f);
 
             //Set AI timers
-            AITimers.Add(AIState.Attack, 7f);
+            AITimers.Add(AIState.Attack, 2f);
             AITimers.Add(AIState.Swing, 0.25f);
-            AITimers.Add(AIState.Defend, 5f);
+            AITimers.Add(AIState.Defend, 2f);
             AITimers.Add(AIState.Ability, 3f);
             AITimers.Add(AIState.Idle, 0.2f);
 
             //Encounter AI State list
             EncounterAIStates.Add(AIState.Attack);
             EncounterAIStates.Add(AIState.Ability);
+            EncounterAIStates.Add(AIState.Defend);
 
             SightRange = 250f;
             AttackRange = 50f;
@@ -99,7 +100,25 @@ namespace SwagSword
                         break;
 
                     case AIState.Defend:
+                        if (mainMan.GameMan.Players[0].CharacterState != CharacterState.Dead && PlayerInArea())
+                        {
+                            //Check if player is too close and move back
+                            if (DistanceToPlayer(0) < SightRange)
+                            {
+                                SetDirectionToPoint(mainMan.GameMan.Players[0].X, mainMan.GameMan.Players[0].Y);
+                                MoveToPoint(X + (float)(MovementSpeed * Math.Cos((270f - Direction) * Math.PI / 180f)), Y + (float)(MovementSpeed * Math.Sin((270f - Direction) * Math.PI / 180f)));
+                            }
+                        }
+                        else
+                        {
+                            SwitchAIState(AIState.Idle);
+                        }
 
+                        AIStateTimer -= (float)mainMan.GameTime.ElapsedGameTime.TotalSeconds;
+                        if (AIStateTimer <= 0f)
+                        {
+                            SwitchAIState(AIState.Idle);
+                        }
                         break;
 
                     case AIState.Idle:

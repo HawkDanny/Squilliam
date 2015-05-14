@@ -27,18 +27,18 @@ namespace SwagSword
             //NormalColor = Color.Purple;
 
             //Set AI state prob
-            AIProbs.Add(AIState.Attack, 0.5f);
+            AIProbs.Add(AIState.Attack, 0.3f);
             AIProbs.Add(AIState.Flank, 0.1f);
-            AIProbs.Add(AIState.Ability, 0.5f);
-            AIProbs.Add(AIState.Defend, 0.4f);
+            AIProbs.Add(AIState.Ability, 0.15f);
+            AIProbs.Add(AIState.Defend, 0.5f);
             AIProbs.Add(AIState.Cower, 0.3f);
             AIProbs.Add(AIState.Ready, 0.3f);
             AIProbs.Add(AIState.Idle, 0.4f);
 
             //Set AI timers
-            AITimers.Add(AIState.Attack, 3f);
+            AITimers.Add(AIState.Attack, 2f);
             AITimers.Add(AIState.Swing, 0.25f);
-            AITimers.Add(AIState.Defend, 3f);
+            AITimers.Add(AIState.Defend, 2f);
             AITimers.Add(AIState.Ability, 4f);
             AITimers.Add(AIState.Idle, 0.2f);
 
@@ -117,6 +117,10 @@ namespace SwagSword
                                 SetDirectionToPoint(mainMan.GameMan.Players[0].X, mainMan.GameMan.Players[0].Y);
                                 MoveToPoint(X + (float)(MovementSpeed * Math.Cos((270f - Direction) * Math.PI / 180f)), Y + (float)(MovementSpeed * Math.Sin((270f - Direction) * Math.PI / 180f)));
                             }
+                            else
+                            {
+                                SwitchAIState(AIState.Idle);
+                            }
                         }
                         else
                         {
@@ -165,6 +169,7 @@ namespace SwagSword
 
                     case AIState.Ability:
                         //Throw the sword
+                        Weapon.Angle = (float)Math.Atan2(mainMan.GameMan.Players[0].X - X, mainMan.GameMan.Players[0].Y - Y) * 180f / (float)Math.PI;
                         CurrentAbility.Use();
                         SwitchAIState(AIState.Idle);
                         break;

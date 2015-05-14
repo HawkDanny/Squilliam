@@ -15,9 +15,11 @@ namespace SwagSword
         //Fields
         //Rectangle texture
         private Texture2D rect;
-
+        private Rectangle abilityRect;
+        private int offset;
+        private int size;
         private int leftX;
-        private int topY; 
+        private int topY;
 
         /// <summary>
         /// Creates the screen that holds the health bar and other
@@ -31,19 +33,14 @@ namespace SwagSword
             rect.SetData(new[] { Color.White });
             leftX = (int)mainMan.DrawMan.Camera.TopLeftPosition.X;
             topY = (int)mainMan.DrawMan.Camera.TopLeftPosition.Y;
+            offset = 15;
+            size = 40;
+            abilityRect = new Rectangle(leftX + offset, topY + mainMan.WindowHeight - offset - size, size, size);
+            offset += size;
         }
 
         public override void Update()
         {
-            //Checks to see if the characters health is done for.
-            //Obviously in game, this won't have to be a game over screen,
-            //but for checking that it works for now.
-            /*if(mainMan.GameMan.Players[0].Health == 0)
-            {
-                mainMan.UIMan.Screens.Push(new GameOverScreen(mainMan));
-                mainMan.UIMan.State = GameState.gameOver;
-
-            }*/
             
             //Pauses the game
             if(mainMan.InputMan.SingleKeyPress(Keys.P))
@@ -58,13 +55,6 @@ namespace SwagSword
                 mainMan.UIMan.Screens.Push(new WinScreen(mainMan));
                 mainMan.UIMan.State = GameState.win;
             }
-
-            //Used to check how the health bar works.
-            //Press enter to decrease health by 1.
-            /*if(mainMan.InputMan.SingleKeyPress(Keys.Enter))
-            {
-                mainMan.GameMan.Characters[0].Health--;
-            }*/
 
             
         }
@@ -81,7 +71,35 @@ namespace SwagSword
             spritebatch.Draw(rect, new Rectangle(leftX + 20, topY + 20, (int)((health/maxHealth)*200), 10), Color.Green);
             //Draws the number of health next to the bar
             spritebatch.DrawString(mainMan.DrawMan.HealthFont, mainMan.GameMan.Players[0].Health + "/" + mainMan.GameMan.Players[0].MaxHealth, new Vector2(leftX + 225f, topY + 14f), Color.Green);
+            DrawAbilities(spritebatch);
             base.Draw(spritebatch);
+        }
+
+        private void DrawAbilities(SpriteBatch spritebatch)
+        {
+            int leftX = (int)mainMan.DrawMan.Camera.TopLeftPosition.X;
+            int topY = (int)mainMan.DrawMan.Camera.TopLeftPosition.Y;
+            abilityRect = new Rectangle(leftX + 15, topY + mainMan.WindowHeight - 15 - size, size, size);
+            //draw texture
+            spritebatch.Draw(mainMan.DrawMan.BoomerangAbility, abilityRect, Color.White);
+            //update rectangle
+            abilityRect.X += offset;
+
+            //draw texture
+            spritebatch.Draw(mainMan.DrawMan.DecoyAbility, abilityRect, Color.White);
+            //update rectangle
+            abilityRect.X += offset;
+
+            //draw texture
+            spritebatch.Draw(mainMan.DrawMan.RobotAbility, abilityRect, Color.White);
+            //update rectangle
+            abilityRect.X += offset;
+
+            //draw texture
+            spritebatch.Draw(mainMan.DrawMan.TeleportAbility, abilityRect, Color.White);
+            
+            //reset rect
+            abilityRect.X -= (3 * offset);
         }
     }
 }

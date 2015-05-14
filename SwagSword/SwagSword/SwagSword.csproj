@@ -69,7 +69,6 @@
     <Compile Include="Scripts\Objects\Buttons\StatButton.cs" />
     <Compile Include="Scripts\Objects\Camera.cs" />
     <Compile Include="Scripts\Objects\PATE.cs" />
-    <Compile Include="Scripts\Objects\Tile.cs" />
     <Compile Include="Scripts\Managers\UIManager.cs" />
     <Compile Include="Scripts\Objects\Weapon.cs" />
     <Compile Include="Scripts\Characters\TribalCharacter.cs" />

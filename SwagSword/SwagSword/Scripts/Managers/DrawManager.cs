@@ -33,6 +33,12 @@ namespace SwagSword
         private Texture2D exitTexture;
         private Texture2D winTexture;
 
+        //Ability Textures
+        private Texture2D boomerangAbility;
+        private Texture2D decoyAbility;
+        private Texture2D robotAbility;
+        private Texture2D teleportAbility;
+
         //Weapon Textures (Create a dictionary)
         private Texture2D swordTexture;
         private Texture2D whipTexture;
@@ -77,6 +83,12 @@ namespace SwagSword
         public Texture2D StatsTexture { get { return statsTexture; } set { statsTexture = value; } }
         public Texture2D ExitTexture { get { return exitTexture; } set { exitTexture = value; } }
         public Texture2D WinTexture { get { return winTexture; } set { winTexture = value; } }
+
+        //Ability Textures
+        public Texture2D BoomerangAbility { get { return boomerangAbility; } set { boomerangAbility = value; } }
+        public Texture2D DecoyAbility { get { return decoyAbility; } set { decoyAbility = value; } }
+        public Texture2D RobotAbility { get { return robotAbility; } set { robotAbility = value; } }
+        public Texture2D TeleportAbility { get { return teleportAbility; } set { teleportAbility = value; } }
 
         //Weapon textures
         public Texture2D SwordTexture { get { return swordTexture; } set { swordTexture = value; } }

@@ -152,3 +152,7 @@ C:\Git\SwitchBlade\SwagSword\SwagSword\bin\Windows\Debug\Content\Map\LeftStrongh
 C:\Git\SwitchBlade\SwagSword\SwagSword\bin\Windows\Debug\MonoGame.Framework.xml
 C:\Git\SwitchBlade\SwagSword\SwagSword\bin\Windows\Debug\Newtonsoft.Json.dll
 C:\Git\SwitchBlade\SwagSword\SwagSword\bin\Windows\Debug\Newtonsoft.Json.xml
+C:\Git\SwitchBlade\SwagSword\SwagSword\bin\Windows\Debug\Content\Sprites\BanditSpriteSheet.png
+C:\Git\SwitchBlade\SwagSword\SwagSword\bin\Windows\Debug\Content\Sprites\RichGuySpriteSheet.png
+C:\Git\SwitchBlade\SwagSword\SwagSword\bin\Windows\Debug\Content\Sprites\TribalSpriteSheet.png
+C:\Git\SwitchBlade\SwagSword\SwagSword\bin\Windows\Debug\Content\UIScreens\TitleScreen.png

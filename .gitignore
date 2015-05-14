@@ -14,3 +14,4 @@ SwagSword/SwagSword/bin/Windows/Debug/SwagSword.pdb
 SwagSword/SwagSword/obj/x86/Debug/SwagSword.exe
 SwagSword/SwagSword/obj/x86/Debug/SwagSword.exe
 SwagSword/SwagSword/bin/Windows/Debug/SwagSword.exe
+*.suo

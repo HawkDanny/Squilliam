@@ -124,7 +124,7 @@ namespace SwagSword
             drawMan.ResumeTexture = this.Content.Load<Texture2D>("Buttons/ResumeButton.png");
             drawMan.StatsTexture = this.Content.Load<Texture2D>("Buttons/StatsButton.png");
             drawMan.ExitTexture = this.Content.Load<Texture2D>("Buttons/ExitButton.png");
-            drawMan.WinTexture = this.Content.Load<Texture2D>("UIScreens/win-screen.png");
+            drawMan.WinTexture = this.Content.Load<Texture2D>("UIScreens/WinScreen.png");
 
             //Load Weapon textures
             drawMan.SwordTexture = this.Content.Load<Texture2D>("Objects/sword.png");
@@ -136,10 +136,10 @@ namespace SwagSword
             drawMan.PathwayTexture = Content.Load<Texture2D>("Map/SamplePath3.png");
             drawMan.SandyTexture = Content.Load<Texture2D>("Map/SampleNotPath.png");
             drawMan.GrassTexture = Content.Load<Texture2D>("Map/Grass.jpg");
-            drawMan.LeftStronghold = Content.Load<Texture2D>("Map/LeftStronghold.jpg");
-            drawMan.RightStronghold = Content.Load<Texture2D>("Map/RightStronghold.jpg");
-            drawMan.TopStronghold = Content.Load<Texture2D>("Map/TopStronghold.jpg");
-            drawMan.LowerStronghold = Content.Load<Texture2D>("Map/LowerStronghold.jpg");
+            drawMan.LeftStronghold = Content.Load<Texture2D>("Map/GoodGuyStronghold.png");
+            drawMan.RightStronghold = Content.Load<Texture2D>("Map/TribalStronghold.png");
+            drawMan.TopStronghold = Content.Load<Texture2D>("Map/RichStronghold.jpg");
+            drawMan.LowerStronghold = Content.Load<Texture2D>("Map/BanditStronghold.jpg");
             drawMan.LeftStrongholdCap = Content.Load<Texture2D>("Map/LeftStrongholdCap.jpg");
             drawMan.RightStrongholdCap = Content.Load<Texture2D>("Map/RightStrongholdCap.jpg");
             drawMan.LowerStongholdCap = Content.Load<Texture2D>("Map/LowerStrongholdCap.jpg");

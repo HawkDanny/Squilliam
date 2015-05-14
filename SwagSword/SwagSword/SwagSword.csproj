@@ -104,7 +104,6 @@
     <Content Include="Content\Buttons\StatsButton.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-<<<<<<< HEAD
     <Content Include="Content\Map\defaultMap.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -119,7 +118,7 @@
     </Content>
     <Content Include="Content\Map\RightStrongholdCap.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-=======
+    </Content>
     <Content Include="Content\Map\BanditCenterpiece.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -149,7 +148,6 @@
     </Content>
     <Content Include="Content\Map\RichTents.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
->>>>>>> origin/master
     </Content>
     <Content Include="Content\Map\TopStronghold.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -157,10 +155,9 @@
     <Content Include="Content\Map\RightStronghold.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-<<<<<<< HEAD
     <Content Include="Content\Map\TopStrongholdCap.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-=======
+    </Content>
     <Content Include="Content\Map\TribalCenterpiece.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -169,7 +166,6 @@
     </Content>
     <Content Include="Content\Map\TribalTents.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
->>>>>>> origin/master
     </Content>
     <Content Include="Content\Objects\bullet.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -252,13 +248,11 @@
     <Content Include="Content\UIScreens\TitleScreenMock.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-<<<<<<< HEAD
     <Content Include="Content\UIScreens\win-screen.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-=======
+    </Content>
     <Content Include="Content\UIScreens\WinScreen.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
->>>>>>> origin/master
     </Content>
     <Content Include="Icon.ico" />
   </ItemGroup>

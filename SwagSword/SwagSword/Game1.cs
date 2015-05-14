@@ -118,7 +118,7 @@ namespace SwagSword
             //soundMan.StartIntro();
 
             //Load Screen Textures
-            drawMan.TitleImage = this.Content.Load<Texture2D>("UIScreens/TitleScreenMock.png");
+            drawMan.TitleImage = this.Content.Load<Texture2D>("UIScreens/TitleScreen.png");
             drawMan.GameOverImage = this.Content.Load<Texture2D>("UIScreens/GameOverScreen.png");
             drawMan.PauseImage = this.Content.Load<Texture2D>("UIScreens/PauseScreen.png");
             drawMan.SwordStatScreen = this.Content.Load<Texture2D>("UIScreens/SwordStatScreen.png");

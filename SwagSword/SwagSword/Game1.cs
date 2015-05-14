@@ -138,12 +138,9 @@ namespace SwagSword
             drawMan.GrassTexture = Content.Load<Texture2D>("Map/Grass.jpg");
             drawMan.LeftStronghold = Content.Load<Texture2D>("Map/GoodGuyStronghold.png");
             drawMan.RightStronghold = Content.Load<Texture2D>("Map/TribalStronghold.png");
-            drawMan.TopStronghold = Content.Load<Texture2D>("Map/RichStronghold.jpg");
-            drawMan.LowerStronghold = Content.Load<Texture2D>("Map/BanditStronghold.jpg");
-            drawMan.LeftStrongholdCap = Content.Load<Texture2D>("Map/LeftStrongholdCap.jpg");
-            drawMan.RightStrongholdCap = Content.Load<Texture2D>("Map/RightStrongholdCap.jpg");
-            drawMan.LowerStongholdCap = Content.Load<Texture2D>("Map/LowerStrongholdCap.jpg");
-            drawMan.TopStongholdCap = Content.Load<Texture2D>("Map/TopStrongholdCap.jpg");
+            drawMan.TopStronghold = Content.Load<Texture2D>("Map/RichStronghold.png");
+            drawMan.LowerStronghold = Content.Load<Texture2D>("Map/BanditStronghold.png");
+            drawMan.Flag = Content.Load<Texture2D>("Map/Flag.png");
             drawMan.DefaultMap = Content.Load<Texture2D>("Map/defaultMap.png");
 
             //Load Fonts

@@ -62,6 +62,17 @@ namespace SwagSword
                 noiseOffset = noiseGen.AddGradient(noiseOffset, Color.Black, Color.White);
                 noiseOffset = noiseGen.BlendImages(mainMan.DrawMan.SandyTexture, mainMan.DrawMan.GrassTexture, noiseOffset);
             }
+            else
+            {
+                Point LeftCenterPoint = new Point(radius, resHeight / 2);
+                Point RightCenterPoint = new Point(resWidth - radius, resHeight / 2);
+                Point UpperCenterPoint = new Point(resWidth / 2, radius);
+                Point LowerCenterPoint = new Point(resWidth / 2, resHeight - radius);
+                mainMan.GameMan.MapMan.LeftCenterPoint = LeftCenterPoint;
+                mainMan.GameMan.MapMan.RightCenterPoint = RightCenterPoint;
+                mainMan.GameMan.MapMan.UpperCenterPoint = UpperCenterPoint;
+                mainMan.GameMan.MapMan.LowerCenterPoint = LowerCenterPoint;
+            }
             //Boundary set
             mainMan.GameMan.CenterBound = new Rectangle(resWidth / 2 - pathThickness / 2, resHeight / 2 - pathThickness / 2, pathThickness, pathThickness);
             mainMan.GameMan.LeftPathBound = new Rectangle(radius * 2 - 40, resHeight / 2 - pathThickness / 2, (resWidth - 4 * radius + 80) / 2 - pathThickness / 2, pathThickness);

@@ -33,6 +33,10 @@ namespace SwagSword
         private float x;
         private float y;
         private int lives;
+
+        private int exp;
+        private int maxExp;
+        private int level;
         #endregion
 
         #region Properties
@@ -66,6 +70,10 @@ namespace SwagSword
         public bool NoCharacter { get { return character == null; } }
         public Rectangle SwordRect { get { return new Rectangle(0, 0, mainMan.DrawMan.SwordTexture.Width, mainMan.DrawMan.SwordTexture.Height); } }
         public Vector2 SwordCenter { get { return new Vector2(mainMan.DrawMan.SwordTexture.Width / 2f, mainMan.DrawMan.SwordTexture.Height / 2f); } }
+
+        public int Exp { get { return exp; } set { exp = value; } }
+        public int Level { get { return level; } set { level = value; } }
+        public int MaxExp { get { return maxExp; } set { maxExp = value; } }
         #endregion
 
         public Player(Character character, Game1 mainMan)
@@ -78,6 +86,8 @@ namespace SwagSword
             attackSpeedMultiplier = 1;
             movementSpeedMultiplier = 1;
             lives = 5;
+            exp = 0;
+            level = 1;
         }
 
         /// <summary>

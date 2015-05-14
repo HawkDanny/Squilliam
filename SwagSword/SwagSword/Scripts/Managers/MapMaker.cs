@@ -51,7 +51,7 @@ namespace SwagSword
         public Texture2D MakeMap()
         {
             PerlinNoise noiseGen = null;
-            PetersVeryOwnArtDevelopmentVariableForTheAdvancementOfAssetsInAnIndependantGame0000AStudyOfTheAggregateCyclesOfTheAverageArtDeveloper = false;
+            PetersVeryOwnArtDevelopmentVariableForTheAdvancementOfAssetsInAnIndependantGame0000AStudyOfTheAggregateCyclesOfTheAverageArtDeveloper = true;
             if (!PetersVeryOwnArtDevelopmentVariableForTheAdvancementOfAssetsInAnIndependantGame0000AStudyOfTheAggregateCyclesOfTheAverageArtDeveloper)
             {
                 noiseGen = new PerlinNoise(resWidth, resHeight, rand, graphicsDevice);

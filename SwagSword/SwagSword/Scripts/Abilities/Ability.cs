@@ -29,7 +29,7 @@ namespace SwagSword
         #endregion
 
         #region Properties
-        public Abilities Type { get { return type; } }
+        public Abilities Type { get { return type; } set { type = value; } }
 
         public bool InUse { get { return inUse; } set { inUse = value; } }
         #endregion

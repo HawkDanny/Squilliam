@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 //Names: Nelson Scott
 
@@ -287,6 +288,22 @@ namespace SwagSword
                     }
                     #endregion
 
+                    #region Ability Switch
+
+                    if (mainMan.InputMan.Ability1.IsDown())
+                    //    character.CurrentAbility.Type = Abilities.Boomerang;
+                    if (mainMan.InputMan.Ability2.IsDown())
+                    //    character.CurrentAbility.Type = Abilities.Decoy;
+                    if (mainMan.InputMan.Ability3.IsDown())
+                    //    character.CurrentAbility.Type = Abilities.Minion;
+                    if (mainMan.InputMan.Ability4.IsDown())
+                    //    character.CurrentAbility.Type = Abilities.Warp;
+                    if (mainMan.InputMan.SingleKeyPress(Keys.E))
+                    {
+                        //
+                    }
+
+                    #endregion
                     //Update the Camera
                     /*if (VelocityX != 0.0f || VelocityY != 0.0f)
                     {

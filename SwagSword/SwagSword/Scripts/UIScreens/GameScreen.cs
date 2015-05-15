@@ -80,24 +80,38 @@ namespace SwagSword
             int leftX = (int)mainMan.DrawMan.Camera.TopLeftPosition.X;
             int topY = (int)mainMan.DrawMan.Camera.TopLeftPosition.Y;
             abilityRect = new Rectangle(leftX + 15, topY + mainMan.WindowHeight - 15 - size, size, size);
-            //draw texture
-            spritebatch.Draw(mainMan.DrawMan.BoomerangAbility, abilityRect, Color.White);
-            //update rectangle
-            abilityRect.X += offset;
+            if (mainMan.GameMan.Players[0].CharacterState == CharacterState.Active)
+            {
+                //draw texture
+                if (mainMan.GameMan.MapMan.Strongholds[0].Captured || mainMan.GameMan.Players[0].Character.Type == Faction.Good)
+                    spritebatch.Draw(mainMan.DrawMan.BoomerangAbility, abilityRect, Color.White);
+                else
+                    spritebatch.Draw(mainMan.DrawMan.BoomerangAbility, abilityRect, Color.DarkGray);
+                //update rectangle
+                abilityRect.X += offset;
 
-            //draw texture
-            spritebatch.Draw(mainMan.DrawMan.DecoyAbility, abilityRect, Color.White);
-            //update rectangle
-            abilityRect.X += offset;
+                //draw texture
+                if (mainMan.GameMan.MapMan.Strongholds[3].Captured || mainMan.GameMan.Players[0].Character.Type == Faction.Thief)
+                    spritebatch.Draw(mainMan.DrawMan.DecoyAbility, abilityRect, Color.White);
+                else
+                    spritebatch.Draw(mainMan.DrawMan.DecoyAbility, abilityRect, Color.DarkGray);
+                //update rectangle
+                abilityRect.X += offset;
 
-            //draw texture
-            spritebatch.Draw(mainMan.DrawMan.RobotAbility, abilityRect, Color.White);
-            //update rectangle
-            abilityRect.X += offset;
+                //draw texture
+                if (mainMan.GameMan.MapMan.Strongholds[2].Captured || mainMan.GameMan.Players[0].Character.Type == Faction.Rich)
+                    spritebatch.Draw(mainMan.DrawMan.RobotAbility, abilityRect, Color.White);
+                else
+                    spritebatch.Draw(mainMan.DrawMan.RobotAbility, abilityRect, Color.DarkGray);
+                //update rectangle
+                abilityRect.X += offset;
 
-            //draw texture
-            spritebatch.Draw(mainMan.DrawMan.TeleportAbility, abilityRect, Color.White);
-            
+                //draw texture
+                if (mainMan.GameMan.MapMan.Strongholds[1].Captured || mainMan.GameMan.Players[0].Character.Type == Faction.Tribal)
+                    spritebatch.Draw(mainMan.DrawMan.TeleportAbility, abilityRect, Color.White);
+                else
+                    spritebatch.Draw(mainMan.DrawMan.TeleportAbility, abilityRect, Color.DarkGray);
+            }
             //reset rect
             abilityRect.X -= (3 * offset);
         }

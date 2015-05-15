@@ -361,7 +361,8 @@ namespace SwagSword
             {
                 level++;
                 skillPoints += 2;
-                maxExp = level * 100;
+                maxExp = level * 50;
+                exp = 0;
             }
         }
 

@@ -837,7 +837,7 @@ namespace SwagSword
             }*/
 
 
-            if (!(CurrentAbility.Type == SwagSword.Abilities.Decoy && currentAbility.InUse))
+            
             {
                 spritebatch.Draw(texture, position, rectangle, color, 0f, center, 1.0f, spriteEffect, 1);
             }

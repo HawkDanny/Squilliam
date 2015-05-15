@@ -18,6 +18,7 @@ namespace SwagSword
         #region Fields
         //Character textures
         Dictionary<Faction, Texture2D> characterTextures;
+        private Texture2D ghostSheet;
 
         //Screens Texture
         private Texture2D titleImage;
@@ -70,7 +71,7 @@ namespace SwagSword
         #region Properties
         //Character texture lists
         public Dictionary<Faction, Texture2D> CharacterTextures { get { return characterTextures; } }
-
+        public Texture2D GhostSheet { get { return ghostSheet; } set { ghostSheet = value; } }
         //Screen Textures
         public Texture2D TitleImage { get { return titleImage; } set { titleImage = value; } }
         public Texture2D GameOverImage { get { return gameOverImage; } set { gameOverImage = value; } }

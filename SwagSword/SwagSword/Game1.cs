@@ -168,6 +168,7 @@ namespace SwagSword
             drawMan.CharacterTextures.Add(Faction.Thief, Content.Load<Texture2D>("Sprites/BanditSpriteSheet.png"));
             drawMan.CharacterTextures.Add(Faction.Rich, Content.Load<Texture2D>("Sprites/RichGuySpriteSheet.png"));
             drawMan.CharacterTextures.Add(Faction.Tribal, Content.Load<Texture2D>("Sprites/TribalSpriteSheet.png"));
+            drawMan.GhostSheet = Content.Load<Texture2D>("Sprites/BanditGhostSpriteSheet.png");
 
             spriteBatch = new SpriteBatch(GraphicsDevice);
         }

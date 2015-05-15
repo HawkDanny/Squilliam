@@ -13,6 +13,7 @@ namespace SwagSword
     {
         //Fields
         Vector2 position;
+        Texture2D previousTexture;
 
         //Properties
         public Rectangle HitBox { get { return new Rectangle((int)position.X - character.Rectangle.Width / 2, (int)position.Y - character.Rectangle.Height / 2, character.Rectangle.Width, character.Rectangle.Height); } }
@@ -20,6 +21,7 @@ namespace SwagSword
 
         public Decoy(Game1 mainMan, Character character):base(mainMan, Abilities.Decoy, character)
         {
+            previousTexture = character.Texture;
             Init();
         }
 
@@ -34,9 +36,11 @@ namespace SwagSword
         {
             if (InUse)
             {
+                character.Texture = mainMan.DrawMan.GhostSheet;
                 if (character.CharacterState != CharacterState.Active || character.Weapon.IsSwinging)
                 {
                     InUse = false;
+                    character.Texture = previousTexture;
                 }
             }
             base.Update();
@@ -56,7 +60,8 @@ namespace SwagSword
         {
             if (InUse)
             {
-                spritebatch.Draw(character.Texture, position, character.Rectangle, Color.White, 0f, character.Center, 1.0f, character.SpriteEffect, 1);
+                spritebatch.Draw(mainMan.DrawMan.SpriteDict[character.Type], position, Color.White);
+                //spritebatch.Draw(character.Texture, position, character.Rectangle, Color.White, 0f, character.Center, 1.0f, character.SpriteEffect, 1);
             }
         }
     }

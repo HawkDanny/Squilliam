@@ -51,7 +51,7 @@ namespace SwagSword
         public Texture2D MakeMap()
         {
             PerlinNoise noiseGen = null;
-            PetersVeryOwnArtDevelopmentVariableForTheAdvancementOfAssetsInAnIndependantGame0000AStudyOfTheAggregateCyclesOfTheAverageArtDeveloper = false;
+            PetersVeryOwnArtDevelopmentVariableForTheAdvancementOfAssetsInAnIndependantGame0000AStudyOfTheAggregateCyclesOfTheAverageArtDeveloper = true;
             if (!PetersVeryOwnArtDevelopmentVariableForTheAdvancementOfAssetsInAnIndependantGame0000AStudyOfTheAggregateCyclesOfTheAverageArtDeveloper)
             {
                 noiseGen = new PerlinNoise(resWidth, resHeight, rand, graphicsDevice);
@@ -59,7 +59,7 @@ namespace SwagSword
                 pathMask = MergeTextures(ShiftPathHorizontal(BasePathHorizontal(), noiseOffset), ShiftPathVertical(BasePathVertical(), noiseOffset));
                 pathMask = MergeTextures(pathMask, NoiseyCircle());
                 noiseOffset = noiseGen.AdjustConstrast(noiseOffset, 4);
-                noiseOffset = noiseGen.AddGradient(noiseOffset, Color.LightGray, Color.White);
+                noiseOffset = noiseGen.AddGradient(noiseOffset, Color.Black, Color.White);
                 noiseOffset = noiseGen.BlendImages(mainMan.DrawMan.SandyTexture, mainMan.DrawMan.GrassTexture, noiseOffset);
             }
             else

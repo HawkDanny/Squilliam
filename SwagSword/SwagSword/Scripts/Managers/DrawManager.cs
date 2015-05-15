@@ -58,16 +58,6 @@ namespace SwagSword
         private Texture2D flag;
         private Texture2D defaultMap;
 
-        //Stronghold Decoration Textures
-        private Texture2D banditCenterpiece;
-        private Texture2D banditTents;
-        private Texture2D goodGuyCenterpiece;
-        private Texture2D goodGuyTents;
-        private Texture2D richCenterpiece;
-        private Texture2D richTents;
-        private Texture2D tribalCenterpiece;
-        private Texture2D tribalTents;
-
         //Fonts
         private SpriteFont healthFont;
         private SpriteFont statFont;
@@ -119,16 +109,6 @@ namespace SwagSword
         public Texture2D LowerStronghold { get { return lowerStronghold; } set { lowerStronghold = value; } }
         public Texture2D Flag { get { return flag; } set { flag = value; } }
         public Texture2D DefaultMap { get { return defaultMap; } set { defaultMap = value; } }
-
-        //Stronghold Decoration Textures
-        public Texture2D BanditCenterpiece { get { return banditCenterpiece; } set { banditCenterpiece = value; } }
-        public Texture2D BanditTents { get { return banditTents; } set { banditTents = value; } }
-        public Texture2D GoodGuyCenterpiece { get { return goodGuyCenterpiece; } set { goodGuyCenterpiece = value; } }
-        public Texture2D GoodGuyTents { get { return goodGuyTents; } set { goodGuyTents = value; } }
-        public Texture2D RichCenterpiece { get { return richCenterpiece; } set { richCenterpiece = value; } }
-        public Texture2D RichTents { get { return richTents; } set { richTents = value; } }
-        public Texture2D TribalCenterpiece { get { return tribalCenterpiece; } set { tribalCenterpiece = value; } }
-        public Texture2D TribalTents { get { return tribalTents; } set { tribalTents = value; } }
 
         //SpriteFonts
         public SpriteFont HealthFont { get { return healthFont; } set { healthFont = value; } }

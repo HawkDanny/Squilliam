@@ -141,23 +141,13 @@ namespace SwagSword
             //Load Map textures
             drawMan.PathwayTexture = Content.Load<Texture2D>("Map/SamplePath3.png");
             drawMan.SandyTexture = Content.Load<Texture2D>("Map/SampleNotPath.png");
-            drawMan.GrassTexture = Content.Load<Texture2D>("Map/Grass_double.jpg");
+            drawMan.GrassTexture = Content.Load<Texture2D>("Map/Grass.jpg");
             drawMan.LeftStronghold = Content.Load<Texture2D>("Map/GoodGuyStronghold.png");
             drawMan.RightStronghold = Content.Load<Texture2D>("Map/TribalStronghold.png");
             drawMan.TopStronghold = Content.Load<Texture2D>("Map/RichStronghold.png");
             drawMan.LowerStronghold = Content.Load<Texture2D>("Map/BanditStronghold.png");
             drawMan.Flag = Content.Load<Texture2D>("Map/Flag.png");
             drawMan.DefaultMap = Content.Load<Texture2D>("Map/defaultMap.png");
-
-            //Stronghold Decoration Textures
-            drawMan.BanditCenterpiece = Content.Load<Texture2D>("Map/BanditCenterpiece.png");
-            drawMan.BanditTents = Content.Load<Texture2D>("Map/BanditTents.png");
-            drawMan.GoodGuyCenterpiece = Content.Load<Texture2D>("Map/GoodGuyCenterpiece.png");
-            drawMan.GoodGuyTents = Content.Load<Texture2D>("Map/GoodGuyTents.png");
-            drawMan.RichCenterpiece = Content.Load<Texture2D>("Map/RichCenterpiece.png");
-            drawMan.RichTents = Content.Load<Texture2D>("Map/RichTents.png");
-            drawMan.TribalCenterpiece = Content.Load<Texture2D>("Map/TribalCenterpiece.png");
-            drawMan.TribalTents = Content.Load<Texture2D>("Map/TribalTents.png");
 
             //Load Fonts
             drawMan.HealthFont = Content.Load<SpriteFont>("Fonts/vanillawhale");

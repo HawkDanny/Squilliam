@@ -171,12 +171,12 @@ namespace SwagSword
         //Stats
         public String Name { get { return name; } set { name = value; } }
         public int Health { get { return health; } set { health = value; } }
-        public int MaxHealth { get { return maxHealth; } }
-        public float Strength { get { return strength; } }
-        public int Damage { get { return damage; } }
-        public float MovementSpeed { get { return movementSpeed; } }
-        public float AttackSpeedMin { get { return attackSpeedMin; } }
-        public float AttackSpeedMax { get { return attackSpeedMax; } }
+        public int MaxHealth { get { return maxHealth; } set { maxHealth = value; } }
+        public float Strength { get { return strength; } set{strength = value;}}
+        public int Damage { get { return damage; } set { damage = value; } }
+        public float MovementSpeed { get { return movementSpeed; } set { movementSpeed = value; } }
+        public float AttackSpeedMin { get { return attackSpeedMin; } set { attackSpeedMin = value; } }
+        public float AttackSpeedMax { get { return attackSpeedMax; } set { attackSpeedMax = value; } }
 
         //Physics
         public float VelocityX { get { return velocityX; } set { velocityX = value; } }

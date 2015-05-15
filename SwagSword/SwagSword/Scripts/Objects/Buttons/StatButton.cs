@@ -77,22 +77,28 @@ namespace SwagSword
                 if (type == "health")
                 {
                     player.HealthMultiplier += .2f;
+                    player.Character.MaxHealth = (int)(player.HealthMultiplier * player.Character.MaxHealth);
                 }
                 if (type == "damage")
                 {
                     player.DamageMultiplier += .2f;
+                    player.Character.Damage = (int)(player.DamageMultiplier * player.Character.Damage);
                 }
                 if (type == "knockback")
                 {
                     player.KnockbackMultplier += .2f;
+                    player.Character.Strength = (int)(player.KnockbackMultplier * player.Character.Strength);
                 }
                 if (type == "attackspeed")
                 {
                     player.AttackSpeedMultiplier += .2f;
+                    player.Character.AttackSpeedMin *= player.AttackSpeedMultiplier;
+                    player.Character.AttackSpeedMax *= player.AttackSpeedMultiplier;
                 }
                 if (type == "movementspeed")
                 {
                     player.MovementSpeedMultiplier += .2f;
+                    player.Character.MovementSpeed *= player.MovementSpeedMultiplier;
                 }
                 player.SkillPoints--;
             }

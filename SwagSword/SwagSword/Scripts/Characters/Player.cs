@@ -82,7 +82,7 @@ namespace SwagSword
         public Player(Character character, Game1 mainMan)
         {
             this.mainMan = mainMan;
-            SwitchBlade(character);
+
             healthMultiplier = 1;
             damageMultiplier = 1;
             knockbackMultiplier = 1;
@@ -90,9 +90,10 @@ namespace SwagSword
             movementSpeedMultiplier = 1;
             lives = 5;
             exp = 0;
-            maxExp = 100;
+            maxExp = 50;
             level = 1;
-            skillPoints = 3;
+            skillPoints = 0;
+            SwitchBlade(character);
         }
 
         /// <summary>
@@ -108,6 +109,12 @@ namespace SwagSword
             this.character.SwitchState(CharacterState.Switch);
             targetCharacter = null;
             lives--;
+            this.character.MaxHealth = (int)(healthMultiplier * character.MaxHealth);
+            this.character.Damage = (int)(damageMultiplier * character.Damage);
+            this.character.Strength = (int)(knockbackMultiplier * character.Strength);
+            this.character.MovementSpeed = movementSpeedMultiplier * character.MovementSpeed;
+            this.character.AttackSpeedMin *= attackSpeedMultiplier;
+            this.character.AttackSpeedMax *= attackSpeedMultiplier;
         }
 
         //The main update for player, character's update is not called

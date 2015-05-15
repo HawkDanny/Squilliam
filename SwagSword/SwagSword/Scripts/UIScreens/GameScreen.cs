@@ -67,12 +67,19 @@ namespace SwagSword
             int topY = (int)mainMan.DrawMan.Camera.TopLeftPosition.Y;
             //Draws the back of the health bar as gray
             spritebatch.Draw(rect, new Rectangle(leftX + 20, topY + 20, 200, 10), Color.Gray);
-            //Draws the actual Health meter as green
+            spritebatch.Draw(rect, new Rectangle(leftX + 20, topY + 40, 200, 10), Color.Gray);
+            //Draws the actual Health meter as green and the EXP as blue
             double health = 0.0 + mainMan.GameMan.Players[0].Health;
             double maxHealth = 0.0 + mainMan.GameMan.Players[0].MaxHealth;
+            double exp = 0.0 + mainMan.GameMan.Players[0].Exp;
+            double maxExp = 0.0 + mainMan.GameMan.Players[0].MaxExp;
             spritebatch.Draw(rect, new Rectangle(leftX + 20, topY + 20, (int)((health/maxHealth)*200), 10), Color.Green);
+            spritebatch.Draw(rect, new Rectangle(leftX + 20, topY + 40, (int)((exp / maxExp) * 200), 10), Color.Blue);
             //Draws the number of health next to the bar
             spritebatch.DrawString(mainMan.DrawMan.HealthFont, mainMan.GameMan.Players[0].Health + "/" + mainMan.GameMan.Players[0].MaxHealth, new Vector2(leftX + 225f, topY + 14f), Color.Green);
+            spritebatch.DrawString(mainMan.DrawMan.HealthFont, mainMan.GameMan.Players[0].Exp + "/" + mainMan.GameMan.Players[0].MaxExp, new Vector2(leftX + 225f, topY + 34f), Color.Blue);
+            spritebatch.DrawString(mainMan.DrawMan.HealthFont, "Level " + mainMan.GameMan.Players[0].Level, new Vector2(leftX + 20, topY + 58), Color.Blue);
+            spritebatch.DrawString(mainMan.DrawMan.HealthFont, "Lives " + mainMan.GameMan.Players[0].Lives, new Vector2(leftX + 100, topY + 58), Color.Red);
             DrawAbilities(spritebatch);
             base.Draw(spritebatch);
         }

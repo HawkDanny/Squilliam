@@ -5,7 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-
+using System.Threading;
 //Names: Nelson Scott
 
 namespace SwagSword
@@ -117,6 +117,14 @@ namespace SwagSword
             this.character.AttackSpeedMax *= attackSpeedMultiplier;
         }
 
+        private void TimeTracker()
+        {
+            timeDead++;
+        }
+
+        Thread t;
+        int timeDead = 0;
+        bool fresh = true;
         //The main update for player, character's update is not called
         public void Update()
         {
@@ -124,9 +132,21 @@ namespace SwagSword
             {
                 //remove the character reference
                 character = null;
+                if(fresh)
+                {
+                    t = new Thread(TimeTracker);
+                    t.Start();
+                }
+                if (timeDead > 300)
+                {
+                    this.character = mainMan.GameMan.Characters[0];
+                }
             }
+
             else if (!NoCharacter)
             {
+                fresh = true;
+                timeDead = 0;
                 //Only allow input when active
                 if (CharacterState == CharacterState.Active)
                 {

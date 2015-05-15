@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
-namespace SwagSword.Scripts.Objects
+namespace SwagSword
 {
     class StatButton
     {
@@ -29,11 +30,12 @@ namespace SwagSword.Scripts.Objects
         /// <param name="rect">Position and Size of the button</param>
         /// <param name="player">Player whos stats will be multiplied</param>
         /// <param name="type">the type of button</param>
-        public StatButton(Game1 mainMan, Texture2D texture, Rectangle rect, Player player, string type)
+        public StatButton(Game1 mainMan, Rectangle rect, Player player, string type)
         {
             this.mainMan = mainMan;
-            this.texture = texture;
+            texture = mainMan.DrawMan.LevelUpButtonTexture;
             this.rect = rect;
+            this.player = player;
             mousedOver = false;
             enabled = false;
             this.type = type;
@@ -45,6 +47,14 @@ namespace SwagSword.Scripts.Objects
             if (mousedOver)
             {
                 isClicked();
+            }
+            if(mainMan.GameMan.Players[0].SkillPoints > 0)
+            {
+                enabled = true;
+            }
+            else
+            {
+                enabled = false;
             }
         }
 
@@ -62,40 +72,47 @@ namespace SwagSword.Scripts.Objects
 
         public virtual void isClicked()
         {
-            if(type == "health")
+            if (mainMan.InputMan.PrevMState.LeftButton == ButtonState.Released && mainMan.InputMan.MState.LeftButton == ButtonState.Pressed && enabled)
             {
-                player.HealthMultiplier += .2f;
+                if (type == "health")
+                {
+                    player.HealthMultiplier += .2f;
+                }
+                if (type == "damage")
+                {
+                    player.DamageMultiplier += .2f;
+                }
+                if (type == "knockback")
+                {
+                    player.KnockbackMultplier += .2f;
+                }
+                if (type == "attackspeed")
+                {
+                    player.AttackSpeedMultiplier += .2f;
+                }
+                if (type == "movementspeed")
+                {
+                    player.MovementSpeedMultiplier += .2f;
+                }
+                player.SkillPoints--;
             }
-            if(type == "damage")
-            {
-                player.DamageMultiplier += .2f;
-            }
-            if(type == "knockback")
-            {
-                player.KnockbackMultplier += .2f;
-            }
-            if(type == "attackspeed")
-            {
-                player.AttackSpeedMultiplier += .2f;
-            }
-            if(type == "movementspeed")
-            {
-                player.MovementSpeedMultiplier += .2f;
-            }
-            enabled = false;
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (mousedOver)
+            if(enabled)
             {
-                spriteBatch.Draw(texture, rect, Color.Blue);
-            }
-            else
-            {
-                spriteBatch.Draw(texture, rect, Color.White);
-            }
+                if (mousedOver)
+                {
+                    spriteBatch.Draw(texture, rect, Color.Blue);
+                }
+                else
+                {
+                    spriteBatch.Draw(texture, rect, Color.White);
+                }
 
+            }
+            
         }
     }
 }

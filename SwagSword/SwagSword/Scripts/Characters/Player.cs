@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 //Names: Nelson Scott
 
@@ -33,6 +34,11 @@ namespace SwagSword
         private float x;
         private float y;
         private int lives;
+
+        private int exp;
+        private int maxExp;
+        private int level;
+        private int skillPoints;
         #endregion
 
         #region Properties
@@ -66,6 +72,11 @@ namespace SwagSword
         public bool NoCharacter { get { return character == null; } }
         public Rectangle SwordRect { get { return new Rectangle(0, 0, mainMan.DrawMan.SwordTexture.Width, mainMan.DrawMan.SwordTexture.Height); } }
         public Vector2 SwordCenter { get { return new Vector2(mainMan.DrawMan.SwordTexture.Width / 2f, mainMan.DrawMan.SwordTexture.Height / 2f); } }
+
+        public int Exp { get { return exp; } set { exp = value; } }
+        public int Level { get { return level; } set { level = value; } }
+        public int MaxExp { get { return maxExp; } set { maxExp = value; } }
+        public int SkillPoints { get { return skillPoints; } set { skillPoints = value; } }
         #endregion
 
         public Player(Character character, Game1 mainMan)
@@ -78,6 +89,10 @@ namespace SwagSword
             attackSpeedMultiplier = 1;
             movementSpeedMultiplier = 1;
             lives = 5;
+            exp = 0;
+            maxExp = 100;
+            level = 1;
+            skillPoints = 3;
         }
 
         /// <summary>
@@ -277,6 +292,22 @@ namespace SwagSword
                     }
                     #endregion
 
+                    #region Ability Switch
+
+                    if (mainMan.InputMan.Ability1.IsDown())
+                    //    character.CurrentAbility.Type = Abilities.Boomerang;
+                    if (mainMan.InputMan.Ability2.IsDown())
+                    //    character.CurrentAbility.Type = Abilities.Decoy;
+                    if (mainMan.InputMan.Ability3.IsDown())
+                    //    character.CurrentAbility.Type = Abilities.Minion;
+                    if (mainMan.InputMan.Ability4.IsDown())
+                    //    character.CurrentAbility.Type = Abilities.Warp;
+                    if (mainMan.InputMan.SingleKeyPress(Keys.E))
+                    {
+                        //
+                    }
+
+                    #endregion
                     //Update the Camera
                     /*if (VelocityX != 0.0f || VelocityY != 0.0f)
                     {
@@ -286,6 +317,12 @@ namespace SwagSword
 
                 x = character.X;
                 y = character.Y;
+            }
+            if(exp >= maxExp)
+            {
+                level++;
+                skillPoints += 2;
+                maxExp = level * 100;
             }
         }
 

@@ -83,10 +83,10 @@ namespace SwagSword
             map = mapMaker.MakeMap();
             
             //Strongholds set
-            leftStronghold = new Stronghold(mainMan.DrawMan.LeftStronghold,mainMan.DrawMan.LeftStrongholdCap, new Rectangle(radius - strongholdWidth / 2, resHeight / 2 - strongholdWidth / 2, strongholdWidth, strongholdWidth), mainMan, Faction.Good);
-            rightStronghold = new Stronghold(mainMan.DrawMan.RightStronghold,mainMan.DrawMan.RightStrongholdCap, new Rectangle(resWidth - radius - strongholdWidth / 2, resHeight / 2 - strongholdWidth / 2, strongholdWidth, strongholdWidth), mainMan, Faction.Tribal);
-            topStronghold = new Stronghold(mainMan.DrawMan.TopStronghold,mainMan.DrawMan.LowerStongholdCap, new Rectangle(resWidth / 2 - strongholdWidth / 2, radius - strongholdWidth / 2, strongholdWidth, strongholdWidth), mainMan, Faction.Rich);
-            lowerStronghold = new Stronghold(mainMan.DrawMan.LowerStronghold,mainMan.DrawMan.TopStongholdCap, new Rectangle(resWidth / 2 - strongholdWidth / 2, resHeight - radius - strongholdWidth / 2, strongholdWidth, strongholdWidth), mainMan, Faction.Thief);
+            leftStronghold = new Stronghold(mainMan.DrawMan.LeftStronghold, new Rectangle(radius - strongholdWidth / 2, resHeight / 2 - strongholdWidth / 2, strongholdWidth, strongholdWidth), mainMan, Faction.Good);
+            rightStronghold = new Stronghold(mainMan.DrawMan.RightStronghold, new Rectangle(resWidth - radius - strongholdWidth / 2, resHeight / 2 - strongholdWidth / 2, strongholdWidth, strongholdWidth), mainMan, Faction.Tribal);
+            topStronghold = new Stronghold(mainMan.DrawMan.TopStronghold, new Rectangle(resWidth / 2 - strongholdWidth / 2, radius - strongholdWidth / 2, strongholdWidth, strongholdWidth), mainMan, Faction.Rich);
+            lowerStronghold = new Stronghold(mainMan.DrawMan.LowerStronghold, new Rectangle(resWidth / 2 - strongholdWidth / 2, resHeight - radius - strongholdWidth / 2, strongholdWidth, strongholdWidth), mainMan, Faction.Thief);
 
             mainMan.GameMan.LeftStrong = leftStronghold.Rect;
             mainMan.GameMan.RightStrong = rightStronghold.Rect;

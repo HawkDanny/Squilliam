@@ -60,6 +60,7 @@ namespace SwagSword
 
         protected override void InitStats()
         {
+            name = "Peter";
             health = 100;
             maxHealth = 100;
             strength = 30f;

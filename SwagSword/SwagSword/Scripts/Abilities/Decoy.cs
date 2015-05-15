@@ -52,7 +52,7 @@ namespace SwagSword
         public override void Use()
         {
             position = new Vector2(character.X, character.Y);
-
+            mainMan.SoundMan.Decoying.Play();
             base.Use();
         }
 
@@ -60,6 +60,7 @@ namespace SwagSword
         {
             position = new Vector2(character.X, character.Y);
             base.AIUse();
+            mainMan.SoundMan.Decoying.Play();
         }
 
         public override void Draw(SpriteBatch spritebatch)

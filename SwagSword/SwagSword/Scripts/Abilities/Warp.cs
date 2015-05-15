@@ -55,6 +55,7 @@ namespace SwagSword
 
         public override void Use()
         {
+            mainMan.SoundMan.Warping.Play(.3f,0,0);
             character.VelocityX = (float)(speed * Math.Cos((90f - character.Direction) * Math.PI / 180f));
             character.VelocityY = (float)(speed * Math.Sin((90f - character.Direction) * Math.PI / 180f));
             

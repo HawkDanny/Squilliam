@@ -100,6 +100,7 @@ namespace SwagSword
             }
             if (CheckLose())
             {
+                mainMan.SoundMan.Losing.Play();
                 mainMan.UIMan.Screens.Pop();
                 mainMan.UIMan.Screens.Push(new GameOverScreen(mainMan));
             }

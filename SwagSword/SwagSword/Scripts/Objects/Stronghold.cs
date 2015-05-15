@@ -84,7 +84,10 @@ namespace SwagSword
                     if (percentCaptured < 0)
                         percentCaptured = 0;
                     if (percentCaptured == 1)
+                    {
                         captured = true;
+                        mainMan.SoundMan.Capture.Play(.05f,0,0);
+                    }
                     capRect.Width = (int)(rect.Width * percentCaptured);
 
 

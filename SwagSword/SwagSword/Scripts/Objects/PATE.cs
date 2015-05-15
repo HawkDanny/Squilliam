@@ -196,6 +196,7 @@ namespace SwagSword
                         if (!bullet.IsFired)
                         {
                             bullet.Fire(target);
+                            mainMan.SoundMan.MinionFire.Play(.05f, 0, 0);
                         }
                         fireTimer = fireTimerMax;
                     }

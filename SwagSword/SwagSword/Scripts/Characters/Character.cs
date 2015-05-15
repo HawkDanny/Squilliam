@@ -386,6 +386,7 @@ namespace SwagSword
                     aiStateTimer = aiTimers[state];
                     weapon.Angle = direction;
                     weapon.Swing();
+                    mainMan.SoundMan.Swing.Play();
                     AnimateFaceDirection();
                     break;
 
@@ -763,6 +764,8 @@ namespace SwagSword
         /// <param name="force"></param>
         public void TakeHit(int damage, float force, float hitDirection)
         {
+
+            mainMan.SoundMan.Hurts[mainMan.Rnd.Next(3)].Play((float)mainMan.Rnd.NextDouble() * 0.8f,(float)mainMan.Rnd.NextDouble() * 0.3f, 0);
             //Take down health;
             health -= damage;
             if (health <= 0)
@@ -788,6 +791,7 @@ namespace SwagSword
             mainMan.GameMan.CharactersDictionary[type].Remove(this);
             mainMan.GameMan.Characters.Remove(this);
             mainMan.GameMan.SpawnMan.ReplenishCharacter(type);
+            mainMan.SoundMan.Slash.Play(.4f,0,0);
         }
 
         /// <summary>

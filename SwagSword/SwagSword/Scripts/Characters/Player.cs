@@ -247,7 +247,7 @@ namespace SwagSword
                     {
                         //So the player can't just hold to swing
                         mainMan.InputMan.AttackHeld = true;
-
+                        mainMan.SoundMan.Swing.Play(.3f,0,0);
                         //Swing the sword
                         character.Weapon.Angle = mainMan.InputMan.AngleToPointer(X, Y);
                         //Direction = character.Weapon.Angle;

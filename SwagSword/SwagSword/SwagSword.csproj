@@ -234,9 +234,7 @@
     </Content>
     <Content Include="Icon.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Content\Music\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Content\Fonts\vanillawhale.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -246,79 +244,55 @@
     <None Include="Content\Fonts\pressstart2p.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Content\Sfx\BLASTER Bright Short %28stereo%29.xnb">
+    <None Include="Content\Music\TitleScreen.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Content\Sfx\BLASTER Deep Muffled %28stereo%29.xnb">
+    <None Include="Content\Music\GameMusic.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Content\Sfx\BLASTER Double Kickback %28stereo%29.xnb">
+    <None Include="Content\Sfx\MinionFire.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Content\Sfx\DEMOLISH Wood Fall %28stereo%29.xnb">
+    <None Include="Content\Sfx\Capture.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Content\Sfx\DEMOLISH Wood _ Metal %28stereo%29.xnb">
+    <None Include="Content\Sfx\Decoying.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Content\Sfx\DEMOLISH Wood _ Metal Deep %28stereo%29.xnb">
+    <None Include="Content\Sfx\Gravel1.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Content\Sfx\EXPLOSION Subtle Poof 01 %28stereo%29.xnb">
+    <None Include="Content\Sfx\Gravel2.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Content\Sfx\EXPLOSION Subtle Poof 02 %28stereo%29.xnb">
+    <None Include="Content\Sfx\Gravel3.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Content\Sfx\FOOTSTEP Run Trainers Compact Gravel RR4 %28mono%29.xnb">
+    <None Include="Content\Sfx\Gravel4.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Content\Sfx\FOOTSTEP Run Trainers Compact Gravel RR5 %28mono%29.xnb">
+    <None Include="Content\Sfx\Hurt1.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Content\Sfx\FOOTSTEP Run Trainers Compact Gravel RR7 %28mono%29.xnb">
+    <None Include="Content\Sfx\Hurt2.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Content\Sfx\FOOTSTEP Run Trainers Compact Gravel RR8 %28mono%29.xnb">
+    <None Include="Content\Sfx\Hurt3.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Content\Sfx\GROAN Male Hurt Long %28mono%29.xnb">
+    <None Include="Content\Sfx\Losing.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Content\Sfx\GRUNT Male Hurt With Cough %28mono%29.xnb">
+    <None Include="Content\Sfx\Warp.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Content\Sfx\GRUNT Male Quick %28mono%29.xnb">
+    <None Include="Content\Sfx\Clash.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Content\Sfx\GRUNT Male Subtle Hurt %28mono%29.xnb">
+    <None Include="Content\Sfx\Slash.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Content\Sfx\MUSIC EFFECT Piano Negative %28stereo%29.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\Sfx\Open Sky Redone.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\Sfx\Running Forever Theme.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\Sfx\SPACE WARP Type 01 Warp B %28stereo%29.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\Sfx\SPACE WARP Type 03 Warp A %28stereo%29.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\Sfx\SWORD Swing Hit Metal Sword Bright %28stereo%29.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\Sfx\SWORD Swing Stab Body Gore %28stereo%29.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\Sfx\WHOOSH Bright %28mono%29.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\Sfx\WHOOSH Bright Short %28mono%29.xnb">
+    <None Include="Content\Sfx\Swing.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />

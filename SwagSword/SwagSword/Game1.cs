@@ -109,9 +109,26 @@ namespace SwagSword
             //Load and set textures in draw manager
 
             //Load Sounds
-            //soundMan.OpeningMusic = this.Content.Load<Song>("TitleScreenMusic");
-            //soundMan.GameMusic = this.Content.Load<Song>("Music/GameMusic.mp3");            
+            //soundMan.OpeningMusic = Content.Load<SoundEffect>("Sfx/TitleScreen");
+            //soundMan.GameMusic = Content.Load<Song>("Sfx/GameMusic");
+            soundMan.Gravel1 = Content.Load<SoundEffect>("Sfx/Gravel1");
+            soundMan.Gravel2 = Content.Load<SoundEffect>("Sfx/Gravel2");
+            soundMan.Gravel3 = Content.Load<SoundEffect>("Sfx/Gravel3");
+            soundMan.Gravel4 = Content.Load<SoundEffect>("Sfx/Gravel4");
+            soundMan.MinionFire = Content.Load<SoundEffect>("Sfx/MinionFire");
+            soundMan.Hurt1 = Content.Load<SoundEffect>("Sfx/Hurt1");
+            soundMan.Hurt2 = Content.Load<SoundEffect>("Sfx/Hurt2");
+            soundMan.Hurt3 = Content.Load<SoundEffect>("Sfx/Hurt3");
+            soundMan.Swing = Content.Load<SoundEffect>("Sfx/Swing");
+            soundMan.Slash = Content.Load<SoundEffect>("Sfx/Slash");
+            soundMan.Clash = Content.Load<SoundEffect>("Sfx/Clash");
+            soundMan.Capture = Content.Load<SoundEffect>("Sfx/Capture");
+            soundMan.Warping = Content.Load<SoundEffect>("Sfx/Warp");
+            soundMan.Losing = Content.Load<SoundEffect>("Sfx/Losing");
+            soundMan.Decoying = Content.Load<SoundEffect>("Sfx/Decoying");
+            soundMan.Init();
             //soundMan.StartIntro();
+            //soundMan.OpeningMusic.Play();
 
             //Load Screen Textures
             drawMan.TitleImage = this.Content.Load<Texture2D>("UIScreens/TitleScreen.png");

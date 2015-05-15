@@ -56,6 +56,12 @@ namespace SwagSword
             base.Use();
         }
 
+        public override void AIUse()
+        {
+            position = new Vector2(character.X, character.Y);
+            base.AIUse();
+        }
+
         public override void Draw(SpriteBatch spritebatch)
         {
             if (InUse)

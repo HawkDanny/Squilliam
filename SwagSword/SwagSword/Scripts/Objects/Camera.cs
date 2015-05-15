@@ -99,7 +99,7 @@ namespace SwagSword
             {
                 if (!mainMan.GameMan.Players[0].NoCharacter && mainMan.GameMan.Players[0].CharacterState != CharacterState.Dead)
                 {
-                    if(mainMan.GameMan.MapMan.CalcDistance((int)position.X, (int)position.Y, (int)mainMan.GameMan.Players[0].X, (int)mainMan.GameMan.Players[0].Y) > mainMan.WindowHeight)
+                    if(mainMan.GameMan.MapMan.CalcDistance((int)position.X, (int)position.Y, (int)mainMan.GameMan.Players[0].X, (int)mainMan.GameMan.Players[0].Y) > mainMan.WindowHalfHeight)
                     {
                         position = mainMan.GameMan.Players[0].Position;
                     }

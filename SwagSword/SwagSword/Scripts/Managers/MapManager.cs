@@ -36,6 +36,8 @@ namespace SwagSword
         Stronghold topStronghold;
         Stronghold lowerStronghold;
         List<Stronghold> strongholds;
+        List<Rectangle> tents;
+        List<Rectangle> centerpieces;
         #endregion
 
         #region Properties
@@ -56,7 +58,8 @@ namespace SwagSword
         public MapManager(Game1 mainMan)
             : base(mainMan)
         {
-
+            tents = new List<Rectangle>();
+            centerpieces = new List<Rectangle>();
         }
 
         public override void Init()
@@ -98,6 +101,18 @@ namespace SwagSword
             strongholds.Add(rightStronghold);
             strongholds.Add(topStronghold);
             strongholds.Add(lowerStronghold);
+
+            foreach(Stronghold s in strongholds)
+            {
+                tents.Add(new Rectangle(s.Rect.Center.X - 328, s.Rect.Center.Y + 200, 128, 128));
+                tents.Add(new Rectangle(s.Rect.Center.X - 328, s.Rect.Center.Y - 328, 128, 128));
+                tents.Add(new Rectangle(s.Rect.Center.X + 200, s.Rect.Center.Y + 200, 128, 128));
+                tents.Add(new Rectangle(s.Rect.Center.X + 200, s.Rect.Center.Y - 328, 128, 128));
+            }
+            centerpieces.Add(new Rectangle(leftStronghold.Rect.Center.X - 500, leftStronghold.Rect.Y + 60, 160, 160));
+            centerpieces.Add(new Rectangle(rightStronghold.Rect.Center.X + 400, rightStronghold.Rect.Y + 60, 160, 160));
+            centerpieces.Add(new Rectangle(topStronghold.Rect.Center.X - 80, topStronghold.Rect.Center.Y - 500, 160, 160));
+            centerpieces.Add(new Rectangle(lowerStronghold.Rect.Center.X - 80, lowerStronghold.Rect.Center.Y + 400, 160, 160));
             return;
         }
 
@@ -105,11 +120,30 @@ namespace SwagSword
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(map, new Rectangle(0, 0, resWidth, resHeight), Color.White);
-            
             //draw the strongholds
             foreach(Stronghold s in strongholds)
             {
                 s.Draw(spriteBatch);
+            }
+            spriteBatch.Draw(mainMan.DrawMan.BanditCenterpiece, centerpieces[3], Color.White);
+            spriteBatch.Draw(mainMan.DrawMan.GoodGuyCenterpiece, centerpieces[0], Color.White);
+            spriteBatch.Draw(mainMan.DrawMan.RichCenterpiece, centerpieces[2], Color.White);
+            spriteBatch.Draw(mainMan.DrawMan.TribalCenterpiece, centerpieces[1], Color.White);
+            for(int i = 0; i < 4; i ++)
+            {
+                spriteBatch.Draw(mainMan.DrawMan.GoodGuyTents, tents[i], Color.White);
+            }
+            for(int i = 4; i < 8; i ++)
+            {
+                spriteBatch.Draw(mainMan.DrawMan.TribalTents, tents[i], Color.White);
+            }
+            for(int i = 8; i < 12; i ++)
+            {
+                spriteBatch.Draw(mainMan.DrawMan.RichTents, tents[i], Color.White);
+            }
+            for(int i = 12; i < 16; i ++)
+            {
+                spriteBatch.Draw(mainMan.DrawMan.BanditTents, tents[i], Color.White);
             }
         }
 

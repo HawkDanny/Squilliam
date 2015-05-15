@@ -125,6 +125,7 @@ namespace SwagSword
             drawMan.StatsTexture = this.Content.Load<Texture2D>("Buttons/StatsButton.png");
             drawMan.ExitTexture = this.Content.Load<Texture2D>("Buttons/ExitButton.png");
             drawMan.WinTexture = this.Content.Load<Texture2D>("UIScreens/win-screen.png");
+            drawMan.LevelUpButtonTexture = this.Content.Load<Texture2D>("Buttons/LevelUpButton.png");
 
             //Load Weapon textures
             drawMan.SwordTexture = this.Content.Load<Texture2D>("Objects/sword.png");

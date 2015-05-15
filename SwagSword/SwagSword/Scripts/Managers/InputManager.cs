@@ -109,6 +109,7 @@ namespace SwagSword
         {
             prevKbState = kbState;
             kbState = Keyboard.GetState();
+            prevMState = mState;
             mState = Mouse.GetState();
             prevGamePadState1 = gamePadState1;
             gamePadState1 = GamePad.GetState(PlayerIndex.One);

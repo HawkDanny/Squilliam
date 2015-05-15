@@ -69,7 +69,6 @@
     <Compile Include="Scripts\Objects\Buttons\StatButton.cs" />
     <Compile Include="Scripts\Objects\Camera.cs" />
     <Compile Include="Scripts\Objects\PATE.cs" />
-    <Compile Include="Scripts\Objects\Tile.cs" />
     <Compile Include="Scripts\Managers\UIManager.cs" />
     <Compile Include="Scripts\Objects\Weapon.cs" />
     <Compile Include="Scripts\Characters\TribalCharacter.cs" />
@@ -110,6 +109,9 @@
     <Content Include="Content\Buttons\ExitButton.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\Buttons\LevelUpButton.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\Buttons\ResumeButton.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -120,18 +122,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Map\Flag.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Map\LeftStrongholdCap.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Map\LowerStronghold.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Map\LowerStrongholdCap.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Map\RightStrongholdCap.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Map\BanditCenterpiece.png">
@@ -152,9 +142,6 @@
     <Content Include="Content\Map\GoodGuyTents.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Map\LowerStronghold.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Content\Map\RichCenterpiece.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -163,15 +150,6 @@
     </Content>
     <Content Include="Content\Map\RichTents.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Map\TopStronghold.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Map\RightStronghold.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Map\TopStrongholdCap.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Map\TribalCenterpiece.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -200,20 +178,8 @@
     <Content Include="Content\Map\Grass.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Map\LeftStronghold.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Map\Dirt.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Content\Map\SampleNotPath.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Map\SamplePath.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Map\SamplePath2.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Map\SamplePath3.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -251,9 +217,6 @@
     <Content Include="Content\UIScreens\PauseScreen.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\UIScreens\ryanbell.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Content\UIScreens\SwordStatScreen.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -261,9 +224,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\UIScreens\TitleScreenMock.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\UIScreens\win-screen.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\UIScreens\WinScreen.png">

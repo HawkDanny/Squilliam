@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 //Names: Nelson Scott
 
@@ -37,6 +38,7 @@ namespace SwagSword
         private int exp;
         private int maxExp;
         private int level;
+        private int skillPoints;
         #endregion
 
         #region Properties
@@ -74,6 +76,7 @@ namespace SwagSword
         public int Exp { get { return exp; } set { exp = value; } }
         public int Level { get { return level; } set { level = value; } }
         public int MaxExp { get { return maxExp; } set { maxExp = value; } }
+        public int SkillPoints { get { return skillPoints; } set { skillPoints = value; } }
         #endregion
 
         public Player(Character character, Game1 mainMan)
@@ -87,7 +90,9 @@ namespace SwagSword
             movementSpeedMultiplier = 1;
             lives = 5;
             exp = 0;
+            maxExp = 100;
             level = 1;
+            skillPoints = 3;
         }
 
         /// <summary>
@@ -287,6 +292,22 @@ namespace SwagSword
                     }
                     #endregion
 
+                    #region Ability Switch
+
+                    if (mainMan.InputMan.Ability1.IsDown())
+                    //    character.CurrentAbility.Type = Abilities.Boomerang;
+                    if (mainMan.InputMan.Ability2.IsDown())
+                    //    character.CurrentAbility.Type = Abilities.Decoy;
+                    if (mainMan.InputMan.Ability3.IsDown())
+                    //    character.CurrentAbility.Type = Abilities.Minion;
+                    if (mainMan.InputMan.Ability4.IsDown())
+                    //    character.CurrentAbility.Type = Abilities.Warp;
+                    if (mainMan.InputMan.SingleKeyPress(Keys.E))
+                    {
+                        //
+                    }
+
+                    #endregion
                     //Update the Camera
                     /*if (VelocityX != 0.0f || VelocityY != 0.0f)
                     {
@@ -296,6 +317,12 @@ namespace SwagSword
 
                 x = character.X;
                 y = character.Y;
+            }
+            if(exp >= maxExp)
+            {
+                level++;
+                skillPoints += 2;
+                maxExp = level * 100;
             }
         }
 

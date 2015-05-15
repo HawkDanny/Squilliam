@@ -243,7 +243,7 @@ namespace SwagSword
 
                     #region Attack Input
                     if ((mainMan.InputMan.Attack.IsDown() && mainMan.InputMan.AttackHeld == false) 
-                    && !(Character.CurrentAbility.Type == Abilities.Boomerang && Character.CurrentAbility.InUse))
+                    && !(Character.CurrentAbility.Type == AbilityType.Boomerang && Character.CurrentAbility.InUse))
                     {
                         //So the player can't just hold to swing
                         mainMan.InputMan.AttackHeld = true;
@@ -289,7 +289,7 @@ namespace SwagSword
                         //Custom use logic
                         switch (character.CurrentAbility.Type)
                         {
-                            case Abilities.Warp:
+                            case AbilityType.Warp:
                                 if (!character.CurrentAbility.InUse && (character.VelocityX != 0f || character.VelocityY != 0f))
                                 {
                                     character.CurrentAbility.Use();
@@ -297,7 +297,7 @@ namespace SwagSword
                                 }
                                 break;
 
-                            case Abilities.Boomerang:
+                            case AbilityType.Boomerang:
                                 if (!character.CurrentAbility.InUse)
                                 {
                                     character.Weapon.Angle = mainMan.InputMan.AngleToPointer(X, Y);
@@ -305,7 +305,7 @@ namespace SwagSword
                                 }
                                 break;
 
-                            case Abilities.Minion:
+                            case AbilityType.Minion:
                                 if (!character.CurrentAbility.InUse)
                                 {
                                     character.CurrentAbility.Use();

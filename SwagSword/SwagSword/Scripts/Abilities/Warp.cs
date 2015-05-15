@@ -19,7 +19,7 @@ namespace SwagSword
 
 
 
-        public Warp(Game1 mainMan, Character character):base(mainMan, Abilities.Warp, character)
+        public Warp(Game1 mainMan, Character character):base(mainMan, AbilityType.Warp, character)
         {
             Init();
         }

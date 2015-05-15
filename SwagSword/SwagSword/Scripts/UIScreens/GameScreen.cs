@@ -92,7 +92,7 @@ namespace SwagSword
             abilitySelect = new Rectangle(leftX + 12, topY + mainMan.WindowHeight - 18 - size, size + 6, size + 6);
             if (mainMan.GameMan.Players[0].CharacterState == CharacterState.Active || mainMan.GameMan.Players[0].CharacterState == CharacterState.Hurt)
             {
-                if (mainMan.GameMan.Players[0].Character.CurrentAbility.Type == Abilities.Boomerang)
+                if (mainMan.GameMan.Players[0].Character.CurrentAbility.Type == AbilityType.Boomerang)
                 {
                     spritebatch.Draw(rect, abilitySelect, Color.Yellow);
                     //draw texture
@@ -113,7 +113,7 @@ namespace SwagSword
                 abilityRect.X += offset;
                 abilitySelect.X += offset;
 
-                if (mainMan.GameMan.Players[0].Character.CurrentAbility.Type == Abilities.Decoy)
+                if (mainMan.GameMan.Players[0].Character.CurrentAbility.Type == AbilityType.Decoy)
                 {
                     spritebatch.Draw(rect, abilitySelect, Color.Yellow);
                     //draw texture
@@ -134,7 +134,7 @@ namespace SwagSword
                 abilityRect.X += offset;
                 abilitySelect.X += offset;
 
-                if (mainMan.GameMan.Players[0].Character.CurrentAbility.Type == Abilities.Minion)
+                if (mainMan.GameMan.Players[0].Character.CurrentAbility.Type == AbilityType.Minion)
                 {
                     spritebatch.Draw(rect, abilitySelect, Color.Yellow);
                     //draw texture
@@ -155,7 +155,7 @@ namespace SwagSword
                 abilityRect.X += offset;
                 abilitySelect.X += offset;
 
-                if (mainMan.GameMan.Players[0].Character.CurrentAbility.Type == Abilities.Warp)
+                if (mainMan.GameMan.Players[0].Character.CurrentAbility.Type == AbilityType.Warp)
                 {
                     spritebatch.Draw(rect, abilitySelect, Color.Yellow);
                     //draw texture

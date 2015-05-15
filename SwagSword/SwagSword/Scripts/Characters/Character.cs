@@ -644,7 +644,14 @@ namespace SwagSword
         /// <param name="y"></param>
         public void SetDirectionToPoint(float x, float y)
         {
-            direction = (float)Math.Atan2(x - position.X, y - position.Y) * 180f / (float)Math.PI;
+            if(mainMan.GameMan.Players[0].Character != null && mainMan.GameMan.Players[0].Character.currentAbility.Type == AbilityType.Decoy && mainMan.GameMan.Players[0].Character.CurrentAbility.InUse)
+            {
+                direction = (float)Math.Atan2(x - mainMan.GameMan.Players[0].Character.CurrentAbility.Position.X, y - mainMan.GameMan.Players[0].Character.CurrentAbility.Position.Y) * 180f / (float)Math.PI;
+            }
+            else
+            {
+                direction = (float)Math.Atan2(x - position.X, y - position.Y) * 180f / (float)Math.PI;
+            }
         }
 
         /// <summary>

@@ -15,7 +15,7 @@ namespace SwagSword
         private BoomerangObject boomerang;
         private float speed;
 
-        public Boomerang(Game1 mainMan, Character character):base(mainMan, Abilities.Boomerang, character)
+        public Boomerang(Game1 mainMan, Character character):base(mainMan, AbilityType.Boomerang, character)
         {
             boomerang = new BoomerangObject(character, mainMan);
 

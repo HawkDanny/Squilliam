@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SwagSword
 {
-    public enum Abilities
+    public enum AbilityType
     {
         Boomerang,
         Warp,
@@ -21,25 +21,29 @@ namespace SwagSword
     {
         #region Fields
         protected Game1 mainMan;
-        private Abilities type;
+        private AbilityType type;
         protected Character character;
+        protected Vector2 position;
 
        
         private bool inUse; //Each sub class should handle setting this to false 
         #endregion
 
         #region Properties
-        public Abilities Type { get { return type; } set { type = value; } }
+        public AbilityType Type { get { return type; } set { type = value; } }
 
         public bool InUse { get { return inUse; } set { inUse = value; } }
+
+        public Vector2 Position { get { return position; } }
         #endregion
 
 
-        public Ability(Game1 mainMan, Abilities type, Character character)
+        public Ability(Game1 mainMan, AbilityType type, Character character)
         {
             this.mainMan = mainMan;
             this.type = type;
             this.character = character;
+            position = new Vector2(0f, 0f);
         }
 
         public virtual void Init()

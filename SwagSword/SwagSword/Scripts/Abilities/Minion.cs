@@ -15,7 +15,7 @@ namespace SwagSword
         private PATE minion;
         private float speed;
 
-        public Minion(Game1 mainMan, Character character):base(mainMan, Abilities.Minion, character)
+        public Minion(Game1 mainMan, Character character):base(mainMan, AbilityType.Minion, character)
         {
             minion = new PATE(character, mainMan);
 

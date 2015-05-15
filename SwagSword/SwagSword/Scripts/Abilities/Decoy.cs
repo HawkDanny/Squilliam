@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Threading;
 
 //Names: Nelson Scott
 
@@ -30,17 +31,30 @@ namespace SwagSword
             base.Init();
         }
 
+        double temp = 0;
         /// <summary>
         /// </summary>
         public override void Update()
         {
             if (InUse)
             {
+                if(fresh)
+                {
+                    temp = mainMan.GameTime.TotalGameTime.TotalSeconds;
+                    fresh = false;
+                }
+                     
                 character.Texture = mainMan.DrawMan.GhostSheet;
                 if (character.CharacterState != CharacterState.Active || character.Weapon.IsSwinging)
                 {
                     InUse = false;
                     character.Texture = previousTexture;
+                }
+                if(mainMan.GameTime.TotalGameTime.TotalSeconds - temp > 3)
+                {
+                    InUse = false;
+                    character.Texture = previousTexture;
+                    fresh = true;
                 }
             }
             base.Update();
@@ -51,17 +65,29 @@ namespace SwagSword
         /// </summary>
         public override void Use()
         {
+
             position = new Vector2(character.X, character.Y);
             mainMan.SoundMan.Decoying.Play();
+            position = new Vector2(character.X-32, character.Y-32);
+
             base.Use();
         }
 
         public override void AIUse()
         {
-            position = new Vector2(character.X, character.Y);
+            position = new Vector2(character.X-32, character.Y-32);
             base.AIUse();
             mainMan.SoundMan.Decoying.Play();
         }
+
+        private void TimeTracker()
+        {
+            timeInvisible++;
+        }
+
+        Thread t;
+        int timeInvisible = 0;
+        bool fresh = true;
 
         public override void Draw(SpriteBatch spritebatch)
         {

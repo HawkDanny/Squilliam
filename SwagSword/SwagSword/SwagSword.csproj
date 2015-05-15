@@ -142,6 +142,9 @@
     <Content Include="Content\Map\GoodGuyTents.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\Map\Grass_double.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\Map\RichCenterpiece.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -244,9 +247,9 @@
     <None Include="Content\Fonts\pressstart2p.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-<<<<<<< HEAD
     <None Include="Content\Music\TitleScreen.xnb">
-=======
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Content\Music\A - Heavy Danger 2 Theme Concept_01.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -278,7 +281,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Content\Sfx\FOOTSTEP Run Trainers Compact Gravel RR4 %28mono%29.xnb">
->>>>>>> e3864643ad9e91f7483a76cfe8971a2e5c55744e
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Content\Music\GameMusic.xnb">

@@ -24,6 +24,8 @@ namespace SwagSword
         List<CustomCharacter> customCharacterList;
         #endregion
 
+        public List<CustomCharacter> CustomCharacterList { get { return customCharacterList; } }
+
         public SpawnManager(Game1 mainMan):base(mainMan)
         {
 
@@ -191,6 +193,69 @@ namespace SwagSword
             mainMan.GameMan.Characters.Add(character);
         }
 
+        /// <summary>
+        /// Returns a random custom character from the list of customCharacters loaded in. If there isn't a character from that faction, it returns the default character
+        /// </summary>
+        /// <param name="f">Desired faction</param>
+        public CustomCharacter GetCustomCharacter(Faction f)
+        {
+            this.Scrandle();
+            foreach (CustomCharacter c in customCharacterList)
+            {
+                if (c.Faction == f)
+                {
+                    return c;
+                }
+            }
+        
+            StreamReader input;
+            string customCharacterString;
+            CustomCharacter returnable;
+            switch (f)
+            {
+                case Faction.Tribal:
+                    input = new StreamReader("../../../Content/CustomEnemies/Defaults/Ryan_CustomCharacter.txt");
+                    customCharacterString = input.ReadLine();
+                    returnable = JsonConvert.DeserializeObject<CustomCharacter>(customCharacterString);
+                    break;
+                case Faction.Good:
+                    input = new StreamReader("../../../Content/CustomEnemies/Defaults/Danny_CustomCharacter.txt");
+                    customCharacterString = input.ReadLine();
+                    returnable = JsonConvert.DeserializeObject<CustomCharacter>(customCharacterString);
+                    break;
+                case Faction.Rich:
+                    input = new StreamReader("../../../Content/CustomEnemies/Defaults/Nelson_CustomCharacter.txt");
+                    customCharacterString = input.ReadLine();
+                    returnable = JsonConvert.DeserializeObject<CustomCharacter>(customCharacterString);
+                    break;
+                case Faction.Thief:
+                    input = new StreamReader("../../../Content/CustomEnemies/Defaults/Peter_CustomCharacter.txt");
+                    customCharacterString = input.ReadLine();
+                    returnable = JsonConvert.DeserializeObject<CustomCharacter>(customCharacterString);
+                    break;
+                default:
+                    input = new StreamReader("../../../Content/CustomEnemies/Defaults/Danny_CustomCharacter.txt");
+                    customCharacterString = input.ReadLine();
+                    returnable = JsonConvert.DeserializeObject<CustomCharacter>(customCharacterString);
+                    break;
+            }
+            return returnable;
+        }
 
+        //Mixes up the custom character list
+        public void Scrandle()
+        {
+            Random rand = new Random();
+            int n = customCharacterList.Count;
+
+            while (n > 1)
+            {
+                n--;
+                int k = rand.Next(n + 1);
+                CustomCharacter swap = customCharacterList[k];
+                customCharacterList[k] = customCharacterList[n];
+                customCharacterList[n] = swap;
+            }
+        }
     }
 }

@@ -1,0 +1,1 @@
+{"Faction":2,"Name":"Nelson","Aggression":0.2,"Defense":0.9,"Ability":0.8,"Cowardice":0.3}

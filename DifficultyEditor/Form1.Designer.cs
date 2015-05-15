@@ -165,7 +165,6 @@
             // 
             this.aggressionTrackBar.AutoSize = false;
             this.aggressionTrackBar.Location = new System.Drawing.Point(91, 73);
-            this.aggressionTrackBar.Maximum = 20;
             this.aggressionTrackBar.Name = "aggressionTrackBar";
             this.aggressionTrackBar.Size = new System.Drawing.Size(210, 20);
             this.aggressionTrackBar.TabIndex = 11;
@@ -179,7 +178,6 @@
             // 
             this.defenseTrackBar.AutoSize = false;
             this.defenseTrackBar.Location = new System.Drawing.Point(91, 97);
-            this.defenseTrackBar.Maximum = 20;
             this.defenseTrackBar.Name = "defenseTrackBar";
             this.defenseTrackBar.Size = new System.Drawing.Size(210, 20);
             this.defenseTrackBar.TabIndex = 12;
@@ -193,7 +191,6 @@
             // 
             this.abilitiesTrackBar.AutoSize = false;
             this.abilitiesTrackBar.Location = new System.Drawing.Point(91, 124);
-            this.abilitiesTrackBar.Maximum = 20;
             this.abilitiesTrackBar.Name = "abilitiesTrackBar";
             this.abilitiesTrackBar.Size = new System.Drawing.Size(210, 20);
             this.abilitiesTrackBar.TabIndex = 13;
@@ -207,7 +204,6 @@
             // 
             this.cowardiceTrackBar.AutoSize = false;
             this.cowardiceTrackBar.Location = new System.Drawing.Point(91, 148);
-            this.cowardiceTrackBar.Maximum = 20;
             this.cowardiceTrackBar.Name = "cowardiceTrackBar";
             this.cowardiceTrackBar.Size = new System.Drawing.Size(210, 20);
             this.cowardiceTrackBar.TabIndex = 14;

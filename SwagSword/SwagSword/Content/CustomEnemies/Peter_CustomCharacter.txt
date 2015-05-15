@@ -1,1 +1,0 @@
-{"Faction":3,"Name":"Peter","Aggression":0.65,"Defense":0.3,"Ability":0.9,"Cowardice":0.85}

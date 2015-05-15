@@ -195,7 +195,7 @@ namespace DifficultyEditor
                 characterFaction = Faction.Tribal;
 
 
-            CustomCharacter character = new CustomCharacter(characterFaction, nameTextBox.Text, (aggressionTrackBar.Value / 20.0), (defenseTrackBar.Value / 20.0), (abilitiesTrackBar.Value / 20.0), (cowardiceTrackBar.Value / 20.0));
+            CustomCharacter character = new CustomCharacter(characterFaction, nameTextBox.Text, (aggressionTrackBar.Value / 10.0), (defenseTrackBar.Value / 10.0), (abilitiesTrackBar.Value / 10.0), (cowardiceTrackBar.Value / 10.0));
 
             //Create and write to a text file using JSON
 
@@ -205,6 +205,7 @@ namespace DifficultyEditor
 
         private void factionButton1_CheckedChanged(object sender, EventArgs e)
         {
+            factionTypeLabel.Text = "Good Guys";
             Stream picStream = new FileStream("../../sprites/goodGuy.png", FileMode.Open);
             factionPic.Image = Image.FromStream(picStream);
             picStream.Close();
@@ -212,6 +213,7 @@ namespace DifficultyEditor
 
         private void factionButton2_CheckedChanged(object sender, EventArgs e)
         {
+            factionTypeLabel.Text = "Rich Guys";
             Stream picStream = new FileStream("../../sprites/richGuy.png", FileMode.Open);
             factionPic.Image = Image.FromStream(picStream);
             picStream.Close();
@@ -219,6 +221,7 @@ namespace DifficultyEditor
 
         private void factionButton3_CheckedChanged(object sender, EventArgs e)
         {
+            factionTypeLabel.Text = "Bandits";
             Stream picStream = new FileStream("../../sprites/banditGuy.png", FileMode.Open);
             factionPic.Image = Image.FromStream(picStream);
             picStream.Close();
@@ -226,6 +229,7 @@ namespace DifficultyEditor
 
         private void factionButton4_CheckedChanged(object sender, EventArgs e)
         {
+            factionTypeLabel.Text = "Tribal Warriors";
             Stream picStream = new FileStream("../../sprites/tribalGuy.png", FileMode.Open);
             factionPic.Image = Image.FromStream(picStream);
             picStream.Close();

@@ -26,12 +26,15 @@ namespace SwagSword
             NormalColor = Color.White;
             //NormalColor = Color.OrangeRed;
 
+            CustomCharacter custom = mainMan.GameMan.SpawnMan.GetCustomCharacter(Faction.Thief);
+            this.name = custom.Name;
+
             //Set AI state prob
-            AIProbs.Add(AIState.Attack, 0.3f);
+            AIProbs.Add(AIState.Attack, (float)custom.Aggression);
             AIProbs.Add(AIState.Flank, 0.1f);
-            AIProbs.Add(AIState.Ability, 0.5f);
-            AIProbs.Add(AIState.Defend, 0.6f);
-            AIProbs.Add(AIState.Cower, 0.3f);
+            AIProbs.Add(AIState.Ability, (float)custom.Ability);
+            AIProbs.Add(AIState.Defend, (float)custom.Defense);
+            AIProbs.Add(AIState.Cower, (float)custom.Cowardice);
             AIProbs.Add(AIState.Ready, 0.3f);
             AIProbs.Add(AIState.Idle, 0.4f);
 

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SwagSword
 {
-    class CustomCharacter
+    public class CustomCharacter
     {
         private Faction currentFaction;
         private string name;

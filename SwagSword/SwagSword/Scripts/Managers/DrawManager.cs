@@ -34,6 +34,12 @@ namespace SwagSword
         private Texture2D winTexture;
         private Texture2D levelUpButtonTexture;
 
+        //Ability Textures
+        private Texture2D boomerangAbility;
+        private Texture2D decoyAbility;
+        private Texture2D robotAbility;
+        private Texture2D teleportAbility;
+
         //Weapon Textures (Create a dictionary)
         private Texture2D swordTexture;
         private Texture2D whipTexture;
@@ -48,10 +54,7 @@ namespace SwagSword
         private Texture2D rightStronghold;
         private Texture2D topStronghold;
         private Texture2D lowerStronghold;
-        private Texture2D leftStrongholdCap;
-        private Texture2D rightStrongholdCap;
-        private Texture2D lowerStrongholdCap;
-        private Texture2D topStrongholdCap;
+        private Texture2D flag;
         private Texture2D defaultMap;
 
         //Fonts
@@ -83,6 +86,12 @@ namespace SwagSword
         public Texture2D WinTexture { get { return winTexture; } set { winTexture = value; } }
         public Texture2D LevelUpButtonTexture { get { return levelUpButtonTexture; } set { levelUpButtonTexture = value; } }
 
+        //Ability Textures
+        public Texture2D BoomerangAbility { get { return boomerangAbility; } set { boomerangAbility = value; } }
+        public Texture2D DecoyAbility { get { return decoyAbility; } set { decoyAbility = value; } }
+        public Texture2D RobotAbility { get { return robotAbility; } set { robotAbility = value; } }
+        public Texture2D TeleportAbility { get { return teleportAbility; } set { teleportAbility = value; } }
+
         //Weapon textures
         public Texture2D SwordTexture { get { return swordTexture; } set { swordTexture = value; } }
         public Texture2D WhipTexture { get { return whipTexture; } set { whipTexture = value; } }
@@ -97,10 +106,7 @@ namespace SwagSword
         public Texture2D RightStronghold { get { return rightStronghold; } set { rightStronghold = value; } }
         public Texture2D TopStronghold { get { return topStronghold; } set { topStronghold = value; } }
         public Texture2D LowerStronghold { get { return lowerStronghold; } set { lowerStronghold = value; } }
-        public Texture2D LeftStrongholdCap { get { return leftStrongholdCap; } set { leftStrongholdCap = value; } }
-        public Texture2D RightStrongholdCap { get { return rightStrongholdCap; } set { rightStrongholdCap = value; } }
-        public Texture2D LowerStongholdCap { get { return lowerStrongholdCap; } set { lowerStrongholdCap = value; } }
-        public Texture2D TopStongholdCap { get { return topStrongholdCap; } set { topStrongholdCap = value; } }
+        public Texture2D Flag { get { return flag; } set { flag = value; } }
         public Texture2D DefaultMap { get { return defaultMap; } set { defaultMap = value; } }
 
         //SpriteFonts

@@ -18,8 +18,8 @@ namespace SwagSword
         #region Fields
         Game1 mainMan;
         Rectangle rect;
+        Rectangle flagRect;
         Texture2D texture;
-        Texture2D textureBroken;
         bool captured;
         double percentCaptured;
         double prevTime;
@@ -33,17 +33,16 @@ namespace SwagSword
         #region Properties
         public Rectangle Rect { get { return rect; } set { rect = value; } }
         public Texture2D Texture { get { return texture; } set { texture = value; } }
-        public Texture2D TextureBroken { get { return textureBroken; } set { textureBroken = value; } }
         public bool Captured { get { return captured; } set { captured = value; } }
         public double PercentCaptured { get { return percentCaptured; } set { percentCaptured = value; } }
         public Faction Type { get { return type; } }
         #endregion
 
-        public Stronghold(Texture2D tex, Texture2D br, Rectangle r, Game1 mainMan, Faction type)
+        public Stronghold(Texture2D tex, Rectangle r, Game1 mainMan, Faction type)
         {
             texture = tex;
-            textureBroken = br;
             rect = r;
+            flagRect = new Rectangle(r.X, r.Y - r.Height / 4, r.Width , r.Height);
             this.mainMan = mainMan;
             capColor = Color.Green;
             captex = new Texture2D(mainMan.GraphicsDevice, 1, 1);
@@ -100,7 +99,8 @@ namespace SwagSword
         {
             if(captured)
             {
-                spriteBatch.Draw(textureBroken, rect, Color.White);
+                spriteBatch.Draw(texture, rect, Color.White);
+                spriteBatch.Draw(mainMan.DrawMan.Flag, flagRect, Color.White);
             }
             else
             {

@@ -634,7 +634,17 @@ namespace SwagSword
         /// <returns>Distance as a float</returns>
         public float DistanceToPlayer(int index)
         {
-            return (float)Math.Sqrt(Math.Pow(mainMan.GameMan.Players[index].X - X, 2) + Math.Pow(mainMan.GameMan.Players[index].Y - Y, 2));
+            float distToPlayer;
+            if (mainMan.GameMan.Players[0].Character != null && mainMan.GameMan.Players[0].Character.currentAbility.Type == AbilityType.Decoy && mainMan.GameMan.Players[0].Character.CurrentAbility.InUse)
+            {
+                distToPlayer = (float)Math.Sqrt(Math.Pow(mainMan.GameMan.Players[index].Character.CurrentAbility.Position.X - X, 2) + Math.Pow(mainMan.GameMan.Players[index].Character.CurrentAbility.Position.Y - Y, 2));
+            }
+            else
+            {
+
+                distToPlayer = (float)Math.Sqrt(Math.Pow(mainMan.GameMan.Players[index].X - X, 2) + Math.Pow(mainMan.GameMan.Players[index].Y - Y, 2));
+            }
+            return distToPlayer;
         }
 
         /// <summary>

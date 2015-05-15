@@ -180,7 +180,15 @@ namespace SwagSword
 
                     case AIState.Ability:
                         //Throw the sword
-                        Weapon.Angle = (float)Math.Atan2(mainMan.GameMan.Players[0].X - X, mainMan.GameMan.Players[0].Y - Y) * 180f / (float)Math.PI;
+                        if (mainMan.GameMan.Players[0].Character != null && mainMan.GameMan.Players[0].Character.CurrentAbility.Type == AbilityType.Decoy && mainMan.GameMan.Players[0].Character.CurrentAbility.InUse)
+                        {
+                            Weapon.Angle = (float)Math.Atan2(mainMan.GameMan.Players[0].Character.CurrentAbility.Position.X - X, mainMan.GameMan.Players[0].Character.CurrentAbility.Position.Y - Y) * 180f / (float)Math.PI;
+                        }
+                        else
+                        {
+
+                            Weapon.Angle = (float)Math.Atan2(mainMan.GameMan.Players[0].X - X, mainMan.GameMan.Players[0].Y - Y) * 180f / (float)Math.PI;
+                        }
                         CurrentAbility.Use();
                         SwitchAIState(AIState.Idle);
                         break;

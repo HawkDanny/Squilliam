@@ -234,9 +234,7 @@
     </Content>
     <Content Include="Icon.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Content\Music\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Content\Fonts\vanillawhale.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -245,6 +243,12 @@
   <ItemGroup>
     <None Include="Content\Fonts\pressstart2p.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Music\A - Heavy Danger 2 Theme Concept_01.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Music\TechnoMan.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Content\Sfx\BLASTER Bright Short %28stereo%29.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

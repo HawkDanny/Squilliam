@@ -156,6 +156,7 @@ namespace SwagSword
                     {
                         if (character.AnimationState != AnimationState.MoveRight)
                         {
+                            
                             character.StartAnimation(AnimationState.MoveRight);
                         }
                         character.VelocityX = character.MovementSpeed;

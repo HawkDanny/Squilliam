@@ -93,17 +93,7 @@ namespace SwagSword
         /// </summary>
         public override void Update()
         {
-            if (CheckWin())
-            {
-                mainMan.UIMan.Screens.Pop();
-                mainMan.UIMan.Screens.Push(new WinScreen(mainMan));
-            }
-            if (CheckLose())
-            {
-                mainMan.SoundMan.Losing.Play();
-                mainMan.UIMan.Screens.Pop();
-                mainMan.UIMan.Screens.Push(new GameOverScreen(mainMan));
-            }
+            
             foreach(Stronghold s in mapMan.Strongholds)
             {
                 if (s.Captured)
@@ -140,7 +130,7 @@ namespace SwagSword
             }
 
             mainMan.DrawMan.Camera.SnapToCenter();
-            //mainMan.SoundMan.StopIntro();
+            mainMan.SoundMan.StopIntro();
         }
 
         private void DestroyFaction(Faction type)
@@ -152,24 +142,6 @@ namespace SwagSword
             tempList.Clear();
         }
 
-        private bool CheckWin()
-        {
-            int i = 0;
-            foreach (Stronghold s in mainMan.GameMan.MapMan.Strongholds)
-                if (s.Captured)
-                    i++;
-            if (i == 3)
-                return true;
-            else
-                return false;
-        }
-
-        private bool CheckLose()
-        {
-            if (players[0].Lives <= 0)
-                return true;
-            else
-                return false;
-        }
+        
     }
 }

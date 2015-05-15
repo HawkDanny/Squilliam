@@ -18,7 +18,7 @@ namespace SwagSword
         public GameOverScreen(Game1 mainMan):
             base(mainMan)
         {
-
+            mainMan.SoundMan.Losing.Play();
         }
 
         public override void Draw(SpriteBatch spritebatch)

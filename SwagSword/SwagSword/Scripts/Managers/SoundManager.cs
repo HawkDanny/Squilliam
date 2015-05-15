@@ -87,12 +87,14 @@ namespace SwagSword
 
         public void StartIntro()
         {
-            //MediaPlayer.Play(openingMusic);
+            MediaPlayer.Play(openingMusic);
+            MediaPlayer.Volume = .05f;
         }
 
         public void StopIntro()
         {
             MediaPlayer.Stop();
+            MediaPlayer.Play(gameMusic);
         }
 
 

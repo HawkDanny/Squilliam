@@ -109,8 +109,8 @@ namespace SwagSword
             //Load and set textures in draw manager
 
             //Load Sounds
-            //soundMan.OpeningMusic = Content.Load<SoundEffect>("Sfx/TitleScreen");
-            //soundMan.GameMusic = Content.Load<Song>("Sfx/GameMusic");
+            soundMan.OpeningMusic = Content.Load<Song>("Music/TitleScreen");
+            soundMan.GameMusic = Content.Load<Song>("Music/GameMusic");
             soundMan.Gravel1 = Content.Load<SoundEffect>("Sfx/Gravel1");
             soundMan.Gravel2 = Content.Load<SoundEffect>("Sfx/Gravel2");
             soundMan.Gravel3 = Content.Load<SoundEffect>("Sfx/Gravel3");
@@ -127,7 +127,7 @@ namespace SwagSword
             soundMan.Losing = Content.Load<SoundEffect>("Sfx/Losing");
             soundMan.Decoying = Content.Load<SoundEffect>("Sfx/Decoying");
             soundMan.Init();
-            //soundMan.StartIntro();
+            soundMan.StartIntro();
             //soundMan.OpeningMusic.Play();
 
             //Load Screen Textures

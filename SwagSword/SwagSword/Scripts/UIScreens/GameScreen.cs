@@ -50,15 +50,37 @@ namespace SwagSword
                 mainMan.UIMan.Screens.Push(new PauseScreen(mainMan, mainMan.UIMan.Screens.Pop()));
                 mainMan.UIMan.State = GameState.pause;
             }
-
-            //Win Screen
-            if(mainMan.InputMan.SingleKeyPress(Keys.O))
+            if (CheckWin())
             {
+                mainMan.UIMan.Screens.Pop();
                 mainMan.UIMan.Screens.Push(new WinScreen(mainMan));
-                mainMan.UIMan.State = GameState.win;
             }
-
+            if (CheckLose())
+            {
+                mainMan.UIMan.Screens.Pop();
+                mainMan.UIMan.Screens.Push(new GameOverScreen(mainMan));
+            }
             
+        }
+
+        private bool CheckWin()
+        {
+            int i = 0;
+            foreach (Stronghold s in mainMan.GameMan.MapMan.Strongholds)
+                if (s.Captured)
+                    i++;
+            if (i == 3)
+                return true;
+            else
+                return false;
+        }
+
+        private bool CheckLose()
+        {
+            if (mainMan.GameMan.Players[0].Lives <= 0)
+                return true;
+            else
+                return false;
         }
 
         public override void Draw(SpriteBatch spritebatch)

@@ -841,13 +841,17 @@ namespace SwagSword
                             if (frameX < totalFrames - 1)
                             {
                                 frameX++;
+                                if(frameX%2 == 0 && isControlled)
+                                    mainMan.SoundMan.Gravels[mainMan.Rnd.Next(0, 4)].Play(1f, 0.0f, 0.0f);
                             }
                             else
                             {
                                 frameX = 0;
                             }
                             frameTime = 0f;
+                            
                         }
+
                         break;
                 }
 

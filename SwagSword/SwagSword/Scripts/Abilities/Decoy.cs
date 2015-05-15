@@ -65,12 +65,10 @@ namespace SwagSword
         /// </summary>
         public override void Use()
         {
-<<<<<<< HEAD
+
             position = new Vector2(character.X, character.Y);
             mainMan.SoundMan.Decoying.Play();
 
-=======
->>>>>>> parent of e386464... Revert "stuff"
             position = new Vector2(character.X-32, character.Y-32);
 
             base.Use();
@@ -79,11 +77,8 @@ namespace SwagSword
         public override void AIUse()
         {
             position = new Vector2(character.X-32, character.Y-32);
-<<<<<<< HEAD
 
             mainMan.SoundMan.Decoying.Play();
-=======
->>>>>>> parent of e386464... Revert "stuff"
             base.AIUse();
         }
 

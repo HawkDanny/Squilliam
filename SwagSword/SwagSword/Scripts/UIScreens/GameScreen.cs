@@ -80,7 +80,7 @@ namespace SwagSword
             int leftX = (int)mainMan.DrawMan.Camera.TopLeftPosition.X;
             int topY = (int)mainMan.DrawMan.Camera.TopLeftPosition.Y;
             abilityRect = new Rectangle(leftX + 15, topY + mainMan.WindowHeight - 15 - size, size, size);
-            if (mainMan.GameMan.Players[0].CharacterState == CharacterState.Active)
+            if (mainMan.GameMan.Players[0].CharacterState == CharacterState.Active || mainMan.GameMan.Players[0].CharacterState == CharacterState.Hurt)
             {
                 //draw texture
                 if (mainMan.GameMan.MapMan.Strongholds[0].Captured || mainMan.GameMan.Players[0].Character.Type == Faction.Good)

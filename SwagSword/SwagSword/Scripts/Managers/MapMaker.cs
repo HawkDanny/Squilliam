@@ -58,7 +58,7 @@ namespace SwagSword
                 noiseOffset = noiseGen.NoiseToTexture();
                 pathMask = MergeTextures(ShiftPathHorizontal(BasePathHorizontal(), noiseOffset), ShiftPathVertical(BasePathVertical(), noiseOffset));
                 pathMask = MergeTextures(pathMask, NoiseyCircle());
-                noiseOffset = noiseGen.AdjustConstrast(noiseOffset, 4);
+                noiseOffset = noiseGen.AdjustConstrast(noiseOffset, 2);
                 noiseOffset = noiseGen.AddGradient(noiseOffset, Color.LightGray, Color.White);
                 noiseOffset = noiseGen.BlendImages(mainMan.DrawMan.SandyTexture, mainMan.DrawMan.GrassTexture, noiseOffset);
             }

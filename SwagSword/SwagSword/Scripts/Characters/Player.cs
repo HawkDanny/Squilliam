@@ -295,13 +295,25 @@ namespace SwagSword
                     #region Ability Switch
 
                     if (mainMan.InputMan.Ability1.IsDown())
-                        character.CurrentAbility = new Boomerang(mainMan, this.character);
+                    {
+                        if (mainMan.GameMan.MapMan.Strongholds[0].Captured || mainMan.GameMan.Players[0].Character.Type == Faction.Good)
+                            character.CurrentAbility = new Boomerang(mainMan, this.character);
+                    }
                     if (mainMan.InputMan.Ability2.IsDown())
-                        character.CurrentAbility = new Decoy(mainMan, this.character);
+                    {
+                        if (mainMan.GameMan.MapMan.Strongholds[3].Captured || mainMan.GameMan.Players[0].Character.Type == Faction.Thief)
+                            character.CurrentAbility = new Decoy(mainMan, this.character);
+                    }
                     if (mainMan.InputMan.Ability3.IsDown())
-                        character.CurrentAbility = new Minion(mainMan, this.character);
+                    {
+                        if (mainMan.GameMan.MapMan.Strongholds[2].Captured || mainMan.GameMan.Players[0].Character.Type == Faction.Rich)
+                            character.CurrentAbility = new Minion(mainMan, this.character);
+                    }
                     if (mainMan.InputMan.Ability4.IsDown())
-                        character.CurrentAbility = new Warp(mainMan, this.character);
+                    {
+                        if (mainMan.GameMan.MapMan.Strongholds[1].Captured || mainMan.GameMan.Players[0].Character.Type == Faction.Tribal)
+                            character.CurrentAbility = new Warp(mainMan, this.character);
+                    }
                     if (mainMan.InputMan.SingleKeyPress(Keys.E))
                     {
                         //

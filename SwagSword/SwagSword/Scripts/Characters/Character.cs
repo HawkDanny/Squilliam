@@ -54,10 +54,7 @@ namespace SwagSword
         Switch, //The sword is up for grabs, get it!!!
         Cower //Run away
     }
-    public enum Abilities
-    {
 
-    }
 
     /// <summary>
     /// The base class for every type of Character

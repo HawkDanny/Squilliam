@@ -161,7 +161,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Music\BLASTER Bright Short %28stereo%29.wav">
-<<<<<<< HEAD
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Music\BLASTER Deep Muffled %28stereo%29.wav">
@@ -235,8 +234,6 @@
     </Content>
     <Content Include="Content\Music\WHOOSH Bright Short %28mono%29.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-=======
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Music\BLASTER Deep Muffled %28stereo%29.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -309,7 +306,6 @@
     </Content>
     <Content Include="Content\Music\WHOOSH Bright Short %28mono%29.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
->>>>>>> 813eb41e4ab10030a1e3456f308e67a468440b03
     </Content>
     <Content Include="Content\Objects\bullet.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

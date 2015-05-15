@@ -295,13 +295,13 @@ namespace SwagSword
                     #region Ability Switch
 
                     if (mainMan.InputMan.Ability1.IsDown())
-                    //    character.CurrentAbility.Type = Abilities.Boomerang;
+                        character.CurrentAbility = new Boomerang(mainMan, this.character);
                     if (mainMan.InputMan.Ability2.IsDown())
-                    //    character.CurrentAbility.Type = Abilities.Decoy;
+                        character.CurrentAbility = new Decoy(mainMan, this.character);
                     if (mainMan.InputMan.Ability3.IsDown())
-                    //    character.CurrentAbility.Type = Abilities.Minion;
+                        character.CurrentAbility = new Minion(mainMan, this.character);
                     if (mainMan.InputMan.Ability4.IsDown())
-                    //    character.CurrentAbility.Type = Abilities.Warp;
+                        character.CurrentAbility = new Warp(mainMan, this.character);
                     if (mainMan.InputMan.SingleKeyPress(Keys.E))
                     {
                         //

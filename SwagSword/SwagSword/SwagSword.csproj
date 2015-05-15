@@ -244,7 +244,41 @@
     <None Include="Content\Fonts\pressstart2p.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+<<<<<<< HEAD
     <None Include="Content\Music\TitleScreen.xnb">
+=======
+    <None Include="Content\Music\A - Heavy Danger 2 Theme Concept_01.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Music\TechnoMan.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Sfx\BLASTER Bright Short %28stereo%29.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Sfx\BLASTER Deep Muffled %28stereo%29.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Sfx\BLASTER Double Kickback %28stereo%29.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Sfx\DEMOLISH Wood Fall %28stereo%29.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Sfx\DEMOLISH Wood _ Metal %28stereo%29.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Sfx\DEMOLISH Wood _ Metal Deep %28stereo%29.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Sfx\EXPLOSION Subtle Poof 01 %28stereo%29.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Sfx\EXPLOSION Subtle Poof 02 %28stereo%29.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Sfx\FOOTSTEP Run Trainers Compact Gravel RR4 %28mono%29.xnb">
+>>>>>>> e3864643ad9e91f7483a76cfe8971a2e5c55744e
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Content\Music\GameMusic.xnb">

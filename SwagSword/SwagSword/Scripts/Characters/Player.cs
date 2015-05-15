@@ -88,7 +88,7 @@ namespace SwagSword
             knockbackMultiplier = 1;
             attackSpeedMultiplier = 1;
             movementSpeedMultiplier = 1;
-            lives = 5;
+            lives = 6;
             exp = 0;
             maxExp = 50;
             level = 1;
@@ -139,7 +139,7 @@ namespace SwagSword
                 }
                 if (timeDead > 300)
                 {
-                    this.character = mainMan.GameMan.Characters[0];
+                    SwitchBlade(mainMan.GameMan.Characters[0]);
                 }
             }
 

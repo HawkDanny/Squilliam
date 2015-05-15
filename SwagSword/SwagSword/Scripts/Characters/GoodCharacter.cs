@@ -83,7 +83,14 @@ namespace SwagSword
                             //Move close to attack
                             if (DistanceToPlayer(0) > AttackRange)
                             {
-                                MoveToPoint(mainMan.GameMan.Players[0].X, mainMan.GameMan.Players[0].Y);
+                                if (mainMan.GameMan.Players[0].Character.Type == Faction.Thief && mainMan.GameMan.Players[0].Character.CurrentAbility.InUse)
+                                {
+                                    MoveToPoint((mainMan.GameMan.Players[0].Character.CurrentAbility as Decoy).Position.X, (mainMan.GameMan.Players[0].Character.CurrentAbility as Decoy).Position.Y);
+                                }
+                                else
+                                {
+                                    MoveToPoint(mainMan.GameMan.Players[0].X, mainMan.GameMan.Players[0].Y);
+                                }                            
                             }
                             else
                             {

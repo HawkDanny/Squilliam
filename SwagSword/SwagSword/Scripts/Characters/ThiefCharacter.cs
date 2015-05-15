@@ -163,7 +163,11 @@ namespace SwagSword
 
                     case AIState.Ability:
                         //Decoy
-                        CurrentAbility.AIUse();
+                        if (!CurrentAbility.InUse)
+                        {
+                            CurrentAbility.AIUse();
+                            CurrentAbility.InUse = true;
+                        }
                         SwitchAIState(AIState.Idle);
                         break;
 

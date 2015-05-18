@@ -249,7 +249,6 @@ namespace SwagSword
         {
             //Will init all stats based on a config file
             //Example Health stats
-            name = "Peter";
             health = 100;
             maxHealth = 100;
             strength = 30f;

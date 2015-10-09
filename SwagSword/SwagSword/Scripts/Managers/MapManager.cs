@@ -18,32 +18,32 @@ namespace SwagSword
     public class MapManager : Manager
     {
         #region Fields
-        int tileSize;                                                       
-        int mapWidth;
-        int mapHeight;
-        int resWidth;
-        int resHeight;
-        int strongholdWidth;
-        int radius;
-        Point rightCenterPoint;
+        int tileSize;                                               //The width and height in pixels of each tile                                                      
+        int mapWidth;                                               //The width in number of tiles of the map
+        int mapHeight;                                              //The height in number of tiles of the map
+        int resWidth;                                               //The width of the map in pixels
+        int resHeight;                                              //The hieght of the map in pixels
+        int strongholdWidth;                                        //The width of a stronghold in pixels
+        int radius;                                                 //The radius of the path circle surrounding each of the strongholds
+        Point rightCenterPoint;                                     //The center points of each of the bases/strongholds
         Point leftCenterPoint;
         Point upperCenterPoint;
         Point lowerCenterPoint;
-        Texture2D map;
-        GraphicsDevice graphicsDevice;
-        Stronghold leftStronghold;
+        Texture2D map;                                              //A texture2d which ends up holding the base map
+        GraphicsDevice graphicsDevice;                              //Will hold information about the graphics device that the system is using
+        Stronghold leftStronghold;                                  //Reference to the four strongholds of the game
         Stronghold rightStronghold;
         Stronghold topStronghold;
         Stronghold lowerStronghold;
-        List<Stronghold> strongholds;
-        List<Rectangle> tents;
-        List<Rectangle> centerpieces;
+        List<Stronghold> strongholds;                               //A list to store each stronghold object for easy iteration and retrieval
+        List<Rectangle> tents;                                      //A list to hold all of the tent objects for drawing
+        List<Rectangle> centerpieces;                               //This will hold rectangles that estimate the bounds for the main paths for bounds checking
         #endregion
 
-        #region Properties
-        public int TileSize { get { return tileSize; } }
-        public int MapWidth { get { return mapWidth; } }
-        public int MapHeight { get { return mapHeight; } }
+        #region Properties                                         
+        public int TileSize { get { return tileSize; } }            //All of the get and set properites related to the map
+        public int MapWidth { get { return mapWidth; } }            //The center points have setter properties becasue
+        public int MapHeight { get { return mapHeight; } }          //their value will be set with the mapMaker
         public int ResWidth { get { return resWidth; } }
         public int ResHeight { get { return resHeight; } }
         public Point RightCenterPoint { get { return rightCenterPoint; } set { rightCenterPoint = value; } }
@@ -67,7 +67,6 @@ namespace SwagSword
             tileSize = 64;
             resWidth = 5248;
             resHeight = 5248;
-            //5248
             mapWidth = resWidth / tileSize;
             mapHeight = resHeight / tileSize;
 
